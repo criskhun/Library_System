@@ -3032,7 +3032,7 @@ public class Main extends javax.swing.JFrame {
         jPanel60Layout.setVerticalGroup(
             jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel60Layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(jPanel60Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(po_or3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3389,11 +3389,11 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel63Layout.setVerticalGroup(
             jPanel63Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 594, Short.MAX_VALUE)
+            .addGap(0, 587, Short.MAX_VALUE)
             .addGroup(jPanel63Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel63Layout.createSequentialGroup()
                     .addComponent(jPanel65, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 7, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         jTabbedPane4.addTab("Delivery Receipt Log", jPanel63);
@@ -3411,7 +3411,8 @@ public class Main extends javax.swing.JFrame {
             reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(reportLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE))
+                .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 611, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         stock.add(report, "card8");
@@ -8069,6 +8070,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_men_dashMouseClicked
 
     private void men_recMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_men_recMouseClicked
+        jTabbedPane6.setEnabledAt(0, true);
+        jTabbedPane6.setEnabledAt(1, true);
+        jTabbedPane6.setEnabledAt(2, true);
+        jTabbedPane6.setEnabledAt(3, true);
+        jTabbedPane6.setEnabledAt(4, true);
+        jTabbedPane6.setEnabledAt(5, true);
+        jTabbedPane6.setSelectedIndex(0);
+        
         men_dash.setBackground(new Color(96,96,96));
         men_rec.setBackground(new Color(255,255,255));
         men_inv.setBackground(new Color(96,96,96));
@@ -8099,6 +8108,8 @@ public class Main extends javax.swing.JFrame {
         purchase.setVisible(false);
         classification.setVisible(false);
         booklist.setVisible(false);
+        si_save3.setVisible(false);
+        sup_save3.setVisible(false);
         
         nb_id.setText("");
           nb_bt.setText("");
@@ -10696,46 +10707,16 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_acc_update1ActionPerformed
 
     private void class_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_class_addActionPerformed
-        jTabbedPane1.setEnabledAt(0, false);
-        jTabbedPane1.setEnabledAt(1, false);
-        jTabbedPane1.setEnabledAt(2, true);
-        jTabbedPane1.setEnabledAt(3, false);
-        jTabbedPane1.setEnabledAt(4, false);
-        jTabbedPane1.setEnabledAt(5, false);
-        jTabbedPane1.setEnabledAt(6, false);
-        jTabbedPane1.setSelectedIndex(2);
+        jTabbedPane6.setEnabledAt(0, true);
+        jTabbedPane6.setEnabledAt(1, false);
+        jTabbedPane6.setEnabledAt(2, false);
+        jTabbedPane6.setEnabledAt(3, false);
+        jTabbedPane6.setEnabledAt(4, false);
+        jTabbedPane6.setEnabledAt(5, false);
+        jTabbedPane6.setSelectedIndex(0);
         si_save3.setVisible(true);
-        
-        men_dash.setBackground(new Color(96,96,96));
-        men_rec.setBackground(new Color(255,255,255));
-        men_inv.setBackground(new Color(96,96,96));
-        men_brrd.setBackground(new Color(96,96,96));
-        men_brrr.setBackground(new Color(96,96,96));
-        men_ua.setBackground(new Color(96,96,96));
-        men_logout.setBackground(new Color(96,96,96));
+
         menu_title.setText("ADD CLASSIFICATION");
-        men_po.setForeground(new Color(255,255,255));
-        men_po.setBackground(new Color(96,96,96));
-        men_rep.setBackground(new Color(96,96,96));
-        men_rep.setForeground(new Color(255,255,255));
-        men_dash.setForeground(new Color(255,255,255));
-        men_rec.setForeground(new Color(96,96,96));
-        men_inv.setForeground(new Color(255,255,255));
-        men_brrd.setForeground(new Color(255,255,255));
-        men_brrr.setForeground(new Color(255,255,255));
-        men_ua.setForeground(new Color(255,255,255));
-        men_logout.setForeground(new Color(255,255,255));
-        
-        dashboard.setVisible(false);
-        newbook.setVisible(false);
-        inventory.setVisible(true);
-        Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
-        report.setVisible(false);
-        purchase.setVisible(false);
-        classification.setVisible(false);
-        booklist.setVisible(false);
         
         si_save3.setText("Back To New Book");
     }//GEN-LAST:event_class_addActionPerformed
@@ -11379,46 +11360,23 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_po_neActionPerformed
 
     private void class_add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_class_add1ActionPerformed
-        jTabbedPane1.setEnabledAt(0, false);
-        jTabbedPane1.setEnabledAt(1, false);
-        jTabbedPane1.setEnabledAt(2, true);
-        jTabbedPane1.setEnabledAt(3, false);
-        jTabbedPane1.setEnabledAt(4, false);
-        jTabbedPane1.setEnabledAt(5, false);
-        jTabbedPane1.setEnabledAt(6, false);
-        jTabbedPane1.setSelectedIndex(2);
+        jTabbedPane6.setEnabledAt(0, true);
+        jTabbedPane6.setEnabledAt(1, false);
+        jTabbedPane6.setEnabledAt(2, false);
+        jTabbedPane6.setEnabledAt(3, false);
+        jTabbedPane6.setEnabledAt(4, false);
+        jTabbedPane6.setEnabledAt(5, false);
+        jTabbedPane6.setSelectedIndex(0);
         si_save3.setVisible(true);
         
-        men_dash.setBackground(new Color(96,96,96));
-        men_rec.setBackground(new Color(96,96,96));
-        men_inv.setBackground(new Color(96,96,96));
-        men_brrd.setBackground(new Color(96,96,96));
-        men_brrr.setBackground(new Color(96,96,96));
-        men_ua.setBackground(new Color(96,96,96));
-        men_logout.setBackground(new Color(96,96,96));
         menu_title.setText("ADD CLASSIFICATION");
-        men_po.setForeground(new Color(96,96,96));
-        men_po.setBackground(new Color(255,255,255));
-        men_rep.setBackground(new Color(96,96,96));
-        men_rep.setForeground(new Color(255,255,255));
-        men_dash.setForeground(new Color(255,255,255));
-        men_rec.setForeground(new Color(255,255,255));
-        men_inv.setForeground(new Color(255,255,255));
-        men_brrd.setForeground(new Color(255,255,255));
-        men_brrr.setForeground(new Color(255,255,255));
-        men_ua.setForeground(new Color(255,255,255));
-        men_logout.setForeground(new Color(255,255,255));
         
         dashboard.setVisible(false);
-        newbook.setVisible(false);
-        inventory.setVisible(true);
+        Records.setVisible(true);
+        inventory.setVisible(false);
         Bookloan.setVisible(false);
         borrower.setVisible(false);
-        useraccount.setVisible(false);
         report.setVisible(false);
-        purchase.setVisible(false);
-        classification.setVisible(false);
-        booklist.setVisible(false);
         
         si_save3.setText("Back To P.O.");
     }//GEN-LAST:event_class_add1ActionPerformed
@@ -11540,49 +11498,19 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_sup_add1KeyReleased
 
     private void class_add2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_class_add2ActionPerformed
-        jTabbedPane1.setEnabledAt(0, true);
-        jTabbedPane1.setEnabledAt(1, false);
-        jTabbedPane1.setEnabledAt(2, false);
-        jTabbedPane1.setEnabledAt(3, false);
-        jTabbedPane1.setEnabledAt(4, false);
-        jTabbedPane1.setEnabledAt(5, false);
-        jTabbedPane1.setEnabledAt(6, false);
-        jTabbedPane1.setSelectedIndex(0);
+        jTabbedPane6.setEnabledAt(0, false);
+        jTabbedPane6.setEnabledAt(1, true);
+        jTabbedPane6.setEnabledAt(2, false);
+        jTabbedPane6.setEnabledAt(3, false);
+        jTabbedPane6.setEnabledAt(4, false);
+        jTabbedPane6.setEnabledAt(5, false);
+        jTabbedPane6.setSelectedIndex(1);
         
         sup_save2.setVisible(true);
         jLabel128.setText("1");
-        
-        men_dash.setBackground(new Color(96,96,96));
-        men_rec.setBackground(new Color(255,255,255));
-        men_inv.setBackground(new Color(96,96,96));
-        men_brrd.setBackground(new Color(96,96,96));
-        men_brrr.setBackground(new Color(96,96,96));
-        men_ua.setBackground(new Color(96,96,96));
-        men_logout.setBackground(new Color(96,96,96));
+
         menu_title.setText("NEW PUBLISHER");
-        
-        men_po.setBackground(new Color(96,96,96));
-        men_rep.setBackground(new Color(96,96,96));
-        men_po.setForeground(new Color(255,255,255));
-        men_rep.setForeground(new Color(255,255,255));
-        men_dash.setForeground(new Color(255,255,255));
-        men_rec.setForeground(new Color(96,96,96));
-        men_inv.setForeground(new Color(255,255,255));
-        men_brrd.setForeground(new Color(255,255,255));
-        men_brrr.setForeground(new Color(255,255,255));
-        men_ua.setForeground(new Color(255,255,255));
-        men_logout.setForeground(new Color(255,255,255));
-        
-        dashboard.setVisible(false);
-        newbook.setVisible(false);
-        inventory.setVisible(true);
-        Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
-        report.setVisible(false);
-        purchase.setVisible(false);
-        classification.setVisible(false);
-        booklist.setVisible(false);
+
     }//GEN-LAST:event_class_add2ActionPerformed
 
     private void sup_save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_save1ActionPerformed
@@ -11848,14 +11776,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_brrd_clear1ActionPerformed
 
     private void class_add3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_class_add3ActionPerformed
-        jTabbedPane1.setEnabledAt(0, false);
-        jTabbedPane1.setEnabledAt(1, true);
-        jTabbedPane1.setEnabledAt(2, false);
-        jTabbedPane1.setEnabledAt(3, false);
-        jTabbedPane1.setEnabledAt(4, false);
-        jTabbedPane1.setEnabledAt(5, false);
-        jTabbedPane1.setEnabledAt(6, false);
-        jTabbedPane1.setSelectedIndex(1);
+        jTabbedPane6.setEnabledAt(0, false);
+        jTabbedPane6.setEnabledAt(1, false);
+        jTabbedPane6.setEnabledAt(2, true);
+        jTabbedPane6.setEnabledAt(3, false);
+        jTabbedPane6.setEnabledAt(4, false);
+        jTabbedPane6.setEnabledAt(5, false);
+        jTabbedPane6.setSelectedIndex(2);
 //        jTabbedPane1.setEnabledAt(6, false);
         sup_save3.setEnabled(true);
         sup_save3.setVisible(true);
@@ -11863,36 +11790,32 @@ public class Main extends javax.swing.JFrame {
         
         men_dash.setBackground(new Color(96,96,96));
         men_rec.setBackground(new Color(96,96,96));
-        men_inv.setBackground(new Color(96,96,96));
+        men_inv.setBackground(new Color(255,255,255));
         men_brrd.setBackground(new Color(96,96,96));
         men_brrr.setBackground(new Color(96,96,96));
         men_ua.setBackground(new Color(96,96,96));
         men_logout.setBackground(new Color(96,96,96));
-        menu_title.setText("ADD SUPPLIER");
-        men_po.setForeground(new Color(96,96,96));
-        men_po.setBackground(new Color(255,255,255));
+        men_po.setBackground(new Color(96,96,96));
         men_rep.setBackground(new Color(96,96,96));
+        menu_title.setText("ADD SUPPLIER");
+        men_po.setForeground(new Color(255,255,255));
         men_rep.setForeground(new Color(255,255,255));
         men_dash.setForeground(new Color(255,255,255));
         men_rec.setForeground(new Color(255,255,255));
-        men_inv.setForeground(new Color(255,255,255));
+        men_inv.setForeground(new Color(96,96,96));
         men_brrd.setForeground(new Color(255,255,255));
         men_brrr.setForeground(new Color(255,255,255));
         men_ua.setForeground(new Color(255,255,255));
         men_logout.setForeground(new Color(255,255,255));
         
         dashboard.setVisible(false);
-        newbook.setVisible(false);
-        inventory.setVisible(true);
+        inventory.setVisible(false);
+        Records.setVisible(true);
         Bookloan.setVisible(false);
         borrower.setVisible(false);
         useraccount.setVisible(false);
         report.setVisible(false);
-        purchase.setVisible(false);
-        classification.setVisible(false);
-        booklist.setVisible(false);
-        
-        
+
     }//GEN-LAST:event_class_add3ActionPerformed
 
     private void sup_save3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_save3ActionPerformed
@@ -12298,68 +12221,50 @@ public class Main extends javax.swing.JFrame {
 
     private void si_save3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_si_save3ActionPerformed
         if(si_save3.getText().equals("Back To New Book")){
-            men_dash.setBackground(new Color(96,96,96));
-            men_rec.setBackground(new Color(255,255,255));
-            men_inv.setBackground(new Color(96,96,96));
-            men_brrd.setBackground(new Color(96,96,96));
-            men_brrr.setBackground(new Color(96,96,96));
-            men_ua.setBackground(new Color(96,96,96));
-            men_logout.setBackground(new Color(96,96,96));
-            menu_title.setText("NEW BOOK");
-            men_po.setForeground(new Color(255,255,255));
-            men_po.setBackground(new Color(96,96,96));
-            men_rep.setBackground(new Color(96,96,96));
-            men_rep.setForeground(new Color(255,255,255));
-            men_dash.setForeground(new Color(255,255,255));
-            men_rec.setForeground(new Color(96,96,96));
-            men_inv.setForeground(new Color(255,255,255));
-            men_brrd.setForeground(new Color(255,255,255));
-            men_brrr.setForeground(new Color(255,255,255));
-            men_ua.setForeground(new Color(255,255,255));
-            men_logout.setForeground(new Color(255,255,255));
+            menu_title.setText("RECORDS");
 
-            dashboard.setVisible(false);
-            newbook.setVisible(true);
-            inventory.setVisible(false);
-            Bookloan.setVisible(false);
-            borrower.setVisible(false);
-            useraccount.setVisible(false);
-            report.setVisible(false);
-            purchase.setVisible(false);
-            classification.setVisible(false);
+        jTabbedPane6.setEnabledAt(0, true);
+        jTabbedPane6.setEnabledAt(1, true);
+        jTabbedPane6.setEnabledAt(2, true);
+        jTabbedPane6.setEnabledAt(3, true);
+        jTabbedPane6.setEnabledAt(4, true);
+        jTabbedPane6.setEnabledAt(5, true);
+        jTabbedPane6.setSelectedIndex(3);
         }
         else if(si_save3.getText().equals("Back To P.O.")){
-            men_dash.setBackground(new Color(96,96,96));
-            men_rec.setBackground(new Color(96,96,96));
-            men_inv.setBackground(new Color(96,96,96));
-            men_brrd.setBackground(new Color(96,96,96));
-            men_brrr.setBackground(new Color(96,96,96));
-            men_ua.setBackground(new Color(96,96,96));
-            men_logout.setBackground(new Color(96,96,96));
-            men_rep.setBackground(new Color(96,96,96));
-            men_po.setBackground(new Color(255,255,255));
-            menu_title.setText("PURCHASE ORDER");
+            
+            jTabbedPane1.setEnabledAt(0, true);
+            jTabbedPane1.setEnabledAt(1, true);
+            jTabbedPane1.setEnabledAt(2, true);
+            jTabbedPane1.setEnabledAt(3, true);
+            jTabbedPane1.setEnabledAt(4, true);
+            jTabbedPane6.setSelectedIndex(0);
+//            men_dash.setBackground(new Color(96,96,96));
+//            men_rec.setBackground(new Color(96,96,96));
+//            men_inv.setBackground(new Color(96,96,96));
+//            men_brrd.setBackground(new Color(96,96,96));
+//            men_brrr.setBackground(new Color(96,96,96));
+//            men_ua.setBackground(new Color(96,96,96));
+//            men_logout.setBackground(new Color(96,96,96));
+//            men_rep.setBackground(new Color(96,96,96));
+//            men_po.setBackground(new Color(255,255,255));
+            menu_title.setText("INVENTORY");
 
-            men_po.setForeground(new Color(96,96,96));
-            men_rep.setForeground(new Color(255,255,255));
-            men_dash.setForeground(new Color(255,255,255));
-            men_rec.setForeground(new Color(255,255,255));
-            men_inv.setForeground(new Color(255,255,255));
-            men_brrd.setForeground(new Color(255,255,255));
-            men_brrr.setForeground(new Color(255,255,255));
-            men_ua.setForeground(new Color(255,255,255));
-            men_logout.setForeground(new Color(255,255,255));
+//            men_po.setForeground(new Color(96,96,96));
+//            men_rep.setForeground(new Color(255,255,255));
+//            men_dash.setForeground(new Color(255,255,255));
+//            men_rec.setForeground(new Color(255,255,255));
+//            men_inv.setForeground(new Color(255,255,255));
+//            men_brrd.setForeground(new Color(255,255,255));
+//            men_brrr.setForeground(new Color(255,255,255));
+//            men_ua.setForeground(new Color(255,255,255));
+//            men_logout.setForeground(new Color(255,255,255));
 
             dashboard.setVisible(false);
-            newbook.setVisible(false);
-            inventory.setVisible(false);
+            Records.setVisible(false);
+            inventory.setVisible(true);
             Bookloan.setVisible(false);
-            borrower.setVisible(false);
-            useraccount.setVisible(false);
             report.setVisible(false);
-            purchase.setVisible(true);
-            classification.setVisible(false);
-            booklist.setVisible(false);
         }
         si_save3.setVisible(false);
     }//GEN-LAST:event_si_save3ActionPerformed
@@ -12667,38 +12572,16 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane1.setEnabledAt(2, true);
         jTabbedPane1.setEnabledAt(3, true);
         jTabbedPane1.setEnabledAt(4, true);
-        jTabbedPane1.setEnabledAt(5, true);
+        jTabbedPane1.setSelectedIndex(0);
         
-        men_dash.setBackground(new Color(96,96,96));
-        men_rec.setBackground(new Color(96,96,96));
-        men_inv.setBackground(new Color(96,96,96));
-        men_brrd.setBackground(new Color(96,96,96));
-        men_brrr.setBackground(new Color(96,96,96));
-        men_ua.setBackground(new Color(96,96,96));
-        men_logout.setBackground(new Color(96,96,96));
-        menu_title.setText("PURCHASE ORDER");
-        men_po.setForeground(new Color(96,96,96));
-        men_po.setBackground(new Color(255,255,255));
-        men_rep.setBackground(new Color(96,96,96));
-        men_rep.setForeground(new Color(255,255,255));
-        men_dash.setForeground(new Color(255,255,255));
-        men_rec.setForeground(new Color(255,255,255));
-        men_inv.setForeground(new Color(255,255,255));
-        men_brrd.setForeground(new Color(255,255,255));
-        men_brrr.setForeground(new Color(255,255,255));
-        men_ua.setForeground(new Color(255,255,255));
-        men_logout.setForeground(new Color(255,255,255));
+        menu_title.setText("INVENTORY");
         
         dashboard.setVisible(false);
-        newbook.setVisible(false);
-        inventory.setVisible(false);
+        Records.setVisible(false);
+        inventory.setVisible(true);
         Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
         report.setVisible(false);
-        purchase.setVisible(true);
-        classification.setVisible(false);
-        booklist.setVisible(false);
+
     }
     
     public void pub_ret(){
@@ -12706,42 +12589,15 @@ public class Main extends javax.swing.JFrame {
         
         jLabel128.setText("0");
         
-        jTabbedPane1.setEnabledAt(1, true);
-        jTabbedPane1.setEnabledAt(2, true);
-        jTabbedPane1.setEnabledAt(3, true);
-        jTabbedPane1.setEnabledAt(4, true);
-        jTabbedPane1.setEnabledAt(5, true);
+        jTabbedPane6.setEnabledAt(0, true);
+        jTabbedPane6.setEnabledAt(1, true);
+        jTabbedPane6.setEnabledAt(2, true);
+        jTabbedPane6.setEnabledAt(3, true);
+        jTabbedPane6.setEnabledAt(4, true);
+        jTabbedPane6.setEnabledAt(5, true);
+        jTabbedPane6.setSelectedIndex(3);
         
-        men_dash.setBackground(new Color(96,96,96));
-        men_rec.setBackground(new Color(255,255,255));
-        men_inv.setBackground(new Color(96,96,96));
-        men_brrd.setBackground(new Color(96,96,96));
-        men_brrr.setBackground(new Color(96,96,96));
-        men_ua.setBackground(new Color(96,96,96));
-        men_logout.setBackground(new Color(96,96,96));
-        menu_title.setText("NEW BOOK");
-        men_po.setForeground(new Color(255,255,255));
-        men_po.setBackground(new Color(96,96,96));
-        men_rep.setBackground(new Color(96,96,96));
-        men_rep.setForeground(new Color(255,255,255));
-        men_dash.setForeground(new Color(255,255,255));
-        men_rec.setForeground(new Color(96,96,96));
-        men_inv.setForeground(new Color(255,255,255));
-        men_brrd.setForeground(new Color(255,255,255));
-        men_brrr.setForeground(new Color(255,255,255));
-        men_ua.setForeground(new Color(255,255,255));
-        men_logout.setForeground(new Color(255,255,255));
-        
-        dashboard.setVisible(false);
-        newbook.setVisible(true);
-        inventory.setVisible(false);
-        Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
-        report.setVisible(false);
-        purchase.setVisible(false);
-        classification.setVisible(false);
-        booklist.setVisible(false);
+        menu_title.setText("RECORDS");
     }
     
     public void purchase_del(){
