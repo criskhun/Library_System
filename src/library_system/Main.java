@@ -4580,6 +4580,11 @@ public class Main extends javax.swing.JFrame {
 
         brr_idt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Valid ID--", "Employee ID", "Student ID" }));
         brr_idt.setEnabled(false);
+        brr_idt.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                brr_idtItemStateChanged(evt);
+            }
+        });
         jPanel8.add(brr_idt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 210, 30));
 
         jLabel183.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -8416,28 +8421,36 @@ public class Main extends javax.swing.JFrame {
 
         TableModel model = (TableModel)brr_table.getModel();
         brr_id.setText(model.getValueAt(z, 0).toString());
-        ((JTextField)brr_bd.getDateEditor().getUiComponent()).setText(model.getValueAt(z, 7).toString());
+        ((JTextField)brr_bd.getDateEditor().getUiComponent()).setText(model.getValueAt(z, 10).toString());
 
         try{
 
-            String sql="SELECT Full_Name, ID_Type, ID_No, Department, Address, Status, Photo "
+            String sql="SELECT First_Name, Middle_Name, Surname, ID_Type, ID_No, Course, Year, Address, Status, "
+                    + " Photo "
             + "  FROM borrower_tbl where Library_ID = '" + (String) brr_id.getText() + "' ";
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
 
             if(rs.next()){
-                String name1 =rs.getString("Full_Name");
-                String name2 =rs.getString("ID_Type");
-                String name3 =rs.getString("ID_No");
-                String name4 =rs.getString("Department");
-                String name5 =rs.getString("Address");
-                String name6 =rs.getString("Status");
+                String name1 =rs.getString("First_Name");
+                String name2 =rs.getString("Middle_Name");
+                String name3 =rs.getString("Surname");
+                String name4 =rs.getString("ID_Type");
+                String name5 =rs.getString("ID_No");
+                String name6 =rs.getString("Course");
+                String name7 =rs.getString("Year");
+                String name8 =rs.getString("Address");
+                String name9 =rs.getString("Status");
 
                 brr_fn.setText(name1);
-                brr_yr.setSelectedItem(name2);
-                brr_idn.setText(name3);
-                brr_stat.setText(name4);
-                brr_add.setText(name5);
+                brr_mn.setText(name2);
+                brr_sn.setText(name3);
+                brr_idt.setSelectedItem(name4);
+                brr_idn.setText(name5);
+                brr_cr.setSelectedItem(name6);
+                brr_yr.setSelectedItem(name7);
+                brr_add.setText(name8);
+                brr_stat.setText(name9);
                 //brr_stat.setSelectedItem(name6);
 
                 byte[] img = rs.getBytes("Photo");
@@ -8500,8 +8513,26 @@ public class Main extends javax.swing.JFrame {
                 pst.setString(11, ((JTextField)brr_bd.getDateEditor().getUiComponent()).getText());
                 pst.setBlob(12, img);
                 
-                if(pst.executeUpdate()==1){
-                    JOptionPane.showMessageDialog(null,"Account Created");
+                pst.execute();
+
+                String sql1 = "INSERT INTO useraccount_tbl (First_Name, Middle_Name, Surname, Username, Employee_ID, "
+                        + "Position, Mobile_Number, Password, Level, Photo) VALUES (?,?,?,?,?,?,?,?,?,?)";
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql1);
+                //InputStream img1 = new FileInputStream(new File(imgpath1));
+                pst.setString(1, brr_fn.getText());
+                pst.setString(2, brr_mn.getText());
+                pst.setString(3, brr_sn.getText());
+                pst.setString(4, brr_sn.getText());
+                pst.setString(5, "");
+                pst.setString(6, "");
+                pst.setString(7, "");
+                pst.setString(8, "1234");
+                pst.setString(9, brr_stat.getText());
+                pst.setBlob(10, img);
+                
+                pst.execute( );
+                
+                 JOptionPane.showMessageDialog(null,"Account Created");
                     all_ref();
                     brr_clr();
                     brr_disable();
@@ -8510,9 +8541,7 @@ public class Main extends javax.swing.JFrame {
                     brr_delete.setEnabled(false);
                     brr_browse.setEnabled(false);
                     brr_new.setEnabled(true);
-                }else{
-                    JOptionPane.showMessageDialog(null,"Error 101");
-                }
+                
             }catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
@@ -8543,8 +8572,25 @@ public class Main extends javax.swing.JFrame {
                 pst.setString(10, brr_stat.getText());
                 pst.setString(11, ((JTextField)brr_bd.getDateEditor().getUiComponent()).getText());
                 
-                if(pst.executeUpdate()==1){
-                    JOptionPane.showMessageDialog(null,"Account Created");
+                pst.execute(); 
+                
+                String sql1 = "INSERT INTO useraccount_tbl (First_Name, Middle_Name, Surname, Username, Employee_ID, "
+                        + "Position, Mobile_Number, Password, Level) VALUES (?,?,?,?,?,?,?,?,?)";
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql1);
+                //InputStream img1 = new FileInputStream(new File(imgpath1));
+                pst.setString(1, brr_fn.getText());
+                pst.setString(2, brr_mn.getText());
+                pst.setString(3, brr_sn.getText());
+                pst.setString(4, brr_sn.getText());
+                pst.setString(5, "");
+                pst.setString(6, "");
+                pst.setString(7, "");
+                pst.setString(8, "1234");
+                pst.setString(9, brr_stat.getText());
+                
+                pst.execute();
+                
+                JOptionPane.showMessageDialog(null,"Account Created");
                     all_ref();
                     brr_clr();
                     brr_disable();
@@ -8553,14 +8599,12 @@ public class Main extends javax.swing.JFrame {
                     brr_delete.setEnabled(false);
                     brr_browse.setEnabled(false);
                     brr_new.setEnabled(true);
-                }else{
-                    JOptionPane.showMessageDialog(null,"Error 101");
-                }
             }catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
         }
         imgpath=null;
+        all_ref();
     }//GEN-LAST:event_brr_saveActionPerformed
 
     private void brr_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brr_updateActionPerformed
@@ -8831,6 +8875,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_acc_saveActionPerformed
 
     private void acc_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acc_updateActionPerformed
+        if(acc_pass.getText().equals(acc_con.getText())){
+        
         if (imgpath1 != null){
             try{
                 pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE useraccount_tbl SET "
@@ -8898,6 +8944,10 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Please Check Entry!!!");
         }
         imgpath1=null;
+        }
+        else{
+        JOptionPane.showMessageDialog(null,"Password Don't Match!!!");
+        }
     }//GEN-LAST:event_acc_updateActionPerformed
 
     private void acc_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acc_deleteActionPerformed
@@ -12413,6 +12463,21 @@ public class Main extends javax.swing.JFrame {
         jTextField2.setText("");
         jComboBox1.setSelectedIndex(0);
     }//GEN-LAST:event_nb_new9ActionPerformed
+
+    private void brr_idtItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_brr_idtItemStateChanged
+        if(brr_idt.getSelectedItem().equals("Employee ID")){
+        brr_stat.setText("Faculty");
+        brr_stat.setEditable(false);
+        }
+        else if(brr_idt.getSelectedItem().equals("Student ID")){
+        brr_stat.setText("Student");
+        brr_stat.setEditable(false);
+        }
+        else{
+        brr_stat.setText("");
+        brr_stat.setEditable(true);
+        }
+    }//GEN-LAST:event_brr_idtItemStateChanged
 
     public void sup(){
         sup_save3.setVisible(false);
