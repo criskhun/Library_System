@@ -12239,26 +12239,8 @@ public class Main extends javax.swing.JFrame {
             jTabbedPane1.setEnabledAt(3, true);
             jTabbedPane1.setEnabledAt(4, true);
             jTabbedPane6.setSelectedIndex(0);
-//            men_dash.setBackground(new Color(96,96,96));
-//            men_rec.setBackground(new Color(96,96,96));
-//            men_inv.setBackground(new Color(96,96,96));
-//            men_brrd.setBackground(new Color(96,96,96));
-//            men_brrr.setBackground(new Color(96,96,96));
-//            men_ua.setBackground(new Color(96,96,96));
-//            men_logout.setBackground(new Color(96,96,96));
-//            men_rep.setBackground(new Color(96,96,96));
-//            men_po.setBackground(new Color(255,255,255));
-            menu_title.setText("INVENTORY");
 
-//            men_po.setForeground(new Color(96,96,96));
-//            men_rep.setForeground(new Color(255,255,255));
-//            men_dash.setForeground(new Color(255,255,255));
-//            men_rec.setForeground(new Color(255,255,255));
-//            men_inv.setForeground(new Color(255,255,255));
-//            men_brrd.setForeground(new Color(255,255,255));
-//            men_brrr.setForeground(new Color(255,255,255));
-//            men_ua.setForeground(new Color(255,255,255));
-//            men_logout.setForeground(new Color(255,255,255));
+            menu_title.setText("INVENTORY");
 
             dashboard.setVisible(false);
             Records.setVisible(false);
