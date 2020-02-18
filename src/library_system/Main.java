@@ -1092,7 +1092,6 @@ public class Main extends javax.swing.JFrame {
         txt_time = new javax.swing.JLabel();
         txt_date1 = new javax.swing.JLabel();
         men_rep = new javax.swing.JLabel();
-        men_po = new javax.swing.JLabel();
         head = new javax.swing.JPanel();
         menu_title = new javax.swing.JLabel();
         txt_name1 = new javax.swing.JLabel();
@@ -1678,6 +1677,7 @@ public class Main extends javax.swing.JFrame {
         purchase = new javax.swing.JPanel();
         men_ua = new javax.swing.JLabel();
         men_brrr = new javax.swing.JLabel();
+        men_po = new javax.swing.JLabel();
         useraccount = new javax.swing.JPanel();
         borrower = new javax.swing.JPanel();
         newbook = new javax.swing.JPanel();
@@ -2223,19 +2223,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        men_po.setBackground(new java.awt.Color(255, 204, 204));
-        men_po.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        men_po.setForeground(new java.awt.Color(255, 255, 255));
-        men_po.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        men_po.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/purchase_order.png"))); // NOI18N
-        men_po.setText("USER LOG");
-        men_po.setOpaque(true);
-        men_po.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                men_poMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout mmmLayout = new javax.swing.GroupLayout(mmm);
         mmm.setLayout(mmmLayout);
         mmmLayout.setHorizontalGroup(
@@ -2254,7 +2241,6 @@ public class Main extends javax.swing.JFrame {
             .addComponent(txt_time, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(men_rep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(men_dash, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(men_po, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         mmmLayout.setVerticalGroup(
             mmmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2273,9 +2259,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(men_brrd, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(men_inv, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(men_po, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(47, 47, 47)
                 .addComponent(men_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                 .addComponent(txt_time)
@@ -7851,6 +7835,19 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        men_po.setBackground(new java.awt.Color(255, 204, 204));
+        men_po.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        men_po.setForeground(new java.awt.Color(255, 255, 255));
+        men_po.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        men_po.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/purchase_order.png"))); // NOI18N
+        men_po.setText("USER LOG");
+        men_po.setOpaque(true);
+        men_po.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                men_poMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout purchaseLayout = new javax.swing.GroupLayout(purchase);
         purchase.setLayout(purchaseLayout);
         purchaseLayout.setHorizontalGroup(
@@ -7861,6 +7858,11 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(men_brrr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(men_ua, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
                 .addGap(1120, 1120, 1120))
+            .addGroup(purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(purchaseLayout.createSequentialGroup()
+                    .addGap(550, 550, 550)
+                    .addComponent(men_po, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(550, 550, 550)))
         );
         purchaseLayout.setVerticalGroup(
             purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -7870,6 +7872,11 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(men_brrr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(538, Short.MAX_VALUE))
+            .addGroup(purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(purchaseLayout.createSequentialGroup()
+                    .addGap(298, 298, 298)
+                    .addComponent(men_po, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(299, Short.MAX_VALUE)))
         );
 
         stock.add(purchase, "card9");
