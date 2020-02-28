@@ -68,6 +68,7 @@ public class Main extends javax.swing.JFrame {
         class_list();
         classif_list();
         pub_list();
+        course_list();
     }
     public void all_ref(){
         nb_ref();
@@ -346,6 +347,18 @@ public class Main extends javax.swing.JFrame {
     }catch (Exception e) {
     }
     }
+    public void course_list(){
+        brr_cr.removeAllItems();
+    String sqll = "select * from course_tbl";
+    try{
+        pst= conn.prepareStatement(sqll);
+        rs = pst.executeQuery();
+        while(rs.next()){
+            brr_cr.addItem(rs.getString("Course"));
+        }
+    }catch (Exception e) {
+    }
+    }
     private void class_list(){//filter encode
         brrd_class.removeAllItems();
     String sqll = "select * from stockin_tbl";
@@ -420,7 +433,7 @@ public class Main extends javax.swing.JFrame {
     }
     public void classif_ref(){
         try {
-            String sql = "SELECT * FROM classification_tbl ORDER BY Class_Number DESC";
+            String sql = "SELECT Class_Number, Classname FROM classification_tbl ORDER BY Classname ASC";
             pst = (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
 
@@ -665,7 +678,7 @@ public class Main extends javax.swing.JFrame {
     }
     public void pub_ref(){
         try {
-            String sql = "SELECT * FROM publisher_tbl ORDER BY ID DESC";
+            String sql = "SELECT Publisher_ID, Publisher FROM publisher_tbl ORDER BY Publisher_ID ASC";
             pst = (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
 
@@ -821,6 +834,7 @@ public class Main extends javax.swing.JFrame {
         brr_stat.setEnabled(true);
         brr_add.setEnabled(true);
         brr_bd.setEnabled(true);
+        course_add.setEnabled(true);
     }
     public void brr_disable(){
         brr_fn.setEnabled(false);
@@ -833,6 +847,7 @@ public class Main extends javax.swing.JFrame {
         brr_stat.setEnabled(false);
         brr_add.setEnabled(false);
         brr_bd.setEnabled(false);
+        course_add.setEnabled(false);
     }
     public void brr_clr(){
         brr_fn.setText("");
@@ -919,6 +934,7 @@ public class Main extends javax.swing.JFrame {
         sup_add.setText("");
         sup_con.setText("");
         sup_em.setText("");
+        sup_cp.setText("");
         sup_enc.setDate(null);
     }
     public void brrd_clr(){
@@ -940,13 +956,21 @@ public class Main extends javax.swing.JFrame {
         brrd_fd2.setText("");
     }
     public void po_clr(){
-        
+        po_or.setText("Generate PO Number");
+        po_date.setDate(null);
         po_sup.setSelectedIndex(0);
         po_bt.setText("");
         po_au.setText("");
         po_cl.setSelectedIndex(0);
         po_pr.setText("");
         po_qt.setText("0");
+    }
+    public void po2_clr(){
+        po_bt.setText("");
+        po_au.setText("");
+        po_cl.setSelectedIndex(0);
+        po_pr.setText("");
+        po_qt.setText("1");
     }
     public void drp_list(){
         if(sum_class.getSelectedItem().equals("--Choose Book Classification--")){
@@ -1055,7 +1079,7 @@ public class Main extends javax.swing.JFrame {
         jPanel68 = new javax.swing.JPanel();
         jLabel164 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel165 = new javax.swing.JLabel();
         jLabel166 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -1092,6 +1116,7 @@ public class Main extends javax.swing.JFrame {
         txt_time = new javax.swing.JLabel();
         txt_date1 = new javax.swing.JLabel();
         men_rep = new javax.swing.JLabel();
+        men_po = new javax.swing.JLabel();
         head = new javax.swing.JPanel();
         menu_title = new javax.swing.JLabel();
         txt_name1 = new javax.swing.JLabel();
@@ -1278,7 +1303,7 @@ public class Main extends javax.swing.JFrame {
         nb_cn = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        nb_class = new javax.swing.JComboBox<String>();
+        nb_class = new javax.swing.JComboBox<>();
         nb_edi = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         nb_qty = new javax.swing.JTextField();
@@ -1289,7 +1314,7 @@ public class Main extends javax.swing.JFrame {
         nb_da = new com.toedter.calendar.JDateChooser();
         class_add = new javax.swing.JButton();
         jLabel119 = new javax.swing.JLabel();
-        nb_cpub = new javax.swing.JComboBox<String>();
+        nb_cpub = new javax.swing.JComboBox<>();
         class_add2 = new javax.swing.JButton();
         nb_cry = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
@@ -1316,7 +1341,7 @@ public class Main extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         acc_fn = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        acc_lvl = new javax.swing.JComboBox<String>();
+        acc_lvl = new javax.swing.JComboBox<>();
         jLabel37 = new javax.swing.JLabel();
         acc_mn = new javax.swing.JTextField();
         acc_image = new javax.swing.JLabel();
@@ -1356,16 +1381,18 @@ public class Main extends javax.swing.JFrame {
         brr_idn = new javax.swing.JTextField();
         brr_image = new javax.swing.JLabel();
         brr_browse = new javax.swing.JButton();
-        brr_yr = new javax.swing.JComboBox<String>();
+        brr_yr = new javax.swing.JComboBox<>();
         brr_add = new javax.swing.JTextField();
         brr_mn = new javax.swing.JTextField();
         jLabel181 = new javax.swing.JLabel();
         jLabel182 = new javax.swing.JLabel();
-        brr_idt = new javax.swing.JComboBox<String>();
+        brr_idt = new javax.swing.JComboBox<>();
         jLabel183 = new javax.swing.JLabel();
-        brr_cr = new javax.swing.JComboBox<String>();
+        brr_cr = new javax.swing.JComboBox<>();
         brr_sn = new javax.swing.JTextField();
         jLabel184 = new javax.swing.JLabel();
+        course_add = new javax.swing.JButton();
+        jLabel186 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         brr_new = new javax.swing.JButton();
         brr_save = new javax.swing.JButton();
@@ -1387,20 +1414,20 @@ public class Main extends javax.swing.JFrame {
         brrd_bp = new javax.swing.JTextField();
         brrd_rem = new javax.swing.JLabel();
         jLabel71 = new javax.swing.JLabel();
-        brrd_class = new javax.swing.JComboBox<String>();
+        brrd_class = new javax.swing.JComboBox<>();
         jLabel72 = new javax.swing.JLabel();
         brrd_bt = new javax.swing.JTextField();
-        brrd_fn = new javax.swing.JComboBox<String>();
+        brrd_fn = new javax.swing.JComboBox<>();
         brrd_qty = new javax.swing.JTextField();
         brrd_libid = new javax.swing.JTextField();
         jLabel73 = new javax.swing.JLabel();
-        brrd_stat = new javax.swing.JComboBox<String>();
+        brrd_stat = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel74 = new javax.swing.JLabel();
         brrd_add = new javax.swing.JButton();
         brrd_min = new javax.swing.JButton();
-        brrd_remcb = new javax.swing.JComboBox<String>();
+        brrd_remcb = new javax.swing.JComboBox<>();
         brrd_fd = new javax.swing.JTextField();
         jLabel78 = new javax.swing.JLabel();
         borroweddate = new javax.swing.JTextField();
@@ -1423,12 +1450,12 @@ public class Main extends javax.swing.JFrame {
         brrd_return = new javax.swing.JButton();
         jLabel77 = new javax.swing.JLabel();
         brrd_fd2 = new javax.swing.JTextField();
-        brrd_fn1 = new javax.swing.JComboBox<String>();
+        brrd_fn1 = new javax.swing.JComboBox<>();
         brrd_clear1 = new javax.swing.JButton();
         jPanel36 = new javax.swing.JPanel();
         jScrollPane14 = new javax.swing.JScrollPane();
         borrowedlog_table = new javax.swing.JTable();
-        brrd_fn2 = new javax.swing.JComboBox<String>();
+        brrd_fn2 = new javax.swing.JComboBox<>();
         jLabel69 = new javax.swing.JLabel();
         brrd_fd3 = new javax.swing.JTextField();
         jPanel35 = new javax.swing.JPanel();
@@ -1442,7 +1469,7 @@ public class Main extends javax.swing.JFrame {
         po_qt = new javax.swing.JTextField();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
-        po_sup = new javax.swing.JComboBox<String>();
+        po_sup = new javax.swing.JComboBox<>();
         po_date = new com.toedter.calendar.JDateChooser();
         po_or = new javax.swing.JTextField();
         jLabel105 = new javax.swing.JLabel();
@@ -1460,7 +1487,7 @@ public class Main extends javax.swing.JFrame {
         po_min = new javax.swing.JButton();
         nb_update2 = new javax.swing.JButton();
         nb_update4 = new javax.swing.JButton();
-        po_cl = new javax.swing.JComboBox<String>();
+        po_cl = new javax.swing.JComboBox<>();
         class_add1 = new javax.swing.JButton();
         nb_update5 = new javax.swing.JButton();
         jLabel110 = new javax.swing.JLabel();
@@ -1483,7 +1510,7 @@ public class Main extends javax.swing.JFrame {
         sum_table = new javax.swing.JTable();
         jPanel17 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        sum_class = new javax.swing.JComboBox<String>();
+        sum_class = new javax.swing.JComboBox<>();
         sum_bt = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
@@ -1508,7 +1535,7 @@ public class Main extends javax.swing.JFrame {
         so_add = new javax.swing.JButton();
         so_minus = new javax.swing.JButton();
         so_save = new javax.swing.JButton();
-        so_stat = new javax.swing.JComboBox<String>();
+        so_stat = new javax.swing.JComboBox<>();
         jLabel45 = new javax.swing.JLabel();
         jPanel27 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -1675,10 +1702,16 @@ public class Main extends javax.swing.JFrame {
         btn_del = new javax.swing.JButton();
         si_save2 = new javax.swing.JButton();
         purchase = new javax.swing.JPanel();
-        men_ua = new javax.swing.JLabel();
-        men_brrr = new javax.swing.JLabel();
-        men_po = new javax.swing.JLabel();
+        jTabbedPane7 = new javax.swing.JTabbedPane();
+        jPanel55 = new javax.swing.JPanel();
+        jScrollPane30 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel64 = new javax.swing.JPanel();
+        jScrollPane32 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         useraccount = new javax.swing.JPanel();
+        men_brrr = new javax.swing.JLabel();
+        men_ua = new javax.swing.JLabel();
         borrower = new javax.swing.JPanel();
         newbook = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -2223,6 +2256,19 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        men_po.setBackground(new java.awt.Color(255, 204, 204));
+        men_po.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        men_po.setForeground(new java.awt.Color(255, 255, 255));
+        men_po.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        men_po.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/purchase_order.png"))); // NOI18N
+        men_po.setText("USER LOG");
+        men_po.setOpaque(true);
+        men_po.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                men_poMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout mmmLayout = new javax.swing.GroupLayout(mmm);
         mmm.setLayout(mmmLayout);
         mmmLayout.setHorizontalGroup(
@@ -2241,6 +2287,7 @@ public class Main extends javax.swing.JFrame {
             .addComponent(txt_time, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(men_rep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(men_dash, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(men_po, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         mmmLayout.setVerticalGroup(
             mmmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2259,7 +2306,9 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(men_brrd, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(men_inv, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(men_po, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(men_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                 .addComponent(txt_time)
@@ -4132,7 +4181,7 @@ public class Main extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel22.setText("Copy Right Year:");
 
-        nb_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--" }));
+        nb_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--" }));
         nb_class.setEnabled(false);
 
         nb_edi.setEnabled(false);
@@ -4176,7 +4225,7 @@ public class Main extends javax.swing.JFrame {
         jLabel119.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel119.setText("Publisher:");
 
-        nb_cpub.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--" }));
+        nb_cpub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--" }));
         nb_cpub.setEnabled(false);
 
         class_add2.setBackground(new java.awt.Color(255, 255, 255));
@@ -4536,7 +4585,7 @@ public class Main extends javax.swing.JFrame {
         jLabel36.setText("Mobile Number:");
         jPanel10.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 99, 24));
 
-        acc_lvl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Please Select--", "Admin", "User", "Faculty", "Student" }));
+        acc_lvl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Please Select--", "Admin", "User", "Faculty", "Student" }));
         acc_lvl.setEnabled(false);
         jPanel10.add(acc_lvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 283, 34));
 
@@ -4803,9 +4852,9 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel8.add(brr_browse, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, -1, 44));
 
-        brr_yr.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Year Level--", "1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "7th Year and Up" }));
+        brr_yr.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Year Level--", "1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "7th Year and Up" }));
         brr_yr.setEnabled(false);
-        jPanel8.add(brr_yr, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 210, 30));
+        jPanel8.add(brr_yr, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 200, 30));
 
         brr_add.setEnabled(false);
         jPanel8.add(brr_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 420, 31));
@@ -4821,7 +4870,7 @@ public class Main extends javax.swing.JFrame {
         jLabel182.setText("Middle Name");
         jPanel8.add(jLabel182, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 86, 24));
 
-        brr_idt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Valid ID--", "Employee ID", "Student ID" }));
+        brr_idt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Valid ID--", "Employee ID", "Student ID" }));
         brr_idt.setEnabled(false);
         brr_idt.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -4831,12 +4880,10 @@ public class Main extends javax.swing.JFrame {
         jPanel8.add(brr_idt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 210, 30));
 
         jLabel183.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel183.setText("Year:");
-        jPanel8.add(jLabel183, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 99, 24));
+        jPanel8.add(jLabel183, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 130, 24));
 
-        brr_cr.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Course--", "BSIT", "BSCS", "BSE", "BSBA", "BSFA", "BSSW", "BSC", " " }));
         brr_cr.setEnabled(false);
-        jPanel8.add(brr_cr, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 210, 30));
+        jPanel8.add(brr_cr, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 190, 30));
 
         brr_sn.setEnabled(false);
         jPanel8.add(brr_sn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 140, 31));
@@ -4844,6 +4891,30 @@ public class Main extends javax.swing.JFrame {
         jLabel184.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel184.setText("Surname");
         jPanel8.add(jLabel184, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 86, 24));
+
+        course_add.setBackground(new java.awt.Color(255, 255, 255));
+        course_add.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        course_add.setForeground(new java.awt.Color(255, 255, 255));
+        course_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/add.png"))); // NOI18N
+        course_add.setEnabled(false);
+        course_add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                course_addMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                course_addMouseExited(evt);
+            }
+        });
+        course_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                course_addActionPerformed(evt);
+            }
+        });
+        jPanel8.add(course_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 30, 30));
+
+        jLabel186.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel186.setText("Year:");
+        jPanel8.add(jLabel186, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 99, 24));
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "OPTION"));
@@ -5065,7 +5136,7 @@ public class Main extends javax.swing.JFrame {
         jLabel71.setText("Fines /Day:");
         jPanel30.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 99, 24));
 
-        brrd_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Select Classification--" }));
+        brrd_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select Classification--" }));
         brrd_class.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -5088,7 +5159,7 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel30.add(brrd_bt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 180, 31));
 
-        brrd_fn.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Borrower--" }));
+        brrd_fn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Borrower--" }));
         brrd_fn.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -5120,7 +5191,7 @@ public class Main extends javax.swing.JFrame {
         jLabel73.setText("Quantity:");
         jPanel30.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 99, 24));
 
-        brrd_stat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Status--", "Faculty", "Student" }));
+        brrd_stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Status--", "Faculty", "Student" }));
         brrd_stat.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -5161,7 +5232,7 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel30.add(brrd_min, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, 30, 30));
 
-        brrd_remcb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Borrowed", "Loss", "Damage" }));
+        brrd_remcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Borrowed", "Loss", "Damage" }));
         jPanel30.add(brrd_remcb, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 490, 180, 34));
 
         brrd_fd.setEditable(false);
@@ -5302,7 +5373,7 @@ public class Main extends javax.swing.JFrame {
         jLabel77.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel77.setText("Fines:");
 
-        brrd_fn1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Borrower--" }));
+        brrd_fn1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Borrower--" }));
         brrd_fn1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -5394,7 +5465,7 @@ public class Main extends javax.swing.JFrame {
         borrowedlog_table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane14.setViewportView(borrowedlog_table);
 
-        brrd_fn2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Borrower--" }));
+        brrd_fn2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Borrower--" }));
         brrd_fn2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -5613,7 +5684,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jPanel49.add(nb_new7);
-        nb_new7.setBounds(20, 470, 110, 44);
+        nb_new7.setBounds(20, 460, 120, 44);
 
         nb_save1.setBackground(new java.awt.Color(51, 153, 255));
         nb_save1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -5627,7 +5698,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jPanel49.add(nb_save1);
-        nb_save1.setBounds(20, 520, 100, 44);
+        nb_save1.setBounds(20, 510, 120, 44);
 
         nb_update1.setBackground(new java.awt.Color(51, 153, 255));
         nb_update1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -5641,7 +5712,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jPanel49.add(nb_update1);
-        nb_update1.setBounds(130, 520, 100, 44);
+        nb_update1.setBounds(140, 510, 120, 44);
 
         jLabel101.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel101.setText("Quantity:");
@@ -5686,7 +5757,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jPanel49.add(nb_update2);
-        nb_update2.setBounds(240, 520, 120, 44);
+        nb_update2.setBounds(260, 510, 120, 44);
 
         nb_update4.setBackground(new java.awt.Color(51, 153, 255));
         nb_update4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -5722,7 +5793,7 @@ public class Main extends javax.swing.JFrame {
         nb_update5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         nb_update5.setForeground(new java.awt.Color(255, 255, 255));
         nb_update5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/clear.png"))); // NOI18N
-        nb_update5.setText("Clear");
+        nb_update5.setText("Cancel");
         nb_update5.setEnabled(false);
         nb_update5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -5730,7 +5801,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jPanel49.add(nb_update5);
-        nb_update5.setBounds(140, 470, 110, 44);
+        nb_update5.setBounds(140, 460, 120, 44);
 
         jLabel110.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel110.setText("Title:");
@@ -5758,7 +5829,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jPanel49.add(nb_update7);
-        nb_update7.setBounds(260, 470, 110, 44);
+        nb_update7.setBounds(260, 460, 120, 44);
 
         class_add3.setBackground(new java.awt.Color(255, 255, 255));
         class_add3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -5902,7 +5973,7 @@ public class Main extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel12.setText("Classification:");
 
-        sum_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--", "General", "Philippine Literature", "Fiction", "Non-Fiction", "Filipiniana", "Circulation", "Others", "" }));
+        sum_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--", "General", "Philippine Literature", "Fiction", "Non-Fiction", "Filipiniana", "Circulation", "Others", "" }));
         sum_class.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -6170,7 +6241,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        so_stat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Select Status--", "Damage", "Loss" }));
+        so_stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select Status--", "Damage", "Loss" }));
         so_stat.setEnabled(false);
 
         jLabel45.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -7809,18 +7880,80 @@ public class Main extends javax.swing.JFrame {
 
         purchase.setBackground(new java.awt.Color(255, 255, 255));
 
-        men_ua.setBackground(new java.awt.Color(255, 204, 204));
-        men_ua.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        men_ua.setForeground(new java.awt.Color(255, 255, 255));
-        men_ua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        men_ua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user.png"))); // NOI18N
-        men_ua.setText("USER ACCOUNT");
-        men_ua.setOpaque(true);
-        men_ua.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                men_uaMouseClicked(evt);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        });
+        ));
+        jScrollPane30.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jPanel55Layout = new javax.swing.GroupLayout(jPanel55);
+        jPanel55.setLayout(jPanel55Layout);
+        jPanel55Layout.setHorizontalGroup(
+            jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane30, javax.swing.GroupLayout.DEFAULT_SIZE, 883, Short.MAX_VALUE)
+        );
+        jPanel55Layout.setVerticalGroup(
+            jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel55Layout.createSequentialGroup()
+                .addGap(0, 82, Short.MAX_VALUE)
+                .addComponent(jScrollPane30, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jTabbedPane7.addTab("User Log", jPanel55);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane32.setViewportView(jTable2);
+
+        javax.swing.GroupLayout jPanel64Layout = new javax.swing.GroupLayout(jPanel64);
+        jPanel64.setLayout(jPanel64Layout);
+        jPanel64Layout.setHorizontalGroup(
+            jPanel64Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane32, javax.swing.GroupLayout.DEFAULT_SIZE, 883, Short.MAX_VALUE)
+        );
+        jPanel64Layout.setVerticalGroup(
+            jPanel64Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel64Layout.createSequentialGroup()
+                .addGap(0, 82, Short.MAX_VALUE)
+                .addComponent(jScrollPane32, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jTabbedPane7.addTab("Account Log", jPanel64);
+
+        javax.swing.GroupLayout purchaseLayout = new javax.swing.GroupLayout(purchase);
+        purchase.setLayout(purchaseLayout);
+        purchaseLayout.setHorizontalGroup(
+            purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(purchaseLayout.createSequentialGroup()
+                .addComponent(jTabbedPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 459, Short.MAX_VALUE))
+        );
+        purchaseLayout.setVerticalGroup(
+            purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(purchaseLayout.createSequentialGroup()
+                .addComponent(jTabbedPane7)
+                .addContainerGap())
+        );
+
+        stock.add(purchase, "card9");
+
+        useraccount.setBackground(new java.awt.Color(255, 255, 255));
 
         men_brrr.setBackground(new java.awt.Color(255, 204, 204));
         men_brrr.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
@@ -7835,63 +7968,38 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        men_po.setBackground(new java.awt.Color(255, 204, 204));
-        men_po.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        men_po.setForeground(new java.awt.Color(255, 255, 255));
-        men_po.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        men_po.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/purchase_order.png"))); // NOI18N
-        men_po.setText("USER LOG");
-        men_po.setOpaque(true);
-        men_po.addMouseListener(new java.awt.event.MouseAdapter() {
+        men_ua.setBackground(new java.awt.Color(255, 204, 204));
+        men_ua.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        men_ua.setForeground(new java.awt.Color(255, 255, 255));
+        men_ua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        men_ua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user.png"))); // NOI18N
+        men_ua.setText("USER ACCOUNT");
+        men_ua.setOpaque(true);
+        men_ua.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                men_poMouseClicked(evt);
+                men_uaMouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout purchaseLayout = new javax.swing.GroupLayout(purchase);
-        purchase.setLayout(purchaseLayout);
-        purchaseLayout.setHorizontalGroup(
-            purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, purchaseLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(men_brrr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(men_ua, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
-                .addGap(1120, 1120, 1120))
-            .addGroup(purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(purchaseLayout.createSequentialGroup()
-                    .addGap(550, 550, 550)
-                    .addComponent(men_po, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(550, 550, 550)))
-        );
-        purchaseLayout.setVerticalGroup(
-            purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(purchaseLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(men_ua, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(men_brrr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(538, Short.MAX_VALUE))
-            .addGroup(purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(purchaseLayout.createSequentialGroup()
-                    .addGap(298, 298, 298)
-                    .addComponent(men_po, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(299, Short.MAX_VALUE)))
-        );
-
-        stock.add(purchase, "card9");
-
-        useraccount.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout useraccountLayout = new javax.swing.GroupLayout(useraccount);
         useraccount.setLayout(useraccountLayout);
         useraccountLayout.setHorizontalGroup(
             useraccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1347, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, useraccountLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(useraccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(men_brrr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(men_ua, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
+                .addGap(1120, 1120, 1120))
         );
         useraccountLayout.setVerticalGroup(
             useraccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 632, Short.MAX_VALUE)
+            .addGroup(useraccountLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(men_ua, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(men_brrr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(538, Short.MAX_VALUE))
         );
 
         stock.add(useraccount, "card7");
@@ -8424,7 +8532,25 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_nb_tableMouseClicked
 
     private void nb_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_updateActionPerformed
-
+        try {
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE stockin_tbl SET ISBN_No=?, "
+                    + "Call_Number=?, Classification=?, Publisher=?, Edition=?, Copy_Right_Year=?, Date_Arrival=? "
+                    + "WHERE Book_ID='" + nb_id.getText() + "'");
+            
+            pst.setString(1, nb_is.getText());
+            pst.setString(2, nb_cn.getText());
+            pst.setString(3, (String) nb_class.getSelectedItem());
+            pst.setString(4, (String) nb_cpub.getSelectedItem());
+            pst.setString(5, nb_edi.getText());
+            pst.setString(6, ((JTextField)nb_cry.getDateEditor().getUiComponent()).getText());
+            pst.setString(7, ((JTextField)nb_da.getDateEditor().getUiComponent()).getText());
+            
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Data Updated");
+        }
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
         
         all_ref();
         nb_clr();
@@ -10990,7 +11116,6 @@ public class Main extends javax.swing.JFrame {
         po_qt.setEnabled(true);
         po_add.setEnabled(true);
         po_min.setEnabled(true);
-        nb_save1.setEnabled(true);
         nb_new7.setEnabled(false);
         nb_update5.setEnabled(true);
         class_add3.setEnabled(true);
@@ -11040,7 +11165,7 @@ public class Main extends javax.swing.JFrame {
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e);
             }
-        po_clr();
+        po2_clr();
         }
         else if(jLabel115.getText().equals("2")){
         po_order();
@@ -11065,7 +11190,7 @@ public class Main extends javax.swing.JFrame {
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e);
             }
-        po_clr();
+        po2_clr();
         }
         else {
             JOptionPane.showMessageDialog(null, "Check Input(s)");
@@ -11073,7 +11198,10 @@ public class Main extends javax.swing.JFrame {
         all_ref();
         tb_total();
         tc_total();
-        po_clr();
+        po2_clr();
+        po_sup.setEnabled(false);
+        class_add3.setEnabled(false);
+        po_date.setEnabled(false);
         }
     }//GEN-LAST:event_nb_save1ActionPerformed
 
@@ -11223,20 +11351,20 @@ public class Main extends javax.swing.JFrame {
     private void nb_update3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_update3ActionPerformed
         men_dash.setBackground(new Color(96,96,96));
         men_rec.setBackground(new Color(96,96,96));
-        men_inv.setBackground(new Color(96,96,96));
+        men_inv.setBackground(new Color(255,255,255));
         men_brrd.setBackground(new Color(96,96,96));
         men_brrr.setBackground(new Color(96,96,96));
         men_ua.setBackground(new Color(96,96,96));
         men_logout.setBackground(new Color(96,96,96));
         men_rep.setBackground(new Color(96,96,96));
-        men_po.setBackground(new Color(255,255,255));
-        menu_title.setText("PURCHASE ORDER");
+        men_po.setBackground(new Color(96,96,96));
+        menu_title.setText("INVENTORY");
         
-        men_po.setForeground(new Color(96,96,96));
+        men_po.setForeground(new Color(255,255,255));
         men_rep.setForeground(new Color(255,255,255));
         men_dash.setForeground(new Color(255,255,255));
         men_rec.setForeground(new Color(255,255,255));
-        men_inv.setForeground(new Color(255,255,255));
+        men_inv.setForeground(new Color(96,96,96));
         men_brrd.setForeground(new Color(255,255,255));
         men_brrr.setForeground(new Color(255,255,255));
         men_ua.setForeground(new Color(255,255,255));
@@ -11244,12 +11372,12 @@ public class Main extends javax.swing.JFrame {
         
         dashboard.setVisible(false);
         newbook.setVisible(false);
-        inventory.setVisible(false);
+        inventory.setVisible(true);
         Bookloan.setVisible(false);
         borrower.setVisible(false);
         useraccount.setVisible(false);
         report.setVisible(false);
-        purchase.setVisible(true);
+        purchase.setVisible(false);
         classification.setVisible(false);
         booklist.setVisible(false);
     }//GEN-LAST:event_nb_update3ActionPerformed
@@ -11257,20 +11385,20 @@ public class Main extends javax.swing.JFrame {
     private void po_ilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_po_ilActionPerformed
         men_dash.setBackground(new Color(96,96,96));
         men_rec.setBackground(new Color(96,96,96));
-        men_inv.setBackground(new Color(96,96,96));
+        men_inv.setBackground(new Color(255,255,255));
         men_brrd.setBackground(new Color(96,96,96));
         men_brrr.setBackground(new Color(96,96,96));
         men_ua.setBackground(new Color(96,96,96));
         men_logout.setBackground(new Color(96,96,96));
         men_rep.setBackground(new Color(96,96,96));
-        men_po.setBackground(new Color(255,255,255));
+        men_po.setBackground(new Color(96,96,96));
         menu_title.setText("BOOK LIST");
         
-        men_po.setForeground(new Color(96,96,96));
+        men_po.setForeground(new Color(255,255,255));
         men_rep.setForeground(new Color(255,255,255));
         men_dash.setForeground(new Color(255,255,255));
         men_rec.setForeground(new Color(255,255,255));
-        men_inv.setForeground(new Color(255,255,255));
+        men_inv.setForeground(new Color(96,96,96));
         men_brrd.setForeground(new Color(255,255,255));
         men_brrr.setForeground(new Color(255,255,255));
         men_ua.setForeground(new Color(255,255,255));
@@ -11341,6 +11469,7 @@ public class Main extends javax.swing.JFrame {
         all_ref();
         }
         nb_update4.setEnabled(false);
+        nb_save1.setEnabled(true);
     }//GEN-LAST:event_nb_update4ActionPerformed
 
     private void po_neActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_po_neActionPerformed
@@ -11409,6 +11538,7 @@ public class Main extends javax.swing.JFrame {
 
     private void nb_update5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_update5ActionPerformed
         po_clr();
+        nb_save1.setEnabled(false);
     }//GEN-LAST:event_nb_update5ActionPerformed
 
     private void po_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_po_addActionPerformed
@@ -11455,9 +11585,21 @@ public class Main extends javax.swing.JFrame {
         int z = sup_table1.getSelectedRow();
 
             TableModel model = (TableModel)sup_table1.getModel();
-          jLabel120.setText(model.getValueAt(z, 0).toString());
-          sup_name1.setText(model.getValueAt(z, 1).toString());
-          sup_add1.setText(model.getValueAt(z, 2).toString());
+          //jLabel120.setText(model.getValueAt(z, 0).toString());
+          sup_name1.setText(model.getValueAt(z, 0).toString());
+          sup_add1.setText(model.getValueAt(z, 1).toString());
+          
+          try {
+            pst = (PreparedStatement) conn.prepareStatement("SELECT ID FROM publisher_tbl where Publisher_ID= '" + sup_name1.getText() + "' and Publisher= '" + sup_add1.getText() + "' ");
+            rs = pst.executeQuery();
+            if(rs.next()){
+                String add = rs.getString("ID");
+                jLabel120.setText(add);
+		}
+            }
+            catch (SQLException x) {
+        
+            }
           
           sup_update1.setEnabled(true);
           sup_delete1.setEnabled(true);
@@ -11466,7 +11608,7 @@ public class Main extends javax.swing.JFrame {
 
     private void sup_search1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sup_search1KeyReleased
         try {
-           String sql = "SELECT *"
+           String sql = "SELECT Publisher_ID, Publisher"
                     + " FROM publisher_tbl WHERE "
                     + "Publisher_ID like ? or Publisher like ?";
 
@@ -11623,10 +11765,20 @@ public class Main extends javax.swing.JFrame {
         nb_update5.setEnabled(false);
         nb_save1.setEnabled(false);
         nb_update1.setEnabled(false);
+        po_sup.setEnabled(false);
+        po_il.setEnabled(false);
+        po_ne.setEnabled(false);
+        po_cl.setEnabled(false);
+        class_add1.setEnabled(false);
+        po_pr.setEnabled(false);
+        po_qt.setEnabled(false);
+        po_add.setEnabled(false);
+        po_min.setEnabled(false);
         nb_new7.setEnabled(true);
         brr_fn7.setText("");
         brr_fn8.setText("");
         brr_fn9.setText("");
+        po_qt.setText("1");
     }//GEN-LAST:event_nb_update7ActionPerformed
 
     private void nb_table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nb_table1MouseClicked
@@ -12385,9 +12537,21 @@ public class Main extends javax.swing.JFrame {
         int z = class_table1.getSelectedRow();
 
           TableModel model = (TableModel)class_table1.getModel();
-          cl_io.setText(model.getValueAt(z, 0).toString());
-          class_num1.setText(model.getValueAt(z, 1).toString());
-          si_isbn2.setText(model.getValueAt(z, 2).toString());
+          //cl_io.setText(model.getValueAt(z, 0).toString());
+          class_num1.setText(model.getValueAt(z, 0).toString());
+          si_isbn2.setText(model.getValueAt(z, 1).toString());
+          
+          try {
+            pst = (PreparedStatement) conn.prepareStatement("SELECT ID FROM classification_tbl where Class_Number= '" + class_num1.getText() + "' and Classname= '" + si_isbn2.getText() + "' ");
+            rs = pst.executeQuery();
+            if(rs.next()){
+                String add = rs.getString("ID");
+                cl_io.setText(add);
+		}
+            }
+            catch (SQLException x) {
+        
+            }
           
           class_save_hide1.setVisible(true);
           btn_del1.setVisible(true);
@@ -12550,6 +12714,32 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showConfirmDialog(null, ex);
         }
     }//GEN-LAST:event_brr_searchKeyReleased
+
+    private void course_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_course_addActionPerformed
+        String res = JOptionPane.showInputDialog(this, "Input New Course");
+        jLabel183.setText(res);
+
+           try{
+                String sql = "INSERT INTO course_tbl (Course) VALUES (?)";
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                pst.setString(1, jLabel183.getText());
+                pst.execute(); 
+            }catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }   
+           
+        all_ref();
+        course_list();
+        brr_cr.setSelectedItem(jLabel183.getText());
+    }//GEN-LAST:event_course_addActionPerformed
+
+    private void course_addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_course_addMouseEntered
+        jLabel183.setText("Add New Course");
+    }//GEN-LAST:event_course_addMouseEntered
+
+    private void course_addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_course_addMouseExited
+        jLabel183.setText("");
+    }//GEN-LAST:event_course_addMouseExited
 
     public void sup(){
         sup_save3.setVisible(false);
@@ -13014,6 +13204,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable class_table1;
     private javax.swing.JPanel classification;
     private javax.swing.JLabel code;
+    private javax.swing.JButton course_add;
     private javax.swing.JPanel dashboard;
     private javax.swing.JLabel date1;
     private com.toedter.calendar.JDateChooser dddd1;
@@ -13135,6 +13326,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel183;
     private javax.swing.JLabel jLabel184;
     private javax.swing.JLabel jLabel185;
+    private javax.swing.JLabel jLabel186;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -13274,6 +13466,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel52;
     private javax.swing.JPanel jPanel53;
     private javax.swing.JPanel jPanel54;
+    private javax.swing.JPanel jPanel55;
     private javax.swing.JPanel jPanel56;
     private javax.swing.JPanel jPanel57;
     private javax.swing.JPanel jPanel58;
@@ -13283,6 +13476,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel61;
     private javax.swing.JPanel jPanel62;
     private javax.swing.JPanel jPanel63;
+    private javax.swing.JPanel jPanel64;
     private javax.swing.JPanel jPanel65;
     private javax.swing.JPanel jPanel66;
     private javax.swing.JPanel jPanel67;
@@ -13323,7 +13517,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane28;
     private javax.swing.JScrollPane jScrollPane29;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane30;
     private javax.swing.JScrollPane jScrollPane31;
+    private javax.swing.JScrollPane jScrollPane32;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -13339,6 +13535,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTabbedPane jTabbedPane6;
+    private javax.swing.JTabbedPane jTabbedPane7;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
