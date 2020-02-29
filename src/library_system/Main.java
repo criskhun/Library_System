@@ -292,7 +292,7 @@ public class Main extends javax.swing.JFrame {
     }
     } 
     private void brrr_list(){//filter encode
-        brrd_fn.removeAllItems();
+        //brrd_fn.removeAllItems();
         brrd_fn1.removeAllItems();
         brrd_fn2.removeAllItems();
     String sqll = "select * from borrower_tbl";
@@ -300,7 +300,7 @@ public class Main extends javax.swing.JFrame {
         pst= conn.prepareStatement(sqll);
         rs = pst.executeQuery();
         while(rs.next()){
-            brrd_fn.addItem(rs.getString("Full_Name"));
+            //brrd_fn.addItem(rs.getString("Full_Name"));
             brrd_fn1.addItem(rs.getString("Full_Name"));
             brrd_fn2.addItem(rs.getString("Full_Name"));
         }
@@ -361,12 +361,12 @@ public class Main extends javax.swing.JFrame {
     }
     private void class_list(){//filter encode
         brrd_class.removeAllItems();
-    String sqll = "select * from stockin_tbl";
+    String sqll = "select * from classification_tbl";
     try{
         pst= conn.prepareStatement(sqll);
         rs = pst.executeQuery();
         while(rs.next()){
-            brrd_class.addItem(rs.getString("Classification"));
+            brrd_class.addItem(rs.getString("Classname"));
         }
     }catch (Exception e) {
     }
@@ -938,8 +938,8 @@ public class Main extends javax.swing.JFrame {
         sup_enc.setDate(null);
     }
     public void brrd_clr(){
-        brrd_libid.setText("");
-        brrd_fn.setSelectedItem("--Choose Borrower--");
+        brrd_fn.setText("");
+        brrd_fn.setText("");
         brrd_stat.setSelectedItem("--Choose Status--");
         brrd_bt.setText("");
         brrd_bp.setText("");
@@ -1079,7 +1079,7 @@ public class Main extends javax.swing.JFrame {
         jPanel68 = new javax.swing.JPanel();
         jLabel164 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jLabel165 = new javax.swing.JLabel();
         jLabel166 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -1303,7 +1303,7 @@ public class Main extends javax.swing.JFrame {
         nb_cn = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        nb_class = new javax.swing.JComboBox<>();
+        nb_class = new javax.swing.JComboBox<String>();
         nb_edi = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         nb_qty = new javax.swing.JTextField();
@@ -1314,7 +1314,7 @@ public class Main extends javax.swing.JFrame {
         nb_da = new com.toedter.calendar.JDateChooser();
         class_add = new javax.swing.JButton();
         jLabel119 = new javax.swing.JLabel();
-        nb_cpub = new javax.swing.JComboBox<>();
+        nb_cpub = new javax.swing.JComboBox<String>();
         class_add2 = new javax.swing.JButton();
         nb_cry = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
@@ -1341,7 +1341,7 @@ public class Main extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         acc_fn = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        acc_lvl = new javax.swing.JComboBox<>();
+        acc_lvl = new javax.swing.JComboBox<String>();
         jLabel37 = new javax.swing.JLabel();
         acc_mn = new javax.swing.JTextField();
         acc_image = new javax.swing.JLabel();
@@ -1381,14 +1381,14 @@ public class Main extends javax.swing.JFrame {
         brr_idn = new javax.swing.JTextField();
         brr_image = new javax.swing.JLabel();
         brr_browse = new javax.swing.JButton();
-        brr_yr = new javax.swing.JComboBox<>();
+        brr_yr = new javax.swing.JComboBox<String>();
         brr_add = new javax.swing.JTextField();
         brr_mn = new javax.swing.JTextField();
         jLabel181 = new javax.swing.JLabel();
         jLabel182 = new javax.swing.JLabel();
-        brr_idt = new javax.swing.JComboBox<>();
+        brr_idt = new javax.swing.JComboBox<String>();
         jLabel183 = new javax.swing.JLabel();
-        brr_cr = new javax.swing.JComboBox<>();
+        brr_cr = new javax.swing.JComboBox<String>();
         brr_sn = new javax.swing.JTextField();
         jLabel184 = new javax.swing.JLabel();
         course_add = new javax.swing.JButton();
@@ -1414,25 +1414,25 @@ public class Main extends javax.swing.JFrame {
         brrd_bp = new javax.swing.JTextField();
         brrd_rem = new javax.swing.JLabel();
         jLabel71 = new javax.swing.JLabel();
-        brrd_class = new javax.swing.JComboBox<>();
+        brrd_class = new javax.swing.JComboBox<String>();
         jLabel72 = new javax.swing.JLabel();
         brrd_bt = new javax.swing.JTextField();
-        brrd_fn = new javax.swing.JComboBox<>();
         brrd_qty = new javax.swing.JTextField();
-        brrd_libid = new javax.swing.JTextField();
+        brrd_fn = new javax.swing.JTextField();
         jLabel73 = new javax.swing.JLabel();
-        brrd_stat = new javax.swing.JComboBox<>();
+        brrd_stat = new javax.swing.JComboBox<String>();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel74 = new javax.swing.JLabel();
         brrd_add = new javax.swing.JButton();
         brrd_min = new javax.swing.JButton();
-        brrd_remcb = new javax.swing.JComboBox<>();
+        brrd_remcb = new javax.swing.JComboBox<String>();
         brrd_fd = new javax.swing.JTextField();
         jLabel78 = new javax.swing.JLabel();
         borroweddate = new javax.swing.JTextField();
         brrd_rem1 = new javax.swing.JLabel();
         returndate = new javax.swing.JTextField();
+        brrd_libid1 = new javax.swing.JTextField();
         jPanel31 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel32 = new javax.swing.JPanel();
@@ -1450,12 +1450,12 @@ public class Main extends javax.swing.JFrame {
         brrd_return = new javax.swing.JButton();
         jLabel77 = new javax.swing.JLabel();
         brrd_fd2 = new javax.swing.JTextField();
-        brrd_fn1 = new javax.swing.JComboBox<>();
+        brrd_fn1 = new javax.swing.JComboBox<String>();
         brrd_clear1 = new javax.swing.JButton();
         jPanel36 = new javax.swing.JPanel();
         jScrollPane14 = new javax.swing.JScrollPane();
         borrowedlog_table = new javax.swing.JTable();
-        brrd_fn2 = new javax.swing.JComboBox<>();
+        brrd_fn2 = new javax.swing.JComboBox<String>();
         jLabel69 = new javax.swing.JLabel();
         brrd_fd3 = new javax.swing.JTextField();
         jPanel35 = new javax.swing.JPanel();
@@ -1469,7 +1469,7 @@ public class Main extends javax.swing.JFrame {
         po_qt = new javax.swing.JTextField();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
-        po_sup = new javax.swing.JComboBox<>();
+        po_sup = new javax.swing.JComboBox<String>();
         po_date = new com.toedter.calendar.JDateChooser();
         po_or = new javax.swing.JTextField();
         jLabel105 = new javax.swing.JLabel();
@@ -1487,7 +1487,7 @@ public class Main extends javax.swing.JFrame {
         po_min = new javax.swing.JButton();
         nb_update2 = new javax.swing.JButton();
         nb_update4 = new javax.swing.JButton();
-        po_cl = new javax.swing.JComboBox<>();
+        po_cl = new javax.swing.JComboBox<String>();
         class_add1 = new javax.swing.JButton();
         nb_update5 = new javax.swing.JButton();
         jLabel110 = new javax.swing.JLabel();
@@ -1510,7 +1510,7 @@ public class Main extends javax.swing.JFrame {
         sum_table = new javax.swing.JTable();
         jPanel17 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        sum_class = new javax.swing.JComboBox<>();
+        sum_class = new javax.swing.JComboBox<String>();
         sum_bt = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
@@ -1535,7 +1535,7 @@ public class Main extends javax.swing.JFrame {
         so_add = new javax.swing.JButton();
         so_minus = new javax.swing.JButton();
         so_save = new javax.swing.JButton();
-        so_stat = new javax.swing.JComboBox<>();
+        so_stat = new javax.swing.JComboBox<String>();
         jLabel45 = new javax.swing.JLabel();
         jPanel27 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -4188,7 +4188,7 @@ public class Main extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel22.setText("Copy Right Year:");
 
-        nb_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--" }));
+        nb_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--" }));
         nb_class.setEnabled(false);
 
         nb_edi.setEnabled(false);
@@ -4232,7 +4232,7 @@ public class Main extends javax.swing.JFrame {
         jLabel119.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel119.setText("Publisher:");
 
-        nb_cpub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--" }));
+        nb_cpub.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--" }));
         nb_cpub.setEnabled(false);
 
         class_add2.setBackground(new java.awt.Color(255, 255, 255));
@@ -4592,7 +4592,7 @@ public class Main extends javax.swing.JFrame {
         jLabel36.setText("Mobile Number:");
         jPanel10.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 99, 24));
 
-        acc_lvl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Please Select--", "Admin", "User", "Faculty", "Student" }));
+        acc_lvl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Please Select--", "Admin", "User", "Faculty", "Student" }));
         acc_lvl.setEnabled(false);
         jPanel10.add(acc_lvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 283, 34));
 
@@ -4859,7 +4859,7 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel8.add(brr_browse, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, -1, 44));
 
-        brr_yr.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Year Level--", "1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "7th Year and Up" }));
+        brr_yr.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Year Level--", "1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "7th Year and Up" }));
         brr_yr.setEnabled(false);
         jPanel8.add(brr_yr, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 200, 30));
 
@@ -4877,7 +4877,7 @@ public class Main extends javax.swing.JFrame {
         jLabel182.setText("Middle Name");
         jPanel8.add(jLabel182, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 86, 24));
 
-        brr_idt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Valid ID--", "Employee ID", "Student ID" }));
+        brr_idt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Valid ID--", "Employee ID", "Student ID" }));
         brr_idt.setEnabled(false);
         brr_idt.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -5114,36 +5114,36 @@ public class Main extends javax.swing.JFrame {
 
         jLabel62.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel62.setText("Full Name:");
-        jPanel30.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 86, 24));
+        jPanel30.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 86, 24));
 
         jLabel66.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel66.setText("Status:");
-        jPanel30.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 86, 24));
+        jPanel30.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 86, 24));
 
         jLabel67.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel67.setText("Book Price:");
-        jPanel30.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 99, 24));
+        jPanel30.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 99, 24));
 
         jLabel68.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel68.setText("Classification:");
-        jPanel30.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 99, 24));
+        jPanel30.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 99, 24));
 
         brrd_bp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 brrd_bpKeyReleased(evt);
             }
         });
-        jPanel30.add(brrd_bp, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 180, 31));
+        jPanel30.add(brrd_bp, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 180, 31));
 
         brrd_rem.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         brrd_rem.setText("Return Date:");
-        jPanel30.add(brrd_rem, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 99, 24));
+        jPanel30.add(brrd_rem, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 99, 24));
 
         jLabel71.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel71.setText("Fines /Day:");
-        jPanel30.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 99, 24));
+        jPanel30.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 99, 24));
 
-        brrd_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select Classification--" }));
+        brrd_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Select Classification--" }));
         brrd_class.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -5153,30 +5153,18 @@ public class Main extends javax.swing.JFrame {
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
-        jPanel30.add(brrd_class, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 180, 34));
+        jPanel30.add(brrd_class, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 180, 34));
 
         jLabel72.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel72.setText("Book Title:");
-        jPanel30.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 86, 24));
+        jPanel30.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 86, 24));
 
         brrd_bt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 brrd_btKeyReleased(evt);
             }
         });
-        jPanel30.add(brrd_bt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 180, 31));
-
-        brrd_fn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Borrower--" }));
-        brrd_fn.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                brrd_fnPopupMenuWillBecomeInvisible(evt);
-            }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-            }
-        });
-        jPanel30.add(brrd_fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 180, 34));
+        jPanel30.add(brrd_bt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 180, 31));
 
         brrd_qty.setEditable(false);
         brrd_qty.setText("1");
@@ -5185,20 +5173,20 @@ public class Main extends javax.swing.JFrame {
                 brrd_qtyMouseClicked(evt);
             }
         });
-        jPanel30.add(brrd_qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 100, 31));
+        jPanel30.add(brrd_qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 100, 31));
 
-        brrd_libid.addKeyListener(new java.awt.event.KeyAdapter() {
+        brrd_fn.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                brrd_libidKeyReleased(evt);
+                brrd_fnKeyReleased(evt);
             }
         });
-        jPanel30.add(brrd_libid, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 180, 31));
+        jPanel30.add(brrd_fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 180, 31));
 
         jLabel73.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel73.setText("Quantity:");
-        jPanel30.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 99, 24));
+        jPanel30.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 99, 24));
 
-        brrd_stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Status--", "Faculty", "Student" }));
+        brrd_stat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Status--", "Faculty", "Student" }));
         brrd_stat.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -5208,13 +5196,13 @@ public class Main extends javax.swing.JFrame {
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
-        jPanel30.add(brrd_stat, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 180, 34));
-        jPanel30.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 340, 10));
-        jPanel30.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 340, 10));
+        jPanel30.add(brrd_stat, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 180, 34));
+        jPanel30.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 340, 10));
+        jPanel30.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 340, 10));
 
         jLabel74.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel74.setText("Borrowed Date:");
-        jPanel30.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 99, 24));
+        jPanel30.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 99, 24));
 
         brrd_add.setBackground(new java.awt.Color(255, 255, 255));
         brrd_add.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -5225,7 +5213,7 @@ public class Main extends javax.swing.JFrame {
                 brrd_addActionPerformed(evt);
             }
         });
-        jPanel30.add(brrd_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 30, 30));
+        jPanel30.add(brrd_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 30, 30));
 
         brrd_min.setBackground(new java.awt.Color(255, 255, 255));
         brrd_min.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -5237,27 +5225,34 @@ public class Main extends javax.swing.JFrame {
                 brrd_minActionPerformed(evt);
             }
         });
-        jPanel30.add(brrd_min, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, 30, 30));
+        jPanel30.add(brrd_min, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, 30, 30));
 
-        brrd_remcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Borrowed", "Loss", "Damage" }));
-        jPanel30.add(brrd_remcb, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 490, 180, 34));
+        brrd_remcb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Borrowed", "Loss", "Damage" }));
+        jPanel30.add(brrd_remcb, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 500, 180, 34));
 
         brrd_fd.setEditable(false);
-        jPanel30.add(brrd_fd, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 180, 31));
+        jPanel30.add(brrd_fd, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 180, 31));
 
         jLabel78.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel78.setText("Library ID:");
-        jPanel30.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 86, 24));
+        jPanel30.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 86, 24));
 
         borroweddate.setEditable(false);
-        jPanel30.add(borroweddate, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 180, 30));
+        jPanel30.add(borroweddate, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 180, 30));
 
         brrd_rem1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         brrd_rem1.setText("Remark:");
         jPanel30.add(brrd_rem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 99, 24));
 
         returndate.setEditable(false);
-        jPanel30.add(returndate, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 180, 30));
+        jPanel30.add(returndate, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 460, 180, 30));
+
+        brrd_libid1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                brrd_libid1KeyReleased(evt);
+            }
+        });
+        jPanel30.add(brrd_libid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 180, 31));
 
         jPanel31.setBackground(new java.awt.Color(255, 255, 255));
         jPanel31.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "TABLES"));
@@ -5382,7 +5377,7 @@ public class Main extends javax.swing.JFrame {
         jLabel77.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel77.setText("Fines:");
 
-        brrd_fn1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Borrower--" }));
+        brrd_fn1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Borrower--" }));
         brrd_fn1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -5474,7 +5469,7 @@ public class Main extends javax.swing.JFrame {
         borrowedlog_table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane14.setViewportView(borrowedlog_table);
 
-        brrd_fn2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Borrower--" }));
+        brrd_fn2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Borrower--" }));
         brrd_fn2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -5983,7 +5978,7 @@ public class Main extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel12.setText("Classification:");
 
-        sum_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--", "General", "Philippine Literature", "Fiction", "Non-Fiction", "Filipiniana", "Circulation", "Others", "" }));
+        sum_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--", "General", "Philippine Literature", "Fiction", "Non-Fiction", "Filipiniana", "Circulation", "Others", "" }));
         sum_class.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -6251,7 +6246,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        so_stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select Status--", "Damage", "Loss" }));
+        so_stat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Select Status--", "Damage", "Loss" }));
         so_stat.setEnabled(false);
 
         jLabel45.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -10015,58 +10010,58 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_invlog_searchKeyReleased
 
-    private void brrd_libidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_brrd_libidKeyReleased
-        if(brrd_libid.getText().equals("")){
-        brrd_fn.setEnabled(true);
-        brrd_stat.setEnabled(true);
-        }
-        else{
-        brrd_fn.setEnabled(false);
-        brrd_stat.setEnabled(false);
-        }
-
-        try{
-            String sql = "SELECT Library_ID, Full_Name, Status"
-                    + " FROM borrower_tbl WHERE "
-                    + "Library_ID like ?";
-
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, "%" + brrd_libid.getText() + "%");
-
-            rs = (ResultSet) pst.executeQuery();
-            brrd_rb_table.setModel(DbUtils.resultSetToTableModel(rs));
-            }
-            catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
-            }
+    private void brrd_fnKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_brrd_fnKeyReleased
+//        if(brrd_fn.getText().equals("")){
+//        brrd_fn.setEnabled(true);
+//        brrd_stat.setEnabled(true);
+//        }
+//        else{
+//        brrd_fn.setEnabled(false);
+//        brrd_stat.setEnabled(false);
+//        }
+//
+//        try{
+//            String sql = "SELECT Library_ID, Full_Name, Status"
+//                    + " FROM borrower_tbl WHERE "
+//                    + "Library_ID like ?";
+//
+//            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+//            pst.setString(1, "%" + brrd_fn.getText() + "%");
+//
+//            rs = (ResultSet) pst.executeQuery();
+//            brrd_rb_table.setModel(DbUtils.resultSetToTableModel(rs));
+//            }
+//            catch (SQLException ex) {
+//            JOptionPane.showConfirmDialog(null, ex);
+//            }
+//        
+//        try{
+//            String sql="SELECT Library_ID, Full_Name, Status FROM borrower_tbl where Library_ID = '" + (String) brrd_fn.getText() + "' ";
+//            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+//            rs = pst.executeQuery();
+//        
+//            if(rs.next()){
+//            String name =rs.getString("Full_Name");
+//            String name3 =rs.getString("Status");
+//            
+//            brrd_fn.setSelectedItem(name);
+//            brrd_stat.setSelectedItem(name3);
+//
+//            }
+//            }
+//            catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e);
+//            }
         
-        try{
-            String sql="SELECT Library_ID, Full_Name, Status FROM borrower_tbl where Library_ID = '" + (String) brrd_libid.getText() + "' ";
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-        
-            if(rs.next()){
-            String name =rs.getString("Full_Name");
-            String name3 =rs.getString("Status");
-            
-            brrd_fn.setSelectedItem(name);
-            brrd_stat.setSelectedItem(name3);
-
-            }
-            }
-            catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-            }
-        
-    }//GEN-LAST:event_brrd_libidKeyReleased
+    }//GEN-LAST:event_brrd_fnKeyReleased
 
     private void brrd_rb_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_brrd_rb_tableMouseClicked
         int z = brrd_rb_table.getSelectedRow();
 
         TableModel model = (TableModel)brrd_rb_table.getModel();
-        brrd_libid.setText(model.getValueAt(z, 0).toString());
-        brrd_fn.setSelectedItem(model.getValueAt(z, 1).toString());
-        brrd_stat.setSelectedItem(model.getValueAt(z, 2).toString());
+        brrd_libid1.setText(model.getValueAt(z, 0).toString());
+        brrd_fn.setText(model.getValueAt(z, 1).toString());
+        brrd_stat.setSelectedItem(model.getValueAt(z, 3).toString());
         jLabel130.setText(model.getValueAt(z, 2).toString());
         
         if(brrd_stat.getSelectedItem().equals("Faculty")){
@@ -10147,60 +10142,23 @@ public class Main extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_brrd_minActionPerformed
 
-    private void brrd_fnPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_brrd_fnPopupMenuWillBecomeInvisible
-        try {
-            String sql = "SELECT Library_ID, Full_Name, Status"
-                    + " FROM borrower_tbl WHERE "
-                    + "Full_Name like ? ";
-
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, "%" + brrd_fn.getSelectedItem() + "%");
-
-            rs = (ResultSet) pst.executeQuery();
-            brrd_rb_table.setModel(DbUtils.resultSetToTableModel(rs));
-        } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
-        }
-        
-        try{
-            String sql="SELECT Library_ID, Full_Name, Status FROM borrower_tbl where Full_Name = '" + (String) brrd_fn.getSelectedItem() + "' ";
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-        
-            if(rs.next()){
-            String name =rs.getString("Library_ID");
-            String name3 =rs.getString("Status");
-            
-            brrd_libid.setText(name);
-            brrd_stat.setSelectedItem(name3);
-
-            }
-            }
-            catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-            }
-        if(brrd_fn.getSelectedItem().equals("--Choose Borrower--")){
-        rb_ref();
-        }
-    }//GEN-LAST:event_brrd_fnPopupMenuWillBecomeInvisible
-
     private void brrd_statPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_brrd_statPopupMenuWillBecomeInvisible
-        try {
-            String sql = "SELECT Library_ID, Full_Name, Status"
-                    + " FROM borrower_tbl WHERE "
-                    + "Status like ? ";
-
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, "%" + brrd_stat.getSelectedItem() + "%");
-
-            rs = (ResultSet) pst.executeQuery();
-            brrd_rb_table.setModel(DbUtils.resultSetToTableModel(rs));
-        } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
-        }
-        if(brrd_stat.getSelectedItem().equals("--Choose Status--")){
-        rb_ref();
-        }
+//        try {
+//            String sql = "SELECT Library_ID, Full_Name, Status"
+//                    + " FROM borrower_tbl WHERE "
+//                    + "Status like ? ";
+//
+//            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+//            pst.setString(1, "%" + brrd_stat.getSelectedItem() + "%");
+//
+//            rs = (ResultSet) pst.executeQuery();
+//            brrd_rb_table.setModel(DbUtils.resultSetToTableModel(rs));
+//        } catch (SQLException ex) {
+//            JOptionPane.showConfirmDialog(null, ex);
+//        }
+//        if(brrd_stat.getSelectedItem().equals("--Choose Status--")){
+//        rb_ref();
+//        }
     }//GEN-LAST:event_brrd_statPopupMenuWillBecomeInvisible
 
     private void brrd_bpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_brrd_bpKeyReleased
@@ -10269,8 +10227,8 @@ public class Main extends javax.swing.JFrame {
 
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
             
-            pst.setString(1, brrd_libid.getText());
-            pst.setString(2, (String) brrd_fn.getSelectedItem());
+            pst.setString(1, brrd_fn.getText());
+            pst.setString(2, brrd_fn.getText());
             pst.setString(3, (String) brrd_stat.getSelectedItem());
             pst.setString(4, brrd_bt.getText());
             pst.setString(5, brrd_bp.getText());
@@ -10295,7 +10253,7 @@ public class Main extends javax.swing.JFrame {
 
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql1);
             
-            pst.setString(1, (String) brrd_fn.getSelectedItem());
+            pst.setString(1, brrd_fn.getText());
             pst.setString(2, (String) brrd_stat.getSelectedItem());
             pst.setString(3, brrd_bt.getText());
             pst.setString(4, (String) brrd_class.getSelectedItem());
@@ -10352,8 +10310,8 @@ public class Main extends javax.swing.JFrame {
         TableModel model = (TableModel)brrd_log_table.getModel();
         
         brrd_id.setText(model.getValueAt(z, 0).toString());
-        brrd_libid.setText(model.getValueAt(z, 1).toString());
-        brrd_fn.setSelectedItem(model.getValueAt(z, 2).toString());
+        brrd_fn.setText(model.getValueAt(z, 1).toString());
+        brrd_fn.setText(model.getValueAt(z, 2).toString());
         brrd_stat.setSelectedItem(model.getValueAt(z, 3).toString());
         brrd_bt.setText(model.getValueAt(z, 4).toString());
         brrd_bp.setText(model.getValueAt(z, 5).toString());
@@ -12800,6 +12758,10 @@ public class Main extends javax.swing.JFrame {
         jLabel183.setText("");
     }//GEN-LAST:event_course_addMouseExited
 
+    private void brrd_libid1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_brrd_libid1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_brrd_libid1KeyReleased
+
     public void sup(){
         sup_save3.setVisible(false);
         
@@ -12983,7 +12945,7 @@ public class Main extends javax.swing.JFrame {
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
             
             pst.setString(1, brrd_bt.getText());
-            pst.setString(2, (String)brrd_fn.getSelectedItem());
+            pst.setString(2, brrd_fn.getText());
             pst.setString(3, (String)brrd_remcb.getSelectedItem());
             pst.setString(4, brrd_qty.getText());
             pst.setString(5, date1.getText());
@@ -13231,11 +13193,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField brrd_fd1;
     private javax.swing.JTextField brrd_fd2;
     private javax.swing.JTextField brrd_fd3;
-    private javax.swing.JComboBox<String> brrd_fn;
+    private javax.swing.JTextField brrd_fn;
     private javax.swing.JComboBox<String> brrd_fn1;
     private javax.swing.JComboBox<String> brrd_fn2;
     private javax.swing.JLabel brrd_id;
-    private javax.swing.JTextField brrd_libid;
+    private javax.swing.JTextField brrd_libid1;
     private javax.swing.JTable brrd_log_table;
     private javax.swing.JButton brrd_min;
     private javax.swing.JTextField brrd_qty;
