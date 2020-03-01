@@ -1126,7 +1126,7 @@ public class Main extends javax.swing.JFrame {
         jPanel68 = new javax.swing.JPanel();
         jLabel164 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel165 = new javax.swing.JLabel();
         jLabel166 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -1350,7 +1350,7 @@ public class Main extends javax.swing.JFrame {
         nb_cn = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        nb_class = new javax.swing.JComboBox<String>();
+        nb_class = new javax.swing.JComboBox<>();
         nb_edi = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         nb_qty = new javax.swing.JTextField();
@@ -1361,7 +1361,7 @@ public class Main extends javax.swing.JFrame {
         nb_da = new com.toedter.calendar.JDateChooser();
         class_add = new javax.swing.JButton();
         jLabel119 = new javax.swing.JLabel();
-        nb_cpub = new javax.swing.JComboBox<String>();
+        nb_cpub = new javax.swing.JComboBox<>();
         class_add2 = new javax.swing.JButton();
         nb_cry = new com.toedter.calendar.JDateChooser();
         jLabel187 = new javax.swing.JLabel();
@@ -1391,7 +1391,7 @@ public class Main extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         acc_fn = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        acc_lvl = new javax.swing.JComboBox<String>();
+        acc_lvl = new javax.swing.JComboBox<>();
         jLabel37 = new javax.swing.JLabel();
         acc_mn = new javax.swing.JTextField();
         acc_image = new javax.swing.JLabel();
@@ -1431,14 +1431,14 @@ public class Main extends javax.swing.JFrame {
         brr_idn = new javax.swing.JTextField();
         brr_image = new javax.swing.JLabel();
         brr_browse = new javax.swing.JButton();
-        brr_yr = new javax.swing.JComboBox<String>();
+        brr_yr = new javax.swing.JComboBox<>();
         brr_add = new javax.swing.JTextField();
         brr_mn = new javax.swing.JTextField();
         jLabel181 = new javax.swing.JLabel();
         jLabel182 = new javax.swing.JLabel();
-        brr_idt = new javax.swing.JComboBox<String>();
+        brr_idt = new javax.swing.JComboBox<>();
         jLabel183 = new javax.swing.JLabel();
-        brr_cr = new javax.swing.JComboBox<String>();
+        brr_cr = new javax.swing.JComboBox<>();
         brr_sn = new javax.swing.JTextField();
         jLabel184 = new javax.swing.JLabel();
         course_add = new javax.swing.JButton();
@@ -1464,19 +1464,19 @@ public class Main extends javax.swing.JFrame {
         brrd_bp = new javax.swing.JTextField();
         brrd_rem = new javax.swing.JLabel();
         jLabel71 = new javax.swing.JLabel();
-        brrd_class = new javax.swing.JComboBox<String>();
+        brrd_class = new javax.swing.JComboBox<>();
         jLabel72 = new javax.swing.JLabel();
         brrd_bt = new javax.swing.JTextField();
         brrd_qty = new javax.swing.JTextField();
         brrd_fn = new javax.swing.JTextField();
         jLabel73 = new javax.swing.JLabel();
-        brrd_stat = new javax.swing.JComboBox<String>();
+        brrd_stat = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel74 = new javax.swing.JLabel();
         brrd_add = new javax.swing.JButton();
         brrd_min = new javax.swing.JButton();
-        brrd_remcb = new javax.swing.JComboBox<String>();
+        brrd_remcb = new javax.swing.JComboBox<>();
         brrd_fd = new javax.swing.JTextField();
         jLabel78 = new javax.swing.JLabel();
         borroweddate = new javax.swing.JTextField();
@@ -1508,7 +1508,7 @@ public class Main extends javax.swing.JFrame {
         jPanel36 = new javax.swing.JPanel();
         jScrollPane14 = new javax.swing.JScrollPane();
         borrowedlog_table = new javax.swing.JTable();
-        brrd_fn2 = new javax.swing.JComboBox<String>();
+        brrd_fn2 = new javax.swing.JComboBox<>();
         jLabel69 = new javax.swing.JLabel();
         brrd_fd3 = new javax.swing.JTextField();
         jPanel35 = new javax.swing.JPanel();
@@ -1522,7 +1522,7 @@ public class Main extends javax.swing.JFrame {
         po_qt = new javax.swing.JTextField();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
-        po_sup = new javax.swing.JComboBox<String>();
+        po_sup = new javax.swing.JComboBox<>();
         po_date = new com.toedter.calendar.JDateChooser();
         po_or = new javax.swing.JTextField();
         jLabel105 = new javax.swing.JLabel();
@@ -1540,7 +1540,7 @@ public class Main extends javax.swing.JFrame {
         po_min = new javax.swing.JButton();
         nb_update2 = new javax.swing.JButton();
         nb_update4 = new javax.swing.JButton();
-        po_cl = new javax.swing.JComboBox<String>();
+        po_cl = new javax.swing.JComboBox<>();
         class_add1 = new javax.swing.JButton();
         nb_update5 = new javax.swing.JButton();
         jLabel110 = new javax.swing.JLabel();
@@ -1563,7 +1563,7 @@ public class Main extends javax.swing.JFrame {
         sum_table = new javax.swing.JTable();
         jPanel17 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        sum_class = new javax.swing.JComboBox<String>();
+        sum_class = new javax.swing.JComboBox<>();
         sum_bt = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
@@ -1588,7 +1588,7 @@ public class Main extends javax.swing.JFrame {
         so_add = new javax.swing.JButton();
         so_minus = new javax.swing.JButton();
         so_save = new javax.swing.JButton();
-        so_stat = new javax.swing.JComboBox<String>();
+        so_stat = new javax.swing.JComboBox<>();
         jLabel45 = new javax.swing.JLabel();
         jPanel27 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -1756,6 +1756,12 @@ public class Main extends javax.swing.JFrame {
         jLabel126 = new javax.swing.JLabel();
         jLabel141 = new javax.swing.JLabel();
         jLabel140 = new javax.swing.JLabel();
+        jLabel199 = new javax.swing.JLabel();
+        jLabel200 = new javax.swing.JLabel();
+        jLabel201 = new javax.swing.JLabel();
+        jLabel202 = new javax.swing.JLabel();
+        jLabel203 = new javax.swing.JLabel();
+        jLabel204 = new javax.swing.JLabel();
         jLabel121 = new javax.swing.JLabel();
         jLabel122 = new javax.swing.JLabel();
         ttt = new javax.swing.JLabel();
@@ -4274,7 +4280,7 @@ public class Main extends javax.swing.JFrame {
         jLabel22.setText("Copy Right Year:");
         jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 130, 25));
 
-        nb_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--" }));
+        nb_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--" }));
         nb_class.setEnabled(false);
         jPanel4.add(nb_class, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 181, 34));
 
@@ -4334,7 +4340,7 @@ public class Main extends javax.swing.JFrame {
         jLabel119.setText("Publisher:");
         jPanel4.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 99, 24));
 
-        nb_cpub.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--" }));
+        nb_cpub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--" }));
         nb_cpub.setEnabled(false);
         jPanel4.add(nb_cpub, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 181, 34));
 
@@ -4593,7 +4599,7 @@ public class Main extends javax.swing.JFrame {
         jLabel36.setText("Mobile Number:");
         jPanel10.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 99, 24));
 
-        acc_lvl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Please Select--", "Admin", "User", "Faculty", "Student" }));
+        acc_lvl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Please Select--", "Admin", "User", "Faculty", "Student" }));
         acc_lvl.setEnabled(false);
         jPanel10.add(acc_lvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 283, 34));
 
@@ -4860,7 +4866,7 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel8.add(brr_browse, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, -1, 44));
 
-        brr_yr.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Year Level--", "1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "7th Year and Up" }));
+        brr_yr.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Year Level--", "1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "7th Year and Up" }));
         brr_yr.setEnabled(false);
         jPanel8.add(brr_yr, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 200, 30));
 
@@ -4878,7 +4884,7 @@ public class Main extends javax.swing.JFrame {
         jLabel182.setText("Middle Name");
         jPanel8.add(jLabel182, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 86, 24));
 
-        brr_idt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Valid ID--", "Employee ID", "Student ID" }));
+        brr_idt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Valid ID--", "Employee ID", "Student ID" }));
         brr_idt.setEnabled(false);
         brr_idt.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -5144,7 +5150,7 @@ public class Main extends javax.swing.JFrame {
         jLabel71.setText("Fines /Day:");
         jPanel30.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 99, 24));
 
-        brrd_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Select Classification--" }));
+        brrd_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select Classification--" }));
         brrd_class.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -5187,7 +5193,7 @@ public class Main extends javax.swing.JFrame {
         jLabel73.setText("Quantity:");
         jPanel30.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 99, 24));
 
-        brrd_stat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Status--", "Faculty", "Student" }));
+        brrd_stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Status--", "Faculty", "Student" }));
         brrd_stat.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -5228,7 +5234,7 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel30.add(brrd_min, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 30, 30));
 
-        brrd_remcb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Borrowed", "Loss", "Damage" }));
+        brrd_remcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Borrowed", "Loss", "Damage" }));
         jPanel30.add(brrd_remcb, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 500, 200, 34));
 
         brrd_fd.setEditable(false);
@@ -5435,7 +5441,7 @@ public class Main extends javax.swing.JFrame {
         borrowedlog_table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane14.setViewportView(borrowedlog_table);
 
-        brrd_fn2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Borrower--" }));
+        brrd_fn2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Borrower--" }));
         brrd_fn2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -5944,7 +5950,7 @@ public class Main extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel12.setText("Classification:");
 
-        sum_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--", "General", "Philippine Literature", "Fiction", "Non-Fiction", "Filipiniana", "Circulation", "Others", "" }));
+        sum_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--", "General", "Philippine Literature", "Fiction", "Non-Fiction", "Filipiniana", "Circulation", "Others", "" }));
         sum_class.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -6212,7 +6218,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        so_stat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Select Status--", "Damage", "Loss" }));
+        so_stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select Status--", "Damage", "Loss" }));
         so_stat.setEnabled(false);
 
         jLabel45.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -7638,11 +7644,34 @@ public class Main extends javax.swing.JFrame {
 
         jLabel140.setText("jLabel124");
 
+        jLabel199.setText("jLabel199");
+
+        jLabel200.setText("jLabel200");
+
+        jLabel201.setText("jLabel201");
+
+        jLabel202.setText("jLabel202");
+
+        jLabel203.setText("jLabel203");
+
+        jLabel204.setText("jLabel204");
+
         javax.swing.GroupLayout jPanel72Layout = new javax.swing.GroupLayout(jPanel72);
         jPanel72.setLayout(jPanel72Layout);
         jPanel72Layout.setHorizontalGroup(
             jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
+            .addGroup(jPanel72Layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel199)
+                    .addComponent(jLabel200)
+                    .addComponent(jLabel201))
+                .addGap(78, 78, 78)
+                .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel204)
+                    .addComponent(jLabel203)
+                    .addComponent(jLabel202))
+                .addContainerGap(183, Short.MAX_VALUE))
             .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel72Layout.createSequentialGroup()
                     .addContainerGap()
@@ -7700,7 +7729,20 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel72Layout.setVerticalGroup(
             jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel72Layout.createSequentialGroup()
+                .addContainerGap(176, Short.MAX_VALUE)
+                .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel199)
+                    .addComponent(jLabel202))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel200)
+                    .addComponent(jLabel203))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel201)
+                    .addComponent(jLabel204))
+                .addGap(43, 43, 43))
             .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel72Layout.createSequentialGroup()
                     .addGap(103, 103, 103)
@@ -10378,6 +10420,49 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
         
+        try{
+            String sql="SELECT * FROM holding_tbl where Book_title = '" + (String) brrd_bt.getText() + "' ";
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            if(rs.next()){
+            String name =rs.getString("On_Hand");
+            String name0 =rs.getString("Borrowed");
+            String name1 =rs.getString("Total_Holding");
+            jLabel134.setText(name);
+            jLabel201.setText(name0);
+            jLabel199.setText(name1);
+            }
+            }
+            catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            }
+        int oh = Integer.parseInt(jLabel134.getText());
+        int br = Integer.parseInt(jLabel201.getText());
+        int th = Integer.parseInt(jLabel199.getText());
+        int qty = Integer.parseInt(brrd_qty.getText());
+        int tot1, tot2, tot3;
+        
+        tot1 = oh - qty;
+        tot2 = br + qty;
+        tot3 = th - qty;
+        
+        jLabel202.setText(Integer.toString(tot1));
+        jLabel203.setText(Integer.toString(tot2));
+        jLabel204.setText(Integer.toString(tot3));
+        
+            try {
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE holding_tbl SET On_Hand=?, "
+                    + " Total_Holding=?, Borrowed=? WHERE Book_title='" + brrd_bt.getText() + "'");
+            
+            pst.setString(1, jLabel202.getText());
+            pst.setString(2, jLabel204.getText());
+            pst.setString(3, jLabel203.getText());
+            
+            pst.execute();
+            }
+            catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
         
         all_ref();
         brrd_clr();
@@ -11883,6 +11968,21 @@ public class Main extends javax.swing.JFrame {
           nb_qty.setText(model.getValueAt(z, 4).toString());
           nb_prc.setText(model.getValueAt(z, 5).toString());
           
+          try {
+            String sql = "SELECT *"
+                    + " FROM stockin_tbl WHERE "
+                    + "Book_Title like ? ";
+
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            pst.setString(1, "%" + nb_bt.getText() + "%");
+
+            rs = (ResultSet) pst.executeQuery();
+            nb_table.setModel(DbUtils.resultSetToTableModel(rs));
+            rc_nb();
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, ex);
+        }
+          
           nb_save.setEnabled(true);
           nb_class.setEnabled(false);
           class_add.setEnabled(false);
@@ -13198,30 +13298,36 @@ public class Main extends javax.swing.JFrame {
     
     public void upbookqty(){
         try{
-            String sql="SELECT On_Hand FROM holding_tbl where Book_title = '" + (String) jLabel136.getText() + "' ";
+            String sql="SELECT * FROM holding_tbl where Book_title = '" + (String) jLabel136.getText() + "' ";
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
             if(rs.next()){
             String name =rs.getString("On_Hand");
+            String name1 =rs.getString("Total_Holding");
             jLabel134.setText(name);
+            jLabel199.setText(name1);
             }
             }
             catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             }
         int a = Integer.parseInt(jLabel134.getText());
+        int aa = Integer.parseInt(jLabel199.getText());
         int b = Integer.parseInt(nb_qty.getText());
-        int c;
+        int c,d;
         
         c = a + b;
+        d = aa + b;
         
         jLabel135.setText(Integer.toString(c));
+        jLabel200.setText(Integer.toString(d));
         
     try {
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE holding_tbl SET On_Hand=? "
-                    + " WHERE Book_title='" + jLabel136.getText() + "'");
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE holding_tbl SET On_Hand=?, "
+                    + " Total_Holding=? WHERE Book_title='" + jLabel136.getText() + "'");
             
             pst.setString(1, jLabel135.getText());
+            pst.setString(2, jLabel200.getText());
             
             pst.execute();
         }
@@ -13575,8 +13681,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel196;
     private javax.swing.JLabel jLabel197;
     private javax.swing.JLabel jLabel198;
+    private javax.swing.JLabel jLabel199;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel200;
+    private javax.swing.JLabel jLabel201;
+    private javax.swing.JLabel jLabel202;
+    private javax.swing.JLabel jLabel203;
+    private javax.swing.JLabel jLabel204;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
