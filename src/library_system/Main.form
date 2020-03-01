@@ -10996,21 +10996,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel199" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel200" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel201" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel204" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel203" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel202" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="183" max="32767" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="0" pref="464" max="32767" attributes="0"/>
                               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
@@ -11084,24 +11070,7 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="176" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel199" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel202" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel200" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel203" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel201" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel204" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="0" pref="273" max="32767" attributes="0"/>
                               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
@@ -11246,36 +11215,6 @@
                         <Component class="javax.swing.JLabel" name="jLabel140">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="jLabel124"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel199">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="jLabel199"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel200">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="jLabel200"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel201">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="jLabel201"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel202">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="jLabel202"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel203">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="jLabel203"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel204">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="jLabel204"/>
                           </Properties>
                         </Component>
                       </SubComponents>
