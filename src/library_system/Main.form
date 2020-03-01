@@ -4373,19 +4373,19 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jPanel6" max="32767" attributes="0"/>
+                                      <Component id="jPanel4" min="-2" pref="395" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jPanel6" alignment="0" max="32767" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                                               <Component id="jLabel11" min="-2" pref="72" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="nb_search" min="-2" pref="357" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="jPanel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                                      <EmptySpace pref="13" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -4393,21 +4393,18 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="nb_search" alignment="3" max="32767" attributes="0"/>
+                                          <Component id="jLabel11" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="nb_search" alignment="3" max="32767" attributes="0"/>
-                                                  <Component id="jLabel11" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="jPanel4" pref="554" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -4430,149 +4427,8 @@
                                 </Property>
                               </Properties>
 
-                              <Layout>
-                                <DimensionLayout dim="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jLabel8" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
-                                                      <Component id="jLabel16" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="nb_is" max="32767" attributes="0"/>
-                                                      <Component id="nb_bt" max="32767" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jLabel17" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
-                                                      <Component id="jLabel18" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="nb_cn" max="32767" attributes="0"/>
-                                                      <Group type="102" attributes="0">
-                                                          <Component id="nb_class" pref="181" max="32767" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="class_add" min="-2" pref="32" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabel23" min="-2" pref="86" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                                  <Component id="nb_qty" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="jLabel38" min="-2" pref="86" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                                  <Component id="nb_aut" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabel19" min="-2" pref="99" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                                  <Component id="nb_edi" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="jLabel119" min="-2" pref="99" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                                  <Component id="nb_cpub" pref="181" max="32767" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="class_add2" min="-2" pref="32" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabel39" min="-2" pref="99" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                                  <Component id="nb_da" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jLabel20" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
-                                                      <Component id="jLabel22" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="nb_prc" max="32767" attributes="0"/>
-                                                      <Component id="nb_cry" max="32767" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                </DimensionLayout>
-                                <DimensionLayout dim="1">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel8" min="-2" pref="24" max="-2" attributes="0"/>
-                                              <Component id="nb_is" pref="31" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel16" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                              <Component id="nb_bt" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel38" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                              <Component id="nb_aut" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel23" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                              <Component id="nb_qty" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel17" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                              <Component id="nb_cn" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="nb_class" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                                                  <Component id="jLabel18" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="class_add" pref="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                                  <Component id="nb_cpub" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                                                  <Component id="jLabel119" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="class_add2" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel19" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                              <Component id="nb_edi" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel22" min="-2" pref="25" max="-2" attributes="0"/>
-                                              <Component id="nb_cry" min="-2" pref="37" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="nb_prc" min="-2" pref="31" max="-2" attributes="0"/>
-                                              <Component id="jLabel20" min="-2" pref="25" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="nb_da" min="-2" pref="33" max="-2" attributes="0"/>
-                                              <Component id="jLabel39" min="-2" pref="25" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace pref="15" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                </DimensionLayout>
+                              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                                <Property name="useNullLayout" type="boolean" value="false"/>
                               </Layout>
                               <SubComponents>
                                 <Component class="javax.swing.JLabel" name="jLabel8">
@@ -4582,6 +4438,11 @@
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="ISBN No."/>
                                   </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="10" y="80" width="86" height="24"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel16">
                                   <Properties>
@@ -4590,6 +4451,11 @@
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Book Title:"/>
                                   </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="10" y="120" width="86" height="24"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel17">
                                   <Properties>
@@ -4598,6 +4464,11 @@
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Call Number:"/>
                                   </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="10" y="250" width="99" height="24"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel18">
                                   <Properties>
@@ -4606,6 +4477,11 @@
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Classification:"/>
                                   </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="10" y="290" width="99" height="24"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel20">
                                   <Properties>
@@ -4614,6 +4490,11 @@
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Price:"/>
                                   </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="10" y="470" width="99" height="25"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="nb_is">
                                   <Properties>
@@ -4622,6 +4503,11 @@
                                   <Events>
                                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nb_isKeyReleased"/>
                                   </Events>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="160" y="70" width="219" height="31"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="nb_bt">
                                   <Properties>
@@ -4631,11 +4517,24 @@
                                   <Events>
                                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nb_btKeyReleased"/>
                                   </Events>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="160" y="110" width="219" height="31"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="nb_cn">
                                   <Properties>
                                     <Property name="enabled" type="boolean" value="false"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nb_cnKeyReleased"/>
+                                  </Events>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="160" y="240" width="219" height="31"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel19">
                                   <Properties>
@@ -4644,6 +4543,11 @@
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Edition:"/>
                                   </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="10" y="380" width="99" height="24"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel22">
                                   <Properties>
@@ -4652,6 +4556,11 @@
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Copy Right Year:"/>
                                   </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="10" y="420" width="130" height="25"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JComboBox" name="nb_class">
                                   <Properties>
@@ -4665,11 +4574,21 @@
                                   <AuxValues>
                                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                                   </AuxValues>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="160" y="280" width="181" height="34"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="nb_edi">
                                   <Properties>
                                     <Property name="enabled" type="boolean" value="false"/>
                                   </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="160" y="370" width="219" height="31"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel23">
                                   <Properties>
@@ -4678,12 +4597,25 @@
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Quantiy:"/>
                                   </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="10" y="200" width="86" height="24"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="nb_qty">
                                   <Properties>
                                     <Property name="editable" type="boolean" value="false"/>
                                     <Property name="text" type="java.lang.String" value="0"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nb_qtyActionPerformed"/>
+                                  </Events>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="160" y="190" width="219" height="31"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel38">
                                   <Properties>
@@ -4692,6 +4624,11 @@
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Author:"/>
                                   </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="10" y="160" width="86" height="24"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="nb_aut">
                                   <Properties>
@@ -4700,12 +4637,22 @@
                                   <Events>
                                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nb_autKeyReleased"/>
                                   </Events>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="160" y="150" width="219" height="31"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JTextField" name="nb_prc">
                                   <Properties>
                                     <Property name="editable" type="boolean" value="false"/>
                                     <Property name="enabled" type="boolean" value="false"/>
                                   </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="160" y="460" width="219" height="31"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel39">
                                   <Properties>
@@ -4714,12 +4661,22 @@
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Date_Arrival:"/>
                                   </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="10" y="510" width="99" height="25"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="com.toedter.calendar.JDateChooser" name="nb_da">
                                   <Properties>
                                     <Property name="dateFormatString" type="java.lang.String" value="MM/dd/yyyy"/>
                                     <Property name="enabled" type="boolean" value="false"/>
                                   </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="160" y="500" width="219" height="33"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JButton" name="class_add">
                                   <Properties>
@@ -4740,6 +4697,11 @@
                                   <Events>
                                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="class_addActionPerformed"/>
                                   </Events>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="350" y="280" width="32" height="34"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel119">
                                   <Properties>
@@ -4748,6 +4710,11 @@
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Publisher:"/>
                                   </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="10" y="340" width="99" height="24"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JComboBox" name="nb_cpub">
                                   <Properties>
@@ -4761,6 +4728,11 @@
                                   <AuxValues>
                                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                                   </AuxValues>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="160" y="330" width="181" height="34"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="javax.swing.JButton" name="class_add2">
                                   <Properties>
@@ -4781,11 +4753,58 @@
                                   <Events>
                                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="class_add2ActionPerformed"/>
                                   </Events>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="350" y="330" width="32" height="34"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                                 <Component class="com.toedter.calendar.JDateChooser" name="nb_cry">
                                   <Properties>
                                     <Property name="dateFormatString" type="java.lang.String" value="yyyy"/>
                                   </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="160" y="410" width="219" height="37"/>
+                                    </Constraint>
+                                  </Constraints>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="jLabel187">
+                                  <Properties>
+                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="0" green="ff" red="33" type="rgb"/>
+                                    </Property>
+                                  </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="160" y="50" width="220" height="20"/>
+                                    </Constraint>
+                                  </Constraints>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="jLabel188">
+                                  <Properties>
+                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="jLabel188"/>
+                                  </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="10" y="60" width="140" height="-1"/>
+                                    </Constraint>
+                                  </Constraints>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="jLabel189">
+                                  <Properties>
+                                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="0" green="ff" red="33" type="rgb"/>
+                                    </Property>
+                                  </Properties>
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="160" y="220" width="220" height="20"/>
+                                    </Constraint>
+                                  </Constraints>
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -6417,7 +6436,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="180" y="240" width="180" height="31"/>
+                              <AbsoluteConstraints x="180" y="240" width="200" height="31"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6463,7 +6482,7 @@
                           </AuxValues>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="180" y="280" width="180" height="34"/>
+                              <AbsoluteConstraints x="180" y="280" width="200" height="34"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6486,7 +6505,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="180" y="200" width="180" height="31"/>
+                              <AbsoluteConstraints x="180" y="200" width="200" height="31"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6500,7 +6519,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="180" y="380" width="100" height="31"/>
+                              <AbsoluteConstraints x="180" y="380" width="140" height="31"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6510,7 +6529,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="180" y="110" width="180" height="31"/>
+                              <AbsoluteConstraints x="180" y="110" width="200" height="31"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6545,21 +6564,21 @@
                           </AuxValues>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="180" y="150" width="180" height="34"/>
+                              <AbsoluteConstraints x="180" y="150" width="200" height="34"/>
                             </Constraint>
                           </Constraints>
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator1">
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="360" width="340" height="10"/>
+                              <AbsoluteConstraints x="20" y="360" width="360" height="10"/>
                             </Constraint>
                           </Constraints>
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator2">
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="190" width="340" height="10"/>
+                              <AbsoluteConstraints x="20" y="190" width="360" height="10"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6596,7 +6615,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="290" y="380" width="30" height="30"/>
+                              <AbsoluteConstraints x="320" y="380" width="30" height="30"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6621,7 +6640,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="330" y="380" width="30" height="30"/>
+                              <AbsoluteConstraints x="350" y="380" width="30" height="30"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6640,7 +6659,7 @@
                           </AuxValues>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="180" y="500" width="180" height="34"/>
+                              <AbsoluteConstraints x="180" y="500" width="200" height="34"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6650,7 +6669,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="180" y="320" width="180" height="31"/>
+                              <AbsoluteConstraints x="180" y="320" width="200" height="31"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6673,7 +6692,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="180" y="420" width="180" height="30"/>
+                              <AbsoluteConstraints x="180" y="420" width="200" height="30"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6696,7 +6715,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="180" y="460" width="180" height="30"/>
+                              <AbsoluteConstraints x="180" y="460" width="200" height="30"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6706,7 +6725,33 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="180" y="70" width="180" height="31"/>
+                              <AbsoluteConstraints x="180" y="70" width="200" height="31"/>
+                            </Constraint>
+                          </Constraints>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel190">
+                          <Properties>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="jLabel190"/>
+                          </Properties>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                              <AbsoluteConstraints x="180" y="40" width="-1" height="-1"/>
+                            </Constraint>
+                          </Constraints>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel191">
+                          <Properties>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="jLabel191"/>
+                          </Properties>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                              <AbsoluteConstraints x="240" y="40" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -7181,10 +7226,10 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="si_calc1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="brrd_clear" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="66" max="32767" attributes="0"/>
+                                  <Component id="si_calc1" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="brrd_clear" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -7313,7 +7358,7 @@
                                           <Component id="jPanel50" alignment="0" pref="565" max="32767" attributes="0"/>
                                           <Component id="jPanel49" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -8042,7 +8087,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPane4" pref="548" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane4" pref="567" max="32767" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Component id="jPanel17" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
@@ -9009,34 +9054,7 @@
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="570" max="32767" attributes="0"/>
-                              </Group>
-                            </DimensionLayout>
-                          </Layout>
-                        </Container>
-                        <Container class="javax.swing.JPanel" name="jPanel80">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                          </Properties>
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                              <JTabbedPaneConstraints tabName="QUANTITY">
-                                <Property name="tabTitle" type="java.lang.String" value="QUANTITY"/>
-                              </JTabbedPaneConstraints>
-                            </Constraint>
-                          </Constraints>
-
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="873" max="32767" attributes="0"/>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="570" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="589" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
@@ -9063,7 +9081,7 @@
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="570" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="589" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
