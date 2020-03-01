@@ -104,6 +104,8 @@ public class Main extends javax.swing.JFrame {
         patqty_total();
         pay_total();
         course_ref();
+        acclog_ref();
+        userlog_ref();
     }
     
     public void accesslvl(){
@@ -747,6 +749,30 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
+     public void userlog_ref(){
+        try {
+            String sql = "SELECT * FROM user_log_tbl ORDER BY ID DESC";
+            pst = (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+     public void acclog_ref(){
+        try {
+            String sql = "SELECT * FROM account_log_tbl ORDER BY ID DESC";
+            pst = (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+
+            jTable2.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
     public void public_ref(){
         try {
             String sql = "SELECT ISBN_No, Book_title, Author, Call_Number, Classification, Publisher, Edition, Copy_Right_Year"
@@ -984,6 +1010,14 @@ public class Main extends javax.swing.JFrame {
         po_cl.setSelectedIndex(0);
         po_pr.setText("");
         po_qt.setText("1");
+    }
+    public void course_clr(){
+        so_enc1.setText("");
+        so_date1.setText("");
+        so_time1.setText("");
+        so_time2.setText("");
+        jLabel198.setText("");
+        jComboBox2.setSelectedIndex(0);
     }
     public void drp_list(){
         if(sum_class.getSelectedItem().equals("--Choose Book Classification--")){
@@ -1593,6 +1627,15 @@ public class Main extends javax.swing.JFrame {
         so_save2 = new javax.swing.JButton();
         so_save3 = new javax.swing.JButton();
         jLabel198 = new javax.swing.JLabel();
+        so_save4 = new javax.swing.JButton();
+        user_logo = new javax.swing.JPanel();
+        jTabbedPane7 = new javax.swing.JTabbedPane();
+        jPanel55 = new javax.swing.JPanel();
+        jScrollPane30 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel64 = new javax.swing.JPanel();
+        jScrollPane32 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         test = new javax.swing.JPanel();
         jScrollPane21 = new javax.swing.JScrollPane();
         po_test = new javax.swing.JTable();
@@ -1739,14 +1782,6 @@ public class Main extends javax.swing.JFrame {
         si_save1 = new javax.swing.JButton();
         btn_del = new javax.swing.JButton();
         si_save2 = new javax.swing.JButton();
-        user_logo = new javax.swing.JPanel();
-        jTabbedPane7 = new javax.swing.JTabbedPane();
-        jPanel55 = new javax.swing.JPanel();
-        jScrollPane30 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel64 = new javax.swing.JPanel();
-        jScrollPane32 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         useraccount = new javax.swing.JPanel();
         men_brrr = new javax.swing.JLabel();
         men_ua = new javax.swing.JLabel();
@@ -6539,7 +6574,7 @@ public class Main extends javax.swing.JFrame {
                 so_save1ActionPerformed(evt);
             }
         });
-        jPanel80.add(so_save1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 233, -1, 44));
+        jPanel80.add(so_save1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 180, 44));
 
         so_save2.setBackground(new java.awt.Color(51, 153, 255));
         so_save2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -6552,7 +6587,7 @@ public class Main extends javax.swing.JFrame {
                 so_save2ActionPerformed(evt);
             }
         });
-        jPanel80.add(so_save2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 233, -1, 44));
+        jPanel80.add(so_save2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 180, 44));
 
         so_save3.setBackground(new java.awt.Color(51, 153, 255));
         so_save3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -6565,10 +6600,22 @@ public class Main extends javax.swing.JFrame {
                 so_save3ActionPerformed(evt);
             }
         });
-        jPanel80.add(so_save3, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 233, -1, 44));
+        jPanel80.add(so_save3, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 310, 180, 44));
 
-        jLabel198.setText("jLabel198");
-        jPanel80.add(jLabel198, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jLabel198.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel80.add(jLabel198, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 14, 90, 20));
+
+        so_save4.setBackground(new java.awt.Color(51, 153, 255));
+        so_save4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        so_save4.setForeground(new java.awt.Color(255, 255, 255));
+        so_save4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/new.png"))); // NOI18N
+        so_save4.setText("New");
+        so_save4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                so_save4ActionPerformed(evt);
+            }
+        });
+        jPanel80.add(so_save4, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 260, 180, 44));
 
         javax.swing.GroupLayout jPanel81Layout = new javax.swing.GroupLayout(jPanel81);
         jPanel81.setLayout(jPanel81Layout);
@@ -6588,7 +6635,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel81Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane33, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
                     .addGroup(jPanel81Layout.createSequentialGroup()
-                        .addComponent(jPanel80, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel80, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
@@ -6610,6 +6657,83 @@ public class Main extends javax.swing.JFrame {
         );
 
         stock.add(inventory, "card4");
+
+        user_logo.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTabbedPane7.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane30.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jPanel55Layout = new javax.swing.GroupLayout(jPanel55);
+        jPanel55.setLayout(jPanel55Layout);
+        jPanel55Layout.setHorizontalGroup(
+            jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane30, javax.swing.GroupLayout.DEFAULT_SIZE, 883, Short.MAX_VALUE)
+        );
+        jPanel55Layout.setVerticalGroup(
+            jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel55Layout.createSequentialGroup()
+                .addGap(0, 79, Short.MAX_VALUE)
+                .addComponent(jScrollPane30, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jTabbedPane7.addTab("USER LOG", jPanel55);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane32.setViewportView(jTable2);
+
+        javax.swing.GroupLayout jPanel64Layout = new javax.swing.GroupLayout(jPanel64);
+        jPanel64.setLayout(jPanel64Layout);
+        jPanel64Layout.setHorizontalGroup(
+            jPanel64Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane32, javax.swing.GroupLayout.DEFAULT_SIZE, 883, Short.MAX_VALUE)
+        );
+        jPanel64Layout.setVerticalGroup(
+            jPanel64Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel64Layout.createSequentialGroup()
+                .addGap(0, 79, Short.MAX_VALUE)
+                .addComponent(jScrollPane32, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jTabbedPane7.addTab("ACCOUNT LOG", jPanel64);
+
+        javax.swing.GroupLayout user_logoLayout = new javax.swing.GroupLayout(user_logo);
+        user_logo.setLayout(user_logoLayout);
+        user_logoLayout.setHorizontalGroup(
+            user_logoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(user_logoLayout.createSequentialGroup()
+                .addComponent(jTabbedPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 459, Short.MAX_VALUE))
+        );
+        user_logoLayout.setVerticalGroup(
+            user_logoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(user_logoLayout.createSequentialGroup()
+                .addComponent(jTabbedPane7)
+                .addContainerGap())
+        );
+
+        stock.add(user_logo, "card9");
 
         test.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -7946,83 +8070,6 @@ public class Main extends javax.swing.JFrame {
         );
 
         stock.add(classification, "card10");
-
-        user_logo.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTabbedPane7.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane30.setViewportView(jTable1);
-
-        javax.swing.GroupLayout jPanel55Layout = new javax.swing.GroupLayout(jPanel55);
-        jPanel55.setLayout(jPanel55Layout);
-        jPanel55Layout.setHorizontalGroup(
-            jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane30, javax.swing.GroupLayout.DEFAULT_SIZE, 883, Short.MAX_VALUE)
-        );
-        jPanel55Layout.setVerticalGroup(
-            jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel55Layout.createSequentialGroup()
-                .addGap(0, 79, Short.MAX_VALUE)
-                .addComponent(jScrollPane30, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jTabbedPane7.addTab("USER LOG", jPanel55);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane32.setViewportView(jTable2);
-
-        javax.swing.GroupLayout jPanel64Layout = new javax.swing.GroupLayout(jPanel64);
-        jPanel64.setLayout(jPanel64Layout);
-        jPanel64Layout.setHorizontalGroup(
-            jPanel64Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane32, javax.swing.GroupLayout.DEFAULT_SIZE, 883, Short.MAX_VALUE)
-        );
-        jPanel64Layout.setVerticalGroup(
-            jPanel64Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel64Layout.createSequentialGroup()
-                .addGap(0, 79, Short.MAX_VALUE)
-                .addComponent(jScrollPane32, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jTabbedPane7.addTab("ACCOUNT LOG", jPanel64);
-
-        javax.swing.GroupLayout user_logoLayout = new javax.swing.GroupLayout(user_logo);
-        user_logo.setLayout(user_logoLayout);
-        user_logoLayout.setHorizontalGroup(
-            user_logoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(user_logoLayout.createSequentialGroup()
-                .addComponent(jTabbedPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 459, Short.MAX_VALUE))
-        );
-        user_logoLayout.setVerticalGroup(
-            user_logoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(user_logoLayout.createSequentialGroup()
-                .addComponent(jTabbedPane7)
-                .addContainerGap())
-        );
-
-        stock.add(user_logo, "card9");
 
         useraccount.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -12764,13 +12811,17 @@ public class Main extends javax.swing.JFrame {
         jLabel183.setText(res);
             if ((res != null) && (res.length() > 0)) {
             try{
-                String sql = "INSERT INTO course_tbl (Course) VALUES (?)";
+                String sql = "INSERT INTO course_tbl (Course_Title, Course, Description, Years, Status) VALUES (?,?,?,?,?)";
                 pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
-                pst.setString(1, jLabel183.getText());
+                pst.setString(1, "Please Update");
+                pst.setString(2, jLabel183.getText());
+                pst.setString(3, "Please Update");
+                pst.setString(4, "Please Update");
+                pst.setString(5, "--Select Status--");
                 pst.execute(); 
             }catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
-            }  
+            }    
     }
         all_ref();
         course_list();
@@ -12841,15 +12892,65 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel192MouseClicked
 
     private void so_save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_so_save1ActionPerformed
-        // TODO add your handling code here:
+        try{
+                String sql = "INSERT INTO course_tbl (Course_Title, Course, Description, Years, Status) VALUES (?,?,?,?,?)";
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                pst.setString(1, so_enc1.getText());
+                pst.setString(2, so_date1.getText());
+                pst.setString(3, so_time1.getText());
+                pst.setString(4, so_time2.getText());
+                pst.setString(5, (String) jComboBox2.getSelectedItem());
+                pst.execute(); 
+            }catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }  
+        all_ref();
+        course_clr();
     }//GEN-LAST:event_so_save1ActionPerformed
 
     private void so_save2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_so_save2ActionPerformed
-        // TODO add your handling code here:
+        try {
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE course_tbl SET "
+                    + "Course_Title=?, Course=?, Description=?, Years=?, Status=?"
+                    + " WHERE ID='" + jLabel198.getText() + "'");
+
+            pst.setString(1, so_enc1.getText());
+            pst.setString(2, so_date1.getText());
+            pst.setString(3, so_time1.getText());
+            pst.setString(4, so_time2.getText());
+            pst.setString(5, (String) jComboBox2.getSelectedItem());
+            
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Data Updated");
+        }
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        all_ref();
+        course_clr();
+        so_save2.setEnabled(false);
+        so_save3.setEnabled(false);
     }//GEN-LAST:event_so_save2ActionPerformed
 
     private void so_save3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_so_save3ActionPerformed
-        // TODO add your handling code here:
+        try {
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn
+                    .prepareStatement("DELETE FROM course_tbl  WHERE ID = '" + jLabel198.getText() + "'");
+            int del = pst.executeUpdate();
+            if (del > 0) {
+                JOptionPane.showMessageDialog(null, "Data Deleted!");
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Please Check Item!!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        all_ref();
+        course_clr();
+        so_save2.setEnabled(false);
+        so_save3.setEnabled(false);
     }//GEN-LAST:event_so_save3ActionPerformed
 
     private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
@@ -12867,6 +12968,13 @@ public class Main extends javax.swing.JFrame {
           so_save2.setEnabled(true);
           so_save3.setEnabled(true);
     }//GEN-LAST:event_jTable3MouseClicked
+
+    private void so_save4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_so_save4ActionPerformed
+        course_clr();
+          so_save1.setEnabled(true);
+          so_save2.setEnabled(false);
+          so_save3.setEnabled(false);
+    }//GEN-LAST:event_so_save4ActionPerformed
 
     public void sup(){
         sup_save3.setVisible(false);
@@ -13849,6 +13957,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton so_save1;
     private javax.swing.JButton so_save2;
     private javax.swing.JButton so_save3;
+    private javax.swing.JButton so_save4;
     private javax.swing.JTextField so_search;
     private javax.swing.JTextField so_search1;
     private javax.swing.JComboBox<String> so_stat;
