@@ -903,12 +903,6 @@ public class Main extends javax.swing.JFrame {
         acc_con.setEnabled(true);
         acc_lvl.setEnabled(true);
         acc_mn.setEnabled(true);
-        acc_nb.setEnabled(true);
-        acc_inv.setEnabled(true);
-        acc_brrd.setEnabled(true);
-        acc_rep.setEnabled(true);
-        acc_brrr.setEnabled(true);
-        acc_acc.setEnabled(true);
     }
     public void acc_disable(){
         acc_fn.setEnabled(false);
@@ -921,12 +915,6 @@ public class Main extends javax.swing.JFrame {
         acc_con.setEnabled(false);
         acc_lvl.setEnabled(false);
         acc_mn.setEnabled(false);
-        acc_nb.setEnabled(false);
-        acc_inv.setEnabled(false);
-        acc_brrd.setEnabled(false);
-        acc_rep.setEnabled(false);
-        acc_brrr.setEnabled(false);
-        acc_acc.setEnabled(false);
     }
     public void acc_clr(){
         acc_fn.setText("");
@@ -1684,13 +1672,6 @@ public class Main extends javax.swing.JFrame {
         brr_rid = new javax.swing.JLabel();
         account_waste = new javax.swing.JPanel();
         jPanel69 = new javax.swing.JPanel();
-        jLabel35 = new javax.swing.JLabel();
-        acc_nb = new javax.swing.JCheckBox();
-        acc_inv = new javax.swing.JCheckBox();
-        acc_brrd = new javax.swing.JCheckBox();
-        acc_rep = new javax.swing.JCheckBox();
-        acc_brrr = new javax.swing.JCheckBox();
-        acc_acc = new javax.swing.JCheckBox();
         nb = new javax.swing.JLabel();
         brrd = new javax.swing.JLabel();
         rep = new javax.swing.JLabel();
@@ -7253,57 +7234,6 @@ public class Main extends javax.swing.JFrame {
 
         stock.add(test, "card12");
 
-        jLabel35.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel35.setText("Access:");
-
-        acc_nb.setText("New Book");
-        acc_nb.setEnabled(false);
-        acc_nb.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                acc_nbMouseClicked(evt);
-            }
-        });
-
-        acc_inv.setText("Inventory");
-        acc_inv.setEnabled(false);
-        acc_inv.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                acc_invMouseClicked(evt);
-            }
-        });
-
-        acc_brrd.setText("Borrowed");
-        acc_brrd.setEnabled(false);
-        acc_brrd.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                acc_brrdMouseClicked(evt);
-            }
-        });
-
-        acc_rep.setText("Report");
-        acc_rep.setEnabled(false);
-        acc_rep.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                acc_repMouseClicked(evt);
-            }
-        });
-
-        acc_brrr.setText("Borrower");
-        acc_brrr.setEnabled(false);
-        acc_brrr.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                acc_brrrMouseClicked(evt);
-            }
-        });
-
-        acc_acc.setText("User Account");
-        acc_acc.setEnabled(false);
-        acc_acc.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                acc_accMouseClicked(evt);
-            }
-        });
-
         nb.setText("0");
 
         brrd.setText("0");
@@ -7323,32 +7253,21 @@ public class Main extends javax.swing.JFrame {
         jPanel69Layout.setHorizontalGroup(
             jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel69Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(105, 105, 105)
                 .addGroup(jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel69Layout.createSequentialGroup()
-                        .addGroup(jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(acc_nb)
-                            .addComponent(acc_brrd)
-                            .addComponent(acc_rep)
-                            .addComponent(acc_brrr)
-                            .addComponent(acc_acc)
-                            .addComponent(acc_inv))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel69Layout.createSequentialGroup()
-                                .addComponent(nb)
-                                .addGap(44, 44, 44)
-                                .addComponent(inv))
-                            .addGroup(jPanel69Layout.createSequentialGroup()
-                                .addComponent(brrd)
-                                .addGap(44, 44, 44)
-                                .addComponent(brrr))
-                            .addGroup(jPanel69Layout.createSequentialGroup()
-                                .addComponent(rep)
-                                .addGap(44, 44, 44)
-                                .addComponent(ua))
-                            .addComponent(acc_id))))
+                        .addComponent(nb)
+                        .addGap(44, 44, 44)
+                        .addComponent(inv))
+                    .addGroup(jPanel69Layout.createSequentialGroup()
+                        .addComponent(brrd)
+                        .addGap(44, 44, 44)
+                        .addComponent(brrr))
+                    .addGroup(jPanel69Layout.createSequentialGroup()
+                        .addComponent(rep)
+                        .addGap(44, 44, 44)
+                        .addComponent(ua))
+                    .addComponent(acc_id))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel69Layout.setVerticalGroup(
@@ -7356,35 +7275,19 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel69Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel69Layout.createSequentialGroup()
-                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(acc_nb)
-                        .addGap(7, 7, 7)
-                        .addComponent(acc_inv)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(acc_brrd))
-                    .addGroup(jPanel69Layout.createSequentialGroup()
-                        .addGroup(jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nb)
-                            .addComponent(inv))
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(brrd)
-                            .addComponent(brrr))
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rep)
-                            .addComponent(ua))
-                        .addGap(18, 18, 18)
-                        .addComponent(acc_id, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(7, 7, 7)
-                .addComponent(acc_rep)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(acc_brrr)
-                .addGap(7, 7, 7)
-                .addComponent(acc_acc)
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(nb)
+                    .addComponent(inv))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(brrd)
+                    .addComponent(brrr))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rep)
+                    .addComponent(ua))
+                .addGap(18, 18, 18)
+                .addComponent(acc_id, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         jLabel128.setText("0");
@@ -8738,54 +8641,6 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"No File Selected");
         }
     }//GEN-LAST:event_acc_browseActionPerformed
-
-    private void acc_brrdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acc_brrdMouseClicked
-        if(acc_brrd.isSelected()){
-            brrd.setText("1");
-        }else{
-            brrd.setText("0");
-        }
-    }//GEN-LAST:event_acc_brrdMouseClicked
-
-    private void acc_accMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acc_accMouseClicked
-        if(acc_acc.isSelected()){
-            ua.setText("1");
-        }else{
-            ua.setText("0");
-        }
-    }//GEN-LAST:event_acc_accMouseClicked
-
-    private void acc_invMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acc_invMouseClicked
-        if(acc_inv.isSelected()){
-            inv.setText("1");
-        }else{
-            inv.setText("0");
-        }
-    }//GEN-LAST:event_acc_invMouseClicked
-
-    private void acc_nbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acc_nbMouseClicked
-        if(acc_nb.isSelected()){
-            nb.setText("1");
-        }else{
-            nb.setText("0");
-        }
-    }//GEN-LAST:event_acc_nbMouseClicked
-
-    private void acc_repMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acc_repMouseClicked
-        if(acc_rep.isSelected()){
-            rep.setText("1");
-        }else{
-            rep.setText("0");
-        }
-    }//GEN-LAST:event_acc_repMouseClicked
-
-    private void acc_brrrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acc_brrrMouseClicked
-        if(acc_brrr.isSelected()){
-            brrr.setText("1");
-        }else{
-            brrr.setText("0");
-        }
-    }//GEN-LAST:event_acc_brrrMouseClicked
 
     private void acc_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acc_tableMouseClicked
         int z = acc_table.getSelectedRow();
@@ -12640,11 +12495,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel Login;
     private javax.swing.JPanel Menu;
     private javax.swing.JPanel Records;
-    private javax.swing.JCheckBox acc_acc;
     private javax.swing.JButton acc_browse;
     private javax.swing.JButton acc_browse1;
-    private javax.swing.JCheckBox acc_brrd;
-    private javax.swing.JCheckBox acc_brrr;
     private javax.swing.JPasswordField acc_con;
     private javax.swing.JButton acc_delete;
     private javax.swing.JTextField acc_ffmn;
@@ -12652,15 +12504,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField acc_fn;
     private javax.swing.JLabel acc_id;
     private javax.swing.JLabel acc_image;
-    private javax.swing.JCheckBox acc_inv;
     private javax.swing.JComboBox<String> acc_lvl;
     private javax.swing.JTextField acc_mid;
     private javax.swing.JTextField acc_mn;
-    private javax.swing.JCheckBox acc_nb;
     private javax.swing.JButton acc_new;
     private javax.swing.JPasswordField acc_pass;
     private javax.swing.JTextField acc_pos;
-    private javax.swing.JCheckBox acc_rep;
     private javax.swing.JButton acc_save;
     private javax.swing.JTable acc_table;
     private javax.swing.JButton acc_update;
@@ -12900,7 +12749,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;

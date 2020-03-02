@@ -10545,38 +10545,24 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel35" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="acc_nb" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="acc_brrd" min="-2" max="-2" attributes="0"/>
-                                              <Component id="acc_rep" min="-2" max="-2" attributes="0"/>
-                                              <Component id="acc_brrr" min="-2" max="-2" attributes="0"/>
-                                              <Component id="acc_acc" min="-2" max="-2" attributes="0"/>
-                                              <Component id="acc_inv" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="nb" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
-                                                  <Component id="inv" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="brrd" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
-                                                  <Component id="brrr" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="rep" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
-                                                  <Component id="ua" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="acc_id" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="nb" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
+                                          <Component id="inv" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="brrd" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
+                                          <Component id="brrr" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="rep" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
+                                          <Component id="ua" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="acc_id" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="22" max="32767" attributes="0"/>
                               </Group>
@@ -10587,108 +10573,27 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel35" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="acc_nb" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                                          <Component id="acc_inv" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="acc_brrd" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="nb" min="-2" max="-2" attributes="0"/>
-                                              <Component id="inv" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="brrd" min="-2" max="-2" attributes="0"/>
-                                              <Component id="brrr" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="rep" min="-2" max="-2" attributes="0"/>
-                                              <Component id="ua" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="acc_id" min="-2" pref="9" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="nb" min="-2" max="-2" attributes="0"/>
+                                      <Component id="inv" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                  <Component id="acc_rep" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="acc_brrr" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                                  <Component id="acc_acc" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="brrd" min="-2" max="-2" attributes="0"/>
+                                      <Component id="brrr" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="rep" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ua" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="acc_id" min="-2" pref="9" max="-2" attributes="0"/>
+                                  <EmptySpace pref="126" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JLabel" name="jLabel35">
-                          <Properties>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Arial" size="14" style="0"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Access:"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="acc_nb">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="New Book"/>
-                            <Property name="enabled" type="boolean" value="false"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="acc_nbMouseClicked"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="acc_inv">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Inventory"/>
-                            <Property name="enabled" type="boolean" value="false"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="acc_invMouseClicked"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="acc_brrd">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Borrowed"/>
-                            <Property name="enabled" type="boolean" value="false"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="acc_brrdMouseClicked"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="acc_rep">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Report"/>
-                            <Property name="enabled" type="boolean" value="false"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="acc_repMouseClicked"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="acc_brrr">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Borrower"/>
-                            <Property name="enabled" type="boolean" value="false"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="acc_brrrMouseClicked"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JCheckBox" name="acc_acc">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="User Account"/>
-                            <Property name="enabled" type="boolean" value="false"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="acc_accMouseClicked"/>
-                          </Events>
-                        </Component>
                         <Component class="javax.swing.JLabel" name="nb">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="0"/>
