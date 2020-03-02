@@ -393,7 +393,6 @@ public class Main extends javax.swing.JFrame {
                 txt_level.setText(add4);
                 idd.setText(add);
                 sumup.setText("0");
-            
             }
             menu_title1.setText("Hi, "+txt_name.getText()+" ("+txt_level.getText()+")");
         }
@@ -411,7 +410,6 @@ public class Main extends javax.swing.JFrame {
             }
     }
         catch (SQLException x) {
-        //JOptionPane.showMessageDialog(null, "Incorrect Username or Password!");
         }
         user.setText("");
         pass.setText("");
@@ -422,6 +420,8 @@ public class Main extends javax.swing.JFrame {
         logcount();
         ohb_total();
         myaccount_details();
+        inlog();
+        all_ref();
     }
     public void classif_ref(){
         try {
@@ -742,7 +742,8 @@ public class Main extends javax.swing.JFrame {
     }
      public void userlog_ref(){
         try {
-            String sql = "SELECT * FROM user_log_tbl ORDER BY ID DESC";
+            String sql = "SELECT User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time FROM user_log_tbl ORDER BY ID DESC";
             pst = (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
 
@@ -754,7 +755,7 @@ public class Main extends javax.swing.JFrame {
     }
      public void acclog_ref(){
         try {
-            String sql = "SELECT * FROM account_log_tbl ORDER BY ID DESC";
+            String sql = "SELECT User_Name, Activity, Status, Date, Time FROM account_log_tbl ORDER BY ID DESC";
             pst = (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
 
@@ -823,6 +824,7 @@ public class Main extends javax.swing.JFrame {
         nb_prc.setText("");
         nb_da.setDate(null);
         jLabel187.setText("");
+        jLabel189.setText("");
     }
     public void nb_disable(){
         nb_is.setEnabled(false);
@@ -7853,6 +7855,8 @@ public class Main extends javax.swing.JFrame {
             men_logout.setForeground(new Color(96,96,96));
             men_logout.setBackground(new Color(255,255,255));
             menu_title.setText("LOGOUT");
+            outlog();
+            all_ref();
         }
         
     }//GEN-LAST:event_men_logoutMouseClicked
@@ -8158,7 +8162,7 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
        
-       
+        ulog15();
         all_ref();
         nb_clr();
         nb_disable();
@@ -8218,7 +8222,7 @@ public class Main extends javax.swing.JFrame {
         catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-        
+        ulog16();
         all_ref();
         nb_clr();
         nb_disable();
@@ -8280,6 +8284,7 @@ public class Main extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+        ulog17();
         all_ref();
         nb_clr();
         nb_disable();
@@ -8496,6 +8501,7 @@ public class Main extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, e);
             }
         }
+        ulog21();
         imgpath=null;
         all_ref();
     }//GEN-LAST:event_brr_saveActionPerformed
@@ -8591,6 +8597,7 @@ public class Main extends javax.swing.JFrame {
             }
             JOptionPane.showMessageDialog(null,"Please Check Entry!!!");
         }
+        ulog22();
         imgpath1=null;
         all_ref();
     }//GEN-LAST:event_brr_updateActionPerformed
@@ -8612,6 +8619,7 @@ public class Main extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+        ulog23();
         all_ref();
         brr_clr();
         brr_disable();
@@ -8780,6 +8788,7 @@ public class Main extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, e);
             }
         }
+        ulog18();
         imgpath1 = null;
     }//GEN-LAST:event_acc_saveActionPerformed
 
@@ -8852,6 +8861,7 @@ public class Main extends javax.swing.JFrame {
             }
             JOptionPane.showMessageDialog(null,"Please Check Entry!!!");
         }
+        ulog19();
         imgpath1=null;
         }
         else{
@@ -8876,6 +8886,7 @@ public class Main extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+        ulog20();
         all_ref();
         acc_clr();
         acc_disable();
@@ -9056,6 +9067,7 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
         supp_list();
+        ulog12();
         all_ref();
         supp_clr();
         supp_disable();
@@ -9082,6 +9094,7 @@ public class Main extends javax.swing.JFrame {
         catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+        ulog13();
         supp_list();
         all_ref();
         supp_clr();
@@ -9105,6 +9118,7 @@ public class Main extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+        ulog14();
         supp_list();
         all_ref();
         supp_clr();
@@ -9426,6 +9440,7 @@ public class Main extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+        ulog31();
         all_ref();
         
         so_isbn.setText("");
@@ -9788,7 +9803,7 @@ public class Main extends javax.swing.JFrame {
         catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-        
+        ulog24();
         all_ref();
         brrd_clr();
     }//GEN-LAST:event_si_calc1ActionPerformed
@@ -10113,12 +10128,13 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
         }
-        
+        ulog27();
         all_ref();
     }//GEN-LAST:event_brrd_upremActionPerformed
 
     private void brrd_returnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brrd_returnActionPerformed
     returnbor();
+    ulog25();
         all_ref();
         brrd_clr();
     }//GEN-LAST:event_brrd_returnActionPerformed
@@ -10449,6 +10465,7 @@ public class Main extends javax.swing.JFrame {
 
     private void nb_save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_save1ActionPerformed
         int i = Integer.parseInt(po_qt.getText());
+        ulog28();
         if(po_bt.getText().equals("") && i<=0){
         JOptionPane.showMessageDialog(null, "Please Fill Properly");
         }
@@ -10573,7 +10590,7 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
         
-        
+        ulog29();
         all_ref();
         tb_total();
         tc_total();
@@ -10640,7 +10657,7 @@ public class Main extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-        
+        ulog30();
         all_ref();
         tb_total();
         tc_total();
@@ -10948,7 +10965,6 @@ public class Main extends javax.swing.JFrame {
             pst.setString(2, sup_add1.getText());
 
             pst.execute(); 
-            all_ref();
         pub_list();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -10960,7 +10976,7 @@ public class Main extends javax.swing.JFrame {
         } 
 
         all_ref();
-        //pub_list();
+        ulog9();
         sup_name1.setText("");
         sup_add1.setText("");
     }//GEN-LAST:event_sup_save1ActionPerformed
@@ -10979,6 +10995,7 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
         all_ref();
+        ulog10();
         pub_list();
         sup_name1.setText("");
         sup_add1.setText("");
@@ -11002,6 +11019,7 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
         all_ref();
+        ulog11();
         pub_list();
         sup_name1.setText("");
         sup_add1.setText("");
@@ -11198,6 +11216,7 @@ public class Main extends javax.swing.JFrame {
 
             returnbor();
         }
+        ulog26();
         all_ref();
         brrd_clr();
     }//GEN-LAST:event_brrd_clear1ActionPerformed
@@ -11317,6 +11336,7 @@ public class Main extends javax.swing.JFrame {
             cancel_del();
             JOptionPane.showMessageDialog(null, "ENTRY RETURNED");
             nb_update9.setEnabled(false);
+            ulog4();
             }
             else if(jLabel141.getText().equals("Void")){
             int yes_no=JOptionPane.showConfirmDialog(this, "Are you sure to void this?", "Confirm",JOptionPane.YES_NO_OPTION);
@@ -11328,6 +11348,7 @@ public class Main extends javax.swing.JFrame {
                 else if(yes_no==JOptionPane.NO_OPTION){
 
                 }
+                ulog5();
             }
         }
         all_ref();
@@ -11441,6 +11462,7 @@ public class Main extends javax.swing.JFrame {
                 purchase_del();
                 }
                 JOptionPane.showMessageDialog(null, "SAVE ENTRY");
+                ulog1();
             }
 
             else if(jLabel124.getText().equals("Cancel")){
@@ -11469,6 +11491,7 @@ public class Main extends javax.swing.JFrame {
                 purchase_del();
 
                 JOptionPane.showMessageDialog(null, "CANCEL ENTRY");
+                ulog2();
             }
             else if(jLabel124.getText().equals("Void")){
 
@@ -11480,7 +11503,7 @@ public class Main extends javax.swing.JFrame {
                 else if(yes_no==JOptionPane.NO_OPTION){
 
                 }
-
+                ulog3();
             }
 
             nb_id.setText("");
@@ -11493,6 +11516,7 @@ public class Main extends javax.swing.JFrame {
             nb_update8.setEnabled(false);
             all_ref();
         }
+        
         all_ref();
     }//GEN-LAST:event_nb_update8ActionPerformed
 
@@ -11541,7 +11565,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_rep_bo_tableMouseClicked
 
     private void nb_update11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_update11ActionPerformed
-        // TODO add your handling code here:
+        ulog6();
     }//GEN-LAST:event_nb_update11ActionPerformed
 
     private void nb_update13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_update13ActionPerformed
@@ -11704,7 +11728,7 @@ public class Main extends javax.swing.JFrame {
         
         po_cl.setSelectedItem(si_isbn2.getText());
         all_ref();
-            
+            ulog8();
             classif_list();
             nb_class.setSelectedItem(si_isbn2.getText());
             si_isbn2.setText("");
@@ -11774,6 +11798,7 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
          all_ref();
+         ulog7();
          class_num1.setText("");
          si_isbn2.setText("");
          cl_io.setText("");
@@ -12059,6 +12084,7 @@ public class Main extends javax.swing.JFrame {
             }catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }  
+        ulog32();
         all_ref();
         course_clr();
     }//GEN-LAST:event_so_save1ActionPerformed
@@ -12081,6 +12107,7 @@ public class Main extends javax.swing.JFrame {
         catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+        ulog33();
         all_ref();
         course_clr();
         so_save2.setEnabled(false);
@@ -12102,6 +12129,7 @@ public class Main extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+        ulog34();
         all_ref();
         course_clr();
         so_save2.setEnabled(false);
@@ -12449,6 +12477,582 @@ public class Main extends javax.swing.JFrame {
             
         }
     }
+    
+    public void ulog1(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Receive Book Arrived");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, nb_bt.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog2(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Cancel");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, nb_bt.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog3(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Void");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, nb_bt.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog4(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Return");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, jLabel143.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog5(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Void from cancel");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, jLabel143.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog6(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Print Payment Collection");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, "");
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog7(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Delete Classification");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, si_isbn2.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog8(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Save Classification");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, si_isbn2.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog9(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Save Publisher");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, sup_add1.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog10(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Update Publisher");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, sup_add1.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog11(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Delete Publisher");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, sup_add1.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog12(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Save Supplier");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, sup_name.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog13(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Update Supplier");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, sup_name.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog14(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Delete Supplier");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, sup_name.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog15(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Add Book");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, nb_bt.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog16(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Update Book Info.");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, nb_bt.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog17(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Delete Book Info.");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, nb_bt.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog18(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Add Account");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, acc_user.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog19(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Update Account");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, acc_user.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog20(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Delete Account");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, acc_user.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog21(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Add Borrower");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, brr_sn.getText()+", "+brr_fn.getText()+" "+brr_mn.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog22(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Update Borrower");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, brr_sn.getText()+", "+brr_fn.getText()+" "+brr_mn.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog23(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Delete Borrower");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, brr_sn.getText()+", "+brr_fn.getText()+" "+brr_mn.getText());
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog24(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Process Book Loan");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, brrd_fn.getText()+" ("+brrd_bt.getText()+")");
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog25(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Return Book Loan");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, brrd_fn.getText()+" ("+brrd_bt.getText()+")");
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog26(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Paid Book Loan");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, brrd_fn.getText()+" ("+brrd_bt.getText()+")");
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog27(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Damage/Loss Book Loan");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, brrd_fn.getText()+" ("+brrd_bt.getText()+")");
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog28(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Add Purchase Request");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, po_bt.getText()+" ("+po_or.getText()+")");
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog29(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Edit Purchase Request");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, po_bt.getText()+" ("+po_or.getText()+")");
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog30(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Delete Purchase Request");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, po_bt.getText()+" ("+po_or.getText()+")");
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog31(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Stock Out");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, so_bt.getText()+" ("+so_qty.getText()+")");
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog32(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Add Course");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, so_date1.getText()+" ("+so_enc1.getText()+")");
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog33(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Update Course");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, so_date1.getText()+" ("+so_enc1.getText()+")");
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void ulog34(){
+        try {
+                    String sql = "Insert into user_log_tbl (User_Name, Activity, Status, Book_Title, "
+                    + "Date, Time) values (?,?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Delete Course");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, so_date1.getText()+" ("+so_enc1.getText()+")");
+                    pst.setString(5, txt_date1.getText());
+                    pst.setString(6, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void inlog(){
+        try {
+                    String sql = "Insert into account_log_tbl (User_Name, Activity, Status, "
+                    + "Date, Time) values (?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Log-in");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, txt_date1.getText());
+                    pst.setString(5, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    public void outlog(){
+        try {
+                    String sql = "Insert into account_log_tbl (User_Name, Activity, Status, "
+                    + "Date, Time) values (?,?,?,?,?)";
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                    pst.setString(1, txt_name.getText());
+                    pst.setString(2, "Log-out");
+                    pst.setString(3, txt_level.getText());
+                    pst.setString(4, txt_date1.getText());
+                    pst.setString(5, txt_time.getText());
+                    pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+    }
+    
     
     /**
      * @param args the command line arguments
