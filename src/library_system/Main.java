@@ -12239,12 +12239,7 @@ public class Main extends javax.swing.JFrame {
     }
     
     public static String getDate(Calendar cal){
-        
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
-//LocalDate date1 = LocalDate.parse(startDate, formatter);
-//LocalDate date2 = LocalDate.parse(passedDate, formatter);
-//Calendar cal 
-        
+
         return "" + (cal.get(Calendar.MONTH)+1) +"/" +
                 cal.get(Calendar.DATE) + "/" + cal.get(Calendar.YEAR);
     }
