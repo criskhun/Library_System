@@ -1621,6 +1621,13 @@ public class Main extends javax.swing.JFrame {
         jPanel64 = new javax.swing.JPanel();
         jScrollPane32 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        booklist = new javax.swing.JPanel();
+        jPanel51 = new javax.swing.JPanel();
+        jScrollPane20 = new javax.swing.JScrollPane();
+        pobl_table = new javax.swing.JTable();
+        nb_update3 = new javax.swing.JButton();
+        po_or1 = new javax.swing.JTextField();
+        jLabel108 = new javax.swing.JLabel();
         test = new javax.swing.JPanel();
         jScrollPane21 = new javax.swing.JScrollPane();
         po_test = new javax.swing.JTable();
@@ -1741,23 +1748,22 @@ public class Main extends javax.swing.JFrame {
         jLabel126 = new javax.swing.JLabel();
         jLabel141 = new javax.swing.JLabel();
         jLabel140 = new javax.swing.JLabel();
+        jLabel85 = new javax.swing.JLabel();
+        jLabel87 = new javax.swing.JLabel();
+        jLabel199 = new javax.swing.JLabel();
+        jLabel200 = new javax.swing.JLabel();
+        jLabel201 = new javax.swing.JLabel();
+        jLabel202 = new javax.swing.JLabel();
+        jLabel203 = new javax.swing.JLabel();
+        jLabel204 = new javax.swing.JLabel();
+        jLabel205 = new javax.swing.JLabel();
+        jLabel206 = new javax.swing.JLabel();
         jLabel121 = new javax.swing.JLabel();
         jLabel122 = new javax.swing.JLabel();
         ttt = new javax.swing.JLabel();
         code = new javax.swing.JLabel();
         jLabel115 = new javax.swing.JLabel();
         jLabel76 = new javax.swing.JLabel();
-        booklist = new javax.swing.JPanel();
-        jPanel51 = new javax.swing.JPanel();
-        jScrollPane20 = new javax.swing.JScrollPane();
-        pobl_table = new javax.swing.JTable();
-        nb_update3 = new javax.swing.JButton();
-        po_or1 = new javax.swing.JTextField();
-        jLabel108 = new javax.swing.JLabel();
-        classification = new javax.swing.JPanel();
-        useraccount = new javax.swing.JPanel();
-        borrower = new javax.swing.JPanel();
-        newbook = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
@@ -6656,6 +6662,92 @@ public class Main extends javax.swing.JFrame {
 
         stock.add(user_logo, "card9");
 
+        booklist.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel51.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel51.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "BOOK INFO"));
+
+        pobl_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        pobl_table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        pobl_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pobl_tableMouseClicked(evt);
+            }
+        });
+        jScrollPane20.setViewportView(pobl_table);
+
+        javax.swing.GroupLayout jPanel51Layout = new javax.swing.GroupLayout(jPanel51);
+        jPanel51.setLayout(jPanel51Layout);
+        jPanel51Layout.setHorizontalGroup(
+            jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1509, Short.MAX_VALUE)
+        );
+        jPanel51Layout.setVerticalGroup(
+            jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+        );
+
+        nb_update3.setBackground(new java.awt.Color(51, 153, 255));
+        nb_update3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        nb_update3.setForeground(new java.awt.Color(255, 255, 255));
+        nb_update3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/click.png"))); // NOI18N
+        nb_update3.setText("Choose");
+        nb_update3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nb_update3ActionPerformed(evt);
+            }
+        });
+
+        po_or1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                po_or1KeyReleased(evt);
+            }
+        });
+
+        jLabel108.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel108.setText("Search Book:");
+
+        javax.swing.GroupLayout booklistLayout = new javax.swing.GroupLayout(booklist);
+        booklist.setLayout(booklistLayout);
+        booklistLayout.setHorizontalGroup(
+            booklistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(booklistLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(booklistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel51, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(booklistLayout.createSequentialGroup()
+                        .addComponent(nb_update3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel108, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(po_or1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        booklistLayout.setVerticalGroup(
+            booklistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, booklistLayout.createSequentialGroup()
+                .addGap(0, 53, Short.MAX_VALUE)
+                .addGroup(booklistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nb_update3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, booklistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(po_or1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel108, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        stock.add(booklist, "card11");
+
         test.setBackground(new java.awt.Color(204, 204, 204));
 
         po_test.setModel(new javax.swing.table.DefaultTableModel(
@@ -7559,11 +7651,48 @@ public class Main extends javax.swing.JFrame {
 
         jLabel140.setText("jLabel124");
 
+        jLabel85.setText("jLabel85");
+
+        jLabel87.setText("jLabel87");
+
+        jLabel199.setText("jLabel199");
+
+        jLabel200.setText("jLabel200");
+
+        jLabel201.setText("jLabel201");
+
+        jLabel202.setText("jLabel202");
+
+        jLabel203.setText("jLabel203");
+
+        jLabel204.setText("jLabel204");
+
+        jLabel205.setText("jLabel205");
+
+        jLabel206.setText("jLabel206");
+
         javax.swing.GroupLayout jPanel72Layout = new javax.swing.GroupLayout(jPanel72);
         jPanel72.setLayout(jPanel72Layout);
         jPanel72Layout.setHorizontalGroup(
             jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel72Layout.createSequentialGroup()
+                .addGap(139, 139, 139)
+                .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel87)
+                    .addComponent(jLabel85))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel199)
+                    .addComponent(jLabel200)
+                    .addComponent(jLabel203)
+                    .addComponent(jLabel205))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel206)
+                    .addComponent(jLabel204)
+                    .addComponent(jLabel201)
+                    .addComponent(jLabel202))
+                .addGap(42, 42, 42))
             .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel72Layout.createSequentialGroup()
                     .addContainerGap()
@@ -7621,7 +7750,26 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel72Layout.setVerticalGroup(
             jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel72Layout.createSequentialGroup()
+                .addContainerGap(151, Short.MAX_VALUE)
+                .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel199)
+                    .addComponent(jLabel202))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel85)
+                    .addComponent(jLabel200)
+                    .addComponent(jLabel201))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel87)
+                    .addComponent(jLabel203)
+                    .addComponent(jLabel204))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel205)
+                    .addComponent(jLabel206))
+                .addGap(44, 44, 44))
             .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel72Layout.createSequentialGroup()
                     .addGap(103, 103, 103)
@@ -7730,156 +7878,10 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(account_wasteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel76)
                             .addComponent(jLabel115))))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         stock.add(account_waste, "card13");
-
-        booklist.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel51.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel51.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "BOOK INFO"));
-
-        pobl_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        pobl_table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
-        pobl_table.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pobl_tableMouseClicked(evt);
-            }
-        });
-        jScrollPane20.setViewportView(pobl_table);
-
-        javax.swing.GroupLayout jPanel51Layout = new javax.swing.GroupLayout(jPanel51);
-        jPanel51.setLayout(jPanel51Layout);
-        jPanel51Layout.setHorizontalGroup(
-            jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1509, Short.MAX_VALUE)
-        );
-        jPanel51Layout.setVerticalGroup(
-            jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
-        );
-
-        nb_update3.setBackground(new java.awt.Color(51, 153, 255));
-        nb_update3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        nb_update3.setForeground(new java.awt.Color(255, 255, 255));
-        nb_update3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/click.png"))); // NOI18N
-        nb_update3.setText("Choose");
-        nb_update3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nb_update3ActionPerformed(evt);
-            }
-        });
-
-        po_or1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                po_or1KeyReleased(evt);
-            }
-        });
-
-        jLabel108.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel108.setText("Search Book:");
-
-        javax.swing.GroupLayout booklistLayout = new javax.swing.GroupLayout(booklist);
-        booklist.setLayout(booklistLayout);
-        booklistLayout.setHorizontalGroup(
-            booklistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(booklistLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(booklistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel51, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(booklistLayout.createSequentialGroup()
-                        .addComponent(nb_update3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel108, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(po_or1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        booklistLayout.setVerticalGroup(
-            booklistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, booklistLayout.createSequentialGroup()
-                .addGap(0, 53, Short.MAX_VALUE)
-                .addGroup(booklistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nb_update3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, booklistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(po_or1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel108, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        stock.add(booklist, "card11");
-
-        classification.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout classificationLayout = new javax.swing.GroupLayout(classification);
-        classification.setLayout(classificationLayout);
-        classificationLayout.setHorizontalGroup(
-            classificationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1539, Short.MAX_VALUE)
-        );
-        classificationLayout.setVerticalGroup(
-            classificationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 632, Short.MAX_VALUE)
-        );
-
-        stock.add(classification, "card10");
-
-        useraccount.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout useraccountLayout = new javax.swing.GroupLayout(useraccount);
-        useraccount.setLayout(useraccountLayout);
-        useraccountLayout.setHorizontalGroup(
-            useraccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1539, Short.MAX_VALUE)
-        );
-        useraccountLayout.setVerticalGroup(
-            useraccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 632, Short.MAX_VALUE)
-        );
-
-        stock.add(useraccount, "card7");
-
-        borrower.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout borrowerLayout = new javax.swing.GroupLayout(borrower);
-        borrower.setLayout(borrowerLayout);
-        borrowerLayout.setHorizontalGroup(
-            borrowerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1539, Short.MAX_VALUE)
-        );
-        borrowerLayout.setVerticalGroup(
-            borrowerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 632, Short.MAX_VALUE)
-        );
-
-        stock.add(borrower, "card6");
-
-        newbook.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout newbookLayout = new javax.swing.GroupLayout(newbook);
-        newbook.setLayout(newbookLayout);
-        newbookLayout.setHorizontalGroup(
-            newbookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1539, Short.MAX_VALUE)
-        );
-        newbookLayout.setVerticalGroup(
-            newbookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 632, Short.MAX_VALUE)
-        );
-
-        stock.add(newbook, "card3");
 
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
@@ -7934,10 +7936,7 @@ public class Main extends javax.swing.JFrame {
         Records.setVisible(false);
         inventory.setVisible(false);
         Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
         user_logo.setVisible(false);
-        classification.setVisible(false);
         booklist.setVisible(false);
 
         menu_title.setText("DASHBOARD");
@@ -8014,11 +8013,8 @@ public class Main extends javax.swing.JFrame {
         Records.setVisible(false);
         inventory.setVisible(false);
         Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
         report.setVisible(false);
         user_logo.setVisible(false);
-        classification.setVisible(false);
         booklist.setVisible(false);
         
     }//GEN-LAST:event_men_dashMouseClicked
@@ -8052,11 +8048,8 @@ public class Main extends javax.swing.JFrame {
         Records.setVisible(true);
         inventory.setVisible(false);
         Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
         report.setVisible(false);
         user_logo.setVisible(false);
-        classification.setVisible(false);
         booklist.setVisible(false);
         si_save3.setVisible(false);
         sup_save3.setVisible(false);
@@ -8095,11 +8088,8 @@ public class Main extends javax.swing.JFrame {
         Records.setVisible(false);
         inventory.setVisible(true);
         Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
         report.setVisible(false);
         user_logo.setVisible(false);
-        classification.setVisible(false);
         booklist.setVisible(false);
     }//GEN-LAST:event_men_invMouseClicked
 
@@ -8124,11 +8114,8 @@ public class Main extends javax.swing.JFrame {
         Records.setVisible(false);
         inventory.setVisible(false);
         Bookloan.setVisible(true);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
         report.setVisible(false);
         user_logo.setVisible(false);
-        classification.setVisible(false);
         booklist.setVisible(false);
     }//GEN-LAST:event_men_brrdMouseClicked
 
@@ -9065,11 +9052,8 @@ public class Main extends javax.swing.JFrame {
         Records.setVisible(false);
         inventory.setVisible(false);
         Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
         report.setVisible(true);
         user_logo.setVisible(false);
-        classification.setVisible(false);
         booklist.setVisible(false);
     }//GEN-LAST:event_men_repMouseClicked
 
@@ -9847,14 +9831,6 @@ public class Main extends javax.swing.JFrame {
             returndate.setText((String) getDate(cal));
         }
         
-        int a = Integer.parseInt(brrd_bqty.getText()); 
-        int b = Integer.parseInt(brrd_qty.getText());
-        int total;
-        
-        total = a - b;
-       
-        brrd_total.setText(Integer.toString(total));
-        
         try {
             String sql = "Insert into borrowed_tbl (Library_ID, Full_Name, Status, Book_title, Book_Price, Classification, "
                     + "Fines, Quantity, Borrowed_Date, Return_Date, Remarks, Payable) "
@@ -9902,6 +9878,14 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
         
+        int a = Integer.parseInt(brrd_bqty.getText()); 
+        int b = Integer.parseInt(brrd_qty.getText());
+        int total;
+        
+        total = a - b;
+       
+        brrd_total.setText(Integer.toString(total));
+        
         try {
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE stockin_tbl SET  "
                     + " Quantity=? WHERE Book_title='" + brrd_bt.getText() + "'");
@@ -9915,6 +9899,40 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
         
+        try{
+            String sql="SELECT * FROM holding_tbl where Book_title = '" + (String) brrd_bt.getText() + "' ";
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            if(rs.next()){
+            String name =rs.getString("On_Hand");
+            String name0 =rs.getString("Borrowed");
+            jLabel199.setText(name);
+            jLabel200.setText(name0);
+            }
+            }
+            catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            }
+        int oh = Integer.parseInt(jLabel199.getText());
+        int br = Integer.parseInt(jLabel200.getText());
+        int tot1,tot2;
+        tot1=oh-b;
+        tot2=br+b;
+        jLabel201.setText(Integer.toString(tot1));
+        jLabel202.setText(Integer.toString(tot2));
+        
+        try {
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE holding_tbl SET On_Hand=?, "
+                    + " Borrowed=? WHERE Book_title='" + brrd_bt.getText() + "'");
+            
+            pst.setString(1, jLabel201.getText());
+            pst.setString(2, jLabel202.getText());
+            
+            pst.execute();
+        }
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
         
         all_ref();
         brrd_clr();
@@ -9962,7 +9980,7 @@ public class Main extends javax.swing.JFrame {
         ((JTextField)dddd2.getDateEditor().getUiComponent()).setText(model.getValueAt(z, 10).toString());
         
         try{
-            String sql="SELECT Book_title, On_Hand, Borrowed, Total_Holding FROM holding_tbl where Book_title= '" + (String) brrd_bt.getText() + "' ";
+            String sql="SELECT * FROM holding_tbl where Book_title= '" + (String) brrd_bt.getText() + "' ";
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
              if(rs.next()){
@@ -9982,7 +10000,6 @@ public class Main extends javax.swing.JFrame {
             } 
         
         try{
-        
             String sqll="SELECT Quantity FROM damage_tbl where Book_title= '" + (String) brrd_bt.getText() + "' ";
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sqll);
             rs = pst.executeQuery();
@@ -9992,7 +10009,6 @@ public class Main extends javax.swing.JFrame {
             jLabel151.setText(name);
              }
         }
-        
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             }  
@@ -10000,8 +10016,7 @@ public class Main extends javax.swing.JFrame {
         if(brrd_remcb.getSelectedItem().equals("Borrowed")){
             brrd_return.setEnabled(true);
             brrd_clear1.setEnabled(false);
-            
-            
+
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("M/dd/yyyy");
             LocalDate start = LocalDate.parse(borroweddate.getText(),dateTimeFormatter);
             LocalDate  end = LocalDate.parse(txt_date1.getText(),dateTimeFormatter);
@@ -10017,7 +10032,7 @@ public class Main extends javax.swing.JFrame {
             
             jLabel129.setText(Double.toString(total));
                 
-                try {
+        try {
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE borrowed_tbl SET  "
                     + " Remarks=?, Payable=? WHERE ID='" + brrd_id.getText() + "'");
             
@@ -10025,7 +10040,6 @@ public class Main extends javax.swing.JFrame {
             pst.setString(2, jLabel129.getText());
             
             pst.execute();
-            //JOptionPane.showMessageDialog(null, "Data Updated");
         }
         catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -10147,7 +10161,7 @@ public class Main extends javax.swing.JFrame {
         if(brrd_remcb.getSelectedItem().equals("Loss") || brrd_remcb.getSelectedItem().equals("Damage")){
             int b = Integer.parseInt(brrd_qty.getText());
             int bb = Integer.parseInt(brrd_bp.getText());
-                int totalz;
+            int totalz;
                 
                 totalz = b * bb;
                 
@@ -10166,10 +10180,85 @@ public class Main extends javax.swing.JFrame {
         catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+        
+        try{
+            String sql="SELECT * FROM holding_tbl where Book_title = '" + (String) brrd_bt.getText() + "' ";
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            if(rs.next()){
+            String name =rs.getString("Damage");
+            String name0 =rs.getString("Borrowed");
+            String name1 =rs.getString("Total_Holding");
+            jLabel199.setText(name);
+            jLabel200.setText(name0);
+            jLabel203.setText(name1);
+            }
+            }
+            catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            }
+            int dm = Integer.parseInt(jLabel199.getText());
+            int br = Integer.parseInt(jLabel200.getText());
+            int th = Integer.parseInt(jLabel203.getText());
+            int tot1,tot2,tot3;
+            tot1=dm+b;
+            tot2=br-b;
+            tot3=th-b;
+            jLabel202.setText(Integer.toString(tot1));
+            jLabel201.setText(Integer.toString(tot2));
+            jLabel204.setText(Integer.toString(tot3));
+        try {
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE holding_tbl SET Damage=?, "
+                    + " Borrowed=?, Total_Holding=? WHERE Book_title='" + brrd_bt.getText() + "'");
+            
+            pst.setString(1, jLabel202.getText());
+            pst.setString(2, jLabel201.getText());
+            pst.setString(3, jLabel204.getText());
+            
+            pst.execute();
+        }
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
         }
         else {
         JOptionPane.showMessageDialog(null, "Please Check Return Date");
         }
+        try{
+            String sql="SELECT * FROM damage_tbl where Book_title = '" + (String) brrd_bt.getText() + "' ";
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            if(rs.next()){
+            String named =rs.getString("Quantity");
+            jLabel205.setText(named);
+            }
+            }
+            catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            }
+        int qty = Integer.parseInt(jLabel205.getText());
+        int dmg = Integer.parseInt(jLabel202.getText());
+        int tot4;
+        
+        if(dmg<=0){
+        jLabel206.setText("0");
+        }
+        else{
+        tot4=qty-dmg;
+        jLabel206.setText(Integer.toString(tot4));
+         try {
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE damage_tbl SET "
+                    + " Quantity=? WHERE Book_title='" + brrd_bt.getText() + "'");
+            
+            pst.setString(1, jLabel206.getText());
+            
+            pst.execute();
+        }
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        }
+        
         all_ref();
     }//GEN-LAST:event_brrd_upremActionPerformed
 
@@ -10198,14 +10287,10 @@ public class Main extends javax.swing.JFrame {
         men_logout.setForeground(new Color(255,255,255));
         
         dashboard.setVisible(false);
-        newbook.setVisible(false);
         inventory.setVisible(false);
         Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
         report.setVisible(false);
         user_logo.setVisible(true);
-        classification.setVisible(false);
         booklist.setVisible(false);
     }//GEN-LAST:event_men_poMouseClicked
 
@@ -10258,14 +10343,10 @@ public class Main extends javax.swing.JFrame {
         men_logout.setForeground(new Color(255,255,255));
         
         dashboard.setVisible(true);
-        newbook.setVisible(false);
         inventory.setVisible(false);
         Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
         report.setVisible(false);
         user_logo.setVisible(false);
-        classification.setVisible(false);
         
         booksummary.setVisible(false);
         account.setVisible(true);
@@ -10742,14 +10823,10 @@ public class Main extends javax.swing.JFrame {
         men_logout.setForeground(new Color(255,255,255));
         
         dashboard.setVisible(false);
-        newbook.setVisible(false);
         inventory.setVisible(true);
         Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
         report.setVisible(false);
         user_logo.setVisible(false);
-        classification.setVisible(false);
         booklist.setVisible(false);
     }//GEN-LAST:event_nb_update3ActionPerformed
 
@@ -10772,14 +10849,10 @@ public class Main extends javax.swing.JFrame {
         men_logout.setForeground(new Color(255,255,255));
         
         dashboard.setVisible(false);
-        newbook.setVisible(false);
         inventory.setVisible(false);
         Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
         report.setVisible(false);
         user_logo.setVisible(false);
-        classification.setVisible(false);
         booklist.setVisible(true);
         
         jLabel76.setText("Existing");
@@ -10878,7 +10951,6 @@ public class Main extends javax.swing.JFrame {
         Records.setVisible(true);
         inventory.setVisible(false);
         Bookloan.setVisible(false);
-        borrower.setVisible(false);
         report.setVisible(false);
         
         si_save3.setText("Back To P.O.");
@@ -11215,11 +11287,8 @@ public class Main extends javax.swing.JFrame {
         Records.setVisible(false);
         inventory.setVisible(false);
         Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
         report.setVisible(false);
         user_logo.setVisible(false);
-        classification.setVisible(false);
         
         booksummary.setVisible(false);
         account.setVisible(true);
@@ -11311,8 +11380,6 @@ public class Main extends javax.swing.JFrame {
         inventory.setVisible(false);
         Records.setVisible(true);
         Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
         report.setVisible(false);
 
     }//GEN-LAST:event_class_add3ActionPerformed
@@ -11775,14 +11842,10 @@ public class Main extends javax.swing.JFrame {
         men_logout.setForeground(new Color(255,255,255));
         
         dashboard.setVisible(false);
-        newbook.setVisible(true);
         inventory.setVisible(false);
         Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
         report.setVisible(false);
         user_logo.setVisible(false);
-        classification.setVisible(false);
         
         po_cl.setSelectedItem(si_isbn2.getText());
         all_ref();
@@ -11814,14 +11877,10 @@ public class Main extends javax.swing.JFrame {
         men_logout.setForeground(new Color(255,255,255));
 
         dashboard.setVisible(false);
-        newbook.setVisible(false);
         inventory.setVisible(false);
         Bookloan.setVisible(false);
-        borrower.setVisible(false);
-        useraccount.setVisible(false);
         report.setVisible(false);
         user_logo.setVisible(true);
-        classification.setVisible(false);
         booklist.setVisible(false);
         
         all_ref();
@@ -12439,30 +12498,36 @@ public class Main extends javax.swing.JFrame {
     
     public void upbookqty(){
         try{
-            String sql="SELECT On_Hand FROM holding_tbl where Book_title = '" + (String) jLabel136.getText() + "' ";
+            String sql="SELECT * FROM holding_tbl where Book_title = '" + (String) jLabel136.getText() + "' ";
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
             if(rs.next()){
             String name =rs.getString("On_Hand");
+            String name1 =rs.getString("Total_Holding");
             jLabel134.setText(name);
+            jLabel85.setText(name1);
             }
             }
             catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             }
         int a = Integer.parseInt(jLabel134.getText());
+        int aa = Integer.parseInt(jLabel85.getText());
         int b = Integer.parseInt(nb_qty.getText());
-        int c;
+        int c,d;
         
         c = a + b;
+        d = aa + b;
         
         jLabel135.setText(Integer.toString(c));
+        jLabel87.setText(Integer.toString(d));
         
     try {
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE holding_tbl SET On_Hand=? "
-                    + " WHERE Book_title='" + jLabel136.getText() + "'");
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE holding_tbl SET On_Hand=?, "
+                    + " Total_Holding=? WHERE Book_title='" + jLabel136.getText() + "'");
             
             pst.setString(1, jLabel135.getText());
+            pst.setString(2, jLabel87.getText());
             
             pst.execute();
         }
@@ -12609,7 +12674,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel booksummary;
     private javax.swing.JTextField borroweddate;
     private javax.swing.JTable borrowedlog_table;
-    private javax.swing.JPanel borrower;
     private javax.swing.JTextField brr_add;
     private com.toedter.calendar.JDateChooser brr_bd;
     private javax.swing.JButton brr_browse;
@@ -12673,7 +12737,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField class_num1;
     private javax.swing.JPanel class_save_hide1;
     private javax.swing.JTable class_table1;
-    private javax.swing.JPanel classification;
     private javax.swing.JLabel code;
     private javax.swing.JButton course_add;
     private javax.swing.JPanel dashboard;
@@ -12812,8 +12875,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel196;
     private javax.swing.JLabel jLabel197;
     private javax.swing.JLabel jLabel198;
+    private javax.swing.JLabel jLabel199;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel200;
+    private javax.swing.JLabel jLabel201;
+    private javax.swing.JLabel jLabel202;
+    private javax.swing.JLabel jLabel203;
+    private javax.swing.JLabel jLabel204;
+    private javax.swing.JLabel jLabel205;
+    private javax.swing.JLabel jLabel206;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -12884,7 +12955,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
     private javax.swing.JLabel jLabel88;
     private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
@@ -13104,7 +13177,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton nb_update7;
     private javax.swing.JButton nb_update8;
     private javax.swing.JButton nb_update9;
-    private javax.swing.JPanel newbook;
     private javax.swing.JTextField ohb_bd;
     private javax.swing.JTextField ohb_bt;
     private javax.swing.JTextField ohb_class;
@@ -13240,7 +13312,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel ua;
     private javax.swing.JTextField user;
     private javax.swing.JPanel user_logo;
-    private javax.swing.JPanel useraccount;
     // End of variables declaration//GEN-END:variables
 
 //    private String Double(double total) {
