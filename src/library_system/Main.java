@@ -59,8 +59,7 @@ public class Main extends javax.swing.JFrame {
         all_ref();
         supp_list();
         brrr_list();
-        //stat_list();
-        class_list();
+        book_list();
         classif_list();
         pub_list();
         course_list();
@@ -106,6 +105,8 @@ public class Main extends javax.swing.JFrame {
         course_ref();
         acclog_ref();
         userlog_ref();
+        tcode_ref();
+        rc_tcode();
     }
     
     public void accesslvl(){
@@ -141,6 +142,14 @@ public class Main extends javax.swing.JFrame {
         dsc_id.setText(value);
     }
     
+    public void tcode(){
+    int column = 0;
+    int row = 0;
+    String value = jTable4.getModel().getValueAt(row, column).toString();
+
+        jLabel35.setText(value);
+    }
+    
     public void rc_nb(){
     int row = nb_table.getRowCount();
         jLabel188.setText(String.valueOf(row));
@@ -149,6 +158,10 @@ public class Main extends javax.swing.JFrame {
     public void rc_term(){
     int row = po_test.getRowCount();
         rc_po.setText(String.valueOf(row));
+    }
+    public void rc_tcode(){
+    int row = jTable4.getRowCount();
+        jLabel208.setText(String.valueOf(row));
     }
     
     public void rc_totitem(){
@@ -266,7 +279,7 @@ public class Main extends javax.swing.JFrame {
                 SimpleDateFormat s = new SimpleDateFormat("h:mm aa");
                 txt_time.setText(s.format(d));
 
-                SimpleDateFormat st = new SimpleDateFormat("MM/dd/yyyy");
+                SimpleDateFormat st = new SimpleDateFormat("M/d/yyyy");
                 txt_date1.setText(st.format(d));
                 
             }
@@ -351,14 +364,14 @@ public class Main extends javax.swing.JFrame {
     }catch (Exception e) {
     }
     }
-    private void class_list(){//filter encode
-        brrd_class.removeAllItems();
-    String sqll = "select * from classification_tbl";
+    public void book_list(){
+        brrd_bt.removeAllItems();
+    String sqll = "select * from stockin_tbl";
     try{
         pst= conn.prepareStatement(sqll);
         rs = pst.executeQuery();
         while(rs.next()){
-            brrd_class.addItem(rs.getString("Classname"));
+            brrd_bt.addItem(rs.getString("Book_title"));
         }
     }catch (Exception e) {
     }
@@ -585,7 +598,7 @@ public class Main extends javax.swing.JFrame {
     }
     public void brrdlog_ref(){
         try {
-            String sql = "SELECT * FROM borrowed_tbl ORDER BY ID DESC";
+            String sql = "SELECT * FROM borrowed_tbl ORDER BY Trans_Code DESC";
             pst = (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
 
@@ -597,7 +610,7 @@ public class Main extends javax.swing.JFrame {
     }
     public void ohb_ref(){
         try {
-            String sql = "SELECT * FROM borrowed_tbl ORDER BY ID DESC";
+            String sql = "SELECT * FROM borrowed_tbl ORDER BY Trans_Code DESC";
             pst = (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
 
@@ -639,6 +652,18 @@ public class Main extends javax.swing.JFrame {
             rs = pst.executeQuery();
 
             po_test.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+    public void tcode_ref(){
+        try {
+            String sql = "SELECT * FROM trans_code_tbl ORDER BY ID DESC";
+            pst = (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+
+            jTable4.setModel(DbUtils.resultSetToTableModel(rs));
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -960,10 +985,10 @@ public class Main extends javax.swing.JFrame {
     public void brrd_clr(){
         brrd_fn.setText("");
         brrd_libid1.setText("");
-        brrd_stat.setSelectedItem("--Choose Status--");
-        brrd_bt.setText("");
+        brrd_stat.setText("");
+        brrd_bt.setSelectedIndex(0);
         brrd_bp.setText("");
-        brrd_class.setSelectedIndex(0);
+        brrd_class.setText("");
         brrd_fd.setText("");
         brrd_qty.setText("1");
         brrd_qty.setForeground(Color.BLACK);
@@ -1076,6 +1101,128 @@ public class Main extends javax.swing.JFrame {
     nb_update7.setEnabled(true);
     }
     }
+    
+    public void bookloanproc() {
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("M/dd/yyyy");
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeZone(TimeZone.getTimeZone("GMT"));
+        
+        borroweddate.setText((String) getDate(cal));
+        
+        if(brrd_stat.getText().equals("Faculty")){
+            cal.add(Calendar.DATE, 7);
+            returndate.setText((String) getDate(cal));
+        }
+        else if(brrd_stat.getText().equals("Student")){
+            cal.add(Calendar.DATE, 3);
+            returndate.setText((String) getDate(cal));
+        }
+        
+        try {
+            String sql = "Insert into borrowed_tbl (Library_ID, Full_Name, Status, Book_title, Book_Price, Classification, "
+                    + "Fines, Quantity, Borrowed_Date, Return_Date, Remarks, Payable, Trans_Code) "
+                    + " values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+            
+            pst.setString(1, brrd_libid1.getText());
+            pst.setString(2, brrd_fn.getText());
+            pst.setString(3, brrd_stat.getText());
+            pst.setString(4, (String) brrd_bt.getSelectedItem());
+            pst.setString(5, brrd_bp.getText());
+            pst.setString(6, brrd_class.getText());
+            pst.setString(7, brrd_fd.getText());
+            pst.setString(8, brrd_qty.getText());
+            pst.setString(9, borroweddate.getText());
+            pst.setString(10, returndate.getText());
+            pst.setString(11, (String) brrd_remcb.getSelectedItem());
+            pst.setString(12, "0");
+            pst.setString(13, transcoded.getText());
+
+            pst.execute(); 
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        try {
+            String sql1 = "Insert into brrdlog_tbl (Full_Name, Status, Book_title, Classification, "
+                    + " Borrowed_Date, Encoder, Date) "
+                    + " values (?,?,?,?,?,?,?)";
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql1);
+            
+            pst.setString(1, brrd_fn.getText());
+            pst.setString(2, brrd_stat.getText());
+            pst.setString(3, (String) brrd_bt.getSelectedItem());
+            pst.setString(4, brrd_class.getText());
+            pst.setString(5, borroweddate.getText());
+            pst.setString(6, txt_name.getText());
+            pst.setString(7, txt_date1.getText());
+
+            pst.execute(); 
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        int a = Integer.parseInt(brrd_bqty.getText()); 
+        int b = Integer.parseInt(brrd_qty.getText());
+        int total;
+        
+        total = a - b;
+       
+        brrd_total.setText(Integer.toString(total));
+        
+        try {
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE stockin_tbl SET  "
+                    + " Quantity=? WHERE Book_title='" + brrd_bt.getSelectedItem() + "'");
+            
+            pst.setString(1, brrd_total.getText());
+            
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Data Updated");
+        }
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+        try{
+            String sql="SELECT * FROM holding_tbl where Book_title = '" + (String) brrd_bt.getSelectedItem() + "' ";
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            if(rs.next()){
+            String name =rs.getString("On_Hand");
+            String name0 =rs.getString("Borrowed");
+            jLabel199.setText(name);
+            jLabel200.setText(name0);
+            }
+            }
+            catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            }
+        int oh = Integer.parseInt(jLabel199.getText());
+        int br = Integer.parseInt(jLabel200.getText());
+        int tot1,tot2;
+        tot1=oh-b;
+        tot2=br+b;
+        jLabel201.setText(Integer.toString(tot1));
+        jLabel202.setText(Integer.toString(tot2));
+        
+        try {
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE holding_tbl SET On_Hand=?, "
+                    + " Borrowed=? WHERE Book_title='" + brrd_bt.getSelectedItem() + "'");
+            
+            pst.setString(1, jLabel201.getText());
+            pst.setString(2, jLabel202.getText());
+            
+            pst.execute();
+        }
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -1439,13 +1586,10 @@ public class Main extends javax.swing.JFrame {
         brrd_bp = new javax.swing.JTextField();
         brrd_rem = new javax.swing.JLabel();
         jLabel71 = new javax.swing.JLabel();
-        brrd_class = new javax.swing.JComboBox<>();
         jLabel72 = new javax.swing.JLabel();
-        brrd_bt = new javax.swing.JTextField();
         brrd_qty = new javax.swing.JTextField();
         brrd_fn = new javax.swing.JTextField();
         jLabel73 = new javax.swing.JLabel();
-        brrd_stat = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel74 = new javax.swing.JLabel();
@@ -1460,6 +1604,12 @@ public class Main extends javax.swing.JFrame {
         brrd_libid1 = new javax.swing.JTextField();
         jLabel190 = new javax.swing.JLabel();
         jLabel191 = new javax.swing.JLabel();
+        brrd_bt = new javax.swing.JComboBox<>();
+        brrd_stat = new javax.swing.JTextField();
+        brrd_class = new javax.swing.JTextField();
+        transcoded = new javax.swing.JTextField();
+        jLabel207 = new javax.swing.JLabel();
+        nb_update6 = new javax.swing.JButton();
         jPanel31 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel32 = new javax.swing.JPanel();
@@ -1480,6 +1630,9 @@ public class Main extends javax.swing.JFrame {
         brrd_clear1 = new javax.swing.JButton();
         jTextField11 = new javax.swing.JTextField();
         jLabel192 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jLabel211 = new javax.swing.JLabel();
+        jLabel212 = new javax.swing.JLabel();
         jPanel36 = new javax.swing.JPanel();
         jScrollPane14 = new javax.swing.JScrollPane();
         borrowedlog_table = new javax.swing.JTable();
@@ -1747,6 +1900,15 @@ public class Main extends javax.swing.JFrame {
         code = new javax.swing.JLabel();
         jLabel115 = new javax.swing.JLabel();
         jLabel76 = new javax.swing.JLabel();
+        jPanel45 = new javax.swing.JPanel();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel208 = new javax.swing.JLabel();
+        jLabel209 = new javax.swing.JLabel();
+        jScrollPane34 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        jLabel210 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
@@ -5084,28 +5246,9 @@ public class Main extends javax.swing.JFrame {
         jLabel71.setText("Fines /Day:");
         jPanel30.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 99, 24));
 
-        brrd_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select Classification--" }));
-        brrd_class.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                brrd_classPopupMenuWillBecomeInvisible(evt);
-            }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-            }
-        });
-        jPanel30.add(brrd_class, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 200, 34));
-
         jLabel72.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel72.setText("Book Title:");
         jPanel30.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 86, 24));
-
-        brrd_bt.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                brrd_btKeyReleased(evt);
-            }
-        });
-        jPanel30.add(brrd_bt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 200, 31));
 
         brrd_qty.setEditable(false);
         brrd_qty.setText("1");
@@ -5120,9 +5263,6 @@ public class Main extends javax.swing.JFrame {
         jLabel73.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel73.setText("Quantity:");
         jPanel30.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 99, 24));
-
-        brrd_stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Status--", "Faculty", "Student" }));
-        jPanel30.add(brrd_stat, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 200, 34));
         jPanel30.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 360, 10));
         jPanel30.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 360, 10));
 
@@ -5160,8 +5300,8 @@ public class Main extends javax.swing.JFrame {
         jPanel30.add(brrd_fd, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 200, 31));
 
         jLabel78.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel78.setText("Library ID:");
-        jPanel30.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 86, 24));
+        jLabel78.setText("Transaction Code:");
+        jPanel30.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 130, 24));
 
         borroweddate.setEditable(false);
         jPanel30.add(borroweddate, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 200, 30));
@@ -5176,11 +5316,48 @@ public class Main extends javax.swing.JFrame {
 
         jLabel190.setForeground(new java.awt.Color(255, 255, 255));
         jLabel190.setText("jLabel190");
-        jPanel30.add(jLabel190, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
+        jPanel30.add(jLabel190, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel191.setForeground(new java.awt.Color(255, 255, 255));
         jLabel191.setText("jLabel191");
-        jPanel30.add(jLabel191, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, -1, -1));
+        jPanel30.add(jLabel191, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
+
+        brrd_bt.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                brrd_btPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        jPanel30.add(brrd_bt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 200, 34));
+        jPanel30.add(brrd_stat, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 200, 31));
+
+        brrd_class.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                brrd_classKeyReleased(evt);
+            }
+        });
+        jPanel30.add(brrd_class, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 200, 31));
+
+        transcoded.setText("Generate Code");
+        jPanel30.add(transcoded, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 160, 31));
+
+        jLabel207.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel207.setText("Library ID:");
+        jPanel30.add(jLabel207, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 86, 24));
+
+        nb_update6.setBackground(new java.awt.Color(51, 153, 255));
+        nb_update6.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        nb_update6.setForeground(new java.awt.Color(255, 255, 255));
+        nb_update6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circuit.png"))); // NOI18N
+        nb_update6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nb_update6ActionPerformed(evt);
+            }
+        });
+        jPanel30.add(nb_update6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 40, 30));
 
         jPanel31.setBackground(new java.awt.Color(255, 255, 255));
         jPanel31.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "TABLES"));
@@ -5342,6 +5519,20 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel34.add(jLabel192, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, 34));
 
+        jButton4.setText("jButton4");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel34.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
+
+        jLabel211.setText("jLabel211");
+        jPanel34.add(jLabel211, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, -1, -1));
+
+        jLabel212.setText("jLabel212");
+        jPanel34.add(jLabel212, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
+
         jTabbedPane2.addTab("ACTIVE BORROWER", jPanel34);
 
         jPanel36.setBackground(new java.awt.Color(255, 255, 255));
@@ -5423,6 +5614,7 @@ public class Main extends javax.swing.JFrame {
         si_calc1.setForeground(new java.awt.Color(255, 255, 255));
         si_calc1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/process.png"))); // NOI18N
         si_calc1.setText("Process Request");
+        si_calc1.setEnabled(false);
         si_calc1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 si_calc1ActionPerformed(evt);
@@ -5526,7 +5718,7 @@ public class Main extends javax.swing.JFrame {
         po_or.setEditable(false);
         po_or.setText("Generate PO Number");
         jPanel49.add(po_or);
-        po_or.setBounds(160, 30, 159, 31);
+        po_or.setBounds(160, 30, 160, 31);
 
         jLabel105.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel105.setText("Book:");
@@ -5667,7 +5859,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jPanel49.add(nb_update4);
-        nb_update4.setBounds(330, 20, 47, 44);
+        nb_update4.setBounds(330, 30, 40, 30);
 
         po_cl.setEnabled(false);
         jPanel49.add(po_cl);
@@ -7585,7 +7777,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel87)
                     .addComponent(jLabel85))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel199)
                     .addComponent(jLabel200)
@@ -7618,7 +7810,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jLabel134)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel135)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(248, Short.MAX_VALUE)))
             .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel72Layout.createSequentialGroup()
                     .addContainerGap()
@@ -7727,6 +7919,50 @@ public class Main extends javax.swing.JFrame {
 
         jLabel76.setText("jLabel76");
 
+        jPanel45.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane17.setViewportView(jTable4);
+
+        jPanel45.add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 169, 98));
+
+        jLabel35.setText("jLabel35");
+        jPanel45.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 115, -1, -1));
+
+        jLabel208.setText("jLabel208");
+        jPanel45.add(jLabel208, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 115, -1, -1));
+
+        jLabel209.setText("jLabel209");
+        jPanel45.add(jLabel209, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 144, -1, -1));
+
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane34.setViewportView(jTable5);
+
+        jPanel45.add(jScrollPane34, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 11, 169, 98));
+
+        jLabel210.setText("jLabel210");
+        jPanel45.add(jLabel210, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 124, -1, -1));
+
         javax.swing.GroupLayout account_wasteLayout = new javax.swing.GroupLayout(account_waste);
         account_waste.setLayout(account_wasteLayout);
         account_wasteLayout.setHorizontalGroup(
@@ -7734,7 +7970,6 @@ public class Main extends javax.swing.JFrame {
             .addGroup(account_wasteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(account_wasteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(account_wasteLayout.createSequentialGroup()
                         .addComponent(jPanel69, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -7743,19 +7978,24 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jPanel71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(account_wasteLayout.createSequentialGroup()
                         .addGroup(account_wasteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel121)
-                            .addComponent(jLabel122))
-                        .addGap(113, 113, 113)
-                        .addGroup(account_wasteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(account_wasteLayout.createSequentialGroup()
-                                .addComponent(jLabel76)
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(account_wasteLayout.createSequentialGroup()
-                                .addComponent(ttt, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(code)))))
-                .addContainerGap(876, Short.MAX_VALUE))
+                                .addGroup(account_wasteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel121)
+                                    .addComponent(jLabel122))
+                                .addGap(113, 113, 113)
+                                .addGroup(account_wasteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(account_wasteLayout.createSequentialGroup()
+                                        .addComponent(jLabel76)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(account_wasteLayout.createSequentialGroup()
+                                        .addComponent(ttt, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(code))))
+                            .addComponent(jPanel72, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(713, Short.MAX_VALUE))
         );
         account_wasteLayout.setVerticalGroup(
             account_wasteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -7768,22 +8008,26 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jPanel71, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jPanel70, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(account_wasteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel121)
-                    .addComponent(ttt)
-                    .addComponent(code))
                 .addGroup(account_wasteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(account_wasteLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel122))
-                    .addGroup(account_wasteLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(account_wasteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel76)
-                            .addComponent(jLabel115))))
-                .addContainerGap(54, Short.MAX_VALUE))
+                            .addComponent(jLabel121)
+                            .addComponent(ttt)
+                            .addComponent(code))
+                        .addGroup(account_wasteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(account_wasteLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel122))
+                            .addGroup(account_wasteLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(account_wasteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel76)
+                                    .addComponent(jLabel115))))
+                        .addGap(0, 43, Short.MAX_VALUE))
+                    .addComponent(jPanel45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         stock.add(account_waste, "card13");
@@ -9568,70 +9812,59 @@ public class Main extends javax.swing.JFrame {
         brrd_libid1.setText(model.getValueAt(z, 0).toString());
         jLabel190.setText(model.getValueAt(z, 1).toString());
         jLabel191.setText(model.getValueAt(z, 2).toString());
-        brrd_stat.setSelectedItem(model.getValueAt(z, 3).toString());
+        brrd_stat.setText(model.getValueAt(z, 3).toString());
         jLabel130.setText(model.getValueAt(z, 2).toString());
         
         brrd_fn.setText(jLabel191.getText()+", "+jLabel190.getText());
-        if(brrd_stat.getSelectedItem().equals("Faculty")){
+        if(brrd_stat.getText().equals("Faculty")){
         brrd_fd.setText("5");
         }
-        else if(brrd_stat.getSelectedItem().equals("Student")){
+        else if(brrd_stat.getText().equals("Student")){
         brrd_fd.setText("5");
         }
     }//GEN-LAST:event_brrd_rb_tableMouseClicked
 
-    private void brrd_btKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_brrd_btKeyReleased
-        try{
-            String sql = "SELECT Book_title, Price, Classification, Quantity"
-                    + " FROM stockin_tbl WHERE "
-                    + "Book_title like ?";
-
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, "%" + brrd_bt.getText() + "%");
-
-            rs = (ResultSet) pst.executeQuery();
-            brrd_bl_table.setModel(DbUtils.resultSetToTableModel(rs));
-            }
-            catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
-            }
-        
-         try{
-            String sql="SELECT Book_title, Price, Classification, Quantity FROM stockin_tbl where Book_title = '" + (String) brrd_bt.getText() + "' ";
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-        
-            if(rs.next()){
-            String name =rs.getString("Price");
-            String name3 =rs.getString("Classification");
-            String name4 =rs.getString("Quantity");
-            
-            brrd_bp.setText(name);
-            brrd_bqty.setText(name4);
-            brrd_class.setSelectedItem(name3);
-
-            }
-            }
-            catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-            }
-    }//GEN-LAST:event_brrd_btKeyReleased
-
     private void brrd_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brrd_addActionPerformed
-        int a = Integer.parseInt(brrd_qty.getText());
+        if(brrd_bp.getText().equals("")){ 
+            JOptionPane.showMessageDialog(null, "Choose a book first!");
+        }
+        else{
+             int a = Integer.parseInt(brrd_qty.getText());
         int aa = Integer.parseInt(brrd_bqty.getText());
             int total;
-            
-            if(a > aa){
-            JOptionPane.showMessageDialog(null, "Limit Reach!");
+            if(brrd_stat.getText().equals("Student")){
+                if(a >= 2){
+                JOptionPane.showMessageDialog(null, "Student Allowable Book Quantity Exceed!");
+                }
+                else{
+                if(a > aa){
+                    JOptionPane.showMessageDialog(null, "Limit Reach!");
+                    }
+                    else{
+                    total = a + 1;
+                    brrd_qty.setText(Integer.toString(total));
+                    brrd_qty.setForeground(Color.red);
+                    brrd_min.setEnabled(true);
+                    }
+                }
             }
-            else{
-            total = a + 1;
-            
-            brrd_qty.setText(Integer.toString(total));
-            brrd_qty.setForeground(Color.red);
-            brrd_min.setEnabled(true);
+            else if(brrd_stat.getText().equals("Faculty")){
+                if(a >= 5){
+                JOptionPane.showMessageDialog(null, "Faculty Allowable Book Quantity Exceed!");
+                }
+                else{
+                if(a > aa){
+                    JOptionPane.showMessageDialog(null, "Limit Reach!");
+                    }
+                    else{
+                    total = a + 1;
+                    brrd_qty.setText(Integer.toString(total));
+                    brrd_qty.setForeground(Color.red);
+                    brrd_min.setEnabled(true);
+                    }
+                }
             }
+        }
     }//GEN-LAST:event_brrd_addActionPerformed
 
     private void brrd_minActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brrd_minActionPerformed
@@ -9667,142 +9900,46 @@ public class Main extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_brrd_bpKeyReleased
 
-    private void brrd_classPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_brrd_classPopupMenuWillBecomeInvisible
-        try {
-            String sql = "SELECT Book_title, Price, Classification, Quantity"
-                    + " FROM stockin_tbl WHERE "
-                    + "Classification like ?";
+    private void si_calc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_si_calc1ActionPerformed
+        try{
+            String sql = "SELECT Trans_Code, Quantity"
+                    + " FROM borrowed_tbl WHERE "
+                    + "Trans_Code like ?";
 
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, "%" + brrd_class.getSelectedItem() + "%");
+            pst.setString(1, "%" + transcoded.getText() + "%");
 
             rs = (ResultSet) pst.executeQuery();
-            brrd_bl_table.setModel(DbUtils.resultSetToTableModel(rs));
-        } catch (SQLException ex) {
+            jTable5.setModel(DbUtils.resultSetToTableModel(rs));
+            }
+            catch (SQLException ex) {
             JOptionPane.showConfirmDialog(null, ex);
-        }
-        if(brrd_class.getSelectedItem().equals("--Select Classification--")){
-        booklist_ref();
-        }
-    }//GEN-LAST:event_brrd_classPopupMenuWillBecomeInvisible
-
-    private void si_calc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_si_calc1ActionPerformed
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeZone(TimeZone.getTimeZone("GMT"));
-        
-        borroweddate.setText((String) getDate(cal));
-        
-        if(brrd_stat.getSelectedItem().equals("Faculty")){
-            cal.add(Calendar.DATE, 7);
-            returndate.setText((String) getDate(cal));
-        }
-        else if(brrd_stat.getSelectedItem().equals("Student")){
-            cal.add(Calendar.DATE, 3);
-            returndate.setText((String) getDate(cal));
-        }
-        
-        try {
-            String sql = "Insert into borrowed_tbl (Library_ID, Full_Name, Status, Book_title, Book_Price, Classification, "
-                    + "Fines, Quantity, Borrowed_Date, Return_Date, Remarks, Payable) "
-                    + " values (?,?,?,?,?,?,?,?,?,?,?,?)";
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
-            
-            pst.setString(1, brrd_libid1.getText());
-            pst.setString(2, brrd_fn.getText());
-            pst.setString(3, (String) brrd_stat.getSelectedItem());
-            pst.setString(4, brrd_bt.getText());
-            pst.setString(5, brrd_bp.getText());
-            pst.setString(6, (String) brrd_class.getSelectedItem());
-            pst.setString(7, brrd_fd.getText());
-            pst.setString(8, brrd_qty.getText());
-            pst.setString(9, borroweddate.getText());
-            pst.setString(10, returndate.getText());
-            pst.setString(11, (String) brrd_remcb.getSelectedItem());
-            pst.setString(12, "0");
-
-            pst.execute(); 
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        
-        try {
-            String sql1 = "Insert into brrdlog_tbl (Full_Name, Status, Book_title, Classification, "
-                    + " Borrowed_Date, Encoder, Date) "
-                    + " values (?,?,?,?,?,?,?)";
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql1);
-            
-            pst.setString(1, brrd_fn.getText());
-            pst.setString(2, (String) brrd_stat.getSelectedItem());
-            pst.setString(3, brrd_bt.getText());
-            pst.setString(4, (String) brrd_class.getSelectedItem());
-            pst.setString(5, borroweddate.getText());
-            pst.setString(6, txt_name.getText());
-            pst.setString(7, txt_date1.getText());
-
-            pst.execute(); 
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        
-        int a = Integer.parseInt(brrd_bqty.getText()); 
-        int b = Integer.parseInt(brrd_qty.getText());
-        int total;
-        
-        total = a - b;
-       
-        brrd_total.setText(Integer.toString(total));
-        
-        try {
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE stockin_tbl SET  "
-                    + " Quantity=? WHERE Book_title='" + brrd_bt.getText() + "'");
-            
-            pst.setString(1, brrd_total.getText());
-            
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Data Updated");
-        }
-        catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        
-        try{
-            String sql="SELECT * FROM holding_tbl where Book_title = '" + (String) brrd_bt.getText() + "' ";
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-            if(rs.next()){
-            String name =rs.getString("On_Hand");
-            String name0 =rs.getString("Borrowed");
-            jLabel199.setText(name);
-            jLabel200.setText(name0);
             }
-            }
-            catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-            }
-        int oh = Integer.parseInt(jLabel199.getText());
-        int br = Integer.parseInt(jLabel200.getText());
-        int tot1,tot2;
-        tot1=oh-b;
-        tot2=br+b;
-        jLabel201.setText(Integer.toString(tot1));
-        jLabel202.setText(Integer.toString(tot2));
+        int sum = 0;
+        for(int i = 0; i < jTable5.getRowCount(); i++)
+        {
+            sum = sum + Integer.parseInt(jTable5.getValueAt(i, 1).toString());
+        }
+        jLabel210.setText(Integer.toString(sum));
         
-        try {
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE holding_tbl SET On_Hand=?, "
-                    + " Borrowed=? WHERE Book_title='" + brrd_bt.getText() + "'");
-            
-            pst.setString(1, jLabel201.getText());
-            pst.setString(2, jLabel202.getText());
-            
-            pst.execute();
+        if(brrd_stat.getText().equals("Faculty")){
+            if(sum >= 5){
+            JOptionPane.showMessageDialog(null, "Borrow for this transaction limit");
+            }
+            else{
+            bookloanproc();
+            }
         }
-        catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
+        else if(brrd_stat.getText().equals("Student")){
+            if(sum >= 2){
+            JOptionPane.showMessageDialog(null, "Borrow for this transaction limit");
+            }
+            else{
+            bookloanproc();
+            }
         }
+        
+        
         ulog24();
         all_ref();
         brrd_clr();
@@ -9811,15 +9948,17 @@ public class Main extends javax.swing.JFrame {
     private void brrd_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brrd_clearActionPerformed
         brrd_clr();
         all_ref();
+        transcoded.setText("Generate Code");
+        si_calc1.setEnabled(false);
     }//GEN-LAST:event_brrd_clearActionPerformed
 
     private void brrd_bl_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_brrd_bl_tableMouseClicked
         int z = brrd_bl_table.getSelectedRow();
 
         TableModel model = (TableModel)brrd_bl_table.getModel();
-        brrd_bt.setText(model.getValueAt(z, 0).toString());
+        brrd_bt.setSelectedItem(model.getValueAt(z, 0).toString());
         brrd_bp.setText(model.getValueAt(z, 1).toString());
-        brrd_class.setSelectedItem(model.getValueAt(z, 2).toString());
+        brrd_class.setText(model.getValueAt(z, 2).toString());
         brrd_bqty.setText(model.getValueAt(z, 3).toString());
     }//GEN-LAST:event_brrd_bl_tableMouseClicked
 
@@ -9833,12 +9972,12 @@ public class Main extends javax.swing.JFrame {
         TableModel model = (TableModel)brrd_log_table.getModel();
         
         brrd_id.setText(model.getValueAt(z, 0).toString());
-        brrd_fn.setText(model.getValueAt(z, 1).toString());
+        brrd_libid1.setText(model.getValueAt(z, 1).toString());
         brrd_fn.setText(model.getValueAt(z, 2).toString());
-        brrd_stat.setSelectedItem(model.getValueAt(z, 3).toString());
-        brrd_bt.setText(model.getValueAt(z, 4).toString());
+        brrd_stat.setText(model.getValueAt(z, 3).toString());
+        brrd_bt.setSelectedItem(model.getValueAt(z, 4).toString());
         brrd_bp.setText(model.getValueAt(z, 5).toString());
-        brrd_class.setSelectedItem(model.getValueAt(z, 6).toString());
+        brrd_class.setText(model.getValueAt(z, 6).toString());
         brrd_fd.setText(model.getValueAt(z, 7).toString());
         brrd_qty.setText(model.getValueAt(z, 8).toString());
         borroweddate.setText(model.getValueAt(z, 9).toString());
@@ -9850,7 +9989,7 @@ public class Main extends javax.swing.JFrame {
         ((JTextField)dddd2.getDateEditor().getUiComponent()).setText(model.getValueAt(z, 10).toString());
         
         try{
-            String sql="SELECT * FROM holding_tbl where Book_title= '" + (String) brrd_bt.getText() + "' ";
+            String sql="SELECT * FROM holding_tbl where Book_title= '" + (String) brrd_bt.getSelectedItem() + "' ";
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
              if(rs.next()){
@@ -9859,7 +9998,7 @@ public class Main extends javax.swing.JFrame {
             String name4 =rs.getString("Borrowed");
             String name5 =rs.getString("Total_Holding");
             
-            brrd_bt.setText(name);
+            brrd_bt.setSelectedItem(name);
             test1.setText(name3);
             test2.setText(name4);
             test3.setText(name5);
@@ -9870,7 +10009,7 @@ public class Main extends javax.swing.JFrame {
             } 
         
         try{
-            String sqll="SELECT Quantity FROM damage_tbl where Book_title= '" + (String) brrd_bt.getText() + "' ";
+            String sqll="SELECT Quantity FROM damage_tbl where Book_title= '" + (String) brrd_bt.getSelectedItem() + "' ";
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sqll);
             rs = pst.executeQuery();
              if(rs.next()){
@@ -9887,34 +10026,41 @@ public class Main extends javax.swing.JFrame {
             brrd_return.setEnabled(true);
             brrd_clear1.setEnabled(false);
 
-            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("M/dd/yyyy");
-            LocalDate start = LocalDate.parse(borroweddate.getText(),dateTimeFormatter);
-            LocalDate  end = LocalDate.parse(txt_date1.getText(),dateTimeFormatter);
-
-            long daysElapsed = ChronoUnit.DAYS.between(start, end);
-            jLabel129.setText(Long.toString(daysElapsed));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+            String firstDate = txt_date1.getText();
+            String secondDate = returndate.getText();
+            LocalDate date1 = LocalDate.parse(firstDate,formatter);
+            LocalDate date2 = LocalDate.parse(secondDate,formatter);
+            long daysBetween = ChronoUnit.DAYS.between(date1, date2);
+            if(daysBetween > 0){
+                jLabel211.setText(Long.toString(daysBetween));
+            }
+            else{
+                jLabel211.setText(Long.toString(daysBetween*-1));
+            }
             
-            int a = Integer.parseInt(jLabel129.getText());
+            int a = Integer.parseInt(jLabel211.getText());
             int b = Integer.parseInt(brrd_fd.getText());
             int total;
             
             total = a * b;
             
-            jLabel129.setText(Double.toString(total));
+            jLabel211.setText(Double.toString(total));
+            brrd_fd2.setText(Double.toString(total));
                 
         try {
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE borrowed_tbl SET  "
-                    + " Remarks=?, Payable=? WHERE ID='" + brrd_id.getText() + "'");
+                    + " Remarks=?, Payable=? WHERE Trans_Code='" + brrd_id.getText() + "'");
             
             pst.setString(1, (String) brrd_remcb.getSelectedItem());
-            pst.setString(2, jLabel129.getText());
+            pst.setString(2, jLabel211.getText());
             
             pst.execute();
         }
         catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }   
-            if(date1.getText().equals("0") || date1.getText().equals("0.00")){
+            if(jLabel212.getText().equals("0") || jLabel212.getText().equals("0.00")){
             brrd_return.setEnabled(true);
             brrd_clear1.setEnabled(false);
             }
@@ -9935,7 +10081,7 @@ public class Main extends javax.swing.JFrame {
             
         try {
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE borrowed_tbl SET  "
-                    + " Remarks=?, Payable=? WHERE ID='" + brrd_id.getText() + "'");
+                    + " Remarks=?, Payable=? WHERE Trans_Code='" + brrd_id.getText() + "'");
             
             pst.setString(1, (String) brrd_remcb.getSelectedItem());
             pst.setString(2, brrd_fd2.getText());
@@ -10039,7 +10185,7 @@ public class Main extends javax.swing.JFrame {
             
         try {
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE borrowed_tbl SET  "
-                    + " Remarks=?, Payable=? WHERE ID='" + brrd_id.getText() + "'");
+                    + " Remarks=?, Payable=? WHERE Trans_Code='" + brrd_id.getText() + "'");
             
             pst.setString(1, (String) brrd_remcb.getSelectedItem());
             pst.setString(2, brrd_fd2.getText());
@@ -10052,7 +10198,7 @@ public class Main extends javax.swing.JFrame {
         }
         
         try{
-            String sql="SELECT * FROM holding_tbl where Book_title = '" + (String) brrd_bt.getText() + "' ";
+            String sql="SELECT * FROM holding_tbl where Book_title = '" + (String) brrd_bt.getSelectedItem() + "' ";
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
             if(rs.next()){
@@ -10079,7 +10225,7 @@ public class Main extends javax.swing.JFrame {
             jLabel204.setText(Integer.toString(tot3));
         try {
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE holding_tbl SET Damage=?, "
-                    + " Borrowed=?, Total_Holding=? WHERE Book_title='" + brrd_bt.getText() + "'");
+                    + " Borrowed=?, Total_Holding=? WHERE Book_title='" + brrd_bt.getSelectedItem() + "'");
             
             pst.setString(1, jLabel202.getText());
             pst.setString(2, jLabel201.getText());
@@ -10095,7 +10241,7 @@ public class Main extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Please Check Return Date");
         }
         try{
-            String sql="SELECT * FROM damage_tbl where Book_title = '" + (String) brrd_bt.getText() + "' ";
+            String sql="SELECT * FROM damage_tbl where Book_title = '" + (String) brrd_bt.getSelectedItem() + "' ";
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
             if(rs.next()){
@@ -10118,7 +10264,7 @@ public class Main extends javax.swing.JFrame {
         jLabel206.setText(Integer.toString(tot4));
          try {
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE damage_tbl SET "
-                    + " Quantity=? WHERE Book_title='" + brrd_bt.getText() + "'");
+                    + " Quantity=? WHERE Book_title='" + brrd_bt.getSelectedItem() + "'");
             
             pst.setString(1, jLabel206.getText());
             
@@ -10774,7 +10920,6 @@ public class Main extends javax.swing.JFrame {
                 pst.setString(1, po_or.getText());
                 
                 pst.execute();
-                //po_or.setText("PO-1");
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e);
             }
@@ -11106,25 +11251,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_nb_table1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try{
-            String str = ""+jTextArea1.getText()+"";
-            String str2 = str.replaceAll("\\s", "+");
-            URL url = new URL ("http://192.168.0.15:8080/v1/sms/send/?phone="+jTextField1.getText()+"&message="+str2+"");
-            InputStream i = null;
-            JOptionPane.showMessageDialog(null, "Message Successfully Sent");
 
-            try{
-                i = url.openStream();
-            }
-            catch (Exception ex){
-            }
-            if(i != null){
-
-            }
-        }
-        catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void sup_save2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_save2ActionPerformed
@@ -11182,7 +11309,7 @@ public class Main extends javax.swing.JFrame {
             
             try {
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE damage_tbl SET  "
-                    + "Status=?, Quantity=?, Encoder=?, Date=?, Time=? WHERE Book_title='" + brrd_bt.getText() + "'");
+                    + "Status=?, Quantity=?, Encoder=?, Date=?, Time=? WHERE Book_title='" + brrd_bt.getSelectedItem() + "'");
             
             pst.setString(1, (String) brrd_remcb.getSelectedItem());
             pst.setString(2, jLabel152.getText());//damage
@@ -11199,7 +11326,7 @@ public class Main extends javax.swing.JFrame {
             
             try {
 
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM borrowed_tbl  WHERE ID = '" + brrd_id.getText() + "'");
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM borrowed_tbl  WHERE Trans_Code = '" + brrd_id.getText() + "'");
             int del = pst.executeUpdate();
             if (del > 0) {
                 JOptionPane.showMessageDialog(null, "Item Returned!");
@@ -12159,6 +12286,111 @@ public class Main extends javax.swing.JFrame {
           so_save3.setEnabled(false);
     }//GEN-LAST:event_so_save4ActionPerformed
 
+    private void brrd_btPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_brrd_btPopupMenuWillBecomeInvisible
+        try{
+            String sql = "SELECT Book_title, Price, Classification, Quantity"
+                    + " FROM stockin_tbl WHERE "
+                    + "Book_title like ?";
+
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            pst.setString(1, "%" + brrd_bt.getSelectedItem() + "%");
+
+            rs = (ResultSet) pst.executeQuery();
+            brrd_bl_table.setModel(DbUtils.resultSetToTableModel(rs));
+            }
+            catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, ex);
+            }
+        
+         try{
+            String sql="SELECT Book_title, Price, Classification, Quantity FROM stockin_tbl where Book_title = '" + (String) brrd_bt.getSelectedItem() + "' ";
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+        
+            if(rs.next()){
+            String name =rs.getString("Price");
+            String name3 =rs.getString("Classification");
+            String name4 =rs.getString("Quantity");
+            
+            brrd_bp.setText(name);
+            brrd_bqty.setText(name4);
+            brrd_class.setText(name3);
+
+            }
+            }
+            catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            }
+    }//GEN-LAST:event_brrd_btPopupMenuWillBecomeInvisible
+
+    private void brrd_classKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_brrd_classKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_brrd_classKeyReleased
+
+    private void nb_update6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_update6ActionPerformed
+        if(jLabel208.getText().equals("0")){
+            all_ref();
+            try {
+                String sql = "alter table trans_code_tbl AUTO_INCREMENT = 1";
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                pst.execute();
+            
+                } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+                } 
+            try {
+                String sql = "Insert into trans_code_tbl (Transcode) values (?)";
+
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+
+                pst.setString(1, "Transaction-1");
+                
+                pst.execute();
+                transcoded.setText("Transaction-1");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+            }
+            all_ref();
+        }
+        else{
+            all_ref();
+            tcode();
+        int b;
+        int a = Integer.parseInt(jLabel35.getText());
+        b = a + 1;
+        jLabel209.setText(Integer.toString(b));
+        transcoded.setText("Transaction-" + jLabel209.getText());
+        try {
+                String sql = "Insert into trans_code_tbl (Transcode) values (?)";
+
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+
+                pst.setString(1, transcoded.getText());
+                
+                pst.execute();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+            }
+        all_ref();
+        }
+        si_calc1.setEnabled(true);
+    }//GEN-LAST:event_nb_update6ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+        String firstDate = txt_date1.getText();
+        String secondDate = returndate.getText();
+        LocalDate date1 = LocalDate.parse(firstDate,formatter);
+        LocalDate date2 = LocalDate.parse(secondDate,formatter);
+        long daysBetween = ChronoUnit.DAYS.between(date1, date2);
+        if(daysBetween > 0){
+            jLabel211.setText(Long.toString(daysBetween));
+        }
+        else{
+            jLabel211.setText(Long.toString(daysBetween*-1));
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     public void sup(){
         sup_save3.setVisible(false);
         
@@ -12289,7 +12521,7 @@ public class Main extends javax.swing.JFrame {
         
         try {
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE holding_tbl SET  "
-                    + " Borrowed=?, On_Hand=? WHERE Book_title='" + brrd_bt.getText() + "'");
+                    + " Borrowed=?, On_Hand=? WHERE Book_title='" + brrd_bt.getSelectedItem() + "'");
             
             pst.setString(1, test_tot.getText());
             pst.setString(2, test_tot1.getText());
@@ -12303,7 +12535,7 @@ public class Main extends javax.swing.JFrame {
         
         try {
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE stockin_tbl SET  "
-                    + " Quantity=? WHERE Book_title='" + brrd_bt.getText() + "'");
+                    + " Quantity=? WHERE Book_title='" + brrd_bt.getSelectedItem() + "'");
             
             pst.setString(1, test_tot1.getText());
             
@@ -12316,7 +12548,7 @@ public class Main extends javax.swing.JFrame {
         
         try {
 
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM borrowed_tbl  WHERE ID = '" + brrd_id.getText() + "'");
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM borrowed_tbl  WHERE Trans_Code = '" + brrd_id.getText() + "'");
             int del = pst.executeUpdate();
             if (del > 0) {
                 JOptionPane.showMessageDialog(null, "Item Returned!");
@@ -12336,7 +12568,7 @@ public class Main extends javax.swing.JFrame {
 
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
             
-            pst.setString(1, brrd_bt.getText());
+            pst.setString(1, (String) brrd_bt.getSelectedItem());
             pst.setString(2, brrd_fn.getText());
             pst.setString(3, (String)brrd_remcb.getSelectedItem());
             pst.setString(4, brrd_qty.getText());
@@ -12854,7 +13086,7 @@ public class Main extends javax.swing.JFrame {
                     pst.setString(1, txt_name.getText());
                     pst.setString(2, "Process Book Loan");
                     pst.setString(3, txt_level.getText());
-                    pst.setString(4, brrd_fn.getText()+" ("+brrd_bt.getText()+")");
+                    pst.setString(4, brrd_fn.getText()+" ("+brrd_bt.getSelectedItem()+")");
                     pst.setString(5, txt_date1.getText());
                     pst.setString(6, txt_time.getText());
                     pst.execute();
@@ -12870,7 +13102,7 @@ public class Main extends javax.swing.JFrame {
                     pst.setString(1, txt_name.getText());
                     pst.setString(2, "Return Book Loan");
                     pst.setString(3, txt_level.getText());
-                    pst.setString(4, brrd_fn.getText()+" ("+brrd_bt.getText()+")");
+                    pst.setString(4, brrd_fn.getText()+" ("+brrd_bt.getSelectedItem()+")");
                     pst.setString(5, txt_date1.getText());
                     pst.setString(6, txt_time.getText());
                     pst.execute();
@@ -12886,7 +13118,7 @@ public class Main extends javax.swing.JFrame {
                     pst.setString(1, txt_name.getText());
                     pst.setString(2, "Paid Book Loan");
                     pst.setString(3, txt_level.getText());
-                    pst.setString(4, brrd_fn.getText()+" ("+brrd_bt.getText()+")");
+                    pst.setString(4, brrd_fn.getText()+" ("+brrd_bt.getSelectedItem()+")");
                     pst.setString(5, txt_date1.getText());
                     pst.setString(6, txt_time.getText());
                     pst.execute();
@@ -12902,7 +13134,7 @@ public class Main extends javax.swing.JFrame {
                     pst.setString(1, txt_name.getText());
                     pst.setString(2, "Damage/Loss Book Loan");
                     pst.setString(3, txt_level.getText());
-                    pst.setString(4, brrd_fn.getText()+" ("+brrd_bt.getText()+")");
+                    pst.setString(4, brrd_fn.getText()+" ("+brrd_bt.getSelectedItem()+")");
                     pst.setString(5, txt_date1.getText());
                     pst.setString(6, txt_time.getText());
                     pst.execute();
@@ -13152,8 +13384,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable brrd_bl_table;
     private javax.swing.JTextField brrd_bp;
     private javax.swing.JLabel brrd_bqty;
-    private javax.swing.JTextField brrd_bt;
-    private javax.swing.JComboBox<String> brrd_class;
+    private javax.swing.JComboBox<String> brrd_bt;
+    private javax.swing.JTextField brrd_class;
     private javax.swing.JButton brrd_clear;
     private javax.swing.JButton brrd_clear1;
     private javax.swing.JTextField brrd_fd;
@@ -13172,7 +13404,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel brrd_rem1;
     private javax.swing.JComboBox<String> brrd_remcb;
     private javax.swing.JButton brrd_return;
-    private javax.swing.JComboBox<String> brrd_stat;
+    private javax.swing.JTextField brrd_stat;
     private javax.swing.JLabel brrd_total;
     private javax.swing.JButton brrd_uprem;
     private javax.swing.JLabel brrr;
@@ -13205,6 +13437,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
@@ -13333,7 +13566,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel204;
     private javax.swing.JLabel jLabel205;
     private javax.swing.JLabel jLabel206;
+    private javax.swing.JLabel jLabel207;
+    private javax.swing.JLabel jLabel208;
+    private javax.swing.JLabel jLabel209;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel210;
+    private javax.swing.JLabel jLabel211;
+    private javax.swing.JLabel jLabel212;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -13348,6 +13587,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
@@ -13457,6 +13697,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel42;
     private javax.swing.JPanel jPanel43;
     private javax.swing.JPanel jPanel44;
+    private javax.swing.JPanel jPanel45;
     private javax.swing.JPanel jPanel47;
     private javax.swing.JPanel jPanel48;
     private javax.swing.JPanel jPanel49;
@@ -13505,6 +13746,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane18;
     private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
@@ -13523,6 +13765,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane31;
     private javax.swing.JScrollPane jScrollPane32;
     private javax.swing.JScrollPane jScrollPane33;
+    private javax.swing.JScrollPane jScrollPane34;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -13542,6 +13785,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTable5;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
@@ -13621,6 +13866,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton nb_update3;
     private javax.swing.JButton nb_update4;
     private javax.swing.JButton nb_update5;
+    private javax.swing.JButton nb_update6;
     private javax.swing.JButton nb_update7;
     private javax.swing.JButton nb_update8;
     private javax.swing.JButton nb_update9;
@@ -13750,6 +13996,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel test6;
     private javax.swing.JLabel test_tot;
     private javax.swing.JLabel test_tot1;
+    private javax.swing.JTextField transcoded;
     private javax.swing.JLabel ttt;
     private javax.swing.JLabel txt_date1;
     private javax.swing.JLabel txt_level;
