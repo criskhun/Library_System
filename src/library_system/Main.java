@@ -1630,7 +1630,6 @@ public class Main extends javax.swing.JFrame {
         brrd_clear1 = new javax.swing.JButton();
         jTextField11 = new javax.swing.JTextField();
         jLabel192 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
         jLabel211 = new javax.swing.JLabel();
         jLabel212 = new javax.swing.JLabel();
         jPanel36 = new javax.swing.JPanel();
@@ -5504,6 +5503,12 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel34.add(brrd_clear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 495, -1, 44));
 
+        jTextField11.setText("Filter Borrower name");
+        jTextField11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField11MouseClicked(evt);
+            }
+        });
         jTextField11.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField11KeyReleased(evt);
@@ -5519,19 +5524,13 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel34.add(jLabel192, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, 34));
 
-        jButton4.setText("jButton4");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel34.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
-
+        jLabel211.setForeground(new java.awt.Color(255, 255, 255));
         jLabel211.setText("jLabel211");
-        jPanel34.add(jLabel211, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, -1, -1));
+        jPanel34.add(jLabel211, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, -1, -1));
 
+        jLabel212.setForeground(new java.awt.Color(255, 255, 255));
         jLabel212.setText("jLabel212");
-        jPanel34.add(jLabel212, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
+        jPanel34.add(jLabel212, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
 
         jTabbedPane2.addTab("ACTIVE BORROWER", jPanel34);
 
@@ -12196,6 +12195,7 @@ public class Main extends javax.swing.JFrame {
     private void jLabel192MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel192MouseClicked
         jTextField11.setText("");
         jLabel192.setVisible(false);
+        all_ref();
     }//GEN-LAST:event_jLabel192MouseClicked
 
     private void so_save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_so_save1ActionPerformed
@@ -12376,20 +12376,9 @@ public class Main extends javax.swing.JFrame {
         si_calc1.setEnabled(true);
     }//GEN-LAST:event_nb_update6ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
-        String firstDate = txt_date1.getText();
-        String secondDate = returndate.getText();
-        LocalDate date1 = LocalDate.parse(firstDate,formatter);
-        LocalDate date2 = LocalDate.parse(secondDate,formatter);
-        long daysBetween = ChronoUnit.DAYS.between(date1, date2);
-        if(daysBetween > 0){
-            jLabel211.setText(Long.toString(daysBetween));
-        }
-        else{
-            jLabel211.setText(Long.toString(daysBetween*-1));
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void jTextField11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField11MouseClicked
+        jTextField11.setText("");
+    }//GEN-LAST:event_jTextField11MouseClicked
 
     public void sup(){
         sup_save3.setVisible(false);
@@ -13437,7 +13426,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
