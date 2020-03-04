@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2020 at 06:14 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.8
+-- Generation Time: Mar 04, 2020 at 11:53 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -100,7 +100,58 @@ INSERT INTO `account_log_tbl` (`ID`, `User_Name`, `Activity`, `Status`, `Date`, 
 (56, 'Ababon, Sheenn Otaza', 'Log-out', 'Admin', '3/15/2020', '1:08 AM'),
 (57, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '3/16/2020', '1:08 AM'),
 (58, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '3/16/2020', '1:11 AM'),
-(59, 'Ababon, Sheenn Otaza', 'Log-out', 'Admin', '3/16/2020', '1:12 AM');
+(59, 'Ababon, Sheenn Otaza', 'Log-out', 'Admin', '3/16/2020', '1:12 AM'),
+(60, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '3/4/2020', '12:16 PM'),
+(61, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '3/4/2020', '12:34 PM'),
+(62, 'Ababon, Sheenn Otaza', 'Log-out', 'Admin', '3/4/2020', '12:34 PM'),
+(63, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '1:34 PM', '3/4/2020'),
+(64, 'Name', 'Log-out', 'Level', '3/4/2020', '1:35 PM'),
+(65, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '1:38 PM', '3/4/2020'),
+(66, 'Name', 'Log-out', 'Level', '3/4/2020', '1:38 PM'),
+(67, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '1:45 PM', '3/4/2020'),
+(68, 'Name', 'Log-out', 'Level', '3/4/2020', '1:45 PM'),
+(69, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '1:45 PM', '3/4/2020'),
+(70, 'Name', 'Log-out', 'Level', '3/4/2020', '1:45 PM'),
+(71, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '2:53 PM', '3/4/2020'),
+(72, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '5:32 PM', '3/4/2020'),
+(73, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '5:32 PM', '3/4/2020'),
+(74, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '5:32 PM', '3/4/2020'),
+(75, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '5:33 PM', '3/4/2020'),
+(76, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '5:33 PM', '3/4/2020'),
+(77, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '5:33 PM', '3/4/2020'),
+(78, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '5:34 PM', '3/4/2020'),
+(79, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '5:34 PM', '3/4/2020'),
+(80, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '5:35 PM', '3/4/2020'),
+(81, 'Name', 'Log-out', 'Level', '3/4/2020', '5:36 PM'),
+(82, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '5:37 PM', '3/4/2020'),
+(83, 'Name', 'Log-out', 'Level', '3/4/2020', '5:38 PM'),
+(84, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '5:49 PM', '3/4/2020'),
+(85, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '5:59 PM', '3/4/2020'),
+(86, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '6:04 PM', '3/4/2020'),
+(87, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '6:12 PM', '3/4/2020'),
+(88, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '6:29 PM', '3/4/2020'),
+(89, 'Name', 'Log-out', 'Admin', '3/4/2020', '6:30 PM'),
+(90, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '6:31 PM', '3/4/2020'),
+(91, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '6:34 PM', '3/4/2020'),
+(92, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '6:38 PM', '3/4/2020'),
+(93, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '6:43 PM', '3/4/2020'),
+(94, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '6:44 PM', '3/4/2020'),
+(95, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '6:46 PM', '3/4/2020'),
+(96, 'Name', 'Log-out', 'Admin', '3/4/2020', '6:46 PM'),
+(97, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '6:49 PM', '3/4/2020'),
+(98, 'Name', 'Log-out', 'Admin', '3/4/2020', '6:50 PM');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `author_tbl`
+--
+
+CREATE TABLE `author_tbl` (
+  `ID` int(11) NOT NULL,
+  `Author_ID` varchar(225) NOT NULL,
+  `Author` varchar(225) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -508,6 +559,25 @@ CREATE TABLE `purchased_tbl` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `remarks_tbl`
+--
+
+CREATE TABLE `remarks_tbl` (
+  `ID` int(11) NOT NULL,
+  `Remarks` varchar(225) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `remarks_tbl`
+--
+
+INSERT INTO `remarks_tbl` (`ID`, `Remarks`) VALUES
+(1, 'Tear apart'),
+(3, 'wet');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `requested_tbl`
 --
 
@@ -693,7 +763,11 @@ INSERT INTO `user_log_tbl` (`ID`, `User_Name`, `Activity`, `Status`, `Book_Title
 (6, 'Ababon, Sheenn Otaza', 'Process Book Loan', 'Admin', 'Crisyy, Cris (BOOK-4)', '4-Mar-2020', '12:49 AM'),
 (7, 'Ababon, Sheenn Otaza', 'Process Book Loan', 'Admin', 'Pacheco, Lee Ann (BOOK-5)', '4-Mar-2020', '12:50 AM'),
 (8, 'Ababon, Sheenn Otaza', 'Process Book Loan', 'Admin', 'Crisyy, Cris (BOOK-3)', '3/10/2020', '1:01 AM'),
-(9, 'Ababon, Sheenn Otaza', 'Process Book Loan', 'Admin', 'RABUSA, ANGELIE (BOOK-3)', '3/10/2020', '1:06 AM');
+(9, 'Ababon, Sheenn Otaza', 'Process Book Loan', 'Admin', 'RABUSA, ANGELIE (BOOK-3)', '3/10/2020', '1:06 AM'),
+(10, 'Name', 'Save Author', 'Admin', 'Cris desu', '3/4/2020', '6:06 PM'),
+(11, 'Name', 'Save Publisher', 'Admin', '', '3/4/2020', '6:06 PM'),
+(12, 'Name', 'Update Author', 'Admin', 'Cris desu test', '3/4/2020', '6:12 PM'),
+(13, 'Name', 'Delete Publisher', 'Admin', '', '3/4/2020', '6:13 PM');
 
 --
 -- Indexes for dumped tables
@@ -703,6 +777,12 @@ INSERT INTO `user_log_tbl` (`ID`, `User_Name`, `Activity`, `Status`, `Book_Title
 -- Indexes for table `account_log_tbl`
 --
 ALTER TABLE `account_log_tbl`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `author_tbl`
+--
+ALTER TABLE `author_tbl`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -782,6 +862,12 @@ ALTER TABLE `purchased_tbl`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `remarks_tbl`
+--
+ALTER TABLE `remarks_tbl`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `requested_tbl`
 --
 ALTER TABLE `requested_tbl`
@@ -834,7 +920,13 @@ ALTER TABLE `user_log_tbl`
 -- AUTO_INCREMENT for table `account_log_tbl`
 --
 ALTER TABLE `account_log_tbl`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+
+--
+-- AUTO_INCREMENT for table `author_tbl`
+--
+ALTER TABLE `author_tbl`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `brrdlog_tbl`
@@ -903,6 +995,12 @@ ALTER TABLE `purchased_tbl`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `remarks_tbl`
+--
+ALTER TABLE `remarks_tbl`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `requested_tbl`
 --
 ALTER TABLE `requested_tbl`
@@ -942,7 +1040,7 @@ ALTER TABLE `useraccount_tbl`
 -- AUTO_INCREMENT for table `user_log_tbl`
 --
 ALTER TABLE `user_log_tbl`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
