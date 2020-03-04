@@ -58,11 +58,6 @@ public class login extends javax.swing.JFrame {
             
             rs = pst.executeQuery();
             if (rs.next()) {
-            JOptionPane.showMessageDialog(null, "Acess Granted!");
-            Login.setVisible(false);
-            publicsearch.setVisible(false);
-            new Main().setVisible(true);
-            this.setVisible(false);
 
             pst = (PreparedStatement) conn.prepareStatement("SELECT ID, First_Name, Middle_Name, Surname, Level  FROM useraccount_tbl where Username= '" + user.getText() + "' and Password= '" + pass.getText() + "' ");
             rs = pst.executeQuery();
@@ -101,6 +96,11 @@ public class login extends javax.swing.JFrame {
     }
         catch (SQLException x) {
         }
+            JOptionPane.showMessageDialog(null, "Acess Granted!");
+            Login.setVisible(false);
+            publicsearch.setVisible(false);
+            new Main().setVisible(true);
+            this.setVisible(false);
         user.setText("");
         pass.setText("");
         start();
