@@ -63,10 +63,16 @@ public class Main extends javax.swing.JFrame {
         classif_list();
         pub_list();
         course_list();
+        myaccount_details();
+    }
+    public Main(String msg, String mgs1, String mgs2, String mgs3){
+        txt_name.setText(msg);
+        txt_level.setText(mgs1);
+        idd.setText(mgs2);
+        menu_title1.setText(mgs3);
     }
     public void all_ref(){
         nb_ref();
-        public_ref();
         pur_ref();
         brr_ref();
         acc_ref();
@@ -107,6 +113,11 @@ public class Main extends javax.swing.JFrame {
         userlog_ref();
         tcode_ref();
         rc_tcode();
+        accesslvl();
+    }
+    
+    public void getsome(){
+    
     }
     
     public void accesslvl(){
@@ -244,13 +255,7 @@ public class Main extends javax.swing.JFrame {
     }
     
     public void start(){
-    setBackground(new Color(0,0,0,150));
-        loginpanel.setBackground(new Color(0,0,0,150));
-        Login.setBackground(new Color(0,0,0,150));
-        publicsearch.setBackground(new Color(0,0,0,150));
-        jPanel68.setBackground(new Color(0,0,0,150));
-        jPanel2.setBackground(new Color(0,0,0,150));
-        jPanel3.setBackground(new Color(0,0,0,150));
+        setBackground(new Color(0,0,0,150));
         men_dash.setBackground(new Color(255,255,255));
         men_rec.setBackground(new Color(96,96,96));
         men_inv.setBackground(new Color(96,96,96));
@@ -312,22 +317,9 @@ public class Main extends javax.swing.JFrame {
     }catch (Exception e) {
     }
     } 
-//    private void stat_list(){//filter encode
-//        brrd_stat.removeAllItems();
-//    String sqll = "select * from borrower_tbl";
-//    try{
-//        pst= conn.prepareStatement(sqll);
-//        rs = pst.executeQuery();
-//        while(rs.next()){
-//            brrd_stat.addItem(rs.getString("Status"));
-//        }
-//    }catch (Exception e) {
-//    }
-//    } 
     public void classif_list(){
         nb_class.removeAllItems();
         po_cl.removeAllItems();
-        jComboBox1.removeAllItems();
     String sqll = "select * from classification_tbl";
     try{
         pst= conn.prepareStatement(sqll);
@@ -335,7 +327,6 @@ public class Main extends javax.swing.JFrame {
         while(rs.next()){
             nb_class.addItem(rs.getString("Classname"));
             po_cl.addItem(rs.getString("Classname"));
-            jComboBox1.addItem(rs.getString("Classname"));
         }
     }catch (Exception e) {
     }
@@ -376,66 +367,7 @@ public class Main extends javax.swing.JFrame {
     }catch (Exception e) {
     }
     } 
-    public void login(){
-    try {
-        String sql = "SELECT * FROM useraccount_tbl where Username =? and Password =?";
-            pst = (PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, user.getText());
-            pst.setString(2, pass.getText());
-            
-            rs = pst.executeQuery();
-            if (rs.next()) {
-            JOptionPane.showMessageDialog(null, "Acess Granted!");
-            Login.setVisible(false);
-            publicsearch.setVisible(false);
-            Menu.setVisible(true);
-            mmm.setVisible(true);
-            head.setVisible(true);
-            stock.setVisible(true);
-            
-
-            pst = (PreparedStatement) conn.prepareStatement("SELECT ID, First_Name, Middle_Name, Surname, Level  FROM useraccount_tbl where Username= '" + user.getText() + "' and Password= '" + pass.getText() + "' ");
-            rs = pst.executeQuery();
-            if(rs.next()){
-                String add = rs.getString("ID");
-                String add1 = rs.getString("First_Name");
-                String add2 = rs.getString("Middle_Name");
-                String add3 = rs.getString("Surname");
-                String add4 = rs.getString("Level");
-                txt_name.setText(add3+", "+add1+" "+add2);
-                txt_level.setText(add4);
-                idd.setText(add);
-                sumup.setText("0");
-            }
-            menu_title1.setText("Hi, "+txt_name.getText()+" ("+txt_level.getText()+")");
-        }
-            else {
-            JOptionPane.showMessageDialog(null, "incorrect username or password");
-            int a;
-            //a = Double.parseDouble(loginatt.getText());
-            a = Integer.parseInt(sumup.getText());
-            a = a+1;
-            sumup.setText(Integer.toString(a));
-            if(a==3){
-                JOptionPane.showMessageDialog(null, "Warning 3 attempts occured!");
-            System.exit(0);
-            }
-            }
-    }
-        catch (SQLException x) {
-        }
-        user.setText("");
-        pass.setText("");
-        start();
-        accesslvl();
-        myaccount_ohn();
-        myaccount_bl();
-        logcount();
-        ohb_total();
-        myaccount_details();
-        inlog();
-        all_ref();
-    }
+    
     public void classif_ref(){
         try {
             String sql = "SELECT Class_Number, Classname FROM classification_tbl ORDER BY Classname ASC";
@@ -785,19 +717,6 @@ public class Main extends javax.swing.JFrame {
             rs = pst.executeQuery();
 
             jTable2.setModel(DbUtils.resultSetToTableModel(rs));
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }
-    public void public_ref(){
-        try {
-            String sql = "SELECT ISBN_No, Book_title, Author, Call_Number, Classification, Publisher, Edition, Copy_Right_Year"
-                    + " FROM stockin_tbl ";
-            pst = (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-
-            sumpatable.setModel(DbUtils.resultSetToTableModel(rs));
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -1230,49 +1149,6 @@ public class Main extends javax.swing.JFrame {
         jFileChooser1 = new javax.swing.JFileChooser();
         jFileChooser2 = new javax.swing.JFileChooser();
         jPanel1 = new javax.swing.JPanel();
-        Login = new javax.swing.JPanel();
-        loginpanel = new javax.swing.JPanel();
-        sumup = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        user = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        pass = new javax.swing.JPasswordField();
-        showpass = new javax.swing.JCheckBox();
-        jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        exit = new javax.swing.JLabel();
-        minimize = new javax.swing.JLabel();
-        publicsearch = new javax.swing.JPanel();
-        nb_new8 = new javax.swing.JButton();
-        jPanel68 = new javax.swing.JPanel();
-        jLabel164 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel165 = new javax.swing.JLabel();
-        jLabel166 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel167 = new javax.swing.JLabel();
-        jLabel168 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel169 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel170 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel171 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel172 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel173 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel174 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        nb_new9 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane31 = new javax.swing.JScrollPane();
-        sumpatable = new javax.swing.JTable();
-        jLabel163 = new javax.swing.JLabel();
         Menu = new javax.swing.JPanel();
         mmm = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -1472,7 +1348,7 @@ public class Main extends javax.swing.JFrame {
         nb_cn = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        nb_class = new javax.swing.JComboBox<>();
+        nb_class = new javax.swing.JComboBox<String>();
         nb_edi = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         nb_qty = new javax.swing.JTextField();
@@ -1483,7 +1359,7 @@ public class Main extends javax.swing.JFrame {
         nb_da = new com.toedter.calendar.JDateChooser();
         class_add = new javax.swing.JButton();
         jLabel119 = new javax.swing.JLabel();
-        nb_cpub = new javax.swing.JComboBox<>();
+        nb_cpub = new javax.swing.JComboBox<String>();
         class_add2 = new javax.swing.JButton();
         nb_cry = new com.toedter.calendar.JDateChooser();
         jLabel187 = new javax.swing.JLabel();
@@ -1513,7 +1389,7 @@ public class Main extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         acc_fn = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        acc_lvl = new javax.swing.JComboBox<>();
+        acc_lvl = new javax.swing.JComboBox<String>();
         jLabel37 = new javax.swing.JLabel();
         acc_mn = new javax.swing.JTextField();
         acc_image = new javax.swing.JLabel();
@@ -1553,14 +1429,14 @@ public class Main extends javax.swing.JFrame {
         brr_idn = new javax.swing.JTextField();
         brr_image = new javax.swing.JLabel();
         brr_browse = new javax.swing.JButton();
-        brr_yr = new javax.swing.JComboBox<>();
+        brr_yr = new javax.swing.JComboBox<String>();
         brr_add = new javax.swing.JTextField();
         brr_mn = new javax.swing.JTextField();
         jLabel181 = new javax.swing.JLabel();
         jLabel182 = new javax.swing.JLabel();
-        brr_idt = new javax.swing.JComboBox<>();
+        brr_idt = new javax.swing.JComboBox<String>();
         jLabel183 = new javax.swing.JLabel();
-        brr_cr = new javax.swing.JComboBox<>();
+        brr_cr = new javax.swing.JComboBox<String>();
         brr_sn = new javax.swing.JTextField();
         jLabel184 = new javax.swing.JLabel();
         course_add = new javax.swing.JButton();
@@ -1595,7 +1471,7 @@ public class Main extends javax.swing.JFrame {
         jLabel74 = new javax.swing.JLabel();
         brrd_add = new javax.swing.JButton();
         brrd_min = new javax.swing.JButton();
-        brrd_remcb = new javax.swing.JComboBox<>();
+        brrd_remcb = new javax.swing.JComboBox<String>();
         brrd_fd = new javax.swing.JTextField();
         jLabel78 = new javax.swing.JLabel();
         borroweddate = new javax.swing.JTextField();
@@ -1604,7 +1480,7 @@ public class Main extends javax.swing.JFrame {
         brrd_libid1 = new javax.swing.JTextField();
         jLabel190 = new javax.swing.JLabel();
         jLabel191 = new javax.swing.JLabel();
-        brrd_bt = new javax.swing.JComboBox<>();
+        brrd_bt = new javax.swing.JComboBox<String>();
         brrd_stat = new javax.swing.JTextField();
         brrd_class = new javax.swing.JTextField();
         transcoded = new javax.swing.JTextField();
@@ -1635,7 +1511,7 @@ public class Main extends javax.swing.JFrame {
         jPanel36 = new javax.swing.JPanel();
         jScrollPane14 = new javax.swing.JScrollPane();
         borrowedlog_table = new javax.swing.JTable();
-        brrd_fn2 = new javax.swing.JComboBox<>();
+        brrd_fn2 = new javax.swing.JComboBox<String>();
         jLabel69 = new javax.swing.JLabel();
         brrd_fd3 = new javax.swing.JTextField();
         jPanel35 = new javax.swing.JPanel();
@@ -1649,7 +1525,7 @@ public class Main extends javax.swing.JFrame {
         po_qt = new javax.swing.JTextField();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
-        po_sup = new javax.swing.JComboBox<>();
+        po_sup = new javax.swing.JComboBox<String>();
         po_date = new com.toedter.calendar.JDateChooser();
         po_or = new javax.swing.JTextField();
         jLabel105 = new javax.swing.JLabel();
@@ -1667,7 +1543,7 @@ public class Main extends javax.swing.JFrame {
         po_min = new javax.swing.JButton();
         nb_update2 = new javax.swing.JButton();
         nb_update4 = new javax.swing.JButton();
-        po_cl = new javax.swing.JComboBox<>();
+        po_cl = new javax.swing.JComboBox<String>();
         class_add1 = new javax.swing.JButton();
         nb_update5 = new javax.swing.JButton();
         jLabel110 = new javax.swing.JLabel();
@@ -1690,7 +1566,7 @@ public class Main extends javax.swing.JFrame {
         sum_table = new javax.swing.JTable();
         jPanel17 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        sum_class = new javax.swing.JComboBox<>();
+        sum_class = new javax.swing.JComboBox<String>();
         sum_bt = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
@@ -1715,7 +1591,7 @@ public class Main extends javax.swing.JFrame {
         so_add = new javax.swing.JButton();
         so_minus = new javax.swing.JButton();
         so_save = new javax.swing.JButton();
-        so_stat = new javax.swing.JComboBox<>();
+        so_stat = new javax.swing.JComboBox<String>();
         jLabel45 = new javax.swing.JLabel();
         jPanel27 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -1917,437 +1793,6 @@ public class Main extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.CardLayout());
 
-        loginpanel.setBackground(new java.awt.Color(51, 51, 51));
-
-        sumup.setText("0");
-
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Login Form");
-
-        user.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        user.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        user.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                userKeyPressed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Username");
-
-        pass.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                passKeyPressed(evt);
-            }
-        });
-
-        showpass.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        showpass.setForeground(new java.awt.Color(255, 255, 255));
-        showpass.setText("Show Password");
-        showpass.setOpaque(false);
-        showpass.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                showpassMouseClicked(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Password");
-
-        jButton1.setBackground(new java.awt.Color(0, 153, 255));
-        jButton1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton1KeyPressed(evt);
-            }
-        });
-
-        jButton3.setBackground(new java.awt.Color(0, 153, 255));
-        jButton3.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Public View");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton3KeyPressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout loginpanelLayout = new javax.swing.GroupLayout(loginpanel);
-        loginpanel.setLayout(loginpanelLayout);
-        loginpanelLayout.setHorizontalGroup(
-            loginpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginpanelLayout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addGroup(loginpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(loginpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(showpass)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(user)
-                        .addComponent(pass)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginpanelLayout.createSequentialGroup()
-                .addContainerGap(166, Short.MAX_VALUE)
-                .addGroup(loginpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginpanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(158, 158, 158))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginpanelLayout.createSequentialGroup()
-                        .addComponent(sumup, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(206, 206, 206))))
-        );
-        loginpanelLayout.setVerticalGroup(
-            loginpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginpanelLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(sumup)
-                .addGap(29, 29, 29)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(showpass)
-                .addGap(64, 64, 64)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
-        );
-
-        exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/error.png"))); // NOI18N
-        exit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                exitMouseClicked(evt);
-            }
-        });
-
-        minimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/minimize.png"))); // NOI18N
-        minimize.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                minimizeMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout LoginLayout = new javax.swing.GroupLayout(Login);
-        Login.setLayout(LoginLayout);
-        LoginLayout.setHorizontalGroup(
-            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginLayout.createSequentialGroup()
-                .addGap(0, 1052, Short.MAX_VALUE)
-                .addComponent(minimize)
-                .addGap(8, 8, 8)
-                .addComponent(exit)
-                .addContainerGap())
-            .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(LoginLayout.createSequentialGroup()
-                    .addGap(0, 325, Short.MAX_VALUE)
-                    .addComponent(loginpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 325, Short.MAX_VALUE)))
-        );
-        LoginLayout.setVerticalGroup(
-            LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(exit)
-                    .addComponent(minimize))
-                .addContainerGap(649, Short.MAX_VALUE))
-            .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(LoginLayout.createSequentialGroup()
-                    .addGap(0, 60, Short.MAX_VALUE)
-                    .addComponent(loginpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 60, Short.MAX_VALUE)))
-        );
-
-        jPanel1.add(Login, "card2");
-
-        publicsearch.setBackground(new java.awt.Color(255, 255, 255));
-        publicsearch.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        nb_new8.setBackground(new java.awt.Color(51, 153, 255));
-        nb_new8.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        nb_new8.setForeground(new java.awt.Color(255, 255, 255));
-        nb_new8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/service.png"))); // NOI18N
-        nb_new8.setText("Login Account?");
-        nb_new8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nb_new8ActionPerformed(evt);
-            }
-        });
-        publicsearch.add(nb_new8, new org.netbeans.lib.awtextra.AbsoluteConstraints(923, 10, 210, -1));
-
-        jLabel164.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel164.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel164.setText("Search:");
-
-        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField2KeyReleased(evt);
-            }
-        });
-
-        jComboBox1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                jComboBox1PopupMenuWillBecomeInvisible(evt);
-            }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-            }
-        });
-
-        jLabel165.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel165.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel165.setText("Book Dateils");
-
-        jLabel166.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel166.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel166.setText("Classification");
-
-        javax.swing.GroupLayout jPanel68Layout = new javax.swing.GroupLayout(jPanel68);
-        jPanel68.setLayout(jPanel68Layout);
-        jPanel68Layout.setHorizontalGroup(
-            jPanel68Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel68Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel164)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel68Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel165))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel68Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel166)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
-        );
-        jPanel68Layout.setVerticalGroup(
-            jPanel68Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel68Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addGroup(jPanel68Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel165, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel166, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel68Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel68Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel164)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18))
-        );
-
-        publicsearch.add(jPanel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 750, 100));
-
-        jTextField3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-
-        jLabel167.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel167.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel167.setText("ISBN No.:");
-
-        jLabel168.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel168.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel168.setText("Book Title:");
-
-        jTextField4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-
-        jLabel169.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel169.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel169.setText("Author:");
-
-        jTextField5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-
-        jLabel170.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel170.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel170.setText("Call Number:");
-
-        jTextField6.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-
-        jLabel171.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel171.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel171.setText("Classification:");
-
-        jTextField7.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-
-        jLabel172.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel172.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel172.setText("Publisher:");
-
-        jTextField8.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-
-        jLabel173.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel173.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel173.setText("Edition:");
-
-        jTextField9.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-
-        jLabel174.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel174.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel174.setText("Copy Right");
-
-        jTextField10.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-
-        nb_new9.setBackground(new java.awt.Color(51, 153, 255));
-        nb_new9.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        nb_new9.setForeground(new java.awt.Color(255, 255, 255));
-        nb_new9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
-        nb_new9.setText("Refresh");
-        nb_new9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nb_new9ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel174)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel173)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel172)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel171)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel170)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel169)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel168)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel167)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nb_new9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))))
-                .addGap(10, 10, 10))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(nb_new9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel167)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel168)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel169)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel170)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel171)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel172)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel173)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel174)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
-        );
-
-        publicsearch.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 190, 360, 500));
-
-        sumpatable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        sumpatable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                sumpatableMouseClicked(evt);
-            }
-        });
-        jScrollPane31.setViewportView(sumpatable);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane31, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane31, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        publicsearch.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 750, 500));
-
-        jLabel163.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/bkg.png"))); // NOI18N
-        publicsearch.add(jLabel163, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 700));
-
-        jPanel1.add(publicsearch, "card4");
-
         Menu.setBackground(new java.awt.Color(255, 255, 255));
 
         mmm.setBackground(new java.awt.Color(96, 96, 96));
@@ -2504,7 +1949,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(men_po, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(men_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addComponent(txt_time)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_date1)
@@ -3183,7 +2628,7 @@ public class Main extends javax.swing.JFrame {
             jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel52Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel138, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel138, javax.swing.GroupLayout.DEFAULT_SIZE, 13, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(po_or2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -4380,7 +3825,7 @@ public class Main extends javax.swing.JFrame {
         jLabel22.setText("Copy Right Year:");
         jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 130, 25));
 
-        nb_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--" }));
+        nb_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--" }));
         nb_class.setEnabled(false);
         jPanel4.add(nb_class, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 181, 34));
 
@@ -4435,7 +3880,7 @@ public class Main extends javax.swing.JFrame {
         jLabel119.setText("Publisher:");
         jPanel4.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 99, 24));
 
-        nb_cpub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--" }));
+        nb_cpub.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--" }));
         nb_cpub.setEnabled(false);
         jPanel4.add(nb_cpub, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 181, 34));
 
@@ -4694,7 +4139,7 @@ public class Main extends javax.swing.JFrame {
         jLabel36.setText("Mobile Number:");
         jPanel10.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 99, 24));
 
-        acc_lvl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Please Select--", "Admin", "User", "Faculty", "Student" }));
+        acc_lvl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Please Select--", "Admin", "User", "Faculty", "Student" }));
         acc_lvl.setEnabled(false);
         jPanel10.add(acc_lvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 283, 34));
 
@@ -4890,7 +4335,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 7, Short.MAX_VALUE))
         );
 
         jTabbedPane6.addTab("USER ACCOUNT", jPanel77);
@@ -4961,7 +4406,7 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel8.add(brr_browse, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, -1, 44));
 
-        brr_yr.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Year Level--", "1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "7th Year and Up" }));
+        brr_yr.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Year Level--", "1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "7th Year and Up" }));
         brr_yr.setEnabled(false);
         jPanel8.add(brr_yr, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 200, 30));
 
@@ -4979,7 +4424,7 @@ public class Main extends javax.swing.JFrame {
         jLabel182.setText("Middle Name");
         jPanel8.add(jLabel182, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 86, 24));
 
-        brr_idt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Valid ID--", "Employee ID", "Student ID" }));
+        brr_idt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Valid ID--", "Employee ID", "Student ID" }));
         brr_idt.setEnabled(false);
         brr_idt.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -5185,7 +4630,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 7, Short.MAX_VALUE))
         );
 
         jTabbedPane6.addTab("BORROWER", jPanel78);
@@ -5292,7 +4737,7 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel30.add(brrd_min, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 30, 30));
 
-        brrd_remcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Borrowed", "Loss", "Damage" }));
+        brrd_remcb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Borrowed", "Loss", "Damage" }));
         jPanel30.add(brrd_remcb, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 500, 200, 34));
 
         brrd_fd.setEditable(false);
@@ -5550,7 +4995,7 @@ public class Main extends javax.swing.JFrame {
         borrowedlog_table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane14.setViewportView(borrowedlog_table);
 
-        brrd_fn2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Borrower--" }));
+        brrd_fn2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Borrower--" }));
         brrd_fn2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -6060,7 +5505,7 @@ public class Main extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel12.setText("Classification:");
 
-        sum_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--", "General", "Philippine Literature", "Fiction", "Non-Fiction", "Filipiniana", "Circulation", "Others", "" }));
+        sum_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--", "General", "Philippine Literature", "Fiction", "Non-Fiction", "Filipiniana", "Circulation", "Others", "" }));
         sum_class.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -6242,7 +5687,7 @@ public class Main extends javax.swing.JFrame {
             jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel47Layout.createSequentialGroup()
                 .addComponent(jPanel48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("PURCHASE ORDER LOG", jPanel47);
@@ -6318,7 +5763,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        so_stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select Status--", "Damage", "Loss" }));
+        so_stat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Select Status--", "Damage", "Loss" }));
         so_stat.setEnabled(false);
 
         jLabel45.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -6481,7 +5926,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(so_time, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jLabel43.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -8090,7 +7535,7 @@ public class Main extends javax.swing.JFrame {
         menu_title.setText("DASHBOARD");
         if(menu_title.getText().equals("DASHBOARD")){
         jPanel1.setVisible(true);
-        Login.setVisible(true);
+        //new login.setVisible(true);
             Menu.setVisible(false);
             mmm.setVisible(false);
             head.setVisible(false);
@@ -8101,46 +7546,9 @@ public class Main extends javax.swing.JFrame {
             outlog();
             all_ref();
         }
-        
+        new login().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_men_logoutMouseClicked
-
-    private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
-        this.setState(this.ICONIFIED);
-    }//GEN-LAST:event_minimizeMouseClicked
-
-    private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_exitMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        login();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void userKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            login();
-        }
-    }//GEN-LAST:event_userKeyPressed
-
-    private void passKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            login();
-        }
-    }//GEN-LAST:event_passKeyPressed
-
-    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            login();
-        }
-    }//GEN-LAST:event_jButton1KeyPressed
-
-    private void showpassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showpassMouseClicked
-        if (showpass.isSelected()) {
-      pass.setEchoChar((char)0); //password = JPasswordField
-   } else {
-      pass.setEchoChar('*');
-   }
-    }//GEN-LAST:event_showpassMouseClicked
 
     private void men_dashMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_men_dashMouseClicked
         men_dash.setBackground(new Color(255,255,255));
@@ -8269,877 +7677,6 @@ public class Main extends javax.swing.JFrame {
         booklist.setVisible(false);
     }//GEN-LAST:event_men_brrdMouseClicked
 
-    private void nb_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_newActionPerformed
-        nb_new.setEnabled(false);
-        nb_update.setEnabled(false);
-        nb_delete.setEnabled(false);
-        nb_save.setEnabled(true);
-        
-        class_add.setEnabled(true);
-        nb_is.setEnabled(true);
-        nb_bt.setEnabled(true);
-        nb_bt.setEditable(true);
-        nb_aut.setEnabled(true);
-        nb_qty.setEnabled(true);
-        nb_qty.setEditable(true);
-        nb_cn.setEnabled(true);
-        nb_class.setEnabled(true);
-        nb_cpub.setEnabled(true);
-        class_add2.setEnabled(true);
-        nb_edi.setEnabled(true);
-        nb_cry.setEnabled(true);
-        nb_prc.setEnabled(true);
-        nb_prc.setEditable(true);
-        nb_da.setEnabled(true);
-        nb_clr();
-        nb_aut.setEnabled(true);
-        nb_aut.setEditable(true);
-        
-    }//GEN-LAST:event_nb_newActionPerformed
-
-    private void nb_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_saveActionPerformed
-        if(jLabel187.getText().equals("ISBN Not Available") || jLabel187.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Enter Valid ISBN Number!");
-        }
-        else{
-            if(jLabel189.getText().equals("Call Number Not Available") || jLabel189.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Enter Valid Call Number!");
-            }
-            else {
-                if(nb_bt.getText().equals("")){
-                JOptionPane.showMessageDialog(null, "Input Book Title!");
-                }
-                else {
-                    int i = Integer.parseInt(nb_qty.getText());
-                    if(i<=0){
-                    JOptionPane.showMessageDialog(null, "Quantity must not lessthan 1!");
-                    }
-                    else {
-                        if(nb_prc.getText().equals("")){
-                        JOptionPane.showMessageDialog(null, "Input Book Price!");
-                        }
-                        else {
-        if(nb_da.getDate().equals(null)){    
-        JOptionPane.showMessageDialog(null, "Please Fill the book information!!");
-        }
-        else{
-           try {
-            String sql = "Insert into stockin_tbl (ISBN_No, Book_title, Author, Quantity, Call_Number, "
-                    + " Classification, Publisher, Edition,"
-                    + " Copy_Right_Year, Price, Encoder, Date_Arrival) values (?,?,?,?,?,?,?,?,?,?,?,?)";
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
-            
-            pst.setString(1, nb_is.getText());
-            pst.setString(2, nb_bt.getText());
-            pst.setString(3, nb_aut.getText());
-            pst.setString(4, nb_qty.getText());
-            pst.setString(5, nb_cn.getText());
-            pst.setString(6, (String) nb_class.getSelectedItem());
-            pst.setString(7, (String) nb_cpub.getSelectedItem());
-            pst.setString(8, nb_edi.getText());
-            pst.setString(9, ((JTextField)nb_cry.getDateEditor().getUiComponent()).getText());
-            pst.setString(10, nb_prc.getText());
-            pst.setString(11, txt_name.getText());
-            pst.setString(12, ((JTextField)nb_da.getDateEditor().getUiComponent()).getText());
-
-            pst.execute(); 
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        try {
-            String sql11 = "Insert into holding_tbl (ISBN_No, Book_title, Classification, On_Hand, Borrowed, Damage, Total_Holding, Encoder, Date, Time) "
-                    + "values (?,?,?,?,?,?,?,?,?,?)";
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql11);
-            
-            pst.setString(1, nb_is.getText());
-            pst.setString(2, nb_bt.getText());
-            pst.setString(3, (String) nb_class.getSelectedItem());
-            pst.setString(4, nb_qty.getText());
-            pst.setString(5, "0");
-            pst.setString(6, "0");
-            pst.setString(7, nb_qty.getText());
-            pst.setString(8, "");
-            pst.setString(9, "");
-            pst.setString(10, "");
-
-            pst.execute(); 
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }    
-        try {
-            String sql1 = "Insert into damage_tbl (ISBN_No, Book_title, Classification, Status, Quantity, Encoder, Date, Time) "
-                    + "values (?,?,?,?,?,?,?,?)";
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql1);
-            
-            pst.setString(1, nb_is.getText());
-            pst.setString(2, nb_bt.getText());
-            pst.setString(3, (String) nb_class.getSelectedItem());
-            pst.setString(4, "--Select Status--");
-            pst.setString(5, "0");
-            pst.setString(6, "");
-            pst.setString(7, "");
-            pst.setString(8, "");
-
-            pst.execute(); 
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }   
-        
-        try {
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM purchased_tbl  WHERE ID = '" + nb_id.getText() + "'");
-            int del = pst.executeUpdate();
-            if (del > 0) {
-                JOptionPane.showMessageDialog(null, "Book Entry Deleted!");
-                
-            }else{
-                //JOptionPane.showMessageDialog(null, "Please Check Item!!");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-       
-        ulog15();
-        all_ref();
-        nb_clr();
-        nb_disable();
-        nb_save.setEnabled(false);
-        nb_new.setEnabled(true);
-        }
-                        }
-                    }
-                }
-            }
-        }
-    }//GEN-LAST:event_nb_saveActionPerformed
-
-    private void nb_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nb_tableMouseClicked
-        int z = nb_table.getSelectedRow();
-
-            TableModel model = (TableModel)nb_table.getModel();
-          nb_id.setText(model.getValueAt(z, 0).toString());
-          nb_is.setText(model.getValueAt(z, 1).toString());
-          nb_bt.setText(model.getValueAt(z, 2).toString());
-          nb_aut.setText(model.getValueAt(z, 3).toString());
-          nb_qty.setText(model.getValueAt(z, 4).toString());
-          nb_cn.setText(model.getValueAt(z, 5).toString());
-          nb_class.setSelectedItem(model.getValueAt(z, 6).toString());
-          nb_cpub.setSelectedItem(model.getValueAt(z, 7).toString());
-          nb_edi.setText(model.getValueAt(z, 8).toString());
-          ((JTextField)nb_cry.getDateEditor().getUiComponent()).setText(model.getValueAt(z, 9).toString());
-          nb_prc.setText(model.getValueAt(z, 10).toString());
-          ((JTextField)nb_da.getDateEditor().getUiComponent()).setText(model.getValueAt(z, 11).toString());
-          
-          nb_able();
-          //nb_qty.setEnabled(false);
-          nb_save.setEnabled(false);
-          nb_update.setEnabled(true);
-          nb_delete.setEnabled(true);
-          nb_new.setEnabled(true);
-    }//GEN-LAST:event_nb_tableMouseClicked
-
-    private void nb_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_updateActionPerformed
-        try {
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE stockin_tbl SET ISBN_No=?, "
-                    + "Call_Number=?, Classification=?, Publisher=?, Edition=?, Copy_Right_Year=?, Date_Arrival=?, "
-                    + "Author=? WHERE Book_ID='" + nb_id.getText() + "'");
-            
-            pst.setString(1, nb_is.getText());
-            pst.setString(2, nb_cn.getText());
-            pst.setString(3, (String) nb_class.getSelectedItem());
-            pst.setString(4, (String) nb_cpub.getSelectedItem());
-            pst.setString(5, nb_edi.getText());
-            pst.setString(6, ((JTextField)nb_cry.getDateEditor().getUiComponent()).getText());
-            pst.setString(7, ((JTextField)nb_da.getDateEditor().getUiComponent()).getText());
-            pst.setString(8, nb_aut.getText());
-            
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Data Updated");
-        }
-        catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        ulog16();
-        all_ref();
-        nb_clr();
-        nb_disable();
-        nb_update.setEnabled(false);
-        nb_delete.setEnabled(false);
-        nb_new.setEnabled(true);
-    }//GEN-LAST:event_nb_updateActionPerformed
-
-    private void nb_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_deleteActionPerformed
-        try {
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM stockin_tbl  WHERE Book_ID = '" + nb_id.getText() + "'");
-            int del = pst.executeUpdate();
-            if (del > 0) {
-                JOptionPane.showMessageDialog(null, "Book Entry Deleted!");
-                
-            }else{
-                JOptionPane.showMessageDialog(null, "Please Check Item!!");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        try {
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM holding_tbl  WHERE ID = '" + nb_id.getText() + "'");
-            int del = pst.executeUpdate();
-            if (del > 0) {
-                JOptionPane.showMessageDialog(null, "Book Entry Deleted!");
-                
-            }else{
-                JOptionPane.showMessageDialog(null, "Please Check Item!!");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        try {
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM damage_tbl  WHERE ID = '" + nb_id.getText() + "'");
-            int del = pst.executeUpdate();
-            if (del > 0) {
-                JOptionPane.showMessageDialog(null, "Book Entry Deleted!");
-                
-            }else{
-                JOptionPane.showMessageDialog(null, "Please Check Item!!");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        try {
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM borrowed_tbl  WHERE Book_title = '" + nb_bt.getText() + "'");
-            int del = pst.executeUpdate();
-            if (del > 0) {
-                JOptionPane.showMessageDialog(null, "Book Entry Deleted!");
-                
-            }else{
-                JOptionPane.showMessageDialog(null, "Please Check Item!!");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        ulog17();
-        all_ref();
-        nb_clr();
-        nb_disable();
-        nb_update.setEnabled(false);
-        nb_delete.setEnabled(false);
-        nb_new.setEnabled(true);
-    }//GEN-LAST:event_nb_deleteActionPerformed
-
-    private void brr_browseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brr_browseActionPerformed
-        JFileChooser file = new JFileChooser(jFileChooser1.getCurrentDirectory());
-        file.setCurrentDirectory(new File(System.getProperty("user.home")));
-        //filter the files'
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Image*","jpg","gif","png");
-        file.addChoosableFileFilter(filter);
-        int result = file.showSaveDialog(null);
-        //if the user click on save jfilechooser
-        if(result == JFileChooser.APPROVE_OPTION){
-            File selectedFile = file.getSelectedFile();
-            String path = selectedFile.getAbsolutePath();
-            // image.setIcon(ResizeImage(path,null));
-            brr_image.setIcon(new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(brr_image.getWidth(), brr_image.getHeight(), Image.SCALE_DEFAULT)));
-            imgpath = path;
-
-        }else if(result  == JFileChooser.CANCEL_OPTION){
-            JOptionPane.showMessageDialog(null,"No File Selected");
-        }
-    }//GEN-LAST:event_brr_browseActionPerformed
-
-    private void brr_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_brr_tableMouseClicked
-        int z = brr_table.getSelectedRow();
-
-        TableModel model = (TableModel)brr_table.getModel();
-        brr_id.setText(model.getValueAt(z, 0).toString());
-        ((JTextField)brr_bd.getDateEditor().getUiComponent()).setText(model.getValueAt(z, 10).toString());
-
-        try{
-
-            String sql="SELECT First_Name, Middle_Name, Surname, ID_Type, ID_No, Course, Year, Address, Status, "
-                    + " Photo "
-            + "  FROM borrower_tbl where Library_ID = '" + (String) brr_id.getText() + "' ";
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-
-            if(rs.next()){
-                String name1 =rs.getString("First_Name");
-                String name2 =rs.getString("Middle_Name");
-                String name3 =rs.getString("Surname");
-                String name4 =rs.getString("ID_Type");
-                String name5 =rs.getString("ID_No");
-                String name6 =rs.getString("Course");
-                String name7 =rs.getString("Year");
-                String name8 =rs.getString("Address");
-                String name9 =rs.getString("Status");
-
-                brr_fn.setText(name1);
-                brr_mn.setText(name2);
-                brr_sn.setText(name3);
-                brr_idt.setSelectedItem(name4);
-                brr_idn.setText(name5);
-                brr_cr.setSelectedItem(name6);
-                brr_yr.setSelectedItem(name7);
-                brr_add.setText(name8);
-                brr_stat.setText(name9);
-                //brr_stat.setSelectedItem(name6);
-
-                byte[] img = rs.getBytes("Photo");
-                ImageIcon image1 =  new ImageIcon(img);
-                Image im = image1.getImage();
-                Image myImage = im.getScaledInstance(brr_image.getWidth(), brr_image.getHeight(), Image.SCALE_SMOOTH );
-                ImageIcon newImage = new ImageIcon(myImage);
-                brr_image.setIcon(newImage);
-
-            }
-        }
-        catch (Exception e) {
-           // JOptionPane.showMessageDialog(null, e);
-        }
-
-        brr_save.setEnabled(false);
-        brr_update.setEnabled(true);
-        brr_delete.setEnabled(true);
-        brr_browse.setEnabled(true);
-        brr_able();
-        brr_fn.setEditable(true);
-    }//GEN-LAST:event_brr_tableMouseClicked
-
-    private void brr_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brr_newActionPerformed
-        brr_browse.setEnabled(true);
-        brr_save.setEnabled(true);
-        brr_update.setEnabled(false);
-        brr_delete.setEnabled(false);
-        brr_new.setEnabled(true);
-        brr_fn.setEditable(true);
-        brr_clr();
-        brr_able();
-    }//GEN-LAST:event_brr_newActionPerformed
-
-    private void brr_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brr_saveActionPerformed
-        if (imgpath != null){
-            int a = brr_table.getRowCount();
-            if(a <= 0){    
-            brr_q.setText("1");
-            }
-            else {
-            int total;
-            total = a + 1;
-            brr_q.setText(Integer.toString(total));
-            }
-            try{
-                String sql = "INSERT INTO borrower_tbl (Library_ID, First_Name, Middle_Name, Surname, ID_Type, ID_No, "
-                        + "Course, Year, Address, Status, Birth_Date, Photo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
-                InputStream img = new FileInputStream(new File(imgpath));
-                pst.setString(1, "LIB-ID-"+brr_q.getText());
-                pst.setString(2, brr_fn.getText());
-                pst.setString(3, brr_mn.getText());
-                pst.setString(4, brr_sn.getText());
-                pst.setString(5, (String)brr_idt.getSelectedItem());
-                pst.setString(6, brr_idn.getText());
-                pst.setString(7, (String)brr_cr.getSelectedItem());
-                pst.setString(8, (String)brr_yr.getSelectedItem());
-                pst.setString(9, brr_add.getText());
-                pst.setString(10, brr_stat.getText());
-                pst.setString(11, ((JTextField)brr_bd.getDateEditor().getUiComponent()).getText());
-                pst.setBlob(12, img);
-                
-                pst.execute();
-
-                String sql1 = "INSERT INTO useraccount_tbl (First_Name, Middle_Name, Surname, Username, Employee_ID, "
-                        + "Position, Mobile_Number, Password, Level, Photo) VALUES (?,?,?,?,?,?,?,?,?,?)";
-                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql1);
-                //InputStream img1 = new FileInputStream(new File(imgpath1));
-                pst.setString(1, brr_fn.getText());
-                pst.setString(2, brr_mn.getText());
-                pst.setString(3, brr_sn.getText());
-                pst.setString(4, brr_sn.getText());
-                pst.setString(5, "");
-                pst.setString(6, "");
-                pst.setString(7, "");
-                pst.setString(8, "1234");
-                pst.setString(9, brr_stat.getText());
-                pst.setBlob(10, img);
-                
-                pst.execute( );
-                
-                 JOptionPane.showMessageDialog(null,"Account Created");
-                    all_ref();
-                    brr_clr();
-                    brr_disable();
-                    brr_save.setEnabled(false);
-                    brr_update.setEnabled(false);
-                    brr_delete.setEnabled(false);
-                    brr_browse.setEnabled(false);
-                    brr_new.setEnabled(true);
-                
-            }catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
-            }
-        }
-        else{
-            int a = brr_table.getRowCount();
-            if(a <= 0){    
-            brr_q.setText("1");
-            }
-            else {
-            int total;
-            total = a + 1;
-            brr_q.setText(Integer.toString(total));
-            }
-            try{
-                String sql = "INSERT INTO borrower_tbl (Library_ID, First_Name, Middle_Name, Surname, ID_Type, ID_No, "
-                        + "Course, Year, Address, Status, Birth_Date) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
-                pst.setString(1, "LIB-ID-"+brr_q.getText());
-                pst.setString(2, brr_fn.getText());
-                pst.setString(3, brr_mn.getText());
-                pst.setString(4, brr_sn.getText());
-                pst.setString(5, (String)brr_idt.getSelectedItem());
-                pst.setString(6, brr_idn.getText());
-                pst.setString(7, (String)brr_cr.getSelectedItem());
-                pst.setString(8, (String)brr_yr.getSelectedItem());
-                pst.setString(9, brr_add.getText());
-                pst.setString(10, brr_stat.getText());
-                pst.setString(11, ((JTextField)brr_bd.getDateEditor().getUiComponent()).getText());
-                
-                pst.execute(); 
-                
-                String sql1 = "INSERT INTO useraccount_tbl (First_Name, Middle_Name, Surname, Username, Employee_ID, "
-                        + "Position, Mobile_Number, Password, Level) VALUES (?,?,?,?,?,?,?,?,?)";
-                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql1);
-                //InputStream img1 = new FileInputStream(new File(imgpath1));
-                pst.setString(1, brr_fn.getText());
-                pst.setString(2, brr_mn.getText());
-                pst.setString(3, brr_sn.getText());
-                pst.setString(4, brr_sn.getText());
-                pst.setString(5, "");
-                pst.setString(6, "");
-                pst.setString(7, "");
-                pst.setString(8, "1234");
-                pst.setString(9, brr_stat.getText());
-                
-                pst.execute();
-                
-                JOptionPane.showMessageDialog(null,"Account Created");
-                    all_ref();
-                    brr_clr();
-                    brr_disable();
-                    brr_save.setEnabled(false);
-                    brr_update.setEnabled(false);
-                    brr_delete.setEnabled(false);
-                    brr_browse.setEnabled(false);
-                    brr_new.setEnabled(true);
-            }catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
-            }
-        }
-        ulog21();
-        imgpath=null;
-        all_ref();
-    }//GEN-LAST:event_brr_saveActionPerformed
-
-    private void brr_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brr_updateActionPerformed
-        if (imgpath != null){
-            try{
-                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE borrower_tbl SET "
-                    + " First_Name=?, Middle_Name=?, Surname=?, ID_Type=?, ID_No=?, Course=?, "
-                        + "Year=?, Address=?, Status=?, Birth_Date=?, Photo=? "
-                    + " WHERE Library_ID ='" + brr_id.getText() + "'");
-                InputStream img = new FileInputStream(new File(imgpath));
-                pst.setString(1, brr_fn.getText());
-                pst.setString(2, brr_mn.getText());
-                pst.setString(3, brr_sn.getText());
-                pst.setString(4, (String) brr_idt.getSelectedItem());
-                pst.setString(5, brr_idn.getText());
-                pst.setString(6, (String) brr_cr.getSelectedItem());
-                pst.setString(7, (String) brr_yr.getSelectedItem());
-                pst.setString(8, brr_add.getText());
-                pst.setString(9, brr_stat.getText());
-                pst.setString(10, ((JTextField)brr_bd.getDateEditor().getUiComponent()).getText());
-                pst.setBlob(11, img);
-                
-                pst.executeUpdate();
-                
-                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE useraccount_tbl SET "
-                    + " First_Name=?, Middle_Name=?, Surname=?, "
-                        + "Photo=? "
-                    + " WHERE ID ='" + brr_id.getText() + "'");
-                InputStream img1 = new FileInputStream(new File(imgpath));
-                pst.setString(1, acc_fn.getText());
-                pst.setString(2, acc_ffmn.getText());
-                pst.setString(3, acc_ffsn.getText());
-                pst.setBlob(4, img1);
-                
-                pst.executeUpdate();
-                
-                JOptionPane.showMessageDialog(null,"Account Info Updated");
-                
-                    all_ref();
-                    brr_clr();
-                    brr_disable();
-                    brr_save.setEnabled(false);
-                    brr_update.setEnabled(false);
-                    brr_delete.setEnabled(false);
-                    brr_browse.setEnabled(false);
-                    brr_new.setEnabled(true);
-
-            }catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
-            }
-        }else{
-            try{
-                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE borrower_tbl SET "
-                    + " First_Name=?, Middle_Name=?, Surname=?, ID_Type=?, ID_No=?, Course=?, "
-                        + "Year=?, Address=?, Status=?, Birth_Date=? "
-                    + " WHERE Library_ID ='" + brr_id.getText() + "'");
-                
-                pst.setString(1, brr_fn.getText());
-                pst.setString(2, brr_mn.getText());
-                pst.setString(3, brr_sn.getText());
-                pst.setString(4, (String) brr_idt.getSelectedItem());
-                pst.setString(5, brr_idn.getText());
-                pst.setString(6, (String) brr_cr.getSelectedItem());
-                pst.setString(7, (String) brr_yr.getSelectedItem());
-                pst.setString(8, brr_add.getText());
-                pst.setString(9, brr_stat.getText());
-                pst.setString(10, ((JTextField)brr_bd.getDateEditor().getUiComponent()).getText());
-                
-                pst.executeUpdate();
-                
-                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE useraccount_tbl SET"
-                        + " First_Name=?, Middle_Name=?, Surname=? WHERE Surname ='" + acc_ffsn.getText() + "'");
-                pst.setString(1, acc_fn.getText());
-                pst.setString(2, acc_ffmn.getText());
-                pst.setString(3, acc_ffsn.getText());
-                pst.executeUpdate();
-                
-                JOptionPane.showMessageDialog(null,"Account Info Updated");
-                
-                    all_ref();
-                    brr_clr();
-                    brr_disable();
-                    brr_save.setEnabled(false);
-                    brr_update.setEnabled(false);
-                    brr_delete.setEnabled(false);
-                    brr_browse.setEnabled(false);
-                    brr_new.setEnabled(true);
-
-            }catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
-            }
-            JOptionPane.showMessageDialog(null,"Please Check Entry!!!");
-        }
-        ulog22();
-        imgpath1=null;
-        all_ref();
-    }//GEN-LAST:event_brr_updateActionPerformed
-
-    private void brr_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brr_deleteActionPerformed
-        try {
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM borrower_tbl  WHERE Library_ID = '" + brr_id.getText() + "'");
-            int del = pst.executeUpdate();
-            
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM useraccount_tbl  WHERE First_Name = '" + brr_fn.getText() + "'");
-            int del1 = pst.executeUpdate();
-            
-            if (del > 0 || del1 > 0) {
-                JOptionPane.showMessageDialog(null, "Data Removed");
-            }else{
-                JOptionPane.showMessageDialog(null, "No ID Exist on the Database!!");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        ulog23();
-        all_ref();
-        brr_clr();
-        brr_disable();
-        brr_save.setEnabled(false);
-        brr_new.setEnabled(true);
-        brr_browse.setEnabled(false);
-        brr_update.setEnabled(false);
-        brr_delete.setEnabled(false);
-    }//GEN-LAST:event_brr_deleteActionPerformed
-
-    private void acc_browseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acc_browseActionPerformed
-        JFileChooser file = new JFileChooser(jFileChooser2.getCurrentDirectory());
-        file.setCurrentDirectory(new File(System.getProperty("user.home")));
-        //filter the files'
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Image*","jpg","gif","png");
-        file.addChoosableFileFilter(filter);
-        int result = file.showSaveDialog(null);
-        //if the user click on save jfilechooser
-        if(result == JFileChooser.APPROVE_OPTION){
-            File selectedFile = file.getSelectedFile();
-            String path = selectedFile.getAbsolutePath();
-            // image.setIcon(ResizeImage(path,null));
-            acc_image.setIcon(new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(acc_image.getWidth(), acc_image.getHeight(), Image.SCALE_DEFAULT)));
-            imgpath1 = path;
-
-        }else if(result  == JFileChooser.CANCEL_OPTION){
-            JOptionPane.showMessageDialog(null,"No File Selected");
-        }
-    }//GEN-LAST:event_acc_browseActionPerformed
-
-    private void acc_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acc_tableMouseClicked
-        int z = acc_table.getSelectedRow();
-
-        TableModel model = (TableModel)acc_table.getModel();
-        acc_id.setText(model.getValueAt(z, 0).toString());
-
-        try{
-
-            String sql="SELECT First_Name, Middle_Name, Surname, Employee_ID, Position,"
-                    + " Username, Password, Level, Mobile_Number, photo "
-            + "  FROM useraccount_tbl where ID = '" + (String) acc_id.getText() + "' ";
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-
-            if(rs.next()){
-                String name1 =rs.getString("First_Name");
-                String name2 =rs.getString("Username");
-                String name3 =rs.getString("Password");
-                String name4 =rs.getString("Level");
-                String name5 =rs.getString("Mobile_Number");
-                String name6 =rs.getString("Middle_Name");
-                String name7 =rs.getString("Surname");
-                String name8 =rs.getString("Employee_ID");
-                String name9 =rs.getString("Position");
-
-                acc_fn.setText(name1);
-                acc_user.setText(name2);
-                acc_pass.setText(name3);
-                acc_lvl.setSelectedItem(name4);
-                acc_mn.setText(name5);
-                acc_ffmn.setText(name6);
-                acc_ffsn.setText(name7);
-                acc_mid.setText(name8);
-                acc_pos.setText(name9);
-                
-
-                byte[] img = rs.getBytes("Photo");
-                ImageIcon image1 =  new ImageIcon(img);
-                Image im = image1.getImage();
-                Image myImage = im.getScaledInstance(acc_image.getWidth(), acc_image.getHeight(), Image.SCALE_SMOOTH );
-                ImageIcon newImage = new ImageIcon(myImage);
-                acc_image.setIcon(newImage);
-
-            }
-        }
-        catch (Exception e) {
-            //JOptionPane.showMessageDialog(null, "No Photo");
-            acc_image.setIcon(new ImageIcon(new ImageIcon("").getImage().getScaledInstance(acc_image.getWidth(), acc_image.getHeight(), Image.SCALE_DEFAULT)));
-            acc_image.setText("Select Image");
-        }
-        
-        acc_new.setEnabled(true);
-        acc_save.setEnabled(false);
-        acc_update.setEnabled(true);
-        acc_delete.setEnabled(true);
-        acc_browse.setEnabled(true);
-        acc_able();
-    }//GEN-LAST:event_acc_tableMouseClicked
-
-    private void acc_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acc_newActionPerformed
-        acc_able();
-        acc_clr();
-        acc_new.setEnabled(false);
-        acc_save.setEnabled(true);
-        acc_browse.setEnabled(true);
-        acc_update.setEnabled(false);
-        acc_delete.setEnabled(false);
-    }//GEN-LAST:event_acc_newActionPerformed
-
-    private void acc_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acc_saveActionPerformed
-        if (imgpath1 != null){
-            try{
-                String sql = "INSERT INTO useraccount_tbl (First_Name, Middle_Name, Surname, Username, Employee_ID, "
-                        + "Position, Mobile_Number, Password, Level, Photo) VALUES (?,?,?,?,?,?,?,?,?,?)";
-                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
-                InputStream img = new FileInputStream(new File(imgpath1));
-                pst.setString(1, acc_fn.getText());
-                pst.setString(2, acc_ffmn.getText());
-                pst.setString(3, acc_ffsn.getText());
-                pst.setString(4, acc_user.getText());
-                pst.setString(5, acc_mid.getText());
-                pst.setString(6, acc_pos.getText());
-                pst.setString(7, acc_mn.getText());
-                pst.setString(8, acc_pass.getText());
-                pst.setString(9, (String)acc_lvl.getSelectedItem());
-                pst.setBlob(10, img);
-                
-                if(pst.executeUpdate()==1){
-                    JOptionPane.showMessageDialog(null,"Account Created");
-                    acc_clr();
-                    acc_disable();
-                    all_ref();
-                    acc_browse.setEnabled(false);
-                    acc_save.setEnabled(false);
-                    acc_new.setEnabled(true);
-                    acc_update.setEnabled(false);
-                    acc_delete.setEnabled(false);
-
-                }else{
-                    JOptionPane.showMessageDialog(null,"Error 101");
-                }
-            }catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
-            }
-        }else{
-            try{
-                String sql = "INSERT INTO useraccount_tbl (First_Name, Middle_Name, Surname, Username, Employee_ID, "
-                        + "Position, Mobile_Number, Password, Level) VALUES (?,?,?,?,?,?,?,?,?)";
-                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
-
-                pst.setString(1, acc_fn.getText());
-                pst.setString(2, acc_ffmn.getText());
-                pst.setString(3, acc_ffsn.getText());
-                pst.setString(4, acc_user.getText());
-                pst.setString(5, acc_mid.getText());
-                pst.setString(6, acc_pos.getText());
-                pst.setString(7, acc_mn.getText());
-                pst.setString(8, acc_pass.getText());
-                pst.setString(9, (String)acc_lvl.getSelectedItem());
-                
-                if(pst.executeUpdate()==1){
-                    JOptionPane.showMessageDialog(null,"Account Created");
-                    acc_clr();
-                    acc_disable();
-                    all_ref();
-                    acc_browse.setEnabled(false);
-                    acc_save.setEnabled(false);
-                    acc_new.setEnabled(true);
-                    acc_update.setEnabled(false);
-                    acc_delete.setEnabled(false);
-
-                }else{
-                    JOptionPane.showMessageDialog(null,"Error 102");
-                }
-            }catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
-            }
-        }
-        ulog18();
-        imgpath1 = null;
-    }//GEN-LAST:event_acc_saveActionPerformed
-
-    private void acc_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acc_updateActionPerformed
-        if(acc_pass.getText().equals(acc_con.getText())){
-        
-        if (imgpath1 != null){
-            try{
-                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE useraccount_tbl SET "
-                    + " First_Name=?, Middle_Name=?, Surname=?, Username=?, Employee_ID=?, Position=?, "
-                        + "Mobile_Number=?, Password=?, Level=?, Photo=? "
-                    + " WHERE ID ='" + acc_id.getText() + "'");
-                InputStream img = new FileInputStream(new File(imgpath1));
-                pst.setString(1, acc_fn.getText());
-                pst.setString(2, acc_ffmn.getText());
-                pst.setString(3, acc_ffsn.getText());
-                pst.setString(4, acc_user.getText());
-                pst.setString(5, acc_mid.getText());
-                pst.setString(6, acc_pos.getText());
-                pst.setString(7, acc_mn.getText());
-                pst.setString(8, acc_pass.getText());
-                pst.setString(9, (String) acc_lvl.getSelectedItem());
-                pst.setBlob(10, img);
-                
-                int update = pst.executeUpdate();
-                JOptionPane.showMessageDialog(null,"Account Info Updated");
-                
-                all_ref();
-                acc_clr();
-                acc_disable();
-                acc_save.setEnabled(false);
-                acc_new.setEnabled(true);
-                acc_browse.setEnabled(false);
-                acc_update.setEnabled(false);
-                acc_delete.setEnabled(false);
-
-            }catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
-            }
-        }else{
-            try{
-                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE useraccount_tbl SET "
-                    + " First_Name=?, Middle_Name=?, Surname=?, Username=?, Employee_ID=?, Position=?, "
-                        + "Mobile_Number=?, Password=?, Level=? "
-                    + " WHERE ID ='" + acc_id.getText() + "'");
-                pst.setString(1, acc_fn.getText());
-                pst.setString(2, acc_ffmn.getText());
-                pst.setString(3, acc_ffsn.getText());
-                pst.setString(4, acc_user.getText());
-                pst.setString(5, acc_mid.getText());
-                pst.setString(6, acc_pos.getText());
-                pst.setString(7, acc_mn.getText());
-                pst.setString(8, acc_pass.getText());
-                pst.setString(9, (String) acc_lvl.getSelectedItem());
-                
-                int update = pst.executeUpdate();
-                JOptionPane.showMessageDialog(null,"Account Info Updated");
-                
-                all_ref();
-                acc_clr();
-                acc_disable();
-                acc_save.setEnabled(false);
-                acc_new.setEnabled(true);
-                acc_browse.setEnabled(false);
-                acc_update.setEnabled(false);
-                acc_delete.setEnabled(false);
-
-            }catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
-            }
-            JOptionPane.showMessageDialog(null,"Please Check Entry!!!");
-        }
-        ulog19();
-        imgpath1=null;
-        }
-        else{
-        JOptionPane.showMessageDialog(null,"Password Don't Match!!!");
-        }
-    }//GEN-LAST:event_acc_updateActionPerformed
-
-    private void acc_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acc_deleteActionPerformed
-        try {
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM useraccount_tbl  WHERE ID = '" + acc_id.getText() + "'");
-            int del = pst.executeUpdate();
-            
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM borrower_tbl  WHERE First_Name = '" + acc_fn.getText() + "'");
-            int del1 = pst.executeUpdate();
-            
-            if (del > 0 || del > 0) {
-                JOptionPane.showMessageDialog(null, "Data Removed");
-            }else{
-                JOptionPane.showMessageDialog(null, "No ID Exist on the Database!!");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        ulog20();
-        all_ref();
-        acc_clr();
-        acc_disable();
-        acc_save.setEnabled(false);
-        acc_new.setEnabled(true);
-        acc_browse.setEnabled(false);
-        acc_update.setEnabled(false);
-        acc_delete.setEnabled(false);
-    }//GEN-LAST:event_acc_deleteActionPerformed
-
     private void men_repMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_men_repMouseClicked
         men_dash.setBackground(new Color(96,96,96));
         men_rec.setBackground(new Color(96,96,96));
@@ -9165,211 +7702,6 @@ public class Main extends javax.swing.JFrame {
         user_logo.setVisible(false);
         booklist.setVisible(false);
     }//GEN-LAST:event_men_repMouseClicked
-
-    private void nb_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nb_searchKeyReleased
-        try {
-           String sql = "SELECT *"
-                    + " FROM stockin_tbl WHERE "
-                    + "Book_ID like? or ISBN_No like ? or Book_title like ? or Author like ? or Quantity like ? or "
-                   + "Call_Number like ? or Classification like ? or "
-                    + "Edition like ? or Copy_Right_Year like ? or Price like ? or Encoder like ? or "
-                   + "Date_Arrival like ?";
-
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, "%" + nb_search.getText() + "%");
-            pst.setString(2, "%" + nb_search.getText() + "%");
-            pst.setString(3, "%" + nb_search.getText() + "%");
-            pst.setString(4, "%" + nb_search.getText() + "%");
-            pst.setString(5, "%" + nb_search.getText() + "%");
-            pst.setString(6, "%" + nb_search.getText() + "%");
-            pst.setString(7, "%" + nb_search.getText() + "%");
-            pst.setString(8, "%" + nb_search.getText() + "%");
-            pst.setString(9, "%" + nb_search.getText() + "%");
-            pst.setString(10, "%" + nb_search.getText() + "%");
-            pst.setString(11, "%" + nb_search.getText() + "%");
-            pst.setString(12, "%" + nb_search.getText() + "%");
-
-            rs = (ResultSet) pst.executeQuery();
-            nb_table.setModel(DbUtils.resultSetToTableModel(rs));
-
-        } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
-        }
-    }//GEN-LAST:event_nb_searchKeyReleased
-
-    private void nb_isKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nb_isKeyReleased
-        try {
-            String sql = "SELECT *"
-                    + " FROM stockin_tbl WHERE "
-                    + "ISBN_No like ? ";
-
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, "%" + nb_is.getText() + "%");
-
-            rs = (ResultSet) pst.executeQuery();
-            nb_table.setModel(DbUtils.resultSetToTableModel(rs));
-            rc_nb();
-        } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
-        }
-        if(jLabel188.getText().equals("0")){
-        jLabel187.setText("ISBN Available");
-        }
-        else{
-        jLabel187.setText("ISBN Not Available");
-        }
-    }//GEN-LAST:event_nb_isKeyReleased
-
-    private void nb_btKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nb_btKeyReleased
-        try {
-            String sql = "SELECT *"
-                    + " FROM stockin_tbl WHERE "
-                    + "Book_title like ?";
-
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, "%" + nb_bt .getText() + "%");
-
-            rs = (ResultSet) pst.executeQuery();
-            nb_table.setModel(DbUtils.resultSetToTableModel(rs));
-
-        } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
-        }
-    }//GEN-LAST:event_nb_btKeyReleased
-
-    private void sup_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sup_tableMouseClicked
-        int z = sup_table.getSelectedRow();
-
-            TableModel model = (TableModel)sup_table.getModel();
-          sup_id.setText(model.getValueAt(z, 0).toString());
-          sup_name.setText(model.getValueAt(z, 1).toString());
-          sup_add.setText(model.getValueAt(z, 2).toString());
-          sup_con.setText(model.getValueAt(z, 3).toString());
-          sup_em.setText(model.getValueAt(z, 4).toString());
-          sup_cp.setText(model.getValueAt(z, 5).toString());
-          ((JTextField)sup_enc.getDateEditor().getUiComponent()).setText(model.getValueAt(z, 6).toString());
-          
-          supp_able();
-          sup_save.setEnabled(false);
-          sup_update.setEnabled(true);
-          sup_delete.setEnabled(true);
-          sup_new.setEnabled(true);
-    }//GEN-LAST:event_sup_tableMouseClicked
-
-    private void sup_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sup_searchKeyReleased
-        try {
-           String sql = "SELECT *"
-                    + " FROM supplier_tbl WHERE "
-                    + "Supplier_ID like ? or Supplier_Name like ? or Address like ? or Contact like ? or Email like ?"
-                   + " or Date_Encoded like ? or Encoder like ?";
-
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, "%" + sup_search.getText() + "%");
-            pst.setString(2, "%" + sup_search.getText() + "%");
-            pst.setString(3, "%" + sup_search.getText() + "%");
-            pst.setString(4, "%" + sup_search.getText() + "%");
-            pst.setString(5, "%" + sup_search.getText() + "%");
-            pst.setString(6, "%" + sup_search.getText() + "%");
-            pst.setString(7, "%" + sup_search.getText() + "%");
-
-            rs = (ResultSet) pst.executeQuery();
-            sup_table.setModel(DbUtils.resultSetToTableModel(rs));
-
-        } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
-        }
-    }//GEN-LAST:event_sup_searchKeyReleased
-
-    private void sup_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_newActionPerformed
-        supp_able();
-        supp_clr();
-        sup_new.setEnabled(false);
-        sup_save.setEnabled(true);
-        sup_update.setEnabled(false);
-        sup_delete.setEnabled(false);
-    }//GEN-LAST:event_sup_newActionPerformed
-
-    private void sup_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_saveActionPerformed
-        try {
-            String sql = "Insert into supplier_tbl (Supplier_Name, Address, Contact, Email, Contact_Person, Date_Encoded, Encoder) "
-                    + " values (?,?,?,?,?,?,?)";
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
-            
-            pst.setString(1, sup_name.getText());
-            pst.setString(2, sup_add.getText());
-            pst.setString(3, sup_con.getText());
-            pst.setString(4, sup_em.getText());
-            pst.setString(5, sup_cp.getText());
-            pst.setString(6, ((JTextField)sup_enc.getDateEditor().getUiComponent()).getText());
-            pst.setString(7, txt_name.getText());
-
-            pst.execute(); 
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        supp_list();
-        ulog12();
-        all_ref();
-        supp_clr();
-        supp_disable();
-        sup_save.setEnabled(false);
-        sup_new.setEnabled(true);
-    }//GEN-LAST:event_sup_saveActionPerformed
-
-    private void sup_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_updateActionPerformed
-        try {
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE supplier_tbl SET Supplier_Name=?, "
-                    + "Address=?, Contact=?, Email=?, Contact_Person=?, Date_Encoded=?, Encoder=? WHERE Supplier_ID='" + sup_id.getText() + "'");
-            
-            pst.setString(1, sup_name.getText());
-            pst.setString(2, sup_add.getText());
-            pst.setString(3, sup_con.getText());
-            pst.setString(4, sup_em.getText());
-            pst.setString(5, sup_cp.getText());
-            pst.setString(6, ((JTextField)sup_enc.getDateEditor().getUiComponent()).getText());
-            pst.setString(7, txt_name.getText());
-            
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Data Updated");
-        }
-        catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        ulog13();
-        supp_list();
-        all_ref();
-        supp_clr();
-        supp_disable();
-        sup_update.setEnabled(false);
-        sup_delete.setEnabled(false);
-        sup_new.setEnabled(true);
-    }//GEN-LAST:event_sup_updateActionPerformed
-
-    private void sup_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_deleteActionPerformed
-        try {
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM supplier_tbl  WHERE Supplier_ID = '" + sup_id.getText() + "'");
-            int del = pst.executeUpdate();
-            if (del > 0) {
-                JOptionPane.showMessageDialog(null, "Data Deleted!");
-                
-            }else{
-                JOptionPane.showMessageDialog(null, "Please Check Item!!");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        ulog14();
-        supp_list();
-        all_ref();
-        supp_clr();
-        supp_disable();
-        sup_update.setEnabled(false);
-        sup_delete.setEnabled(false);
-        sup_new.setEnabled(true);
-    }//GEN-LAST:event_sup_deleteActionPerformed
 
     private void si_isbnKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_si_isbnKeyReleased
         try {
@@ -10556,21 +8888,6 @@ public class Main extends javax.swing.JFrame {
         imgpath1=null;
     }//GEN-LAST:event_acc_update1ActionPerformed
 
-    private void class_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_class_addActionPerformed
-        jTabbedPane6.setEnabledAt(0, true);
-        jTabbedPane6.setEnabledAt(1, false);
-        jTabbedPane6.setEnabledAt(2, false);
-        jTabbedPane6.setEnabledAt(3, false);
-        jTabbedPane6.setEnabledAt(4, false);
-        jTabbedPane6.setEnabledAt(5, false);
-        jTabbedPane6.setSelectedIndex(0);
-        si_save3.setVisible(true);
-
-        menu_title.setText("ADD CLASSIFICATION");
-        
-        si_save3.setText("Back To New Book");
-    }//GEN-LAST:event_class_addActionPerformed
-
     private void si_table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_si_table1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_si_table1MouseClicked
@@ -11017,161 +9334,6 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_po_or1KeyReleased
 
-    private void sup_table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sup_table1MouseClicked
-        int z = sup_table1.getSelectedRow();
-
-            TableModel model = (TableModel)sup_table1.getModel();
-          //jLabel120.setText(model.getValueAt(z, 0).toString());
-          sup_name1.setText(model.getValueAt(z, 0).toString());
-          sup_add1.setText(model.getValueAt(z, 1).toString());
-          
-          try {
-            pst = (PreparedStatement) conn.prepareStatement("SELECT ID FROM publisher_tbl where Publisher_ID= '" + sup_name1.getText() + "' and Publisher= '" + sup_add1.getText() + "' ");
-            rs = pst.executeQuery();
-            if(rs.next()){
-                String add = rs.getString("ID");
-                jLabel120.setText(add);
-		}
-            }
-            catch (SQLException x) {
-        
-            }
-          
-          sup_update1.setEnabled(true);
-          sup_delete1.setEnabled(true);
-          sup_save1.setEnabled(false);
-    }//GEN-LAST:event_sup_table1MouseClicked
-
-    private void sup_search1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sup_search1KeyReleased
-        try {
-           String sql = "SELECT Publisher_ID, Publisher"
-                    + " FROM publisher_tbl WHERE "
-                    + "Publisher_ID like ? or Publisher like ?";
-
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, "%" + sup_search1.getText() + "%");
-            pst.setString(2, "%" + sup_search1.getText() + "%");
-
-            rs = (ResultSet) pst.executeQuery();
-            sup_table1.setModel(DbUtils.resultSetToTableModel(rs));
-
-        } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
-        }
-        
-        if(sup_search1.getText().equals("")){
-        all_ref();
-        }
-    }//GEN-LAST:event_sup_search1KeyReleased
-
-    private void sup_name1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sup_name1KeyReleased
-        if(sup_name1.getText().equals("") && sup_add1.getText().equals("")){
-        sup_save1.setEnabled(false);
-        }
-        else{
-        sup_save1.setEnabled(true);
-        }
-    }//GEN-LAST:event_sup_name1KeyReleased
-
-    private void sup_add1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sup_add1KeyReleased
-        if(sup_name1.getText().equals("") && sup_add1.getText().equals("")){
-        sup_save1.setEnabled(false);
-        }
-        else{
-        sup_save1.setEnabled(true);
-        }
-    }//GEN-LAST:event_sup_add1KeyReleased
-
-    private void class_add2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_class_add2ActionPerformed
-        jTabbedPane6.setEnabledAt(0, false);
-        jTabbedPane6.setEnabledAt(1, true);
-        jTabbedPane6.setEnabledAt(2, false);
-        jTabbedPane6.setEnabledAt(3, false);
-        jTabbedPane6.setEnabledAt(4, false);
-        jTabbedPane6.setEnabledAt(5, false);
-        jTabbedPane6.setSelectedIndex(1);
-        
-        sup_save2.setVisible(true);
-        jLabel128.setText("1");
-
-        menu_title.setText("NEW PUBLISHER");
-
-    }//GEN-LAST:event_class_add2ActionPerformed
-
-    private void sup_save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_save1ActionPerformed
-        try {
-            String sql = "Insert into publisher_tbl (Publisher_ID, Publisher) "
-                    + " values (?,?)";
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
-            
-            pst.setString(1, sup_name1.getText());
-            pst.setString(2, sup_add1.getText());
-
-            pst.execute(); 
-        pub_list();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        
-        if(jLabel128.getText().equals("1")){
-            nb_cpub.setSelectedItem(sup_add1.getText());
-            pub_ret();
-        } 
-
-        all_ref();
-        ulog9();
-        sup_name1.setText("");
-        sup_add1.setText("");
-    }//GEN-LAST:event_sup_save1ActionPerformed
-
-    private void sup_update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_update1ActionPerformed
-        try {
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE publisher_tbl SET Publisher_ID=?, Publisher=? WHERE ID='" + jLabel120.getText() + "'");
-
-            pst.setString(1, sup_name1.getText());
-            pst.setString(2, sup_add1.getText());
-            
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Data Updated");
-        }
-        catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        all_ref();
-        ulog10();
-        pub_list();
-        sup_name1.setText("");
-        sup_add1.setText("");
-        sup_update1.setEnabled(false);
-        sup_delete1.setEnabled(false);
-        sup_save1.setEnabled(false);
-    }//GEN-LAST:event_sup_update1ActionPerformed
-
-    private void sup_delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_delete1ActionPerformed
-        try {
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM publisher_tbl  WHERE ID = '" + jLabel120.getText() + "'");
-            int del = pst.executeUpdate();
-            if (del > 0) {
-                JOptionPane.showMessageDialog(null, "Data Deleted!");
-                
-            }else{
-                JOptionPane.showMessageDialog(null, "Please Check Item!!");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        all_ref();
-        ulog11();
-        pub_list();
-        sup_name1.setText("");
-        sup_add1.setText("");
-        sup_update1.setEnabled(false);
-        sup_delete1.setEnabled(false);
-        sup_save1.setEnabled(false);
-    }//GEN-LAST:event_sup_delete1ActionPerformed
-
     private void nb_update7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_update7ActionPerformed
   
         try {
@@ -11218,44 +9380,9 @@ public class Main extends javax.swing.JFrame {
         po_qt.setText("1");
     }//GEN-LAST:event_nb_update7ActionPerformed
 
-    private void nb_table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nb_table1MouseClicked
-        int z = nb_table1.getSelectedRow();
-
-            TableModel model = (TableModel)nb_table1.getModel();
-          nb_id.setText(model.getValueAt(z, 0).toString());
-          nb_bt.setText(model.getValueAt(z, 1).toString());
-          nb_aut.setText(model.getValueAt(z, 2).toString());
-          nb_class.setSelectedItem(model.getValueAt(z, 3).toString());
-          nb_qty.setText(model.getValueAt(z, 4).toString());
-          nb_prc.setText(model.getValueAt(z, 5).toString());
-          
-          nb_save.setEnabled(true);
-          nb_class.setEnabled(false);
-          class_add.setEnabled(false);
-          nb_new.setEnabled(false);
-          
-          nb_is.setEnabled(true);
-          nb_cn.setEnabled(true);
-          nb_edi.setEnabled(true);
-          nb_cry.setEnabled(true);
-          nb_da.setEnabled(true);
-          nb_bt.setEnabled(true);
-          nb_aut.setEnabled(true);
-          nb_qty.setEnabled(true);
-          nb_class.setEnabled(true);
-          class_add.setEnabled(true);
-          nb_cpub.setEnabled(true);
-          class_add2.setEnabled(true);
-          nb_prc.setEnabled(true);
-    }//GEN-LAST:event_nb_table1MouseClicked
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void sup_save2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_save2ActionPerformed
-        pub_ret();
-    }//GEN-LAST:event_sup_save2ActionPerformed
 
     private void menu_title1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_title1MouseEntered
         menu_title1.setForeground(new Color(57,167,252,225));
@@ -11383,10 +9510,6 @@ public class Main extends javax.swing.JFrame {
         report.setVisible(false);
 
     }//GEN-LAST:event_class_add3ActionPerformed
-
-    private void sup_save3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_save3ActionPerformed
-        sup();
-    }//GEN-LAST:event_sup_save3ActionPerformed
 
     private void nb_update12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_update12ActionPerformed
         // TODO add your handling code here:
@@ -11790,385 +9913,6 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_so_search1KeyReleased
 
-    private void si_save3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_si_save3ActionPerformed
-        if(si_save3.getText().equals("Back To New Book")){
-            menu_title.setText("RECORDS");
-
-        jTabbedPane6.setEnabledAt(0, true);
-        jTabbedPane6.setEnabledAt(1, true);
-        jTabbedPane6.setEnabledAt(2, true);
-        jTabbedPane6.setEnabledAt(3, true);
-        jTabbedPane6.setEnabledAt(4, true);
-        jTabbedPane6.setEnabledAt(5, true);
-        jTabbedPane6.setSelectedIndex(3);
-        }
-        else if(si_save3.getText().equals("Back To P.O.")){
-            
-            jTabbedPane1.setEnabledAt(0, true);
-            jTabbedPane1.setEnabledAt(1, true);
-            jTabbedPane1.setEnabledAt(2, true);
-            jTabbedPane1.setEnabledAt(3, true);
-            jTabbedPane1.setEnabledAt(4, true);
-            jTabbedPane6.setSelectedIndex(0);
-
-            menu_title.setText("INVENTORY");
-
-            dashboard.setVisible(false);
-            Records.setVisible(false);
-            inventory.setVisible(true);
-            Bookloan.setVisible(false);
-            report.setVisible(false);
-        }
-        si_save3.setVisible(false);
-    }//GEN-LAST:event_si_save3ActionPerformed
-
-    private void si_isbn2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_si_isbn2KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_si_isbn2KeyReleased
-
-    private void si_save4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_si_save4ActionPerformed
-        if(si_save3.getText().equals("Back To New Book")){
-        
-        classinv();
-        men_dash.setBackground(new Color(96,96,96));
-        men_rec.setBackground(new Color(255,255,255));
-        men_inv.setBackground(new Color(96,96,96));
-        men_brrd.setBackground(new Color(96,96,96));
-        men_logout.setBackground(new Color(96,96,96));
-        menu_title.setText("NEW BOOK");
-        men_po.setForeground(new Color(255,255,255));
-        men_po.setBackground(new Color(96,96,96));
-        men_rep.setBackground(new Color(96,96,96));
-        men_rep.setForeground(new Color(255,255,255));
-        men_dash.setForeground(new Color(255,255,255));
-        men_rec.setForeground(new Color(96,96,96));
-        men_inv.setForeground(new Color(255,255,255));
-        men_brrd.setForeground(new Color(255,255,255));
-        men_logout.setForeground(new Color(255,255,255));
-        
-        dashboard.setVisible(false);
-        inventory.setVisible(false);
-        Bookloan.setVisible(false);
-        report.setVisible(false);
-        user_logo.setVisible(false);
-        
-        po_cl.setSelectedItem(si_isbn2.getText());
-        all_ref();
-            ulog8();
-            classif_list();
-            nb_class.setSelectedItem(si_isbn2.getText());
-            si_isbn2.setText("");
-            class_num1.setText("");
-            cl_io.setText("");
-        }
-    else if(si_save3.getText().equals("Back To P.O.")){
-        
-        classinv();
-        men_dash.setBackground(new Color(96,96,96));
-        men_rec.setBackground(new Color(96,96,96));
-        men_inv.setBackground(new Color(96,96,96));
-        men_brrd.setBackground(new Color(96,96,96));
-        men_logout.setBackground(new Color(96,96,96));
-        men_rep.setBackground(new Color(96,96,96));
-        men_po.setBackground(new Color(255,255,255));
-        menu_title.setText("PURCHASE ORDER");
-
-        men_po.setForeground(new Color(96,96,96));
-        men_rep.setForeground(new Color(255,255,255));
-        men_dash.setForeground(new Color(255,255,255));
-        men_rec.setForeground(new Color(255,255,255));
-        men_inv.setForeground(new Color(255,255,255));
-        men_brrd.setForeground(new Color(255,255,255));
-        men_logout.setForeground(new Color(255,255,255));
-
-        dashboard.setVisible(false);
-        inventory.setVisible(false);
-        Bookloan.setVisible(false);
-        report.setVisible(false);
-        user_logo.setVisible(true);
-        booklist.setVisible(false);
-        
-        all_ref();
-            
-            classif_list();
-            po_cl.setSelectedItem(si_isbn2.getText());
-            si_isbn2.setText("");
-            class_num1.setText("");
-            cl_io.setText("");
-    }
-    else if(si_save3.getText().equals("Back")){
-
-        classinv();
-        all_ref();
-            
-            classif_list();
-        si_isbn2.setText("");
-            class_num1.setText("");
-            cl_io.setText("");
-    }
-        
-    }//GEN-LAST:event_si_save4ActionPerformed
-
-    private void btn_del1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_del1ActionPerformed
-        try {
-
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM classification_tbl  WHERE ID = '" + cl_io.getText() + "'");
-            int del = pst.executeUpdate();
-            if (del > 0) {
-                JOptionPane.showMessageDialog(null, "Data Deleted!");
-                
-            }else{
-                JOptionPane.showMessageDialog(null, "Please Check Item!!");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-         all_ref();
-         ulog7();
-         class_num1.setText("");
-         si_isbn2.setText("");
-         cl_io.setText("");
-    }//GEN-LAST:event_btn_del1ActionPerformed
-
-    private void class_table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_class_table1MouseClicked
-        int z = class_table1.getSelectedRow();
-
-          TableModel model = (TableModel)class_table1.getModel();
-          //cl_io.setText(model.getValueAt(z, 0).toString());
-          class_num1.setText(model.getValueAt(z, 0).toString());
-          si_isbn2.setText(model.getValueAt(z, 1).toString());
-          
-          try {
-            pst = (PreparedStatement) conn.prepareStatement("SELECT ID FROM classification_tbl where Class_Number= '" + class_num1.getText() + "' and Classname= '" + si_isbn2.getText() + "' ");
-            rs = pst.executeQuery();
-            if(rs.next()){
-                String add = rs.getString("ID");
-                cl_io.setText(add);
-		}
-            }
-            catch (SQLException x) {
-        
-            }
-          
-          class_save_hide1.setVisible(true);
-          btn_del1.setVisible(true);
-    }//GEN-LAST:event_class_table1MouseClicked
-
-    private void class_num1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_class_num1KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_class_num1KeyReleased
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-            Login.setVisible(false);
-            Menu.setVisible(false);
-            mmm.setVisible(false);
-            head.setVisible(false);
-            stock.setVisible(false);
-            publicsearch.setVisible(true);
-            jPanel68.setVisible(true);
-            jPanel2.setVisible(true);
-            jPanel3.setVisible(true);
-            nb_new8.setVisible(true);
-            jLabel163.setVisible(true);
-            jTextField2.setVisible(true);
-            jComboBox1.setVisible(true);
-            //pub_table.setVisible(false);
-            public_ref();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3KeyPressed
-
-    private void nb_new8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_new8ActionPerformed
-            Login.setVisible(true);
-            publicsearch.setVisible(false);
-            Menu.setVisible(false);
-            mmm.setVisible(false);
-            head.setVisible(false);
-            stock.setVisible(false);
-            publicsearch.setVisible(false);
-            jPanel68.setVisible(false);
-            jPanel2.setVisible(false);
-            jPanel3.setVisible(false);
-            nb_new8.setVisible(false);
-            jLabel163.setVisible(false);
-            jTextField2.setVisible(false);
-            jComboBox1.setVisible(false);
-            //pub_table.setVisible(false);
-            
-            start();
-    }//GEN-LAST:event_nb_new8ActionPerformed
-
-    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
-        try {
-           String sql = "SELECT ISBN_No, Book_title, Author, Call_Number, Classification, Publisher, Edition, Copy_Right_Year"
-                    + " FROM stockin_tbl WHERE "
-                    + "ISBN_No like ? or Book_title like ? or Author like ? or Call_Number like ? or Classification like ? or "
-                    + "Publisher like ? or Edition like ? or Copy_Right_Year like ?";
-
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, "%" + jTextField2.getText() + "%");
-            pst.setString(2, "%" + jTextField2.getText() + "%");
-            pst.setString(3, "%" + jTextField2.getText() + "%");
-            pst.setString(4, "%" + jTextField2.getText() + "%");
-            pst.setString(5, "%" + jTextField2.getText() + "%");
-            pst.setString(6, "%" + jTextField2.getText() + "%");
-            pst.setString(7, "%" + jTextField2.getText() + "%");
-            pst.setString(8, "%" + jTextField2.getText() + "%");
-
-            rs = (ResultSet) pst.executeQuery();
-            sumpatable.setModel(DbUtils.resultSetToTableModel(rs));
-
-        } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
-        }
-    }//GEN-LAST:event_jTextField2KeyReleased
-
-    private void jComboBox1PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBox1PopupMenuWillBecomeInvisible
-        try {
-            String sql = "SELECT ISBN_No, Book_title, Author, Call_Number, Classification, Publisher, Edition, Copy_Right_Year"
-                    + " FROM stockin_tbl WHERE "
-                    + "Classification like ? ";
-
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, "%" + jComboBox1.getSelectedItem() + "%");
-
-            rs = (ResultSet) pst.executeQuery();
-            sumpatable.setModel(DbUtils.resultSetToTableModel(rs));
-        } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
-        }
-    }//GEN-LAST:event_jComboBox1PopupMenuWillBecomeInvisible
-
-    private void sumpatableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sumpatableMouseClicked
-        int z = sumpatable.getSelectedRow();
-
-            TableModel model = (TableModel)sumpatable.getModel();
-          jTextField3.setText(model.getValueAt(z, 0).toString());
-          jTextField4.setText(model.getValueAt(z, 1).toString());
-          jTextField5.setText(model.getValueAt(z, 2).toString());
-          jTextField6.setText(model.getValueAt(z, 3).toString());
-          jTextField7.setText(model.getValueAt(z, 4).toString());
-          jTextField8.setText(model.getValueAt(z, 5).toString());
-          jTextField9.setText(model.getValueAt(z, 6).toString());
-          jTextField10.setText(model.getValueAt(z, 7).toString());
-    }//GEN-LAST:event_sumpatableMouseClicked
-
-    private void nb_new9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_new9ActionPerformed
-        all_ref();
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-        jTextField7.setText("");
-        jTextField8.setText("");
-        jTextField9.setText("");
-        jTextField10.setText("");
-        jTextField2.setText("");
-        jComboBox1.setSelectedIndex(0);
-    }//GEN-LAST:event_nb_new9ActionPerformed
-
-    private void brr_idtItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_brr_idtItemStateChanged
-        if(brr_idt.getSelectedItem().equals("Employee ID")){
-        brr_stat.setText("Faculty");
-        brr_stat.setEditable(false);
-        }
-        else if(brr_idt.getSelectedItem().equals("Student ID")){
-        brr_stat.setText("Student");
-        brr_stat.setEditable(false);
-        }
-        else{
-        brr_stat.setText("");
-        brr_stat.setEditable(true);
-        }
-    }//GEN-LAST:event_brr_idtItemStateChanged
-
-    private void brr_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_brr_searchKeyReleased
-        try {
-           String sql = "SELECT * "
-                    + " FROM borrower_tbl WHERE "
-                    + "Library_ID like ? or First_Name like ? or Middle_Name like ? or Surname like ? or ID_Type like ? or"
-                   + " ID_No like ? or Course like ? or Year like ? or Address like ? or Status like ? or Birth_Date like ? ";
-
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, "%" + brr_search.getText() + "%");
-            pst.setString(2, "%" + brr_search.getText() + "%");
-            pst.setString(3, "%" + brr_search.getText() + "%");
-            pst.setString(4, "%" + brr_search.getText() + "%");
-            pst.setString(5, "%" + brr_search.getText() + "%");
-            pst.setString(6, "%" + brr_search.getText() + "%");
-            pst.setString(7, "%" + brr_search.getText() + "%");
-            pst.setString(8, "%" + brr_search.getText() + "%");
-            pst.setString(9, "%" + brr_search.getText() + "%");
-            pst.setString(10, "%" + brr_search.getText() + "%");
-            pst.setString(11, "%" + brr_search.getText() + "%");
-
-            rs = (ResultSet) pst.executeQuery();
-            brr_table.setModel(DbUtils.resultSetToTableModel(rs));
-
-        } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
-        }
-    }//GEN-LAST:event_brr_searchKeyReleased
-
-    private void course_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_course_addActionPerformed
-        String res = JOptionPane.showInputDialog(this, "Input New Course","");
-        jLabel183.setText(res);
-            if ((res != null) && (res.length() > 0)) {
-            try{
-                String sql = "INSERT INTO course_tbl (Course_Title, Course, Description, Years, Status) VALUES (?,?,?,?,?)";
-                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
-                pst.setString(1, "Please Update");
-                pst.setString(2, jLabel183.getText());
-                pst.setString(3, "Please Update");
-                pst.setString(4, "Please Update");
-                pst.setString(5, "--Select Status--");
-                pst.execute(); 
-            }catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
-            }    
-    }
-        all_ref();
-        course_list();
-        brr_cr.setSelectedItem(jLabel183.getText());
-    }//GEN-LAST:event_course_addActionPerformed
-
-    private void course_addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_course_addMouseEntered
-        jLabel183.setText("Add New Course");
-    }//GEN-LAST:event_course_addMouseEntered
-
-    private void course_addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_course_addMouseExited
-        jLabel183.setText("");
-    }//GEN-LAST:event_course_addMouseExited
-
-    private void nb_qtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_qtyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nb_qtyActionPerformed
-
-    private void nb_cnKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nb_cnKeyReleased
-        try {
-            String sql = "SELECT *"
-                    + " FROM stockin_tbl WHERE "
-                    + "Call_Number like ? ";
-
-            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, "%" + nb_cn.getText() + "%");
-
-            rs = (ResultSet) pst.executeQuery();
-            nb_table.setModel(DbUtils.resultSetToTableModel(rs));
-            rc_nb();
-        } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, ex);
-        }
-        if(jLabel188.getText().equals("0")){
-        jLabel189.setText("Call Number Available");
-        }
-        else{
-        jLabel189.setText("Call Number Not Available");
-        }
-    }//GEN-LAST:event_nb_cnKeyReleased
-
     private void jTextField11KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyReleased
         try{
             String sql = "SELECT *"
@@ -12379,6 +10123,1557 @@ public class Main extends javax.swing.JFrame {
     private void jTextField11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField11MouseClicked
         jTextField11.setText("");
     }//GEN-LAST:event_jTextField11MouseClicked
+
+    private void brr_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_brr_searchKeyReleased
+        try {
+            String sql = "SELECT * "
+            + " FROM borrower_tbl WHERE "
+            + "Library_ID like ? or First_Name like ? or Middle_Name like ? or Surname like ? or ID_Type like ? or"
+            + " ID_No like ? or Course like ? or Year like ? or Address like ? or Status like ? or Birth_Date like ? ";
+
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            pst.setString(1, "%" + brr_search.getText() + "%");
+            pst.setString(2, "%" + brr_search.getText() + "%");
+            pst.setString(3, "%" + brr_search.getText() + "%");
+            pst.setString(4, "%" + brr_search.getText() + "%");
+            pst.setString(5, "%" + brr_search.getText() + "%");
+            pst.setString(6, "%" + brr_search.getText() + "%");
+            pst.setString(7, "%" + brr_search.getText() + "%");
+            pst.setString(8, "%" + brr_search.getText() + "%");
+            pst.setString(9, "%" + brr_search.getText() + "%");
+            pst.setString(10, "%" + brr_search.getText() + "%");
+            pst.setString(11, "%" + brr_search.getText() + "%");
+
+            rs = (ResultSet) pst.executeQuery();
+            brr_table.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, ex);
+        }
+    }//GEN-LAST:event_brr_searchKeyReleased
+
+    private void brr_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_brr_tableMouseClicked
+        int z = brr_table.getSelectedRow();
+
+        TableModel model = (TableModel)brr_table.getModel();
+        brr_id.setText(model.getValueAt(z, 0).toString());
+        ((JTextField)brr_bd.getDateEditor().getUiComponent()).setText(model.getValueAt(z, 10).toString());
+
+        try{
+
+            String sql="SELECT First_Name, Middle_Name, Surname, ID_Type, ID_No, Course, Year, Address, Status, "
+            + " Photo "
+            + "  FROM borrower_tbl where Library_ID = '" + (String) brr_id.getText() + "' ";
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+
+            if(rs.next()){
+                String name1 =rs.getString("First_Name");
+                String name2 =rs.getString("Middle_Name");
+                String name3 =rs.getString("Surname");
+                String name4 =rs.getString("ID_Type");
+                String name5 =rs.getString("ID_No");
+                String name6 =rs.getString("Course");
+                String name7 =rs.getString("Year");
+                String name8 =rs.getString("Address");
+                String name9 =rs.getString("Status");
+
+                brr_fn.setText(name1);
+                brr_mn.setText(name2);
+                brr_sn.setText(name3);
+                brr_idt.setSelectedItem(name4);
+                brr_idn.setText(name5);
+                brr_cr.setSelectedItem(name6);
+                brr_yr.setSelectedItem(name7);
+                brr_add.setText(name8);
+                brr_stat.setText(name9);
+                //brr_stat.setSelectedItem(name6);
+
+                byte[] img = rs.getBytes("Photo");
+                ImageIcon image1 =  new ImageIcon(img);
+                Image im = image1.getImage();
+                Image myImage = im.getScaledInstance(brr_image.getWidth(), brr_image.getHeight(), Image.SCALE_SMOOTH );
+                ImageIcon newImage = new ImageIcon(myImage);
+                brr_image.setIcon(newImage);
+
+            }
+        }
+        catch (Exception e) {
+            // JOptionPane.showMessageDialog(null, e);
+        }
+
+        brr_save.setEnabled(false);
+        brr_update.setEnabled(true);
+        brr_delete.setEnabled(true);
+        brr_browse.setEnabled(true);
+        brr_able();
+        brr_fn.setEditable(true);
+    }//GEN-LAST:event_brr_tableMouseClicked
+
+    private void brr_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brr_deleteActionPerformed
+        try {
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM borrower_tbl  WHERE Library_ID = '" + brr_id.getText() + "'");
+            int del = pst.executeUpdate();
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM useraccount_tbl  WHERE First_Name = '" + brr_fn.getText() + "'");
+            int del1 = pst.executeUpdate();
+
+            if (del > 0 || del1 > 0) {
+                JOptionPane.showMessageDialog(null, "Data Removed");
+            }else{
+                JOptionPane.showMessageDialog(null, "No ID Exist on the Database!!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        ulog23();
+        all_ref();
+        brr_clr();
+        brr_disable();
+        brr_save.setEnabled(false);
+        brr_new.setEnabled(true);
+        brr_browse.setEnabled(false);
+        brr_update.setEnabled(false);
+        brr_delete.setEnabled(false);
+    }//GEN-LAST:event_brr_deleteActionPerformed
+
+    private void brr_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brr_updateActionPerformed
+        if (imgpath != null){
+            try{
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE borrower_tbl SET "
+                    + " First_Name=?, Middle_Name=?, Surname=?, ID_Type=?, ID_No=?, Course=?, "
+                    + "Year=?, Address=?, Status=?, Birth_Date=?, Photo=? "
+                    + " WHERE Library_ID ='" + brr_id.getText() + "'");
+                InputStream img = new FileInputStream(new File(imgpath));
+                pst.setString(1, brr_fn.getText());
+                pst.setString(2, brr_mn.getText());
+                pst.setString(3, brr_sn.getText());
+                pst.setString(4, (String) brr_idt.getSelectedItem());
+                pst.setString(5, brr_idn.getText());
+                pst.setString(6, (String) brr_cr.getSelectedItem());
+                pst.setString(7, (String) brr_yr.getSelectedItem());
+                pst.setString(8, brr_add.getText());
+                pst.setString(9, brr_stat.getText());
+                pst.setString(10, ((JTextField)brr_bd.getDateEditor().getUiComponent()).getText());
+                pst.setBlob(11, img);
+
+                pst.executeUpdate();
+
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE useraccount_tbl SET "
+                    + " First_Name=?, Middle_Name=?, Surname=?, "
+                    + "Photo=? "
+                    + " WHERE ID ='" + brr_id.getText() + "'");
+                InputStream img1 = new FileInputStream(new File(imgpath));
+                pst.setString(1, acc_fn.getText());
+                pst.setString(2, acc_ffmn.getText());
+                pst.setString(3, acc_ffsn.getText());
+                pst.setBlob(4, img1);
+
+                pst.executeUpdate();
+
+                JOptionPane.showMessageDialog(null,"Account Info Updated");
+
+                all_ref();
+                brr_clr();
+                brr_disable();
+                brr_save.setEnabled(false);
+                brr_update.setEnabled(false);
+                brr_delete.setEnabled(false);
+                brr_browse.setEnabled(false);
+                brr_new.setEnabled(true);
+
+            }catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }else{
+            try{
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE borrower_tbl SET "
+                    + " First_Name=?, Middle_Name=?, Surname=?, ID_Type=?, ID_No=?, Course=?, "
+                    + "Year=?, Address=?, Status=?, Birth_Date=? "
+                    + " WHERE Library_ID ='" + brr_id.getText() + "'");
+
+                pst.setString(1, brr_fn.getText());
+                pst.setString(2, brr_mn.getText());
+                pst.setString(3, brr_sn.getText());
+                pst.setString(4, (String) brr_idt.getSelectedItem());
+                pst.setString(5, brr_idn.getText());
+                pst.setString(6, (String) brr_cr.getSelectedItem());
+                pst.setString(7, (String) brr_yr.getSelectedItem());
+                pst.setString(8, brr_add.getText());
+                pst.setString(9, brr_stat.getText());
+                pst.setString(10, ((JTextField)brr_bd.getDateEditor().getUiComponent()).getText());
+
+                pst.executeUpdate();
+
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE useraccount_tbl SET"
+                    + " First_Name=?, Middle_Name=?, Surname=? WHERE Surname ='" + acc_ffsn.getText() + "'");
+                pst.setString(1, acc_fn.getText());
+                pst.setString(2, acc_ffmn.getText());
+                pst.setString(3, acc_ffsn.getText());
+                pst.executeUpdate();
+
+                JOptionPane.showMessageDialog(null,"Account Info Updated");
+
+                all_ref();
+                brr_clr();
+                brr_disable();
+                brr_save.setEnabled(false);
+                brr_update.setEnabled(false);
+                brr_delete.setEnabled(false);
+                brr_browse.setEnabled(false);
+                brr_new.setEnabled(true);
+
+            }catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+            JOptionPane.showMessageDialog(null,"Please Check Entry!!!");
+        }
+        ulog22();
+        imgpath1=null;
+        all_ref();
+    }//GEN-LAST:event_brr_updateActionPerformed
+
+    private void brr_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brr_saveActionPerformed
+        if (imgpath != null){
+            int a = brr_table.getRowCount();
+            if(a <= 0){
+                brr_q.setText("1");
+            }
+            else {
+                int total;
+                total = a + 1;
+                brr_q.setText(Integer.toString(total));
+            }
+            try{
+                String sql = "INSERT INTO borrower_tbl (Library_ID, First_Name, Middle_Name, Surname, ID_Type, ID_No, "
+                + "Course, Year, Address, Status, Birth_Date, Photo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                InputStream img = new FileInputStream(new File(imgpath));
+                pst.setString(1, "LIB-ID-"+brr_q.getText());
+                pst.setString(2, brr_fn.getText());
+                pst.setString(3, brr_mn.getText());
+                pst.setString(4, brr_sn.getText());
+                pst.setString(5, (String)brr_idt.getSelectedItem());
+                pst.setString(6, brr_idn.getText());
+                pst.setString(7, (String)brr_cr.getSelectedItem());
+                pst.setString(8, (String)brr_yr.getSelectedItem());
+                pst.setString(9, brr_add.getText());
+                pst.setString(10, brr_stat.getText());
+                pst.setString(11, ((JTextField)brr_bd.getDateEditor().getUiComponent()).getText());
+                pst.setBlob(12, img);
+
+                pst.execute();
+
+                String sql1 = "INSERT INTO useraccount_tbl (First_Name, Middle_Name, Surname, Username, Employee_ID, "
+                + "Position, Mobile_Number, Password, Level, Photo) VALUES (?,?,?,?,?,?,?,?,?,?)";
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql1);
+                //InputStream img1 = new FileInputStream(new File(imgpath1));
+                pst.setString(1, brr_fn.getText());
+                pst.setString(2, brr_mn.getText());
+                pst.setString(3, brr_sn.getText());
+                pst.setString(4, brr_sn.getText());
+                pst.setString(5, "");
+                pst.setString(6, "");
+                pst.setString(7, "");
+                pst.setString(8, "1234");
+                pst.setString(9, brr_stat.getText());
+                pst.setBlob(10, img);
+
+                pst.execute( );
+
+                JOptionPane.showMessageDialog(null,"Account Created");
+                all_ref();
+                brr_clr();
+                brr_disable();
+                brr_save.setEnabled(false);
+                brr_update.setEnabled(false);
+                brr_delete.setEnabled(false);
+                brr_browse.setEnabled(false);
+                brr_new.setEnabled(true);
+
+            }catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+        else{
+            int a = brr_table.getRowCount();
+            if(a <= 0){
+                brr_q.setText("1");
+            }
+            else {
+                int total;
+                total = a + 1;
+                brr_q.setText(Integer.toString(total));
+            }
+            try{
+                String sql = "INSERT INTO borrower_tbl (Library_ID, First_Name, Middle_Name, Surname, ID_Type, ID_No, "
+                + "Course, Year, Address, Status, Birth_Date) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                pst.setString(1, "LIB-ID-"+brr_q.getText());
+                pst.setString(2, brr_fn.getText());
+                pst.setString(3, brr_mn.getText());
+                pst.setString(4, brr_sn.getText());
+                pst.setString(5, (String)brr_idt.getSelectedItem());
+                pst.setString(6, brr_idn.getText());
+                pst.setString(7, (String)brr_cr.getSelectedItem());
+                pst.setString(8, (String)brr_yr.getSelectedItem());
+                pst.setString(9, brr_add.getText());
+                pst.setString(10, brr_stat.getText());
+                pst.setString(11, ((JTextField)brr_bd.getDateEditor().getUiComponent()).getText());
+
+                pst.execute();
+
+                String sql1 = "INSERT INTO useraccount_tbl (First_Name, Middle_Name, Surname, Username, Employee_ID, "
+                + "Position, Mobile_Number, Password, Level) VALUES (?,?,?,?,?,?,?,?,?)";
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql1);
+                //InputStream img1 = new FileInputStream(new File(imgpath1));
+                pst.setString(1, brr_fn.getText());
+                pst.setString(2, brr_mn.getText());
+                pst.setString(3, brr_sn.getText());
+                pst.setString(4, brr_sn.getText());
+                pst.setString(5, "");
+                pst.setString(6, "");
+                pst.setString(7, "");
+                pst.setString(8, "1234");
+                pst.setString(9, brr_stat.getText());
+
+                pst.execute();
+
+                JOptionPane.showMessageDialog(null,"Account Created");
+                all_ref();
+                brr_clr();
+                brr_disable();
+                brr_save.setEnabled(false);
+                brr_update.setEnabled(false);
+                brr_delete.setEnabled(false);
+                brr_browse.setEnabled(false);
+                brr_new.setEnabled(true);
+            }catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+        ulog21();
+        imgpath=null;
+        all_ref();
+    }//GEN-LAST:event_brr_saveActionPerformed
+
+    private void brr_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brr_newActionPerformed
+        brr_browse.setEnabled(true);
+        brr_save.setEnabled(true);
+        brr_update.setEnabled(false);
+        brr_delete.setEnabled(false);
+        brr_new.setEnabled(true);
+        brr_fn.setEditable(true);
+        brr_clr();
+        brr_able();
+    }//GEN-LAST:event_brr_newActionPerformed
+
+    private void course_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_course_addActionPerformed
+        String res = JOptionPane.showInputDialog(this, "Input New Course","");
+        jLabel183.setText(res);
+        if ((res != null) && (res.length() > 0)) {
+            try{
+                String sql = "INSERT INTO course_tbl (Course_Title, Course, Description, Years, Status) VALUES (?,?,?,?,?)";
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                pst.setString(1, "Please Update");
+                pst.setString(2, jLabel183.getText());
+                pst.setString(3, "Please Update");
+                pst.setString(4, "Please Update");
+                pst.setString(5, "--Select Status--");
+                pst.execute();
+            }catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+        all_ref();
+        course_list();
+        brr_cr.setSelectedItem(jLabel183.getText());
+    }//GEN-LAST:event_course_addActionPerformed
+
+    private void course_addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_course_addMouseExited
+        jLabel183.setText("");
+    }//GEN-LAST:event_course_addMouseExited
+
+    private void course_addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_course_addMouseEntered
+        jLabel183.setText("Add New Course");
+    }//GEN-LAST:event_course_addMouseEntered
+
+    private void brr_idtItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_brr_idtItemStateChanged
+        if(brr_idt.getSelectedItem().equals("Employee ID")){
+            brr_stat.setText("Faculty");
+            brr_stat.setEditable(false);
+        }
+        else if(brr_idt.getSelectedItem().equals("Student ID")){
+            brr_stat.setText("Student");
+            brr_stat.setEditable(false);
+        }
+        else{
+            brr_stat.setText("");
+            brr_stat.setEditable(true);
+        }
+    }//GEN-LAST:event_brr_idtItemStateChanged
+
+    private void brr_browseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brr_browseActionPerformed
+        JFileChooser file = new JFileChooser(jFileChooser1.getCurrentDirectory());
+        file.setCurrentDirectory(new File(System.getProperty("user.home")));
+        //filter the files'
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Image*","jpg","gif","png");
+        file.addChoosableFileFilter(filter);
+        int result = file.showSaveDialog(null);
+        //if the user click on save jfilechooser
+        if(result == JFileChooser.APPROVE_OPTION){
+            File selectedFile = file.getSelectedFile();
+            String path = selectedFile.getAbsolutePath();
+            // image.setIcon(ResizeImage(path,null));
+            brr_image.setIcon(new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(brr_image.getWidth(), brr_image.getHeight(), Image.SCALE_DEFAULT)));
+            imgpath = path;
+
+        }else if(result  == JFileChooser.CANCEL_OPTION){
+            JOptionPane.showMessageDialog(null,"No File Selected");
+        }
+    }//GEN-LAST:event_brr_browseActionPerformed
+
+    private void acc_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acc_tableMouseClicked
+        int z = acc_table.getSelectedRow();
+
+        TableModel model = (TableModel)acc_table.getModel();
+        acc_id.setText(model.getValueAt(z, 0).toString());
+
+        try{
+
+            String sql="SELECT First_Name, Middle_Name, Surname, Employee_ID, Position,"
+            + " Username, Password, Level, Mobile_Number, photo "
+            + "  FROM useraccount_tbl where ID = '" + (String) acc_id.getText() + "' ";
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+
+            if(rs.next()){
+                String name1 =rs.getString("First_Name");
+                String name2 =rs.getString("Username");
+                String name3 =rs.getString("Password");
+                String name4 =rs.getString("Level");
+                String name5 =rs.getString("Mobile_Number");
+                String name6 =rs.getString("Middle_Name");
+                String name7 =rs.getString("Surname");
+                String name8 =rs.getString("Employee_ID");
+                String name9 =rs.getString("Position");
+
+                acc_fn.setText(name1);
+                acc_user.setText(name2);
+                acc_pass.setText(name3);
+                acc_lvl.setSelectedItem(name4);
+                acc_mn.setText(name5);
+                acc_ffmn.setText(name6);
+                acc_ffsn.setText(name7);
+                acc_mid.setText(name8);
+                acc_pos.setText(name9);
+
+                byte[] img = rs.getBytes("Photo");
+                ImageIcon image1 =  new ImageIcon(img);
+                Image im = image1.getImage();
+                Image myImage = im.getScaledInstance(acc_image.getWidth(), acc_image.getHeight(), Image.SCALE_SMOOTH );
+                ImageIcon newImage = new ImageIcon(myImage);
+                acc_image.setIcon(newImage);
+
+            }
+        }
+        catch (Exception e) {
+            //JOptionPane.showMessageDialog(null, "No Photo");
+            acc_image.setIcon(new ImageIcon(new ImageIcon("").getImage().getScaledInstance(acc_image.getWidth(), acc_image.getHeight(), Image.SCALE_DEFAULT)));
+            acc_image.setText("Select Image");
+        }
+
+        acc_new.setEnabled(true);
+        acc_save.setEnabled(false);
+        acc_update.setEnabled(true);
+        acc_delete.setEnabled(true);
+        acc_browse.setEnabled(true);
+        acc_able();
+    }//GEN-LAST:event_acc_tableMouseClicked
+
+    private void acc_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acc_deleteActionPerformed
+        try {
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM useraccount_tbl  WHERE ID = '" + acc_id.getText() + "'");
+            int del = pst.executeUpdate();
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM borrower_tbl  WHERE First_Name = '" + acc_fn.getText() + "'");
+            int del1 = pst.executeUpdate();
+
+            if (del > 0 || del > 0) {
+                JOptionPane.showMessageDialog(null, "Data Removed");
+            }else{
+                JOptionPane.showMessageDialog(null, "No ID Exist on the Database!!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        ulog20();
+        all_ref();
+        acc_clr();
+        acc_disable();
+        acc_save.setEnabled(false);
+        acc_new.setEnabled(true);
+        acc_browse.setEnabled(false);
+        acc_update.setEnabled(false);
+        acc_delete.setEnabled(false);
+    }//GEN-LAST:event_acc_deleteActionPerformed
+
+    private void acc_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acc_updateActionPerformed
+        if(acc_pass.getText().equals(acc_con.getText())){
+
+            if (imgpath1 != null){
+                try{
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE useraccount_tbl SET "
+                        + " First_Name=?, Middle_Name=?, Surname=?, Username=?, Employee_ID=?, Position=?, "
+                        + "Mobile_Number=?, Password=?, Level=?, Photo=? "
+                        + " WHERE ID ='" + acc_id.getText() + "'");
+                    InputStream img = new FileInputStream(new File(imgpath1));
+                    pst.setString(1, acc_fn.getText());
+                    pst.setString(2, acc_ffmn.getText());
+                    pst.setString(3, acc_ffsn.getText());
+                    pst.setString(4, acc_user.getText());
+                    pst.setString(5, acc_mid.getText());
+                    pst.setString(6, acc_pos.getText());
+                    pst.setString(7, acc_mn.getText());
+                    pst.setString(8, acc_pass.getText());
+                    pst.setString(9, (String) acc_lvl.getSelectedItem());
+                    pst.setBlob(10, img);
+
+                    int update = pst.executeUpdate();
+                    JOptionPane.showMessageDialog(null,"Account Info Updated");
+
+                    all_ref();
+                    acc_clr();
+                    acc_disable();
+                    acc_save.setEnabled(false);
+                    acc_new.setEnabled(true);
+                    acc_browse.setEnabled(false);
+                    acc_update.setEnabled(false);
+                    acc_delete.setEnabled(false);
+
+                }catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+            }else{
+                try{
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE useraccount_tbl SET "
+                        + " First_Name=?, Middle_Name=?, Surname=?, Username=?, Employee_ID=?, Position=?, "
+                        + "Mobile_Number=?, Password=?, Level=? "
+                        + " WHERE ID ='" + acc_id.getText() + "'");
+                    pst.setString(1, acc_fn.getText());
+                    pst.setString(2, acc_ffmn.getText());
+                    pst.setString(3, acc_ffsn.getText());
+                    pst.setString(4, acc_user.getText());
+                    pst.setString(5, acc_mid.getText());
+                    pst.setString(6, acc_pos.getText());
+                    pst.setString(7, acc_mn.getText());
+                    pst.setString(8, acc_pass.getText());
+                    pst.setString(9, (String) acc_lvl.getSelectedItem());
+
+                    int update = pst.executeUpdate();
+                    JOptionPane.showMessageDialog(null,"Account Info Updated");
+
+                    all_ref();
+                    acc_clr();
+                    acc_disable();
+                    acc_save.setEnabled(false);
+                    acc_new.setEnabled(true);
+                    acc_browse.setEnabled(false);
+                    acc_update.setEnabled(false);
+                    acc_delete.setEnabled(false);
+
+                }catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+                JOptionPane.showMessageDialog(null,"Please Check Entry!!!");
+            }
+            ulog19();
+            imgpath1=null;
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Password Don't Match!!!");
+        }
+    }//GEN-LAST:event_acc_updateActionPerformed
+
+    private void acc_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acc_saveActionPerformed
+        if (imgpath1 != null){
+            try{
+                String sql = "INSERT INTO useraccount_tbl (First_Name, Middle_Name, Surname, Username, Employee_ID, "
+                + "Position, Mobile_Number, Password, Level, Photo) VALUES (?,?,?,?,?,?,?,?,?,?)";
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+                InputStream img = new FileInputStream(new File(imgpath1));
+                pst.setString(1, acc_fn.getText());
+                pst.setString(2, acc_ffmn.getText());
+                pst.setString(3, acc_ffsn.getText());
+                pst.setString(4, acc_user.getText());
+                pst.setString(5, acc_mid.getText());
+                pst.setString(6, acc_pos.getText());
+                pst.setString(7, acc_mn.getText());
+                pst.setString(8, acc_pass.getText());
+                pst.setString(9, (String)acc_lvl.getSelectedItem());
+                pst.setBlob(10, img);
+
+                if(pst.executeUpdate()==1){
+                    JOptionPane.showMessageDialog(null,"Account Created");
+                    acc_clr();
+                    acc_disable();
+                    all_ref();
+                    acc_browse.setEnabled(false);
+                    acc_save.setEnabled(false);
+                    acc_new.setEnabled(true);
+                    acc_update.setEnabled(false);
+                    acc_delete.setEnabled(false);
+
+                }else{
+                    JOptionPane.showMessageDialog(null,"Error 101");
+                }
+            }catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }else{
+            try{
+                String sql = "INSERT INTO useraccount_tbl (First_Name, Middle_Name, Surname, Username, Employee_ID, "
+                + "Position, Mobile_Number, Password, Level) VALUES (?,?,?,?,?,?,?,?,?)";
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+
+                pst.setString(1, acc_fn.getText());
+                pst.setString(2, acc_ffmn.getText());
+                pst.setString(3, acc_ffsn.getText());
+                pst.setString(4, acc_user.getText());
+                pst.setString(5, acc_mid.getText());
+                pst.setString(6, acc_pos.getText());
+                pst.setString(7, acc_mn.getText());
+                pst.setString(8, acc_pass.getText());
+                pst.setString(9, (String)acc_lvl.getSelectedItem());
+
+                if(pst.executeUpdate()==1){
+                    JOptionPane.showMessageDialog(null,"Account Created");
+                    acc_clr();
+                    acc_disable();
+                    all_ref();
+                    acc_browse.setEnabled(false);
+                    acc_save.setEnabled(false);
+                    acc_new.setEnabled(true);
+                    acc_update.setEnabled(false);
+                    acc_delete.setEnabled(false);
+
+                }else{
+                    JOptionPane.showMessageDialog(null,"Error 102");
+                }
+            }catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+        ulog18();
+        imgpath1 = null;
+    }//GEN-LAST:event_acc_saveActionPerformed
+
+    private void acc_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acc_newActionPerformed
+        acc_able();
+        acc_clr();
+        acc_new.setEnabled(false);
+        acc_save.setEnabled(true);
+        acc_browse.setEnabled(true);
+        acc_update.setEnabled(false);
+        acc_delete.setEnabled(false);
+    }//GEN-LAST:event_acc_newActionPerformed
+
+    private void acc_browseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acc_browseActionPerformed
+        JFileChooser file = new JFileChooser(jFileChooser2.getCurrentDirectory());
+        file.setCurrentDirectory(new File(System.getProperty("user.home")));
+        //filter the files'
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Image*","jpg","gif","png");
+        file.addChoosableFileFilter(filter);
+        int result = file.showSaveDialog(null);
+        //if the user click on save jfilechooser
+        if(result == JFileChooser.APPROVE_OPTION){
+            File selectedFile = file.getSelectedFile();
+            String path = selectedFile.getAbsolutePath();
+            // image.setIcon(ResizeImage(path,null));
+            acc_image.setIcon(new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(acc_image.getWidth(), acc_image.getHeight(), Image.SCALE_DEFAULT)));
+            imgpath1 = path;
+
+        }else if(result  == JFileChooser.CANCEL_OPTION){
+            JOptionPane.showMessageDialog(null,"No File Selected");
+        }
+    }//GEN-LAST:event_acc_browseActionPerformed
+
+    private void nb_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_deleteActionPerformed
+        try {
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM stockin_tbl  WHERE Book_ID = '" + nb_id.getText() + "'");
+            int del = pst.executeUpdate();
+            if (del > 0) {
+                JOptionPane.showMessageDialog(null, "Book Entry Deleted!");
+
+            }else{
+                JOptionPane.showMessageDialog(null, "Please Check Item!!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        try {
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM holding_tbl  WHERE ID = '" + nb_id.getText() + "'");
+            int del = pst.executeUpdate();
+            if (del > 0) {
+                JOptionPane.showMessageDialog(null, "Book Entry Deleted!");
+
+            }else{
+                JOptionPane.showMessageDialog(null, "Please Check Item!!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        try {
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM damage_tbl  WHERE ID = '" + nb_id.getText() + "'");
+            int del = pst.executeUpdate();
+            if (del > 0) {
+                JOptionPane.showMessageDialog(null, "Book Entry Deleted!");
+
+            }else{
+                JOptionPane.showMessageDialog(null, "Please Check Item!!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        try {
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM borrowed_tbl  WHERE Book_title = '" + nb_bt.getText() + "'");
+            int del = pst.executeUpdate();
+            if (del > 0) {
+                JOptionPane.showMessageDialog(null, "Book Entry Deleted!");
+
+            }else{
+                JOptionPane.showMessageDialog(null, "Please Check Item!!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        ulog17();
+        all_ref();
+        nb_clr();
+        nb_disable();
+        nb_update.setEnabled(false);
+        nb_delete.setEnabled(false);
+        nb_new.setEnabled(true);
+    }//GEN-LAST:event_nb_deleteActionPerformed
+
+    private void nb_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_updateActionPerformed
+        try {
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE stockin_tbl SET ISBN_No=?, "
+                + "Call_Number=?, Classification=?, Publisher=?, Edition=?, Copy_Right_Year=?, Date_Arrival=?, "
+                + "Author=? WHERE Book_ID='" + nb_id.getText() + "'");
+
+            pst.setString(1, nb_is.getText());
+            pst.setString(2, nb_cn.getText());
+            pst.setString(3, (String) nb_class.getSelectedItem());
+            pst.setString(4, (String) nb_cpub.getSelectedItem());
+            pst.setString(5, nb_edi.getText());
+            pst.setString(6, ((JTextField)nb_cry.getDateEditor().getUiComponent()).getText());
+            pst.setString(7, ((JTextField)nb_da.getDateEditor().getUiComponent()).getText());
+            pst.setString(8, nb_aut.getText());
+
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Data Updated");
+        }
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        ulog16();
+        all_ref();
+        nb_clr();
+        nb_disable();
+        nb_update.setEnabled(false);
+        nb_delete.setEnabled(false);
+        nb_new.setEnabled(true);
+    }//GEN-LAST:event_nb_updateActionPerformed
+
+    private void nb_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_saveActionPerformed
+        if(jLabel187.getText().equals("ISBN Not Available") || jLabel187.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Enter Valid ISBN Number!");
+        }
+        else{
+            if(jLabel189.getText().equals("Call Number Not Available") || jLabel189.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Enter Valid Call Number!");
+            }
+            else {
+                if(nb_bt.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Input Book Title!");
+                }
+                else {
+                    int i = Integer.parseInt(nb_qty.getText());
+                    if(i<=0){
+                        JOptionPane.showMessageDialog(null, "Quantity must not lessthan 1!");
+                    }
+                    else {
+                        if(nb_prc.getText().equals("")){
+                            JOptionPane.showMessageDialog(null, "Input Book Price!");
+                        }
+                        else {
+                            if(nb_da.getDate().equals(null)){
+                                JOptionPane.showMessageDialog(null, "Please Fill the book information!!");
+                            }
+                            else{
+                                try {
+                                    String sql = "Insert into stockin_tbl (ISBN_No, Book_title, Author, Quantity, Call_Number, "
+                                    + " Classification, Publisher, Edition,"
+                                    + " Copy_Right_Year, Price, Encoder, Date_Arrival) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+
+                                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+
+                                    pst.setString(1, nb_is.getText());
+                                    pst.setString(2, nb_bt.getText());
+                                    pst.setString(3, nb_aut.getText());
+                                    pst.setString(4, nb_qty.getText());
+                                    pst.setString(5, nb_cn.getText());
+                                    pst.setString(6, (String) nb_class.getSelectedItem());
+                                    pst.setString(7, (String) nb_cpub.getSelectedItem());
+                                    pst.setString(8, nb_edi.getText());
+                                    pst.setString(9, ((JTextField)nb_cry.getDateEditor().getUiComponent()).getText());
+                                    pst.setString(10, nb_prc.getText());
+                                    pst.setString(11, txt_name.getText());
+                                    pst.setString(12, ((JTextField)nb_da.getDateEditor().getUiComponent()).getText());
+
+                                    pst.execute();
+
+                                } catch (Exception e) {
+                                    JOptionPane.showMessageDialog(null, e);
+                                }
+                                try {
+                                    String sql11 = "Insert into holding_tbl (ISBN_No, Book_title, Classification, On_Hand, Borrowed, Damage, Total_Holding, Encoder, Date, Time) "
+                                    + "values (?,?,?,?,?,?,?,?,?,?)";
+
+                                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql11);
+
+                                    pst.setString(1, nb_is.getText());
+                                    pst.setString(2, nb_bt.getText());
+                                    pst.setString(3, (String) nb_class.getSelectedItem());
+                                    pst.setString(4, nb_qty.getText());
+                                    pst.setString(5, "0");
+                                    pst.setString(6, "0");
+                                    pst.setString(7, nb_qty.getText());
+                                    pst.setString(8, "");
+                                    pst.setString(9, "");
+                                    pst.setString(10, "");
+
+                                    pst.execute();
+
+                                } catch (Exception e) {
+                                    JOptionPane.showMessageDialog(null, e);
+                                }
+                                try {
+                                    String sql1 = "Insert into damage_tbl (ISBN_No, Book_title, Classification, Status, Quantity, Encoder, Date, Time) "
+                                    + "values (?,?,?,?,?,?,?,?)";
+
+                                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql1);
+
+                                    pst.setString(1, nb_is.getText());
+                                    pst.setString(2, nb_bt.getText());
+                                    pst.setString(3, (String) nb_class.getSelectedItem());
+                                    pst.setString(4, "--Select Status--");
+                                    pst.setString(5, "0");
+                                    pst.setString(6, "");
+                                    pst.setString(7, "");
+                                    pst.setString(8, "");
+
+                                    pst.execute();
+
+                                } catch (Exception e) {
+                                    JOptionPane.showMessageDialog(null, e);
+                                }
+
+                                try {
+
+                                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM purchased_tbl  WHERE ID = '" + nb_id.getText() + "'");
+                                    int del = pst.executeUpdate();
+                                    if (del > 0) {
+                                        JOptionPane.showMessageDialog(null, "Book Entry Deleted!");
+
+                                    }else{
+                                        //JOptionPane.showMessageDialog(null, "Please Check Item!!");
+                                    }
+                                } catch (SQLException ex) {
+                                    JOptionPane.showMessageDialog(null, ex);
+                                }
+
+                                ulog15();
+                                all_ref();
+                                nb_clr();
+                                nb_disable();
+                                nb_save.setEnabled(false);
+                                nb_new.setEnabled(true);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_nb_saveActionPerformed
+
+    private void nb_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_newActionPerformed
+        nb_new.setEnabled(false);
+        nb_update.setEnabled(false);
+        nb_delete.setEnabled(false);
+        nb_save.setEnabled(true);
+
+        class_add.setEnabled(true);
+        nb_is.setEnabled(true);
+        nb_bt.setEnabled(true);
+        nb_bt.setEditable(true);
+        nb_aut.setEnabled(true);
+        nb_qty.setEnabled(true);
+        nb_qty.setEditable(true);
+        nb_cn.setEnabled(true);
+        nb_class.setEnabled(true);
+        nb_cpub.setEnabled(true);
+        class_add2.setEnabled(true);
+        nb_edi.setEnabled(true);
+        nb_cry.setEnabled(true);
+        nb_prc.setEnabled(true);
+        nb_prc.setEditable(true);
+        nb_da.setEnabled(true);
+        nb_clr();
+        nb_aut.setEnabled(true);
+        nb_aut.setEditable(true);
+
+    }//GEN-LAST:event_nb_newActionPerformed
+
+    private void nb_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nb_tableMouseClicked
+        int z = nb_table.getSelectedRow();
+
+        TableModel model = (TableModel)nb_table.getModel();
+        nb_id.setText(model.getValueAt(z, 0).toString());
+        nb_is.setText(model.getValueAt(z, 1).toString());
+        nb_bt.setText(model.getValueAt(z, 2).toString());
+        nb_aut.setText(model.getValueAt(z, 3).toString());
+        nb_qty.setText(model.getValueAt(z, 4).toString());
+        nb_cn.setText(model.getValueAt(z, 5).toString());
+        nb_class.setSelectedItem(model.getValueAt(z, 6).toString());
+        nb_cpub.setSelectedItem(model.getValueAt(z, 7).toString());
+        nb_edi.setText(model.getValueAt(z, 8).toString());
+        ((JTextField)nb_cry.getDateEditor().getUiComponent()).setText(model.getValueAt(z, 9).toString());
+        nb_prc.setText(model.getValueAt(z, 10).toString());
+        ((JTextField)nb_da.getDateEditor().getUiComponent()).setText(model.getValueAt(z, 11).toString());
+
+        nb_able();
+        //nb_qty.setEnabled(false);
+        nb_save.setEnabled(false);
+        nb_update.setEnabled(true);
+        nb_delete.setEnabled(true);
+        nb_new.setEnabled(true);
+    }//GEN-LAST:event_nb_tableMouseClicked
+
+    private void nb_table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nb_table1MouseClicked
+        int z = nb_table1.getSelectedRow();
+
+        TableModel model = (TableModel)nb_table1.getModel();
+        nb_id.setText(model.getValueAt(z, 0).toString());
+        nb_bt.setText(model.getValueAt(z, 1).toString());
+        nb_aut.setText(model.getValueAt(z, 2).toString());
+        nb_class.setSelectedItem(model.getValueAt(z, 3).toString());
+        nb_qty.setText(model.getValueAt(z, 4).toString());
+        nb_prc.setText(model.getValueAt(z, 5).toString());
+
+        nb_save.setEnabled(true);
+        nb_class.setEnabled(false);
+        class_add.setEnabled(false);
+        nb_new.setEnabled(false);
+
+        nb_is.setEnabled(true);
+        nb_cn.setEnabled(true);
+        nb_edi.setEnabled(true);
+        nb_cry.setEnabled(true);
+        nb_da.setEnabled(true);
+        nb_bt.setEnabled(true);
+        nb_aut.setEnabled(true);
+        nb_qty.setEnabled(true);
+        nb_class.setEnabled(true);
+        class_add.setEnabled(true);
+        nb_cpub.setEnabled(true);
+        class_add2.setEnabled(true);
+        nb_prc.setEnabled(true);
+    }//GEN-LAST:event_nb_table1MouseClicked
+
+    private void nb_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nb_searchKeyReleased
+        try {
+            String sql = "SELECT *"
+            + " FROM stockin_tbl WHERE "
+            + "Book_ID like? or ISBN_No like ? or Book_title like ? or Author like ? or Quantity like ? or "
+            + "Call_Number like ? or Classification like ? or "
+            + "Edition like ? or Copy_Right_Year like ? or Price like ? or Encoder like ? or "
+            + "Date_Arrival like ?";
+
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            pst.setString(1, "%" + nb_search.getText() + "%");
+            pst.setString(2, "%" + nb_search.getText() + "%");
+            pst.setString(3, "%" + nb_search.getText() + "%");
+            pst.setString(4, "%" + nb_search.getText() + "%");
+            pst.setString(5, "%" + nb_search.getText() + "%");
+            pst.setString(6, "%" + nb_search.getText() + "%");
+            pst.setString(7, "%" + nb_search.getText() + "%");
+            pst.setString(8, "%" + nb_search.getText() + "%");
+            pst.setString(9, "%" + nb_search.getText() + "%");
+            pst.setString(10, "%" + nb_search.getText() + "%");
+            pst.setString(11, "%" + nb_search.getText() + "%");
+            pst.setString(12, "%" + nb_search.getText() + "%");
+
+            rs = (ResultSet) pst.executeQuery();
+            nb_table.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, ex);
+        }
+    }//GEN-LAST:event_nb_searchKeyReleased
+
+    private void class_add2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_class_add2ActionPerformed
+        jTabbedPane6.setEnabledAt(0, false);
+        jTabbedPane6.setEnabledAt(1, true);
+        jTabbedPane6.setEnabledAt(2, false);
+        jTabbedPane6.setEnabledAt(3, false);
+        jTabbedPane6.setEnabledAt(4, false);
+        jTabbedPane6.setEnabledAt(5, false);
+        jTabbedPane6.setSelectedIndex(1);
+
+        sup_save2.setVisible(true);
+        jLabel128.setText("1");
+
+        menu_title.setText("NEW PUBLISHER");
+    }//GEN-LAST:event_class_add2ActionPerformed
+
+    private void class_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_class_addActionPerformed
+        jTabbedPane6.setEnabledAt(0, true);
+        jTabbedPane6.setEnabledAt(1, false);
+        jTabbedPane6.setEnabledAt(2, false);
+        jTabbedPane6.setEnabledAt(3, false);
+        jTabbedPane6.setEnabledAt(4, false);
+        jTabbedPane6.setEnabledAt(5, false);
+        jTabbedPane6.setSelectedIndex(0);
+        si_save3.setVisible(true);
+
+        menu_title.setText("ADD CLASSIFICATION");
+
+        si_save3.setText("Back To New Book");
+    }//GEN-LAST:event_class_addActionPerformed
+
+    private void nb_qtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_qtyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nb_qtyActionPerformed
+
+    private void nb_cnKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nb_cnKeyReleased
+        try {
+            String sql = "SELECT *"
+            + " FROM stockin_tbl WHERE "
+            + "Call_Number like ? ";
+
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            pst.setString(1, "%" + nb_cn.getText() + "%");
+
+            rs = (ResultSet) pst.executeQuery();
+            nb_table.setModel(DbUtils.resultSetToTableModel(rs));
+            rc_nb();
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, ex);
+        }
+        if(jLabel188.getText().equals("0")){
+            jLabel189.setText("Call Number Available");
+        }
+        else{
+            jLabel189.setText("Call Number Not Available");
+        }
+    }//GEN-LAST:event_nb_cnKeyReleased
+
+    private void nb_btKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nb_btKeyReleased
+        try {
+            String sql = "SELECT *"
+            + " FROM stockin_tbl WHERE "
+            + "Book_title like ?";
+
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            pst.setString(1, "%" + nb_bt .getText() + "%");
+
+            rs = (ResultSet) pst.executeQuery();
+            nb_table.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, ex);
+        }
+    }//GEN-LAST:event_nb_btKeyReleased
+
+    private void nb_isKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nb_isKeyReleased
+        try {
+            String sql = "SELECT *"
+            + " FROM stockin_tbl WHERE "
+            + "ISBN_No like ? ";
+
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            pst.setString(1, "%" + nb_is.getText() + "%");
+
+            rs = (ResultSet) pst.executeQuery();
+            nb_table.setModel(DbUtils.resultSetToTableModel(rs));
+            rc_nb();
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, ex);
+        }
+        if(jLabel188.getText().equals("0")){
+            jLabel187.setText("ISBN Available");
+        }
+        else{
+            jLabel187.setText("ISBN Not Available");
+        }
+    }//GEN-LAST:event_nb_isKeyReleased
+
+    private void sup_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_deleteActionPerformed
+        try {
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM supplier_tbl  WHERE Supplier_ID = '" + sup_id.getText() + "'");
+            int del = pst.executeUpdate();
+            if (del > 0) {
+                JOptionPane.showMessageDialog(null, "Data Deleted!");
+
+            }else{
+                JOptionPane.showMessageDialog(null, "Please Check Item!!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        ulog14();
+        supp_list();
+        all_ref();
+        supp_clr();
+        supp_disable();
+        sup_update.setEnabled(false);
+        sup_delete.setEnabled(false);
+        sup_new.setEnabled(true);
+    }//GEN-LAST:event_sup_deleteActionPerformed
+
+    private void sup_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_updateActionPerformed
+        try {
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE supplier_tbl SET Supplier_Name=?, "
+                + "Address=?, Contact=?, Email=?, Contact_Person=?, Date_Encoded=?, Encoder=? WHERE Supplier_ID='" + sup_id.getText() + "'");
+
+            pst.setString(1, sup_name.getText());
+            pst.setString(2, sup_add.getText());
+            pst.setString(3, sup_con.getText());
+            pst.setString(4, sup_em.getText());
+            pst.setString(5, sup_cp.getText());
+            pst.setString(6, ((JTextField)sup_enc.getDateEditor().getUiComponent()).getText());
+            pst.setString(7, txt_name.getText());
+
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Data Updated");
+        }
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        ulog13();
+        supp_list();
+        all_ref();
+        supp_clr();
+        supp_disable();
+        sup_update.setEnabled(false);
+        sup_delete.setEnabled(false);
+        sup_new.setEnabled(true);
+    }//GEN-LAST:event_sup_updateActionPerformed
+
+    private void sup_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_saveActionPerformed
+        try {
+            String sql = "Insert into supplier_tbl (Supplier_Name, Address, Contact, Email, Contact_Person, Date_Encoded, Encoder) "
+            + " values (?,?,?,?,?,?,?)";
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+
+            pst.setString(1, sup_name.getText());
+            pst.setString(2, sup_add.getText());
+            pst.setString(3, sup_con.getText());
+            pst.setString(4, sup_em.getText());
+            pst.setString(5, sup_cp.getText());
+            pst.setString(6, ((JTextField)sup_enc.getDateEditor().getUiComponent()).getText());
+            pst.setString(7, txt_name.getText());
+
+            pst.execute();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        supp_list();
+        ulog12();
+        all_ref();
+        supp_clr();
+        supp_disable();
+        sup_save.setEnabled(false);
+        sup_new.setEnabled(true);
+    }//GEN-LAST:event_sup_saveActionPerformed
+
+    private void sup_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_newActionPerformed
+        supp_able();
+        supp_clr();
+        sup_new.setEnabled(false);
+        sup_save.setEnabled(true);
+        sup_update.setEnabled(false);
+        sup_delete.setEnabled(false);
+    }//GEN-LAST:event_sup_newActionPerformed
+
+    private void sup_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sup_tableMouseClicked
+        int z = sup_table.getSelectedRow();
+
+        TableModel model = (TableModel)sup_table.getModel();
+        sup_id.setText(model.getValueAt(z, 0).toString());
+        sup_name.setText(model.getValueAt(z, 1).toString());
+        sup_add.setText(model.getValueAt(z, 2).toString());
+        sup_con.setText(model.getValueAt(z, 3).toString());
+        sup_em.setText(model.getValueAt(z, 4).toString());
+        sup_cp.setText(model.getValueAt(z, 5).toString());
+        ((JTextField)sup_enc.getDateEditor().getUiComponent()).setText(model.getValueAt(z, 6).toString());
+
+        supp_able();
+        sup_save.setEnabled(false);
+        sup_update.setEnabled(true);
+        sup_delete.setEnabled(true);
+        sup_new.setEnabled(true);
+    }//GEN-LAST:event_sup_tableMouseClicked
+
+    private void sup_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sup_searchKeyReleased
+        try {
+            String sql = "SELECT *"
+            + " FROM supplier_tbl WHERE "
+            + "Supplier_ID like ? or Supplier_Name like ? or Address like ? or Contact like ? or Email like ?"
+            + " or Date_Encoded like ? or Encoder like ?";
+
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            pst.setString(1, "%" + sup_search.getText() + "%");
+            pst.setString(2, "%" + sup_search.getText() + "%");
+            pst.setString(3, "%" + sup_search.getText() + "%");
+            pst.setString(4, "%" + sup_search.getText() + "%");
+            pst.setString(5, "%" + sup_search.getText() + "%");
+            pst.setString(6, "%" + sup_search.getText() + "%");
+            pst.setString(7, "%" + sup_search.getText() + "%");
+
+            rs = (ResultSet) pst.executeQuery();
+            sup_table.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, ex);
+        }
+    }//GEN-LAST:event_sup_searchKeyReleased
+
+    private void sup_save3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_save3ActionPerformed
+        sup();
+    }//GEN-LAST:event_sup_save3ActionPerformed
+
+    private void sup_delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_delete1ActionPerformed
+        try {
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM publisher_tbl  WHERE ID = '" + jLabel120.getText() + "'");
+            int del = pst.executeUpdate();
+            if (del > 0) {
+                JOptionPane.showMessageDialog(null, "Data Deleted!");
+
+            }else{
+                JOptionPane.showMessageDialog(null, "Please Check Item!!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        all_ref();
+        ulog11();
+        pub_list();
+        sup_name1.setText("");
+        sup_add1.setText("");
+        sup_update1.setEnabled(false);
+        sup_delete1.setEnabled(false);
+        sup_save1.setEnabled(false);
+    }//GEN-LAST:event_sup_delete1ActionPerformed
+
+    private void sup_update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_update1ActionPerformed
+        try {
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE publisher_tbl SET Publisher_ID=?, Publisher=? WHERE ID='" + jLabel120.getText() + "'");
+
+            pst.setString(1, sup_name1.getText());
+            pst.setString(2, sup_add1.getText());
+
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Data Updated");
+        }
+        catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        all_ref();
+        ulog10();
+        pub_list();
+        sup_name1.setText("");
+        sup_add1.setText("");
+        sup_update1.setEnabled(false);
+        sup_delete1.setEnabled(false);
+        sup_save1.setEnabled(false);
+    }//GEN-LAST:event_sup_update1ActionPerformed
+
+    private void sup_save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_save1ActionPerformed
+        try {
+            String sql = "Insert into publisher_tbl (Publisher_ID, Publisher) "
+            + " values (?,?)";
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+
+            pst.setString(1, sup_name1.getText());
+            pst.setString(2, sup_add1.getText());
+
+            pst.execute();
+            pub_list();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+        if(jLabel128.getText().equals("1")){
+            nb_cpub.setSelectedItem(sup_add1.getText());
+            pub_ret();
+        }
+
+        all_ref();
+        ulog9();
+        sup_name1.setText("");
+        sup_add1.setText("");
+    }//GEN-LAST:event_sup_save1ActionPerformed
+
+    private void sup_add1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sup_add1KeyReleased
+        if(sup_name1.getText().equals("") && sup_add1.getText().equals("")){
+            sup_save1.setEnabled(false);
+        }
+        else{
+            sup_save1.setEnabled(true);
+        }
+    }//GEN-LAST:event_sup_add1KeyReleased
+
+    private void sup_name1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sup_name1KeyReleased
+        if(sup_name1.getText().equals("") && sup_add1.getText().equals("")){
+            sup_save1.setEnabled(false);
+        }
+        else{
+            sup_save1.setEnabled(true);
+        }
+    }//GEN-LAST:event_sup_name1KeyReleased
+
+    private void sup_table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sup_table1MouseClicked
+        int z = sup_table1.getSelectedRow();
+
+        TableModel model = (TableModel)sup_table1.getModel();
+        //jLabel120.setText(model.getValueAt(z, 0).toString());
+        sup_name1.setText(model.getValueAt(z, 0).toString());
+        sup_add1.setText(model.getValueAt(z, 1).toString());
+
+        try {
+            pst = (PreparedStatement) conn.prepareStatement("SELECT ID FROM publisher_tbl where Publisher_ID= '" + sup_name1.getText() + "' and Publisher= '" + sup_add1.getText() + "' ");
+            rs = pst.executeQuery();
+            if(rs.next()){
+                String add = rs.getString("ID");
+                jLabel120.setText(add);
+            }
+        }
+        catch (SQLException x) {
+
+        }
+
+        sup_update1.setEnabled(true);
+        sup_delete1.setEnabled(true);
+        sup_save1.setEnabled(false);
+    }//GEN-LAST:event_sup_table1MouseClicked
+
+    private void sup_search1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sup_search1KeyReleased
+        try {
+            String sql = "SELECT Publisher_ID, Publisher"
+            + " FROM publisher_tbl WHERE "
+            + "Publisher_ID like ? or Publisher like ?";
+
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            pst.setString(1, "%" + sup_search1.getText() + "%");
+            pst.setString(2, "%" + sup_search1.getText() + "%");
+
+            rs = (ResultSet) pst.executeQuery();
+            sup_table1.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, ex);
+        }
+
+        if(sup_search1.getText().equals("")){
+            all_ref();
+        }
+    }//GEN-LAST:event_sup_search1KeyReleased
+
+    private void sup_save2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_save2ActionPerformed
+        pub_ret();
+    }//GEN-LAST:event_sup_save2ActionPerformed
+
+    private void class_num1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_class_num1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_class_num1KeyReleased
+
+    private void btn_del1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_del1ActionPerformed
+        try {
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM classification_tbl  WHERE ID = '" + cl_io.getText() + "'");
+            int del = pst.executeUpdate();
+            if (del > 0) {
+                JOptionPane.showMessageDialog(null, "Data Deleted!");
+
+            }else{
+                JOptionPane.showMessageDialog(null, "Please Check Item!!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        all_ref();
+        ulog7();
+        class_num1.setText("");
+        si_isbn2.setText("");
+        cl_io.setText("");
+    }//GEN-LAST:event_btn_del1ActionPerformed
+
+    private void si_save4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_si_save4ActionPerformed
+        if(si_save3.getText().equals("Back To New Book")){
+
+            classinv();
+            men_dash.setBackground(new Color(96,96,96));
+            men_rec.setBackground(new Color(255,255,255));
+            men_inv.setBackground(new Color(96,96,96));
+            men_brrd.setBackground(new Color(96,96,96));
+            men_logout.setBackground(new Color(96,96,96));
+            menu_title.setText("NEW BOOK");
+            men_po.setForeground(new Color(255,255,255));
+            men_po.setBackground(new Color(96,96,96));
+            men_rep.setBackground(new Color(96,96,96));
+            men_rep.setForeground(new Color(255,255,255));
+            men_dash.setForeground(new Color(255,255,255));
+            men_rec.setForeground(new Color(96,96,96));
+            men_inv.setForeground(new Color(255,255,255));
+            men_brrd.setForeground(new Color(255,255,255));
+            men_logout.setForeground(new Color(255,255,255));
+
+            dashboard.setVisible(false);
+            inventory.setVisible(false);
+            Bookloan.setVisible(false);
+            report.setVisible(false);
+            user_logo.setVisible(false);
+
+            po_cl.setSelectedItem(si_isbn2.getText());
+            all_ref();
+            ulog8();
+            classif_list();
+            nb_class.setSelectedItem(si_isbn2.getText());
+            si_isbn2.setText("");
+            class_num1.setText("");
+            cl_io.setText("");
+        }
+        else if(si_save3.getText().equals("Back To P.O.")){
+
+            classinv();
+            men_dash.setBackground(new Color(96,96,96));
+            men_rec.setBackground(new Color(96,96,96));
+            men_inv.setBackground(new Color(96,96,96));
+            men_brrd.setBackground(new Color(96,96,96));
+            men_logout.setBackground(new Color(96,96,96));
+            men_rep.setBackground(new Color(96,96,96));
+            men_po.setBackground(new Color(255,255,255));
+            menu_title.setText("PURCHASE ORDER");
+
+            men_po.setForeground(new Color(96,96,96));
+            men_rep.setForeground(new Color(255,255,255));
+            men_dash.setForeground(new Color(255,255,255));
+            men_rec.setForeground(new Color(255,255,255));
+            men_inv.setForeground(new Color(255,255,255));
+            men_brrd.setForeground(new Color(255,255,255));
+            men_logout.setForeground(new Color(255,255,255));
+
+            dashboard.setVisible(false);
+            inventory.setVisible(false);
+            Bookloan.setVisible(false);
+            report.setVisible(false);
+            user_logo.setVisible(true);
+            booklist.setVisible(false);
+
+            all_ref();
+
+            classif_list();
+            po_cl.setSelectedItem(si_isbn2.getText());
+            si_isbn2.setText("");
+            class_num1.setText("");
+            cl_io.setText("");
+        }
+        else if(si_save3.getText().equals("Back")){
+
+            classinv();
+            all_ref();
+
+            classif_list();
+            si_isbn2.setText("");
+            class_num1.setText("");
+            cl_io.setText("");
+        }
+
+    }//GEN-LAST:event_si_save4ActionPerformed
+
+    private void si_isbn2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_si_isbn2KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_si_isbn2KeyReleased
+
+    private void class_table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_class_table1MouseClicked
+        int z = class_table1.getSelectedRow();
+
+        TableModel model = (TableModel)class_table1.getModel();
+        //cl_io.setText(model.getValueAt(z, 0).toString());
+        class_num1.setText(model.getValueAt(z, 0).toString());
+        si_isbn2.setText(model.getValueAt(z, 1).toString());
+
+        try {
+            pst = (PreparedStatement) conn.prepareStatement("SELECT ID FROM classification_tbl where Class_Number= '" + class_num1.getText() + "' and Classname= '" + si_isbn2.getText() + "' ");
+            rs = pst.executeQuery();
+            if(rs.next()){
+                String add = rs.getString("ID");
+                cl_io.setText(add);
+            }
+        }
+        catch (SQLException x) {
+
+        }
+
+        class_save_hide1.setVisible(true);
+        btn_del1.setVisible(true);
+    }//GEN-LAST:event_class_table1MouseClicked
+
+    private void si_save3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_si_save3ActionPerformed
+        if(si_save3.getText().equals("Back To New Book")){
+            menu_title.setText("RECORDS");
+
+            jTabbedPane6.setEnabledAt(0, true);
+            jTabbedPane6.setEnabledAt(1, true);
+            jTabbedPane6.setEnabledAt(2, true);
+            jTabbedPane6.setEnabledAt(3, true);
+            jTabbedPane6.setEnabledAt(4, true);
+            jTabbedPane6.setEnabledAt(5, true);
+            jTabbedPane6.setSelectedIndex(3);
+        }
+        else if(si_save3.getText().equals("Back To P.O.")){
+
+            jTabbedPane1.setEnabledAt(0, true);
+            jTabbedPane1.setEnabledAt(1, true);
+            jTabbedPane1.setEnabledAt(2, true);
+            jTabbedPane1.setEnabledAt(3, true);
+            jTabbedPane1.setEnabledAt(4, true);
+            jTabbedPane6.setSelectedIndex(0);
+
+            menu_title.setText("INVENTORY");
+
+            dashboard.setVisible(false);
+            Records.setVisible(false);
+            inventory.setVisible(true);
+            Bookloan.setVisible(false);
+            report.setVisible(false);
+        }
+        si_save3.setVisible(false);
+    }//GEN-LAST:event_si_save3ActionPerformed
 
     public void sup(){
         sup_save3.setVisible(false);
@@ -13243,21 +12538,6 @@ public class Main extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, e);
                 }
     }
-    public void inlog(){
-        try {
-                    String sql = "Insert into account_log_tbl (User_Name, Activity, Status, "
-                    + "Date, Time) values (?,?,?,?,?)";
-                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
-                    pst.setString(1, txt_name.getText());
-                    pst.setString(2, "Log-in");
-                    pst.setString(3, txt_level.getText());
-                    pst.setString(4, txt_date1.getText());
-                    pst.setString(5, txt_time.getText());
-                    pst.execute();
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e);
-                }
-    }
     public void outlog(){
         try {
                     String sql = "Insert into account_log_tbl (User_Name, Activity, Status, "
@@ -13312,7 +12592,6 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bookloan;
-    private javax.swing.JPanel Login;
     private javax.swing.JPanel Menu;
     private javax.swing.JPanel Records;
     private javax.swing.JButton acc_browse;
@@ -13415,7 +12694,6 @@ public class Main extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dddd3;
     private com.toedter.calendar.JDateChooser dddd4;
     private javax.swing.JLabel dsc_id;
-    private javax.swing.JLabel exit;
     private javax.swing.JPanel findbook;
     private javax.swing.JLabel frm_tbl;
     private javax.swing.JPanel head;
@@ -13423,10 +12701,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel inv;
     private javax.swing.JPanel inventory;
     private javax.swing.JTextField invlog_search;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
@@ -13434,7 +12709,6 @@ public class Main extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDateChooser4;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JFileChooser jFileChooser2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
@@ -13505,19 +12779,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel160;
     private javax.swing.JLabel jLabel161;
     private javax.swing.JLabel jLabel162;
-    private javax.swing.JLabel jLabel163;
-    private javax.swing.JLabel jLabel164;
-    private javax.swing.JLabel jLabel165;
-    private javax.swing.JLabel jLabel166;
-    private javax.swing.JLabel jLabel167;
-    private javax.swing.JLabel jLabel168;
-    private javax.swing.JLabel jLabel169;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel170;
-    private javax.swing.JLabel jLabel171;
-    private javax.swing.JLabel jLabel172;
-    private javax.swing.JLabel jLabel173;
-    private javax.swing.JLabel jLabel174;
     private javax.swing.JLabel jLabel175;
     private javax.swing.JLabel jLabel176;
     private javax.swing.JLabel jLabel177;
@@ -13580,7 +12842,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -13591,7 +12852,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
@@ -13657,7 +12917,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
@@ -13668,7 +12927,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
@@ -13709,7 +12967,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel65;
     private javax.swing.JPanel jPanel66;
     private javax.swing.JPanel jPanel67;
-    private javax.swing.JPanel jPanel68;
     private javax.swing.JPanel jPanel69;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel70;
@@ -13750,7 +13007,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane29;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane30;
-    private javax.swing.JScrollPane jScrollPane31;
     private javax.swing.JScrollPane jScrollPane32;
     private javax.swing.JScrollPane jScrollPane33;
     private javax.swing.JScrollPane jScrollPane34;
@@ -13777,18 +13033,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable jTable5;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTable log_table;
-    private javax.swing.JPanel loginpanel;
     private javax.swing.JTextField masb_search;
     private javax.swing.JTable masb_table;
     private javax.swing.JLabel men_brrd;
@@ -13800,7 +13046,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel men_rep;
     private javax.swing.JLabel menu_title;
     private javax.swing.JLabel menu_title1;
-    private javax.swing.JLabel minimize;
     private javax.swing.JLabel minus_test;
     private javax.swing.JPanel mmm;
     private javax.swing.JPasswordField my_con;
@@ -13833,8 +13078,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton nb_new5;
     private javax.swing.JButton nb_new6;
     private javax.swing.JButton nb_new7;
-    private javax.swing.JButton nb_new8;
-    private javax.swing.JButton nb_new9;
     private javax.swing.JTextField nb_prc;
     private javax.swing.JTextField nb_qty;
     private javax.swing.JButton nb_save;
@@ -13867,7 +13110,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField ohb_rd;
     private javax.swing.JTable ohb_table;
     private javax.swing.JTextField ohn_rem;
-    private javax.swing.JPasswordField pass;
     private javax.swing.JButton po_add;
     private javax.swing.JTextField po_au;
     private javax.swing.JTextField po_bt;
@@ -13888,7 +13130,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable po_table;
     private javax.swing.JTable po_test;
     private javax.swing.JTable pobl_table;
-    private javax.swing.JPanel publicsearch;
     private javax.swing.JLabel rc_po;
     private javax.swing.JLabel rc_tot;
     private javax.swing.JLabel remain;
@@ -13900,7 +13141,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel report;
     private javax.swing.JTextField returndate;
     private javax.swing.JLabel sandh;
-    private javax.swing.JCheckBox showpass;
     private javax.swing.JButton si_add;
     private javax.swing.JTextField si_brrd;
     private javax.swing.JTextField si_bt;
@@ -13951,8 +13191,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField sum_bt;
     private javax.swing.JComboBox<String> sum_class;
     private javax.swing.JTable sum_table;
-    private javax.swing.JTable sumpatable;
-    private javax.swing.JLabel sumup;
     private javax.swing.JTextField sup_add;
     private javax.swing.JTextField sup_add1;
     private javax.swing.JTextField sup_con;
@@ -13992,7 +13230,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel txt_name1;
     private javax.swing.JLabel txt_time;
     private javax.swing.JLabel ua;
-    private javax.swing.JTextField user;
     private javax.swing.JPanel user_logo;
     // End of variables declaration//GEN-END:variables
 
