@@ -66,7 +66,8 @@ public class login extends javax.swing.JFrame {
             rs = pst.executeQuery();
             if (rs.next()) {
 
-            pst = (PreparedStatement) conn.prepareStatement("SELECT ID, First_Name, Middle_Name, Surname, Level  FROM useraccount_tbl where Username= '" + user.getText() + "' and Password= '" + pass.getText() + "' ");
+            pst = (PreparedStatement) conn.prepareStatement("SELECT ID, First_Name, Middle_Name, Surname, Level  "
+                    + "FROM useraccount_tbl where Username= '" + user.getText() + "' and Password= '" + pass.getText() + "' ");
             rs = pst.executeQuery();
             if(rs.next()){
                 String add = rs.getString("ID");
