@@ -92,6 +92,7 @@ public class Main extends javax.swing.JFrame {
         menu_title1.setText(mgs3);
     }
     public void all_ref(){
+        aut_list();
         nb_ref();
         pur_ref();
         brr_ref();
@@ -414,6 +415,18 @@ public class Main extends javax.swing.JFrame {
         rs = pst.executeQuery();
         while(rs.next()){
             brr_cr.addItem(rs.getString("Course"));
+        }
+    }catch (Exception e) {
+    }
+    }
+    public void aut_list(){
+        jComboBox1.removeAllItems();
+    String sqll = "select * from author_tbl";
+    try{
+        pst= conn.prepareStatement(sqll);
+        rs = pst.executeQuery();
+        while(rs.next()){
+            jComboBox1.addItem(rs.getString("Author"));
         }
     }catch (Exception e) {
     }
@@ -843,7 +856,7 @@ public class Main extends javax.swing.JFrame {
                     + "Full_Name like ?";
 
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, "%" + txt_name.getText() + "%");;
+            pst.setString(1, "%" + menu_title1.getText() + "%");;
 
             rs = (ResultSet) pst.executeQuery();
             ohb_table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -871,7 +884,7 @@ public class Main extends javax.swing.JFrame {
     public void nb_clr(){
         nb_is.setText("");
         nb_bt.setText("");
-        nb_aut.setText("");
+        jComboBox1.setSelectedIndex(0);
         nb_qty.setText("0");
         nb_cn.setText("");
         nb_class.setSelectedItem("--Choose Book Classification--");
@@ -886,7 +899,7 @@ public class Main extends javax.swing.JFrame {
     public void nb_disable(){
         nb_is.setEnabled(false);
         nb_bt.setEnabled(false);
-        nb_aut.setEditable(false);
+        jComboBox1.setEditable(false);
         nb_qty.setEnabled(false);
         nb_cn.setEnabled(false);
         nb_class.setEnabled(false);
@@ -901,7 +914,7 @@ public class Main extends javax.swing.JFrame {
     public void nb_able(){
         nb_is.setEnabled(true);
         nb_bt.setEnabled(true);
-        nb_aut.setEnabled(true);
+        jComboBox1.setEnabled(true);
         nb_qty.setEnabled(true);
         nb_cn.setEnabled(true);
         nb_class.setEnabled(true);
@@ -1279,6 +1292,7 @@ public class Main extends javax.swing.JFrame {
         txt_name1 = new javax.swing.JLabel();
         menu_title1 = new javax.swing.JLabel();
         menu_title = new javax.swing.JLabel();
+        txt_name = new javax.swing.JLabel();
         stock = new javax.swing.JPanel();
         dashboard = new javax.swing.JPanel();
         booksummary = new javax.swing.JPanel();
@@ -1463,23 +1477,24 @@ public class Main extends javax.swing.JFrame {
         nb_cn = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        nb_class = new javax.swing.JComboBox<>();
+        nb_class = new javax.swing.JComboBox<String>();
         nb_edi = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         nb_qty = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
-        nb_aut = new javax.swing.JTextField();
         nb_prc = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
         nb_da = new com.toedter.calendar.JDateChooser();
         class_add = new javax.swing.JButton();
         jLabel119 = new javax.swing.JLabel();
-        nb_cpub = new javax.swing.JComboBox<>();
+        nb_cpub = new javax.swing.JComboBox<String>();
         class_add2 = new javax.swing.JButton();
         nb_cry = new com.toedter.calendar.JDateChooser();
         jLabel187 = new javax.swing.JLabel();
         jLabel188 = new javax.swing.JLabel();
         jLabel189 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        class_add4 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         nb_search = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
@@ -1504,7 +1519,7 @@ public class Main extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         acc_fn = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        acc_lvl = new javax.swing.JComboBox<>();
+        acc_lvl = new javax.swing.JComboBox<String>();
         jLabel37 = new javax.swing.JLabel();
         acc_mn = new javax.swing.JTextField();
         acc_image = new javax.swing.JLabel();
@@ -1544,14 +1559,14 @@ public class Main extends javax.swing.JFrame {
         brr_idn = new javax.swing.JTextField();
         brr_image = new javax.swing.JLabel();
         brr_browse = new javax.swing.JButton();
-        brr_yr = new javax.swing.JComboBox<>();
+        brr_yr = new javax.swing.JComboBox<String>();
         brr_add = new javax.swing.JTextField();
         brr_mn = new javax.swing.JTextField();
         jLabel181 = new javax.swing.JLabel();
         jLabel182 = new javax.swing.JLabel();
-        brr_idt = new javax.swing.JComboBox<>();
+        brr_idt = new javax.swing.JComboBox<String>();
         jLabel183 = new javax.swing.JLabel();
-        brr_cr = new javax.swing.JComboBox<>();
+        brr_cr = new javax.swing.JComboBox<String>();
         brr_sn = new javax.swing.JTextField();
         jLabel184 = new javax.swing.JLabel();
         course_add = new javax.swing.JButton();
@@ -1583,6 +1598,7 @@ public class Main extends javax.swing.JFrame {
         sup_update2 = new javax.swing.JButton();
         sup_delete2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        sup_save4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel167 = new javax.swing.JLabel();
         sup_search3 = new javax.swing.JTextField();
@@ -1633,7 +1649,7 @@ public class Main extends javax.swing.JFrame {
         jLabel74 = new javax.swing.JLabel();
         brrd_add = new javax.swing.JButton();
         brrd_min = new javax.swing.JButton();
-        brrd_remcb = new javax.swing.JComboBox<>();
+        brrd_remcb = new javax.swing.JComboBox<String>();
         brrd_fd = new javax.swing.JTextField();
         borroweddate = new javax.swing.JTextField();
         brrd_rem1 = new javax.swing.JLabel();
@@ -1641,7 +1657,7 @@ public class Main extends javax.swing.JFrame {
         brrd_libid1 = new javax.swing.JTextField();
         jLabel190 = new javax.swing.JLabel();
         jLabel191 = new javax.swing.JLabel();
-        brrd_bt = new javax.swing.JComboBox<>();
+        brrd_bt = new javax.swing.JComboBox<String>();
         brrd_stat = new javax.swing.JTextField();
         brrd_class = new javax.swing.JTextField();
         transcoded = new javax.swing.JTextField();
@@ -1674,7 +1690,7 @@ public class Main extends javax.swing.JFrame {
         jPanel36 = new javax.swing.JPanel();
         jScrollPane14 = new javax.swing.JScrollPane();
         borrowedlog_table = new javax.swing.JTable();
-        brrd_fn2 = new javax.swing.JComboBox<>();
+        brrd_fn2 = new javax.swing.JComboBox<String>();
         jLabel69 = new javax.swing.JLabel();
         brrd_fd3 = new javax.swing.JTextField();
         jPanel46 = new javax.swing.JPanel();
@@ -1693,7 +1709,7 @@ public class Main extends javax.swing.JFrame {
         po_qt = new javax.swing.JTextField();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
-        po_sup = new javax.swing.JComboBox<>();
+        po_sup = new javax.swing.JComboBox<String>();
         po_date = new com.toedter.calendar.JDateChooser();
         po_or = new javax.swing.JTextField();
         jLabel105 = new javax.swing.JLabel();
@@ -1711,7 +1727,7 @@ public class Main extends javax.swing.JFrame {
         po_min = new javax.swing.JButton();
         nb_update2 = new javax.swing.JButton();
         nb_update4 = new javax.swing.JButton();
-        po_cl = new javax.swing.JComboBox<>();
+        po_cl = new javax.swing.JComboBox<String>();
         class_add1 = new javax.swing.JButton();
         nb_update5 = new javax.swing.JButton();
         jLabel110 = new javax.swing.JLabel();
@@ -1734,7 +1750,7 @@ public class Main extends javax.swing.JFrame {
         sum_table = new javax.swing.JTable();
         jPanel17 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        sum_class = new javax.swing.JComboBox<>();
+        sum_class = new javax.swing.JComboBox<String>();
         sum_bt = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
@@ -1759,10 +1775,10 @@ public class Main extends javax.swing.JFrame {
         so_add = new javax.swing.JButton();
         so_minus = new javax.swing.JButton();
         so_save = new javax.swing.JButton();
-        so_stat = new javax.swing.JComboBox<>();
+        so_stat = new javax.swing.JComboBox<String>();
         jLabel45 = new javax.swing.JLabel();
         jLabel166 = new javax.swing.JLabel();
-        so_stat1 = new javax.swing.JComboBox<>();
+        so_stat1 = new javax.swing.JComboBox<String>();
         jPanel27 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         so_table = new javax.swing.JTable();
@@ -1807,7 +1823,6 @@ public class Main extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jScrollPane25 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        txt_name = new javax.swing.JLabel();
         txt_level = new javax.swing.JLabel();
         dddd3 = new com.toedter.calendar.JDateChooser();
         dddd4 = new com.toedter.calendar.JDateChooser();
@@ -2136,6 +2151,22 @@ public class Main extends javax.swing.JFrame {
         menu_title.setForeground(new java.awt.Color(255, 255, 255));
         menu_title.setText("MY ACCOUNT");
         head.add(menu_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 259, 51));
+
+        txt_name.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        txt_name.setForeground(new java.awt.Color(255, 255, 255));
+        txt_name.setText("Name");
+        txt_name.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_nameMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txt_nameMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txt_nameMouseExited(evt);
+            }
+        });
+        head.add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, 51));
 
         stock.setLayout(new java.awt.CardLayout());
 
@@ -3943,11 +3974,11 @@ public class Main extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setText("ISBN No.");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 86, 24));
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 86, 24));
 
         jLabel16.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel16.setText("Book Title:");
-        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 86, 24));
+        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 86, 24));
 
         jLabel17.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel17.setText("Call Number:");
@@ -3967,7 +3998,7 @@ public class Main extends javax.swing.JFrame {
                 nb_isKeyReleased(evt);
             }
         });
-        jPanel4.add(nb_is, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 219, 31));
+        jPanel4.add(nb_is, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 219, 31));
 
         nb_bt.setEditable(false);
         nb_bt.setEnabled(false);
@@ -3976,7 +4007,7 @@ public class Main extends javax.swing.JFrame {
                 nb_btKeyReleased(evt);
             }
         });
-        jPanel4.add(nb_bt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 219, 31));
+        jPanel4.add(nb_bt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 219, 31));
 
         nb_cn.setEnabled(false);
         nb_cn.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -3994,7 +4025,7 @@ public class Main extends javax.swing.JFrame {
         jLabel22.setText("Copy Right Year:");
         jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 130, 25));
 
-        nb_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--" }));
+        nb_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--" }));
         nb_class.setEnabled(false);
         jPanel4.add(nb_class, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 181, 34));
 
@@ -4016,10 +4047,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel38.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel38.setText("Author:");
-        jPanel4.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 86, 24));
-
-        nb_aut.setEnabled(false);
-        jPanel4.add(nb_aut, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 219, 31));
+        jPanel4.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 86, 24));
 
         nb_prc.setEditable(false);
         nb_prc.setEnabled(false);
@@ -4049,7 +4077,7 @@ public class Main extends javax.swing.JFrame {
         jLabel119.setText("Publisher:");
         jPanel4.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 99, 24));
 
-        nb_cpub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--" }));
+        nb_cpub.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--" }));
         nb_cpub.setEnabled(false);
         jPanel4.add(nb_cpub, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 181, 34));
 
@@ -4069,7 +4097,7 @@ public class Main extends javax.swing.JFrame {
         jPanel4.add(nb_cry, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 219, 37));
 
         jLabel187.setForeground(new java.awt.Color(51, 255, 0));
-        jPanel4.add(jLabel187, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 220, 20));
+        jPanel4.add(jLabel187, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 220, 20));
 
         jLabel188.setForeground(new java.awt.Color(255, 255, 255));
         jLabel188.setText("jLabel188");
@@ -4077,6 +4105,21 @@ public class Main extends javax.swing.JFrame {
 
         jLabel189.setForeground(new java.awt.Color(51, 255, 0));
         jPanel4.add(jLabel189, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 220, 20));
+
+        jComboBox1.setEnabled(false);
+        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 180, 30));
+
+        class_add4.setBackground(new java.awt.Color(255, 255, 255));
+        class_add4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        class_add4.setForeground(new java.awt.Color(255, 255, 255));
+        class_add4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/add.png"))); // NOI18N
+        class_add4.setEnabled(false);
+        class_add4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                class_add4ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(class_add4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 32, 34));
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel11.setText("Search");
@@ -4308,7 +4351,7 @@ public class Main extends javax.swing.JFrame {
         jLabel36.setText("Mobile Number:");
         jPanel10.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 99, 24));
 
-        acc_lvl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Please Select--", "Admin", "User", "Faculty", "Student" }));
+        acc_lvl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Please Select--", "Admin", "User", "Faculty", "Student" }));
         acc_lvl.setEnabled(false);
         jPanel10.add(acc_lvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 283, 34));
 
@@ -4575,7 +4618,7 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel8.add(brr_browse, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, -1, 44));
 
-        brr_yr.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Year Level--", "1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "7th Year and Up" }));
+        brr_yr.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Year Level--", "1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "7th Year and Up" }));
         brr_yr.setEnabled(false);
         jPanel8.add(brr_yr, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 200, 30));
 
@@ -4593,7 +4636,7 @@ public class Main extends javax.swing.JFrame {
         jLabel182.setText("Middle Name");
         jPanel8.add(jLabel182, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 86, 24));
 
-        brr_idt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Valid ID--", "Employee ID", "Student ID" }));
+        brr_idt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Valid ID--", "Employee ID", "Student ID" }));
         brr_idt.setEnabled(false);
         brr_idt.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -4905,6 +4948,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel82Layout = new javax.swing.GroupLayout(jPanel82);
@@ -4920,7 +4964,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jLabel165, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel82Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sup_name2, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                            .addComponent(sup_name2, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                             .addComponent(sup_add2)))
                     .addGroup(jPanel82Layout.createSequentialGroup()
                         .addGroup(jPanel82Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4958,13 +5002,28 @@ public class Main extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
+        sup_save4.setBackground(new java.awt.Color(51, 153, 255));
+        sup_save4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        sup_save4.setForeground(new java.awt.Color(255, 255, 255));
+        sup_save4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/return.png"))); // NOI18N
+        sup_save4.setText("Back");
+        sup_save4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sup_save4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel82, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel82, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(sup_save4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
@@ -4981,7 +5040,9 @@ public class Main extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(sup_save4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel82, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
@@ -5041,7 +5102,7 @@ public class Main extends javax.swing.JFrame {
         jPanel84.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "BOOK STATUS REMARKS"));
 
         jLabel169.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel169.setText("Author Name:");
+        jLabel169.setText("Remarks title:");
 
         sup_add3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -5085,6 +5146,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel84Layout = new javax.swing.GroupLayout(jPanel84);
@@ -5399,7 +5461,7 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel30.add(brrd_min, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 30, 30));
 
-        brrd_remcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Borrowed", "Loss", "Damage" }));
+        brrd_remcb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Borrowed", "Loss", "Damage" }));
         jPanel30.add(brrd_remcb, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 500, 200, 34));
 
         brrd_fd.setEditable(false);
@@ -5644,6 +5706,7 @@ public class Main extends javax.swing.JFrame {
         jLabel212.setText("jLabel212");
         jPanel34.add(jLabel212, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("jLabel5");
         jPanel34.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
 
@@ -5665,7 +5728,7 @@ public class Main extends javax.swing.JFrame {
         borrowedlog_table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane14.setViewportView(borrowedlog_table);
 
-        brrd_fn2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Borrower--" }));
+        brrd_fn2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Borrower--" }));
         brrd_fn2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -6217,7 +6280,7 @@ public class Main extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel12.setText("Classification:");
 
-        sum_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--", "General", "Philippine Literature", "Fiction", "Non-Fiction", "Filipiniana", "Circulation", "Others", "" }));
+        sum_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--", "General", "Philippine Literature", "Fiction", "Non-Fiction", "Filipiniana", "Circulation", "Others", "" }));
         sum_class.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -6477,7 +6540,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        so_stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select Status--", "Damage", "Loss" }));
+        so_stat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Select Status--", "Damage", "Loss" }));
         so_stat.setEnabled(false);
 
         jLabel45.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -6486,7 +6549,7 @@ public class Main extends javax.swing.JFrame {
         jLabel166.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel166.setText("Remarks:");
 
-        so_stat1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select Status--", "Damage", "Loss" }));
+        so_stat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Select Status--", "Damage", "Loss" }));
         so_stat1.setEnabled(false);
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
@@ -6975,21 +7038,6 @@ public class Main extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane25.setViewportView(jTextArea1);
 
-        txt_name.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        txt_name.setForeground(new java.awt.Color(255, 255, 255));
-        txt_name.setText("Name");
-        txt_name.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_nameMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                txt_nameMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                txt_nameMouseExited(evt);
-            }
-        });
-
         txt_level.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         txt_level.setForeground(new java.awt.Color(255, 255, 255));
         txt_level.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -7382,8 +7430,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jButton2))
                         .addContainerGap(949, Short.MAX_VALUE))))
             .addGroup(testLayout.createSequentialGroup()
-                .addComponent(txt_name)
-                .addGap(6, 6, 6)
+                .addGap(63, 63, 63)
                 .addComponent(txt_level)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(testLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -7398,7 +7445,6 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(testLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(testLayout.createSequentialGroup()
                         .addGroup(testLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_level, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(idd, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGroup(testLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -8187,11 +8233,12 @@ public class Main extends javax.swing.JFrame {
         user_logo.setVisible(false);
         booklist.setVisible(false);
         si_save3.setVisible(false);
+        sup_save4.setVisible(false);
         sup_save3.setVisible(false);
         
         nb_id.setText("");
           nb_bt.setText("");
-          nb_aut.setText("");
+          jComboBox1.setSelectedIndex(0);
           nb_class.setSelectedItem("--Choose Book Classification--");
           nb_qty.setText("");
           nb_prc.setText("");
@@ -9471,7 +9518,7 @@ public class Main extends javax.swing.JFrame {
 
                     pst.setString(1, jLabel138.getText());
                     pst.setString(2, jLabel136.getText());
-                    pst.setString(3, nb_aut.getText());
+                    pst.setString(3, (String)jComboBox1.getSelectedItem());
                     pst.setString(4, (String)nb_class.getSelectedItem());
                     pst.setString(5, nb_qty.getText());
                     pst.setString(6, nb_prc.getText());
@@ -9496,7 +9543,7 @@ public class Main extends javax.swing.JFrame {
                     pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
 
                     pst.setString(1, jLabel136.getText());
-                    pst.setString(2, nb_aut.getText());
+                    pst.setString(2, (String)jComboBox1.getSelectedItem());
                     pst.setString(3, (String)nb_class.getSelectedItem());
                     pst.setString(4, nb_qty.getText());
                     pst.setString(5, nb_prc.getText());
@@ -9523,7 +9570,7 @@ public class Main extends javax.swing.JFrame {
 
                     pst.setString(1, nb_id.getText());
                     pst.setString(2, nb_bt.getText());
-                    pst.setString(3, nb_aut.getText());
+                    pst.setString(3, (String)jComboBox1.getSelectedItem());
                     pst.setString(4, (String)nb_class.getSelectedItem());
                     pst.setString(5, nb_qty.getText());
                     pst.setString(6, nb_prc.getText());
@@ -9556,7 +9603,7 @@ public class Main extends javax.swing.JFrame {
 
             nb_id.setText("");
             nb_bt.setText("");
-            nb_aut.setText("");
+            jComboBox1.setSelectedIndex(0);
             nb_class.setSelectedItem("--Choose Book Classification--");
             nb_qty.setText("");
             nb_prc.setText("");
@@ -9601,7 +9648,7 @@ public class Main extends javax.swing.JFrame {
         nb_id.setText(model.getValueAt(z, 0).toString());
         nb_bt.setText(model.getValueAt(z, 1).toString());
         jLabel136.setText(model.getValueAt(z, 1).toString());
-        nb_aut.setText(model.getValueAt(z, 2).toString());
+        jComboBox1.setSelectedItem(model.getValueAt(z, 2).toString());
         nb_class.setSelectedItem(model.getValueAt(z, 3).toString());
         nb_qty.setText(model.getValueAt(z, 4).toString());
         nb_prc.setText(model.getValueAt(z, 5).toString());
@@ -10015,7 +10062,7 @@ public class Main extends javax.swing.JFrame {
             }catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
-            JOptionPane.showMessageDialog(null,"Please Check Entry!!!");
+            //JOptionPane.showMessageDialog(null,"Please Check Entry!!!");
         }
         ulog22();
         imgpath1=null;
@@ -10375,7 +10422,7 @@ public class Main extends javax.swing.JFrame {
                 }catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e);
                 }
-                JOptionPane.showMessageDialog(null,"Please Check Entry!!!");
+                //JOptionPane.showMessageDialog(null,"Please Check Entry!!!");
             }
             ulog19();
             imgpath1=null;
@@ -10563,7 +10610,7 @@ public class Main extends javax.swing.JFrame {
             pst.setString(5, nb_edi.getText());
             pst.setString(6, ((JTextField)nb_cry.getDateEditor().getUiComponent()).getText());
             pst.setString(7, ((JTextField)nb_da.getDateEditor().getUiComponent()).getText());
-            pst.setString(8, nb_aut.getText());
+            pst.setString(8, (String) jComboBox1.getSelectedItem());
 
             pst.execute();
             JOptionPane.showMessageDialog(null, "Data Updated");
@@ -10615,7 +10662,7 @@ public class Main extends javax.swing.JFrame {
 
                                     pst.setString(1, nb_is.getText());
                                     pst.setString(2, nb_bt.getText());
-                                    pst.setString(3, nb_aut.getText());
+                                    pst.setString(3, (String) jComboBox1.getSelectedItem());
                                     pst.setString(4, nb_qty.getText());
                                     pst.setString(5, nb_cn.getText());
                                     pst.setString(6, (String) nb_class.getSelectedItem());
@@ -10654,7 +10701,7 @@ public class Main extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(null, e);
                                 }
                                 try {
-                                    String sql1 = "Insert into damage_tbl (ISBN_No, Book_title, Classification, Status, Quantity, Encoder, Date, Time) "
+                                    String sql1 = "Insert into damage_tbl (ISBN_No, Book_title, Classification, Status, Quantity, Remarks, Date, Time) "
                                     + "values (?,?,?,?,?,?,?,?)";
 
                                     pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql1);
@@ -10707,12 +10754,13 @@ public class Main extends javax.swing.JFrame {
         nb_update.setEnabled(false);
         nb_delete.setEnabled(false);
         nb_save.setEnabled(true);
+        class_add4.setEnabled(true);
 
         class_add.setEnabled(true);
         nb_is.setEnabled(true);
         nb_bt.setEnabled(true);
         nb_bt.setEditable(true);
-        nb_aut.setEnabled(true);
+        jComboBox1.setEnabled(true);
         nb_qty.setEnabled(true);
         nb_qty.setEditable(true);
         nb_cn.setEnabled(true);
@@ -10725,8 +10773,8 @@ public class Main extends javax.swing.JFrame {
         nb_prc.setEditable(true);
         nb_da.setEnabled(true);
         nb_clr();
-        nb_aut.setEnabled(true);
-        nb_aut.setEditable(true);
+        jComboBox1.setEnabled(true);
+        jComboBox1.setEditable(true);
 
     }//GEN-LAST:event_nb_newActionPerformed
 
@@ -10737,7 +10785,7 @@ public class Main extends javax.swing.JFrame {
         nb_id.setText(model.getValueAt(z, 0).toString());
         nb_is.setText(model.getValueAt(z, 1).toString());
         nb_bt.setText(model.getValueAt(z, 2).toString());
-        nb_aut.setText(model.getValueAt(z, 3).toString());
+        jComboBox1.setSelectedItem(model.getValueAt(z, 3).toString());
         nb_qty.setText(model.getValueAt(z, 4).toString());
         nb_cn.setText(model.getValueAt(z, 5).toString());
         nb_class.setSelectedItem(model.getValueAt(z, 6).toString());
@@ -10761,7 +10809,7 @@ public class Main extends javax.swing.JFrame {
         TableModel model = (TableModel)nb_table1.getModel();
         nb_id.setText(model.getValueAt(z, 0).toString());
         nb_bt.setText(model.getValueAt(z, 1).toString());
-        nb_aut.setText(model.getValueAt(z, 2).toString());
+        jComboBox1.setSelectedItem(model.getValueAt(z, 2).toString());
         nb_class.setSelectedItem(model.getValueAt(z, 3).toString());
         nb_qty.setText(model.getValueAt(z, 4).toString());
         nb_prc.setText(model.getValueAt(z, 5).toString());
@@ -10777,7 +10825,7 @@ public class Main extends javax.swing.JFrame {
         nb_cry.setEnabled(true);
         nb_da.setEnabled(true);
         nb_bt.setEnabled(true);
-        nb_aut.setEnabled(true);
+        jComboBox1.setEnabled(true);
         nb_qty.setEnabled(true);
         nb_class.setEnabled(true);
         class_add.setEnabled(true);
@@ -12478,6 +12526,28 @@ public class Main extends javax.swing.JFrame {
         brrd_return1.setEnabled(true);
     }//GEN-LAST:event_jTable6MouseClicked
 
+    private void class_add4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_class_add4ActionPerformed
+        jTabbedPane6.setEnabledAt(0, false);
+        jTabbedPane6.setEnabledAt(1, false);
+        jTabbedPane6.setEnabledAt(2, false);
+        jTabbedPane6.setEnabledAt(3, false);
+        jTabbedPane6.setEnabledAt(4, false);
+        jTabbedPane6.setEnabledAt(5, false);
+        jTabbedPane6.setEnabledAt(6, true);
+        jTabbedPane6.setEnabledAt(7, false);
+        jTabbedPane6.setEnabledAt(8, false);
+        jTabbedPane6.setSelectedIndex(6);
+        sup_save4.setVisible(true);
+
+        menu_title.setText("ADD AUTHOR");
+
+        si_save3.setText("Back To New Book");
+    }//GEN-LAST:event_class_add4ActionPerformed
+
+    private void sup_save4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sup_save4ActionPerformed
+        aut_ret();
+    }//GEN-LAST:event_sup_save4ActionPerformed
+
     public void sup(){
         sup_save3.setVisible(false);
         
@@ -12488,6 +12558,10 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane1.setEnabledAt(2, true);
         jTabbedPane1.setEnabledAt(3, true);
         jTabbedPane1.setEnabledAt(4, true);
+        jTabbedPane1.setEnabledAt(5, true);
+        jTabbedPane6.setEnabledAt(6, true);
+        jTabbedPane6.setEnabledAt(7, true);
+        jTabbedPane6.setEnabledAt(8, true);
         jTabbedPane1.setSelectedIndex(0);
         
         menu_title.setText("INVENTORY");
@@ -12511,6 +12585,28 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane6.setEnabledAt(3, true);
         jTabbedPane6.setEnabledAt(4, true);
         jTabbedPane6.setEnabledAt(5, true);
+        jTabbedPane6.setEnabledAt(6, true);
+        jTabbedPane6.setEnabledAt(7, true);
+        jTabbedPane6.setEnabledAt(8, true);
+        jTabbedPane6.setSelectedIndex(3);
+        
+        menu_title.setText("RECORDS");
+    }
+    
+    public void aut_ret(){
+        sup_save4.setVisible(false);
+        
+        jLabel128.setText("0");
+        
+        jTabbedPane6.setEnabledAt(0, true);
+        jTabbedPane6.setEnabledAt(1, true);
+        jTabbedPane6.setEnabledAt(2, true);
+        jTabbedPane6.setEnabledAt(3, true);
+        jTabbedPane6.setEnabledAt(4, true);
+        jTabbedPane6.setEnabledAt(5, true);
+        jTabbedPane6.setEnabledAt(6, true);
+        jTabbedPane6.setEnabledAt(7, true);
+        jTabbedPane6.setEnabledAt(8, true);
         jTabbedPane6.setSelectedIndex(3);
         
         menu_title.setText("RECORDS");
@@ -13520,6 +13616,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton class_add1;
     private javax.swing.JButton class_add2;
     private javax.swing.JButton class_add3;
+    private javax.swing.JButton class_add4;
     private javax.swing.JTextField class_num1;
     private javax.swing.JPanel class_save_hide1;
     private javax.swing.JTable class_table1;
@@ -13540,6 +13637,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel inventory;
     private javax.swing.JTextField invlog_search;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     public static com.toedter.calendar.JDateChooser jDateChooser1;
     public static com.toedter.calendar.JDateChooser jDateChooser2;
@@ -13918,7 +14016,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField my_sn;
     private javax.swing.JTextField my_user;
     private javax.swing.JLabel nb;
-    private javax.swing.JTextField nb_aut;
     private javax.swing.JTextField nb_bt;
     private javax.swing.JComboBox<String> nb_class;
     private javax.swing.JTextField nb_cn;
@@ -14072,6 +14169,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton sup_save1;
     private javax.swing.JButton sup_save2;
     private javax.swing.JButton sup_save3;
+    private javax.swing.JButton sup_save4;
     private javax.swing.JButton sup_save5;
     private javax.swing.JButton sup_save6;
     private javax.swing.JTextField sup_search;
