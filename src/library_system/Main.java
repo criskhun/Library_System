@@ -6,15 +6,9 @@
 package library_system;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.print.PageFormat;
-import java.awt.print.Printable;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -30,8 +24,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.TimeZone;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -63,7 +55,6 @@ public class Main extends javax.swing.JFrame {
     Connection conn;
     PreparedStatement pst;
     ResultSet rs;
-    private Object model;
     /**
      * Creates new form Main
      */
@@ -1276,9 +1267,9 @@ public class Main extends javax.swing.JFrame {
         men_rep = new javax.swing.JLabel();
         men_po = new javax.swing.JLabel();
         head = new javax.swing.JPanel();
+        menu_title = new javax.swing.JLabel();
         txt_name1 = new javax.swing.JLabel();
         menu_title1 = new javax.swing.JLabel();
-        menu_title = new javax.swing.JLabel();
         stock = new javax.swing.JPanel();
         dashboard = new javax.swing.JPanel();
         booksummary = new javax.swing.JPanel();
@@ -1461,7 +1452,7 @@ public class Main extends javax.swing.JFrame {
         nb_cn = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        nb_class = new javax.swing.JComboBox<>();
+        nb_class = new javax.swing.JComboBox<String>();
         nb_edi = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         nb_qty = new javax.swing.JTextField();
@@ -1472,7 +1463,7 @@ public class Main extends javax.swing.JFrame {
         nb_da = new com.toedter.calendar.JDateChooser();
         class_add = new javax.swing.JButton();
         jLabel119 = new javax.swing.JLabel();
-        nb_cpub = new javax.swing.JComboBox<>();
+        nb_cpub = new javax.swing.JComboBox<String>();
         class_add2 = new javax.swing.JButton();
         nb_cry = new com.toedter.calendar.JDateChooser();
         jLabel187 = new javax.swing.JLabel();
@@ -1502,7 +1493,7 @@ public class Main extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         acc_fn = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        acc_lvl = new javax.swing.JComboBox<>();
+        acc_lvl = new javax.swing.JComboBox<String>();
         jLabel37 = new javax.swing.JLabel();
         acc_mn = new javax.swing.JTextField();
         acc_image = new javax.swing.JLabel();
@@ -1542,14 +1533,14 @@ public class Main extends javax.swing.JFrame {
         brr_idn = new javax.swing.JTextField();
         brr_image = new javax.swing.JLabel();
         brr_browse = new javax.swing.JButton();
-        brr_yr = new javax.swing.JComboBox<>();
+        brr_yr = new javax.swing.JComboBox<String>();
         brr_add = new javax.swing.JTextField();
         brr_mn = new javax.swing.JTextField();
         jLabel181 = new javax.swing.JLabel();
         jLabel182 = new javax.swing.JLabel();
-        brr_idt = new javax.swing.JComboBox<>();
+        brr_idt = new javax.swing.JComboBox<String>();
         jLabel183 = new javax.swing.JLabel();
-        brr_cr = new javax.swing.JComboBox<>();
+        brr_cr = new javax.swing.JComboBox<String>();
         brr_sn = new javax.swing.JTextField();
         jLabel184 = new javax.swing.JLabel();
         course_add = new javax.swing.JButton();
@@ -1631,7 +1622,7 @@ public class Main extends javax.swing.JFrame {
         jLabel74 = new javax.swing.JLabel();
         brrd_add = new javax.swing.JButton();
         brrd_min = new javax.swing.JButton();
-        brrd_remcb = new javax.swing.JComboBox<>();
+        brrd_remcb = new javax.swing.JComboBox<String>();
         brrd_fd = new javax.swing.JTextField();
         borroweddate = new javax.swing.JTextField();
         brrd_rem1 = new javax.swing.JLabel();
@@ -1639,7 +1630,7 @@ public class Main extends javax.swing.JFrame {
         brrd_libid1 = new javax.swing.JTextField();
         jLabel190 = new javax.swing.JLabel();
         jLabel191 = new javax.swing.JLabel();
-        brrd_bt = new javax.swing.JComboBox<>();
+        brrd_bt = new javax.swing.JComboBox<String>();
         brrd_stat = new javax.swing.JTextField();
         brrd_class = new javax.swing.JTextField();
         transcoded = new javax.swing.JTextField();
@@ -1672,7 +1663,7 @@ public class Main extends javax.swing.JFrame {
         jPanel36 = new javax.swing.JPanel();
         jScrollPane14 = new javax.swing.JScrollPane();
         borrowedlog_table = new javax.swing.JTable();
-        brrd_fn2 = new javax.swing.JComboBox<>();
+        brrd_fn2 = new javax.swing.JComboBox<String>();
         jLabel69 = new javax.swing.JLabel();
         brrd_fd3 = new javax.swing.JTextField();
         jPanel46 = new javax.swing.JPanel();
@@ -1691,7 +1682,7 @@ public class Main extends javax.swing.JFrame {
         po_qt = new javax.swing.JTextField();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
-        po_sup = new javax.swing.JComboBox<>();
+        po_sup = new javax.swing.JComboBox<String>();
         po_date = new com.toedter.calendar.JDateChooser();
         po_or = new javax.swing.JTextField();
         jLabel105 = new javax.swing.JLabel();
@@ -1709,7 +1700,7 @@ public class Main extends javax.swing.JFrame {
         po_min = new javax.swing.JButton();
         nb_update2 = new javax.swing.JButton();
         nb_update4 = new javax.swing.JButton();
-        po_cl = new javax.swing.JComboBox<>();
+        po_cl = new javax.swing.JComboBox<String>();
         class_add1 = new javax.swing.JButton();
         nb_update5 = new javax.swing.JButton();
         jLabel110 = new javax.swing.JLabel();
@@ -1733,7 +1724,7 @@ public class Main extends javax.swing.JFrame {
         sum_table = new javax.swing.JTable();
         jPanel17 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        sum_class = new javax.swing.JComboBox<>();
+        sum_class = new javax.swing.JComboBox<String>();
         sum_bt = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
@@ -1758,10 +1749,10 @@ public class Main extends javax.swing.JFrame {
         so_add = new javax.swing.JButton();
         so_minus = new javax.swing.JButton();
         so_save = new javax.swing.JButton();
-        so_stat = new javax.swing.JComboBox<>();
+        so_stat = new javax.swing.JComboBox<String>();
         jLabel45 = new javax.swing.JLabel();
         jLabel166 = new javax.swing.JLabel();
-        so_stat1 = new javax.swing.JComboBox<>();
+        so_stat1 = new javax.swing.JComboBox<String>();
         jPanel27 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         so_table = new javax.swing.JTable();
@@ -2096,7 +2087,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(men_po, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(men_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addComponent(txt_time)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_date1)
@@ -2105,6 +2096,12 @@ public class Main extends javax.swing.JFrame {
 
         head.setBackground(new java.awt.Color(96, 96, 96));
         head.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        menu_title.setBackground(new java.awt.Color(96, 96, 96));
+        menu_title.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        menu_title.setForeground(new java.awt.Color(255, 255, 255));
+        menu_title.setText("MY ACCOUNT");
+        head.add(menu_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 259, 51));
 
         txt_name1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         txt_name1.setForeground(new java.awt.Color(255, 255, 255));
@@ -2128,12 +2125,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
         head.add(menu_title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 441, 40));
-
-        menu_title.setBackground(new java.awt.Color(96, 96, 96));
-        menu_title.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        menu_title.setForeground(new java.awt.Color(255, 255, 255));
-        menu_title.setText("MY ACCOUNT");
-        head.add(menu_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 259, 51));
 
         stock.setLayout(new java.awt.CardLayout());
 
@@ -2432,7 +2423,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nb_new5, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(715, Short.MAX_VALUE))
+                .addContainerGap(664, Short.MAX_VALUE))
         );
         booksummaryLayout.setVerticalGroup(
             booksummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2568,7 +2559,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jPanel43, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nb_new4))
-                .addGap(0, 713, Short.MAX_VALUE))
+                .addGap(0, 662, Short.MAX_VALUE))
         );
         accountLayout.setVerticalGroup(
             accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2678,7 +2669,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(207, 207, 207)
                         .addComponent(nb_new6)))
-                .addContainerGap(735, Short.MAX_VALUE))
+                .addContainerGap(684, Short.MAX_VALUE))
         );
         findbookLayout.setVerticalGroup(
             findbookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3244,7 +3235,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(reportLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 878, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(702, Short.MAX_VALUE))
+                .addContainerGap(651, Short.MAX_VALUE))
         );
         reportLayout.setVerticalGroup(
             reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3972,7 +3963,7 @@ public class Main extends javax.swing.JFrame {
         jLabel22.setText("Copy Right Year:");
         jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 130, 25));
 
-        nb_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--" }));
+        nb_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--" }));
         nb_class.setEnabled(false);
         jPanel4.add(nb_class, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 181, 34));
 
@@ -4027,7 +4018,7 @@ public class Main extends javax.swing.JFrame {
         jLabel119.setText("Publisher:");
         jPanel4.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 99, 24));
 
-        nb_cpub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--" }));
+        nb_cpub.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--" }));
         nb_cpub.setEnabled(false);
         jPanel4.add(nb_cpub, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 181, 34));
 
@@ -4286,7 +4277,7 @@ public class Main extends javax.swing.JFrame {
         jLabel36.setText("Mobile Number:");
         jPanel10.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 99, 24));
 
-        acc_lvl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Please Select--", "Admin", "User", "Faculty", "Student" }));
+        acc_lvl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Please Select--", "Admin", "User", "Faculty", "Student" }));
         acc_lvl.setEnabled(false);
         jPanel10.add(acc_lvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 283, 34));
 
@@ -4553,7 +4544,7 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel8.add(brr_browse, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, -1, 44));
 
-        brr_yr.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Year Level--", "1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "7th Year and Up" }));
+        brr_yr.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Year Level--", "1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "7th Year and Up" }));
         brr_yr.setEnabled(false);
         jPanel8.add(brr_yr, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 200, 30));
 
@@ -4571,7 +4562,7 @@ public class Main extends javax.swing.JFrame {
         jLabel182.setText("Middle Name");
         jPanel8.add(jLabel182, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 86, 24));
 
-        brr_idt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Valid ID--", "Employee ID", "Student ID" }));
+        brr_idt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Valid ID--", "Employee ID", "Student ID" }));
         brr_idt.setEnabled(false);
         brr_idt.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -5280,7 +5271,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(RecordsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 881, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(699, Short.MAX_VALUE))
+                .addContainerGap(648, Short.MAX_VALUE))
         );
         RecordsLayout.setVerticalGroup(
             RecordsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -5377,7 +5368,7 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel30.add(brrd_min, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 30, 30));
 
-        brrd_remcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Borrowed", "Loss", "Damage" }));
+        brrd_remcb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Borrowed", "Loss", "Damage" }));
         jPanel30.add(brrd_remcb, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 500, 200, 34));
 
         brrd_fd.setEditable(false);
@@ -5643,7 +5634,7 @@ public class Main extends javax.swing.JFrame {
         borrowedlog_table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane14.setViewportView(borrowedlog_table);
 
-        brrd_fn2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Borrower--" }));
+        brrd_fn2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Borrower--" }));
         brrd_fn2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -5796,7 +5787,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jPanel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(701, Short.MAX_VALUE))
+                .addContainerGap(650, Short.MAX_VALUE))
         );
         BookloanLayout.setVerticalGroup(
             BookloanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -6074,7 +6065,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jPanel49.add(jButton1);
-        jButton1.setBounds(280, 420, 73, 23);
+        jButton1.setBounds(290, 430, 73, 23);
 
         jPanel50.setBackground(new java.awt.Color(255, 255, 255));
         jPanel50.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "PURCHASE LIST"));
@@ -6204,7 +6195,7 @@ public class Main extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel12.setText("Classification:");
 
-        sum_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--", "General", "Philippine Literature", "Fiction", "Non-Fiction", "Filipiniana", "Circulation", "Others", "" }));
+        sum_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--", "General", "Philippine Literature", "Fiction", "Non-Fiction", "Filipiniana", "Circulation", "Others", "" }));
         sum_class.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -6464,7 +6455,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        so_stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select Status--", "Damage", "Loss" }));
+        so_stat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Select Status--", "Damage", "Loss" }));
         so_stat.setEnabled(false);
 
         jLabel45.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -6473,7 +6464,7 @@ public class Main extends javax.swing.JFrame {
         jLabel166.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel166.setText("Remarks:");
 
-        so_stat1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select Status--", "Damage", "Loss" }));
+        so_stat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Select Status--", "Damage", "Loss" }));
         so_stat1.setEnabled(false);
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
@@ -6750,7 +6741,7 @@ public class Main extends javax.swing.JFrame {
             inventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inventoryLayout.createSequentialGroup()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 878, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 712, Short.MAX_VALUE))
+                .addGap(0, 661, Short.MAX_VALUE))
         );
         inventoryLayout.setVerticalGroup(
             inventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -6825,7 +6816,7 @@ public class Main extends javax.swing.JFrame {
             user_logoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(user_logoLayout.createSequentialGroup()
                 .addComponent(jTabbedPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 702, Short.MAX_VALUE))
+                .addGap(0, 651, Short.MAX_VALUE))
         );
         user_logoLayout.setVerticalGroup(
             user_logoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -6864,7 +6855,7 @@ public class Main extends javax.swing.JFrame {
         jPanel51.setLayout(jPanel51Layout);
         jPanel51Layout.setHorizontalGroup(
             jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1560, Short.MAX_VALUE)
+            .addComponent(jScrollPane20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1509, Short.MAX_VALUE)
         );
         jPanel51Layout.setVerticalGroup(
             jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -7332,14 +7323,14 @@ public class Main extends javax.swing.JFrame {
                             .addGroup(testLayout.createSequentialGroup()
                                 .addGroup(testLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(testLayout.createSequentialGroup()
-                                        .addComponent(jLabel111, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                                        .addComponent(jLabel111, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(rc_po, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(testLayout.createSequentialGroup()
                                         .addComponent(brr_q)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(brr_rid)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
                                         .addGroup(testLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, testLayout.createSequentialGroup()
@@ -7360,7 +7351,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(jScrollPane25)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton2))
-                        .addContainerGap(949, Short.MAX_VALUE))))
+                        .addContainerGap(924, Short.MAX_VALUE))))
             .addGroup(testLayout.createSequentialGroup()
                 .addComponent(txt_name)
                 .addGap(6, 6, 6)
@@ -7368,7 +7359,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(testLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, testLayout.createSequentialGroup()
-                    .addContainerGap(987, Short.MAX_VALUE)
+                    .addContainerGap(936, Short.MAX_VALUE)
                     .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
@@ -7994,7 +7985,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jPanel72, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(764, Short.MAX_VALUE))
+                .addContainerGap(713, Short.MAX_VALUE))
         );
         account_wasteLayout.setVerticalGroup(
             account_wasteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -12441,7 +12432,21 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable6MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        try{    Connection connn = MySqlConnect.ConnectDB();
+                JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Support\\Documents\\GitHub\\Library_System\\src\\Report\\inventory.jrxml");
+                JRDesignQuery jrquery = new JRDesignQuery();
+                JasperReport jr = JasperCompileManager.compileReport(jasperDesign);
+                jasperDesign.setQuery(jrquery);
+                HashMap para= new HashMap();
+                para.put("PON", po_or.getText());
+                para.put("Date", ((JTextField)po_date.getDateEditor().getUiComponent()).getText());
+                para.put("TotalItem", brr_fn7.getText());
+                para.put("TotalBook", brr_fn8.getText());
+                para.put("TotalCost", brr_fn9.getText());
+                para.put("PreparedBy", txt_name.getText());
+                JasperPrint jp = JasperFillManager.fillReport(jr,para,connn);
+                JasperPrintManager.printReport(jp, true);              
+           }catch(Exception ex){JOptionPane.showMessageDialog(null, ex);}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void sup(){
@@ -13356,8 +13361,6 @@ public class Main extends javax.swing.JFrame {
     }
     
     
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -14073,5 +14076,4 @@ public class Main extends javax.swing.JFrame {
 //    private String Double(double total) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
-
 }
