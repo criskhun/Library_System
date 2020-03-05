@@ -26,6 +26,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
@@ -46,9 +48,11 @@ public class login extends javax.swing.JFrame {
         CurrentDate();
         all_ref();
         start();
+        sel();
+      
     }
     
-    public void print(){
+    public static void print(){
         PrinterJob job = PrinterJob.getPrinterJob();
         job.setJobName("Job Order" + jLabel3log.getText() + jLabel2log.getText());
         job.setPrintable(new Printable(){
@@ -73,7 +77,10 @@ public class login extends javax.swing.JFrame {
             }
         }
     }
-
+    public void getsome(){
+        menu_title8.setText(Main.po_or.getText());
+        
+    }
     public void start(){
         setBackground(new Color(0,0,0,150));
         loginpanel.setBackground(new Color(0,0,0,150));
@@ -82,6 +89,18 @@ public class login extends javax.swing.JFrame {
         jPanel68.setBackground(new Color(0,0,0,150));
         jPanel2.setBackground(new Color(0,0,0,150));
         jPanel3.setBackground(new Color(0,0,0,150));
+    }
+    public void sel(){
+        try{
+        pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM order_tbl where No= '" + "1" + "' ");
+            rs = pst.executeQuery();
+            if(rs.next()){
+                String add = rs.getString("Purchase_No");
+                menu_title8.setText(add);
+                }
+        }catch (Exception e){
+        
+        }
     }
     public void login(){
     try {
@@ -159,6 +178,9 @@ public class login extends javax.swing.JFrame {
     public void all_ref(){
     public_ref();
     classif_list();
+    order_ref();
+    cost_total();
+    rc_order();
     }
     public void CurrentDate() {//date and time to toolbar running
 
@@ -172,7 +194,7 @@ public class login extends javax.swing.JFrame {
 
                 SimpleDateFormat st = new SimpleDateFormat("M/d/yyyy");
                 jLabel3log.setText(st.format(d));
-                
+                menu_title10.setText(st.format(d));  
             }
         })
                 .start();
@@ -189,6 +211,39 @@ public class login extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+    }
+    public void order_ref(){
+        try {
+            String sql = "SELECT Purchase_Date, Request_Date, Supplier, Book_Title, Book_Author, Classification, Price"
+                    + ", Quantity, total FROM order_tbl ";
+            pst = (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+
+            jTable7.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+    public void cost_total(){
+        try{
+        String sql = "Select sum(Total), sum(Quantity) from order_tbl";
+        pst=conn.prepareStatement(sql);
+        rs=pst.executeQuery();
+        if(rs.next()){
+        String sum=rs.getString("sum(Total)");
+        String sum1=rs.getString("sum(Quantity)");
+        menu_title16.setText(sum);
+        menu_title14.setText(sum1);
+        }
+        }
+        catch (Exception e){
+        JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    public void rc_order(){
+    int row = jTable7.getRowCount();
+        menu_title12.setText(String.valueOf(row));
     }
     public void classif_list(){
         jComboBox1.removeAllItems();
@@ -217,7 +272,7 @@ public class login extends javax.swing.JFrame {
         jPanel68 = new javax.swing.JPanel();
         jLabel164 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jLabel165 = new javax.swing.JLabel();
         jLabel166 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -284,6 +339,7 @@ public class login extends javax.swing.JFrame {
         menu_title16 = new javax.swing.JLabel();
         menu_title17 = new javax.swing.JLabel();
         menu_title18 = new javax.swing.JLabel();
+        menu_title19 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -861,6 +917,11 @@ public class login extends javax.swing.JFrame {
         menu_title18.setForeground(new java.awt.Color(102, 102, 102));
         menu_title18.setText("Prepared by:");
 
+        menu_title19.setBackground(new java.awt.Color(96, 96, 96));
+        menu_title19.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        menu_title19.setForeground(new java.awt.Color(102, 102, 102));
+        menu_title19.setText("FOUNDATION");
+
         javax.swing.GroupLayout printLayout = new javax.swing.GroupLayout(print);
         print.setLayout(printLayout);
         printLayout.setHorizontalGroup(
@@ -874,7 +935,8 @@ public class login extends javax.swing.JFrame {
                         .addGroup(printLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(menu_title3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(menu_title4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(menu_title5)))
+                            .addComponent(menu_title5)
+                            .addComponent(menu_title19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(printLayout.createSequentialGroup()
                         .addGap(160, 160, 160)
                         .addComponent(menu_title6, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -891,7 +953,7 @@ public class login extends javax.swing.JFrame {
                                 .addGap(426, 426, 426)
                                 .addComponent(menu_title15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(menu_title16))))
+                                .addComponent(menu_title16, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(printLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(menu_title17)
@@ -921,7 +983,9 @@ public class login extends javax.swing.JFrame {
                     .addGroup(printLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(menu_title3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(menu_title19, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(menu_title4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(menu_title5, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1103,6 +1167,23 @@ public class login extends javax.swing.JFrame {
         print();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    @FunctionalInterface
+public interface SimpleDocumentListener extends DocumentListener {
+    void update(DocumentEvent e);
+
+    @Override
+    default void insertUpdate(DocumentEvent e) {
+       //update(e);
+    }
+    @Override
+    default void removeUpdate(DocumentEvent e) {
+       update(e);
+    }
+    @Override
+    default void changedUpdate(DocumentEvent e) {
+        //update(e);
+    }
+}
     /**
      * @param args the command line arguments
      */
@@ -1192,6 +1273,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel menu_title16;
     private javax.swing.JLabel menu_title17;
     private javax.swing.JLabel menu_title18;
+    private javax.swing.JLabel menu_title19;
     private javax.swing.JLabel menu_title3;
     private javax.swing.JLabel menu_title4;
     private javax.swing.JLabel menu_title5;
@@ -1204,7 +1286,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton nb_new8;
     private javax.swing.JButton nb_new9;
     private javax.swing.JPasswordField pass;
-    private javax.swing.JPanel print;
+    public static javax.swing.JPanel print;
     private javax.swing.JPanel publicsearch;
     private javax.swing.JCheckBox showpass;
     private javax.swing.JTable sumpatable;
