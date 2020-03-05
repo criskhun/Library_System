@@ -71,15 +71,19 @@ public class login extends javax.swing.JFrame {
                 txt_levellog.setText(add4);
                 iddlog.setText(add);
                 sumup.setText("0");
-            }
-            
-            menu_titlelog.setText("Hi, "+txt_namelog.getText()+" ("+txt_levellog.getText()+")");
+                
+                menu_titlelog.setText("Hi, "+txt_namelog.getText()+" ("+txt_levellog.getText()+")");
             String msg = txt_namelog.getText();
             String msg1 = txt_levellog.getText();
             String msg2= iddlog.getText();
             String msg3= menu_titlelog.getText();
-            
-            
+                
+                JOptionPane.showMessageDialog(null, "Acess Granted!");
+            Login.setVisible(false);
+            publicsearch.setVisible(false);
+            new Main().setVisible(true);
+            this.setVisible(false);
+            }  
         }
             else {
             JOptionPane.showMessageDialog(null, "incorrect username or password");
@@ -96,11 +100,7 @@ public class login extends javax.swing.JFrame {
     }
         catch (SQLException x) {
         }
-            JOptionPane.showMessageDialog(null, "Acess Granted!");
-            Login.setVisible(false);
-            publicsearch.setVisible(false);
-            new Main().setVisible(true);
-            this.setVisible(false);
+            
         user.setText("");
         pass.setText("");
         start();

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="936" pageHeight="612" orientation="Landscape" columnWidth="896" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a0b0e20d-4f5c-4614-8015-927b82a29d65">
+	<property name="ireport.zoom" value="1.0000000000000009"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="PON" class="java.lang.String"/>
+	<parameter name="Date" class="java.lang.String"/>
+	<parameter name="TotalItem" class="java.lang.String"/>
+	<parameter name="TotalBook" class="java.lang.String"/>
+	<parameter name="TotalCost" class="java.lang.String"/>
+	<parameter name="PreparedBy" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[Select * from library.order_tbl]]>
+	</queryString>
+	<field name="No" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Purchase_No" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Purchase_Date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Request_Date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Supplier" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Book_Title" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Book_Author" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Classification" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Price" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Quantity" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Total" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="Request_Date_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{Request_Date}]]></variableExpression>
+	</variable>
+	<variable name="Book_Title_1" class="java.lang.Integer" resetType="Column" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{Book_Title}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="83" splitType="Stretch">
+			<image>
+				<reportElement x="286" y="4" width="101" height="79" uuid="5c7997c0-d498-4fbb-bd79-7af862eb8992"/>
+				<imageExpression><![CDATA["C:\\Program Files\\LibrarySystem\\cronasia.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="387" y="4" width="123" height="20" uuid="9e861202-e045-47a9-bb0c-a49415c8e5a3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CRONASIA ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="387" y="24" width="123" height="20" uuid="cabe4f71-bd11-454e-abdd-53a098888811"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FOUNDATION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="387" y="44" width="123" height="20" uuid="8cd8201b-b7f3-40bd-8d3b-806650f57ef6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COLLEGE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="387" y="63" width="173" height="20" uuid="c66b9aa1-d578-4c56-b6a1-c40f2ea6ada1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GENERAL SANTOS CITY]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="83" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="6" width="896" height="37" uuid="24c03112-317c-4858-b3e4-c477c0daebf1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PURCHASE ORDER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="63" width="153" height="20" uuid="8dbbf1d3-7a95-4aaa-8b16-bb952619daa4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Purchase Order Number:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="715" y="63" width="39" height="20" uuid="0d0f30a5-dc61-4452-8e44-2fc8162e67be"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="162" y="63" width="150" height="20" uuid="db567298-f28d-4eef-a2c2-5c7cc79d46be"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PON}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="762" y="63" width="127" height="20" uuid="97b7cd2c-a034-42f2-80b8-329163487f63"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="3" width="82" height="20" uuid="ac6099dd-964e-4e82-89a5-8c275d8c4fcb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Purchase Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="3" width="79" height="20" uuid="d4f77432-80a7-4f77-9b96-a781e3887a02"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Request Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="3" width="124" height="20" uuid="94a924da-4c79-422c-bc42-c34ae67362b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Supplier]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="2" width="134" height="20" uuid="bd45e39a-a003-4add-b48c-630017bda3c5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Book Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="3" width="125" height="20" uuid="988e003e-70f8-40d4-8791-03bd0b9793f4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BookAuthor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="544" y="3" width="120" height="20" uuid="25fc14cc-be8c-4808-8f8b-d8752cf3ff1d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Classification]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="663" y="2" width="91" height="20" uuid="c7b52de0-dad9-4ef3-9042-6b8f93aebd94"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="754" y="2" width="43" height="20" uuid="a70129db-7740-4fae-9865-574fa153342c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="797" y="3" width="99" height="20" uuid="8d0eca28-dfa0-4219-a5f3-d14eda0fcd63"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="3" width="82" height="20" uuid="a13694c9-fa70-4300-be34-3ac0174e15e9"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Purchase_Date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="83" y="5" width="79" height="20" uuid="7c4eabbf-fbba-439d-a478-1bdb2ac2b948"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Request_Date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="162" y="3" width="124" height="20" uuid="75700091-73e7-4832-9ba9-3bbab803a601"/>
+				<textFieldExpression><![CDATA[$F{Supplier}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="286" y="2" width="134" height="22" uuid="b138d8fc-cccf-4617-9e90-8411e1c9c212"/>
+				<textFieldExpression><![CDATA[$F{Book_Title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="419" y="1" width="125" height="20" uuid="6fd1b6b4-9af0-4d7d-8b7e-b14048b9c3bc"/>
+				<textFieldExpression><![CDATA[$F{Book_Author}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="544" y="3" width="120" height="20" uuid="31202d90-4093-48af-805c-d6549c15859a"/>
+				<textFieldExpression><![CDATA[$F{Classification}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="663" y="4" width="91" height="20" uuid="7363e9db-c216-4473-9eca-24f631b01c44"/>
+				<textFieldExpression><![CDATA[$F{Price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="754" y="6" width="43" height="20" uuid="a2e14110-6f43-4a00-abfd-221d689036a3"/>
+				<textFieldExpression><![CDATA[$F{Quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="797" y="5" width="99" height="20" uuid="7e046b3b-e4d9-4529-bcd9-73f3ab99b278"/>
+				<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="55" splitType="Stretch">
+			<staticText>
+				<reportElement x="53" y="8" width="90" height="20" uuid="5e8ba3ef-c050-4b8c-a432-d4a1546ad1e3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Item:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="31" width="91" height="20" uuid="ad99828e-746a-4062-860a-c087b329b2c8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Books:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="664" y="11" width="71" height="20" uuid="494e79e7-e616-4944-94ef-6699a2a07759"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Cost:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="153" y="8" width="184" height="20" uuid="c83ed8a4-eeba-493b-a88f-7ff8b50f13d6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{TotalItem}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="153" y="31" width="184" height="20" uuid="7c4432f5-cad8-49c6-adc8-2fbabd723538"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{TotalBook}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="738" y="11" width="140" height="20" uuid="b67f6c35-7d4b-45bc-bbac-560ced2abf61"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TotalCost}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="55" splitType="Stretch">
+			<staticText>
+				<reportElement x="697" y="21" width="143" height="20" uuid="b436d251-063a-422e-a305-0958c1c6d20a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prepared By:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="697" y="21" width="143" height="1" uuid="5b490fb8-5145-4c2b-8f6e-6baa80f63d23"/>
+			</line>
+			<textField>
+				<reportElement x="700" y="2" width="140" height="20" uuid="8c0d7c41-28dd-48a9-ba4b-e6f8c5a27684"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PreparedBy}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

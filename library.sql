@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2020 at 11:53 AM
+-- Generation Time: Mar 05, 2020 at 01:20 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.27
 
@@ -139,7 +139,49 @@ INSERT INTO `account_log_tbl` (`ID`, `User_Name`, `Activity`, `Status`, `Date`, 
 (95, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '6:46 PM', '3/4/2020'),
 (96, 'Name', 'Log-out', 'Admin', '3/4/2020', '6:46 PM'),
 (97, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '6:49 PM', '3/4/2020'),
-(98, 'Name', 'Log-out', 'Admin', '3/4/2020', '6:50 PM');
+(98, 'Name', 'Log-out', 'Admin', '3/4/2020', '6:50 PM'),
+(99, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '8:10 PM', '3/4/2020'),
+(100, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '8:14 PM', '3/4/2020'),
+(101, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '8:21 PM', '3/4/2020'),
+(102, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '10:10 PM', '3/4/2020'),
+(103, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '10:12 PM', '3/4/2020'),
+(104, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '10:33 PM', '3/4/2020'),
+(105, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '10:39 PM', '3/4/2020'),
+(106, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '10:48 PM', '3/4/2020'),
+(107, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '10:55 PM', '3/4/2020'),
+(108, 'Name', 'Log-out', 'Admin', '3/4/2020', '10:55 PM'),
+(109, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '10:56 PM', '3/4/2020'),
+(110, 'Name', 'Log-out', 'Admin', '3/4/2020', '11:12 PM'),
+(111, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '11:21 PM', '3/4/2020'),
+(112, 'jLabel2', 'Log-in', 'jLabel3', '11:27 PM', '3/4/2020'),
+(113, 'Name', 'Log-out', 'jLabel3', '3/4/2020', '11:27 PM'),
+(114, 'jLabel2', 'Log-in', 'jLabel3', '11:28 PM', '3/4/2020'),
+(115, 'Name', 'Log-out', 'jLabel3', '3/4/2020', '11:28 PM'),
+(116, 'jLabel2', 'Log-in', 'jLabel3', '11:28 PM', '3/4/2020'),
+(117, 'Name', 'Log-out', 'jLabel3', '3/4/2020', '11:28 PM'),
+(118, 'jLabel2', 'Log-in', 'jLabel3', '11:32 PM', '3/4/2020'),
+(119, 'jLabel2', 'Log-in', 'jLabel3', '11:32 PM', '3/4/2020'),
+(120, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '11:32 PM', '3/4/2020'),
+(121, 'Name', 'Log-out', 'Admin', '3/4/2020', '11:35 PM'),
+(122, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '11:37 PM', '3/4/2020'),
+(123, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '12:14 AM', '3/5/2020'),
+(124, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '12:38 AM', '3/5/2020'),
+(125, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '1:04 AM', '3/5/2020'),
+(126, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '1:08 AM', '3/5/2020'),
+(127, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '1:14 AM', '3/5/2020'),
+(128, 'Name', 'Log-out', 'Admin', '3/5/2020', '1:14 AM'),
+(129, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '1:17 AM', '3/5/2020'),
+(130, 'Name', 'Log-out', 'Admin', '3/5/2020', '1:18 AM'),
+(131, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '1:19 AM', '3/5/2020'),
+(132, 'Name', 'Log-out', 'Admin', '3/5/2020', '1:24 AM'),
+(133, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '1:37 AM', '3/5/2020'),
+(134, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '2:06 AM', '3/5/2020'),
+(135, 'jLabel2', 'Log-in', 'jLabel3', '2:08 AM', '3/5/2020'),
+(136, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '2:08 AM', '3/5/2020'),
+(137, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '2:17 AM', '3/5/2020'),
+(138, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '2:28 AM', '3/5/2020'),
+(139, 'Ababon, Sheenn Otaza', 'Log-in', 'Admin', '2:35 AM', '3/5/2020'),
+(140, 'Name', 'Log-out', 'Admin', '3/5/2020', '2:37 AM');
 
 -- --------------------------------------------------------
 
@@ -180,7 +222,8 @@ CREATE TABLE `borrowed_tbl` (
 --
 
 INSERT INTO `borrowed_tbl` (`Trans_Code`, `Library_ID`, `Full_Name`, `Status`, `Book_title`, `Book_Price`, `Classification`, `Fines`, `Quantity`, `Borrowed_Date`, `Return_Date`, `Remarks`, `Payable`) VALUES
-('Transaction-20', 'LIB-ID-1', 'RABUSA, ANGELIE', 'Student', 'BOOK-3', '245', 'Language', '5', '1', '3/9/2020', '3/12/2020', 'Borrowed', '20.0');
+('Transaction-20', 'LIB-ID-1', 'RABUSA, ANGELIE', 'Student', 'BOOK-3', '245', 'Language', '5', '1', '3/9/2020', '3/12/2020', 'Borrowed', '40.0'),
+('Transaction-21', 'LIB-ID-1', 'RABUSA, ANGELIE', 'Student', 'BOOK-4', '213', 'Computer Science, Information and General Works', '5', '1', '3/4/2020', '3/7/2020', 'Borrowed', '15.0');
 
 -- --------------------------------------------------------
 
@@ -246,7 +289,9 @@ INSERT INTO `brrdlog_tbl` (`ID`, `Full_Name`, `Status`, `Book_title`, `Classific
 (17, 'Crisyy, Cris', 'Faculty', 'BOOK-4', 'Computer Science, Information and General Works', '3/3/2020', 'Ababon, Sheenn Otaza', '4-Mar-2020'),
 (18, 'Pacheco, Lee Ann', 'Student', 'BOOK-5', 'Language', '3/3/2020', 'Ababon, Sheenn Otaza', '4-Mar-2020'),
 (19, 'Crisyy, Cris', 'Faculty', 'BOOK-3', 'Language', '3/9/2020', 'Ababon, Sheenn Otaza', '3/10/2020'),
-(20, 'RABUSA, ANGELIE', 'Student', 'BOOK-3', 'Language', '3/9/2020', 'Ababon, Sheenn Otaza', '3/10/2020');
+(20, 'RABUSA, ANGELIE', 'Student', 'BOOK-3', 'Language', '3/9/2020', 'Ababon, Sheenn Otaza', '3/10/2020'),
+(21, 'RABUSA, ANGELIE', 'Student', 'BOOK-4', 'Computer Science, Information and General Works', '3/4/2020', 'Name', '3/4/2020'),
+(22, 'RABUSA, ANGELIE', 'Student', 'BOOK-5', 'Language', '3/4/2020', 'Name', '3/4/2020');
 
 -- --------------------------------------------------------
 
@@ -320,7 +365,7 @@ CREATE TABLE `damage_tbl` (
   `Classification` varchar(225) NOT NULL,
   `Status` varchar(225) NOT NULL,
   `Quantity` varchar(225) NOT NULL,
-  `Encoder` varchar(225) NOT NULL,
+  `Remarks` varchar(225) NOT NULL,
   `Date` varchar(225) NOT NULL,
   `Time` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -329,9 +374,9 @@ CREATE TABLE `damage_tbl` (
 -- Dumping data for table `damage_tbl`
 --
 
-INSERT INTO `damage_tbl` (`ID`, `ISBN_No`, `Book_title`, `Classification`, `Status`, `Quantity`, `Encoder`, `Date`, `Time`) VALUES
-(13, 'ISBN3', 'BOOK-3', 'Language', '--Select Status--', '-1', '', '', ''),
-(14, 'ISBN5', 'BOOK-5', 'Language', '--Select Status--', '0', '', '', '');
+INSERT INTO `damage_tbl` (`ID`, `ISBN_No`, `Book_title`, `Classification`, `Status`, `Quantity`, `Remarks`, `Date`, `Time`) VALUES
+(13, 'ISBN3', 'BOOK-3', 'Language', '--Select Status--', '-1', 'Tear apart', '3/4/2020', '10:12 PM'),
+(14, 'ISBN5', 'BOOK-5', 'Language', '--Select Status--', '0', 'wet', '3/4/2020', '10:13 PM');
 
 -- --------------------------------------------------------
 
@@ -393,9 +438,9 @@ CREATE TABLE `holding_tbl` (
 --
 
 INSERT INTO `holding_tbl` (`ID`, `ISBN_No`, `Book_title`, `Classification`, `On_Hand`, `Borrowed`, `Damage`, `Total_Holding`, `Encoder`, `Date`, `Time`) VALUES
-(12, 'ISBN-4', 'BOOK-4', 'Computer Science, Information and General Works', '7', '-1', '4', '6', '', '', ''),
-(13, 'ISBN3', 'BOOK-3', 'Language', '0', '5', '0', '5', '', '', ''),
-(14, 'ISBN5', 'BOOK-5', 'Language', '7', '3', '0', '10', '', '', '');
+(12, 'ISBN-4', 'BOOK-4', 'Computer Science, Information and General Works', '6', '0', '4', '6', '', '', ''),
+(13, 'ISBN3', 'BOOK-3', 'Language', '7', '5', '-1', '5', '', '', ''),
+(14, 'ISBN5', 'BOOK-5', 'Language', '0', '-3', '0', '10', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -425,7 +470,10 @@ INSERT INTO `invlog_tbl` (`ISBN_No`, `Book_title`, `Classification`, `Encoder`, 
 ('', '', '', 'Ababon, Sheenn Otaza', '03/01/2020', '10:21 PM', 'Stock-in'),
 ('', '', '', 'Ababon, Sheenn Otaza', '03/01/2020', '10:22 PM', 'Stock-in'),
 ('', '', '', 'Ababon, Sheenn Otaza', '03/02/2020', '10:54 AM', 'Stock-in'),
-('', '', '', 'Ababon, Sheenn Otaza', '03/02/2020', '9:48 PM', 'Stock-in');
+('', '', '', 'Ababon, Sheenn Otaza', '03/02/2020', '9:48 PM', 'Stock-in'),
+('ISBN3', 'BOOK-3', 'Language', 'Name', '3/4/2020', '10:11 PM', 'Stock-out'),
+('ISBN3', 'BOOK-3', 'Language', 'Name', '3/4/2020', '10:12 PM', 'Stock-out'),
+('ISBN5', 'BOOK-5', 'Language', 'Name', '3/4/2020', '10:13 PM', 'Stock-out');
 
 -- --------------------------------------------------------
 
@@ -447,6 +495,13 @@ CREATE TABLE `order_tbl` (
   `Total` varchar(225) NOT NULL,
   `Status` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_tbl`
+--
+
+INSERT INTO `order_tbl` (`No`, `Purchase_No`, `Purchase_Date`, `Request_Date`, `Supplier`, `Book_Title`, `Book_Author`, `Classification`, `Price`, `Quantity`, `Total`, `Status`) VALUES
+(1, 'PO-16', '03-31-2020', '3/5/2020', 'BOOKBUYPH', 'BOOK-5', 'sdad', 'Language', '500', '1', '500', 'Existing');
 
 -- --------------------------------------------------------
 
@@ -489,7 +544,11 @@ INSERT INTO `po_log_tbl` (`ID`, `Purchase_code`, `Purchase_Date`, `Supplier`, `B
 (42, '1PO-9', '03-01-2020', 'BOOKBUYPH', 'BOOK-1', 'dasda1', 'Computer Science, Information and General Works', '200', '5', '1000'),
 (43, '1PO-10', '03-01-2020', 'BOOKBUYPH', 'BOOK-1', 'dasda1', 'Computer Science, Information and General Works', '200', '5', '1000'),
 (44, '1PO-11', '03-02-2020', 'BOOKBUYPH', 'BOOK-1', 'dasda1', 'Computer Science, Information and General Works', '200', '5', '1000'),
-(45, '1PO-12', '03-02-2020', 'BOOKBUYPH', 'BOOK-4', 'dasda4', 'Computer Science, Information and General Works', '213', '5', '1065');
+(45, '1PO-12', '03-02-2020', 'BOOKBUYPH', 'BOOK-4', 'dasda4', 'Computer Science, Information and General Works', '213', '5', '1065'),
+(46, '1PO-13', '03-04-2020', 'c & E', 'BOOK-5', 'sdad', 'Language', '500', '2', '1000'),
+(47, '1PO-14', '03-05-2020', 'c & E', 'BOOK-4', 'dasda4', 'Computer Science, Information and General Works', '213', '1', '213'),
+(48, '1PO-15', '03-05-2020', 'c & E', 'BOOK-4', 'dasda4', 'Computer Science, Information and General Works', '213', '1', '213'),
+(49, '1PO-16', '03-31-2020', 'BOOKBUYPH', 'BOOK-5', 'sdad', 'Language', '500', '1', '500');
 
 -- --------------------------------------------------------
 
@@ -518,7 +577,11 @@ INSERT INTO `po_num_tbl` (`ID`, `Purchase_No`) VALUES
 (9, 'PO-9'),
 (10, 'PO-10'),
 (11, 'PO-11'),
-(12, 'PO-12');
+(12, 'PO-12'),
+(13, 'PO-13'),
+(14, 'PO-14'),
+(15, 'PO-15'),
+(16, 'PO-16');
 
 -- --------------------------------------------------------
 
@@ -593,6 +656,16 @@ CREATE TABLE `requested_tbl` (
   `Station` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `requested_tbl`
+--
+
+INSERT INTO `requested_tbl` (`ID`, `Book_title`, `Author`, `Classification`, `Quantity`, `Price`, `Purchase_No`, `Date`, `Station`) VALUES
+(40, 'BOOK-5', 'sdad', 'Language', '2', '500', 'PO-13', '3/4/2020', 'Existing'),
+(41, 'BOOK-4', 'dasda4', 'Computer Science, Information and General Works', '1', '213', 'PO-14', '3/5/2020', 'Existing'),
+(42, 'BOOK-4', 'dasda4', 'Computer Science, Information and General Works', '1', '213', 'PO-15', '3/5/2020', 'Existing'),
+(43, 'BOOK-5', 'sdad', 'Language', '1', '500', 'PO-16', '3/5/2020', 'Existing');
+
 -- --------------------------------------------------------
 
 --
@@ -636,9 +709,9 @@ CREATE TABLE `stockin_tbl` (
 --
 
 INSERT INTO `stockin_tbl` (`Book_ID`, `ISBN_No`, `Book_title`, `Author`, `Quantity`, `Call_Number`, `Classification`, `Publisher`, `Edition`, `Copy_Right_Year`, `Price`, `Encoder`, `Date_Arrival`) VALUES
-(11, 'ISBN-4', 'BOOK-4', 'dasda4', '7', 'Callnumber4', 'Computer Science, Information and General Works', 'C&E', '45', '2020', '213', 'Ababon, Sheenn Otaza', '03/01/2020'),
+(11, 'ISBN-4', 'BOOK-4', 'dasda4', '6', 'Callnumber4', 'Computer Science, Information and General Works', 'C&E', '45', '2020', '213', 'Ababon, Sheenn Otaza', '03/01/2020'),
 (12, 'ISBN3', 'BOOK-3', 'dasda3', '0', 'Callnumber3', 'Language', 'C&E', '45', '2020', '245', 'Ababon, Sheenn Otaza', '03/01/2020'),
-(13, 'ISBN5', 'BOOK-5', 'sdad', '7', 'Callnumber5', 'Language', 'Thompsons', '45th', '2020', '500', 'Ababon, Sheenn Otaza', '03/02/2020');
+(13, 'ISBN5', 'BOOK-5', 'sdad', '0', 'Callnumber5', 'Language', 'Thompsons', '45th', '2020', '500', 'Ababon, Sheenn Otaza', '03/02/2020');
 
 -- --------------------------------------------------------
 
@@ -700,7 +773,9 @@ INSERT INTO `trans_code_tbl` (`ID`, `Transcode`) VALUES
 (17, 'Transaction-17'),
 (18, 'Transaction-18'),
 (19, 'Transaction-19'),
-(20, 'Transaction-20');
+(20, 'Transaction-20'),
+(21, 'Transaction-21'),
+(22, 'Transaction-22');
 
 -- --------------------------------------------------------
 
@@ -767,7 +842,16 @@ INSERT INTO `user_log_tbl` (`ID`, `User_Name`, `Activity`, `Status`, `Book_Title
 (10, 'Name', 'Save Author', 'Admin', 'Cris desu', '3/4/2020', '6:06 PM'),
 (11, 'Name', 'Save Publisher', 'Admin', '', '3/4/2020', '6:06 PM'),
 (12, 'Name', 'Update Author', 'Admin', 'Cris desu test', '3/4/2020', '6:12 PM'),
-(13, 'Name', 'Delete Publisher', 'Admin', '', '3/4/2020', '6:13 PM');
+(13, 'Name', 'Delete Publisher', 'Admin', '', '3/4/2020', '6:13 PM'),
+(14, 'Name', 'Process Book Loan', 'Admin', 'RABUSA, ANGELIE (BOOK-4)', '3/4/2020', '8:15 PM'),
+(15, 'Name', 'Add Purchase Request', 'Admin', 'BOOK-5 (PO-13)', '3/4/2020', '8:55 PM'),
+(16, 'Name', 'Stock Out', 'Admin', 'BOOK-3 (0)', '3/4/2020', '10:11 PM'),
+(17, 'Name', 'Stock Out', 'Admin', 'BOOK-3 (0)', '3/4/2020', '10:12 PM'),
+(18, 'Name', 'Stock Out', 'Admin', 'BOOK-5 (0)', '3/4/2020', '10:13 PM'),
+(19, 'Name', 'Process Book Loan', 'Admin', 'RABUSA, ANGELIE (BOOK-5)', '3/4/2020', '10:52 PM'),
+(20, 'Name', 'Add Purchase Request', 'Admin', 'BOOK-4 (PO-14)', '3/5/2020', '1:17 AM'),
+(21, 'Name', 'Add Purchase Request', 'Admin', 'BOOK-4 (PO-15)', '3/5/2020', '1:38 AM'),
+(22, 'Name', 'Add Purchase Request', 'Admin', 'BOOK-5 (PO-16)', '3/5/2020', '2:29 AM');
 
 --
 -- Indexes for dumped tables
@@ -920,7 +1004,7 @@ ALTER TABLE `user_log_tbl`
 -- AUTO_INCREMENT for table `account_log_tbl`
 --
 ALTER TABLE `account_log_tbl`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- AUTO_INCREMENT for table `author_tbl`
@@ -932,7 +1016,7 @@ ALTER TABLE `author_tbl`
 -- AUTO_INCREMENT for table `brrdlog_tbl`
 --
 ALTER TABLE `brrdlog_tbl`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `classification_tbl`
@@ -968,19 +1052,19 @@ ALTER TABLE `holding_tbl`
 -- AUTO_INCREMENT for table `order_tbl`
 --
 ALTER TABLE `order_tbl`
-  MODIFY `No` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `No` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `po_log_tbl`
 --
 ALTER TABLE `po_log_tbl`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `po_num_tbl`
 --
 ALTER TABLE `po_num_tbl`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `publisher_tbl`
@@ -1004,7 +1088,7 @@ ALTER TABLE `remarks_tbl`
 -- AUTO_INCREMENT for table `requested_tbl`
 --
 ALTER TABLE `requested_tbl`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `sales_tbl`
@@ -1028,7 +1112,7 @@ ALTER TABLE `supplier_tbl`
 -- AUTO_INCREMENT for table `trans_code_tbl`
 --
 ALTER TABLE `trans_code_tbl`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `useraccount_tbl`
@@ -1040,7 +1124,7 @@ ALTER TABLE `useraccount_tbl`
 -- AUTO_INCREMENT for table `user_log_tbl`
 --
 ALTER TABLE `user_log_tbl`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
