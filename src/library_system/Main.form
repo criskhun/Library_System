@@ -7769,9 +7769,6 @@
                                     <Property name="editable" type="boolean" value="false"/>
                                     <Property name="text" type="java.lang.String" value="Generate PO Number"/>
                                   </Properties>
-                                  <AuxValues>
-                                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-                                  </AuxValues>
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                                       <AbsoluteConstraints x="160" y="30" width="160" height="31"/>
