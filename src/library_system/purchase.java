@@ -213,6 +213,7 @@ public class purchase extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, e);
         }
     }
+    
     public void paydash (){
         try{
         String sql = "Select sum(Quantity), sum(Price) from sales_tbl";
@@ -229,9 +230,48 @@ public class purchase extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, e);
         }
     }
+    public void paydashx(){
+        try{
+             SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        String sql = "Select sum(Quantity), sum(Price) from sales_tbl where Date "
+                        + "between '" + (String) sdf.format(jDateChooser2.getDate()) + "' "
+                        + "and '" + (String) sdf.format(jDateChooser1.getDate()) + "' "; 
+        pst=conn.prepareStatement(sql);
+        rs=pst.executeQuery();
+        if(rs.next()){
+        String sum=rs.getString("sum(Quantity)");
+        String sum1=rs.getString("sum(Price)");
+        menu_title29.setText(sum);
+        menu_title33.setText(sum1);
+        }
+        }
+        catch (Exception e){
+        JOptionPane.showMessageDialog(null, e);
+        }
+    }
     public void deldash (){
         try{
         String sql = "Select sum(Quantity), sum(Price) from delivery_tbl";
+        pst=conn.prepareStatement(sql);
+        rs=pst.executeQuery();
+        if(rs.next()){
+        String sum=rs.getString("sum(Quantity)");
+        String sum1=rs.getString("sum(Price)");
+        menu_title38.setText(sum);
+        menu_title40.setText(sum1);
+        }
+        }
+        catch (Exception e){
+        JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    public void deldashx (){
+        
+        try{
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        String sql = "Select sum(Quantity), sum(Price) from delivery_tbl where Delivery_Date "
+                        + "between '" + (String) sdf.format(jDateChooser3.getDate()) + "' "
+                        + "and '" + (String) sdf.format(jDateChooser4.getDate()) + "' ";
         pst=conn.prepareStatement(sql);
         rs=pst.executeQuery();
         if(rs.next()){
@@ -1580,8 +1620,9 @@ public class purchase extends javax.swing.JFrame {
 
     private void nb_update14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_update14ActionPerformed
         filterpay();
+        paydash();
         panel1.setVisible(false);
-        //all_ref();
+        
     }//GEN-LAST:event_nb_update14ActionPerformed
 
     private void nb_update15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_update15ActionPerformed
@@ -1598,7 +1639,7 @@ public class purchase extends javax.swing.JFrame {
   JOptionPane.showConfirmDialog(null, e);
             }
             panel2.setVisible(false);
-            deldash();
+            deldashx();
     }//GEN-LAST:event_nb_update15ActionPerformed
 
     /**
