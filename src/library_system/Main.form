@@ -1574,6 +1574,8 @@
                                                   <Component id="jLabel131" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Component id="jLabel138" min="-2" pref="59" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="jLabel154" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                               </Group>
                                               <Group type="102" attributes="0">
@@ -1595,7 +1597,10 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel138" max="32767" attributes="0"/>
                                               <Group type="102" attributes="0">
-                                                  <Component id="jLabel131" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jLabel131" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel154" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
                                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -1722,6 +1727,11 @@
                                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="jLabel153"/>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="jLabel154">
+                                  <Properties>
+                                    <Property name="text" type="java.lang.String" value="jLabel154"/>
                                   </Properties>
                                 </Component>
                               </SubComponents>

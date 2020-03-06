@@ -1394,6 +1394,7 @@ public class Main extends javax.swing.JFrame {
         jLabel138 = new javax.swing.JLabel();
         jLabel131 = new javax.swing.JLabel();
         jLabel153 = new javax.swing.JLabel();
+        jLabel154 = new javax.swing.JLabel();
         jPanel54 = new javax.swing.JPanel();
         jPanel60 = new javax.swing.JPanel();
         jScrollPane26 = new javax.swing.JScrollPane();
@@ -2783,6 +2784,8 @@ public class Main extends javax.swing.JFrame {
         jLabel153.setForeground(new java.awt.Color(255, 255, 255));
         jLabel153.setText("jLabel153");
 
+        jLabel154.setText("jLabel154");
+
         javax.swing.GroupLayout jPanel52Layout = new javax.swing.GroupLayout(jPanel52);
         jPanel52.setLayout(jPanel52Layout);
         jPanel52Layout.setHorizontalGroup(
@@ -2796,6 +2799,8 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jLabel131)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel138, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel154)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel52Layout.createSequentialGroup()
                         .addComponent(jLabel153)
@@ -2812,7 +2817,9 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel138, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel52Layout.createSequentialGroup()
-                        .addComponent(jLabel131)
+                        .addGroup(jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel131)
+                            .addComponent(jLabel154))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -9394,7 +9401,7 @@ public class Main extends javax.swing.JFrame {
             
             total = a - b;
             
-            jLabel153.setText(Double.toString(total));
+            jLabel153.setText(Integer.toString(total));
                 
                 if(jLabel138.getText().equals("")){
                     JOptionPane.showMessageDialog(null, "Please Input DR Number First");
@@ -12665,12 +12672,29 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
         try {
+            
+            String sql="SELECT * FROM stockin_tbl where Book_title = '" + (String) jLabel136.getText() + "' ";
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            if(rs.next()){
+            String name =rs.getString("Quantity");
+            jLabel154.setText(name);
+            
+            int zz = Integer.parseInt(jLabel134.getText());
+            int yy = Integer.parseInt(jLabel131.getText());
+        int tots;
+        
+        tots = zz + yy;
+        
+        jLabel135.setText(Integer.toString(tots));
+            
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE stockin_tbl SET  "
                     + "Quantity=? WHERE Book_title='" + jLabel136.getText() + "'");
             
-            pst.setString(1, jLabel131.getText());
+            pst.setString(1, jLabel135.getText());
             
             pst.execute();
+            }
         }
         catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -13539,6 +13563,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel151;
     private javax.swing.JLabel jLabel152;
     private javax.swing.JLabel jLabel153;
+    private javax.swing.JLabel jLabel154;
     private javax.swing.JLabel jLabel155;
     private javax.swing.JLabel jLabel156;
     private javax.swing.JLabel jLabel157;
