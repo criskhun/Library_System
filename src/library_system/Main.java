@@ -472,7 +472,7 @@ public class Main extends javax.swing.JFrame {
     }
     }
     public void book_list(){
-        brrd_bt.removeAllItems();
+        brrd_bt.removeAllItems();//change
     String sqll = "select * from stockin_tbl";
     try{
         pst= conn.prepareStatement(sqll);
@@ -5230,6 +5230,7 @@ public class Main extends javax.swing.JFrame {
         jLabel68.setText("Classification:");
         jPanel30.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 99, 24));
 
+        brrd_bp.setEditable(false);
         brrd_bp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 brrd_bpKeyReleased(evt);
@@ -5335,6 +5336,7 @@ public class Main extends javax.swing.JFrame {
         brrd_stat.setEditable(false);
         jPanel30.add(brrd_stat, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 200, 31));
 
+        brrd_class.setEditable(false);
         brrd_class.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 brrd_classKeyReleased(evt);
