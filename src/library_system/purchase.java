@@ -1588,7 +1588,7 @@ public class purchase extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
             try {
                 String sql = "select Delivery_No, Book_title, Author, Classification, Quantity, Price, Purchase_No,"
-                    + " Purchase_Date from  delivery_tbl where Date "
+                    + " Purchase_Date from  delivery_tbl where Delivery_Date "
                         + "between '" + (String) sdf.format(jDateChooser3.getDate()) + "' "
                         + "and '" + (String) sdf.format(jDateChooser4.getDate()) + "' ";
                 pst = conn.prepareStatement(sql);
