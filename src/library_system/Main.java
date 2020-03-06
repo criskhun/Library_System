@@ -2775,8 +2775,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabel138.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel131.setForeground(new java.awt.Color(255, 255, 255));
         jLabel131.setText("jLabel131");
 
+        jLabel153.setForeground(new java.awt.Color(255, 255, 255));
         jLabel153.setText("jLabel153");
 
         javax.swing.GroupLayout jPanel52Layout = new javax.swing.GroupLayout(jPanel52);
@@ -9418,7 +9422,7 @@ public class Main extends javax.swing.JFrame {
                     pst.setString(2, jLabel136.getText());
                     pst.setString(3, (String)jComboBox1.getSelectedItem());
                     pst.setString(4, (String)nb_class.getSelectedItem());
-                    pst.setString(5, nb_qty.getText());
+                    pst.setString(5, jLabel131.getText());
                     pst.setString(6, nb_prc.getText());
                     pst.setString(7, jLabel3.getText());
                     pst.setString(8, jLabel137.getText());
@@ -9443,7 +9447,7 @@ public class Main extends javax.swing.JFrame {
                     pst.setString(1, jLabel136.getText());
                     pst.setString(2, (String)jComboBox1.getSelectedItem());
                     pst.setString(3, (String)nb_class.getSelectedItem());
-                    pst.setString(4, nb_qty.getText());
+                    pst.setString(4, jLabel131.getText());
                     pst.setString(5, nb_prc.getText());
 
                     pst.execute();
@@ -12639,7 +12643,7 @@ public class Main extends javax.swing.JFrame {
             }
         int a = Integer.parseInt(jLabel134.getText());
         int aa = Integer.parseInt(jLabel85.getText());
-        int b = Integer.parseInt(nb_qty.getText());
+        int b = Integer.parseInt(jLabel131.getText());
         int c,d;
         
         c = a + b;
@@ -12664,7 +12668,7 @@ public class Main extends javax.swing.JFrame {
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE stockin_tbl SET  "
                     + "Quantity=? WHERE Book_title='" + jLabel136.getText() + "'");
             
-            pst.setString(1, jLabel135.getText());
+            pst.setString(1, jLabel131.getText());
             
             pst.execute();
         }
