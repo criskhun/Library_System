@@ -1568,14 +1568,17 @@
                                       <Component id="jScrollPane22" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="nb_update8" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
-                                                  <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
+                                                  <Component id="jLabel131" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Component id="jLabel138" min="-2" pref="59" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="160" pref="414" max="32767" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel153" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace pref="250" max="32767" attributes="0"/>
                                                   <Component id="jLabel123" min="-2" pref="100" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="po_or2" min="-2" pref="208" max="-2" attributes="0"/>
@@ -1589,12 +1592,21 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel138" pref="14" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel138" max="32767" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel131" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="po_or2" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                              <Component id="jLabel123" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                              <Component id="nb_update8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="po_or2" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                                  <Component id="jLabel123" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                                  <Component id="nb_update8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jLabel153" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jScrollPane22" min="-2" pref="477" max="-2" attributes="0"/>
@@ -1690,6 +1702,16 @@
                                   </Events>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabel138">
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="jLabel131">
+                                  <Properties>
+                                    <Property name="text" type="java.lang.String" value="jLabel131"/>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="jLabel153">
+                                  <Properties>
+                                    <Property name="text" type="java.lang.String" value="jLabel153"/>
+                                  </Properties>
                                 </Component>
                               </SubComponents>
                             </Container>

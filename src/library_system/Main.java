@@ -166,6 +166,7 @@ public class Main extends javax.swing.JFrame {
         rem_list();
         ret_ref();
         myaccount_ohn();
+        purchase_del();
     }
     
     public void select_bor(){
@@ -767,9 +768,10 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
+
     public void book_order_ref(){
         try {
-            String sql = "SELECT * FROM requested_tbl ORDER BY ID ASC";
+            String sql = "SELECT * FROM requested_tbl WHERE Quantity NOT IN ('0','0.0')";
             pst = (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
 
@@ -1390,6 +1392,8 @@ public class Main extends javax.swing.JFrame {
         po_or2 = new javax.swing.JTextField();
         nb_update8 = new javax.swing.JButton();
         jLabel138 = new javax.swing.JLabel();
+        jLabel131 = new javax.swing.JLabel();
+        jLabel153 = new javax.swing.JLabel();
         jPanel54 = new javax.swing.JPanel();
         jPanel60 = new javax.swing.JPanel();
         jScrollPane26 = new javax.swing.JScrollPane();
@@ -2771,6 +2775,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabel131.setText("jLabel131");
+
+        jLabel153.setText("jLabel153");
+
         javax.swing.GroupLayout jPanel52Layout = new javax.swing.GroupLayout(jPanel52);
         jPanel52.setLayout(jPanel52Layout);
         jPanel52Layout.setHorizontalGroup(
@@ -2778,13 +2786,16 @@ public class Main extends javax.swing.JFrame {
             .addComponent(jScrollPane22)
             .addGroup(jPanel52Layout.createSequentialGroup()
                 .addComponent(nb_update8)
+                .addGap(118, 118, 118)
                 .addGroup(jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel52Layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
+                        .addComponent(jLabel131)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel138, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel52Layout.createSequentialGroup()
-                        .addGap(160, 414, Short.MAX_VALUE)
+                        .addComponent(jLabel153)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
                         .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(po_or2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -2794,12 +2805,18 @@ public class Main extends javax.swing.JFrame {
             jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel52Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel138, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
+                .addGroup(jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel138, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel52Layout.createSequentialGroup()
+                        .addComponent(jLabel131)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(po_or2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nb_update8))
+                .addGroup(jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(po_or2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nb_update8))
+                    .addComponent(jLabel153))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -9363,11 +9380,35 @@ public class Main extends javax.swing.JFrame {
             if(jLabel124.getText().equals("Received")){
                 String res = JOptionPane.showInputDialog(this, "Input Delivery Receipt Number");
                 jLabel138.setText(res);
+                String res1 = JOptionPane.showInputDialog(this, "Input Quantity Received");
+                jLabel131.setText(res1);
+                
+                
+            int a = Integer.parseInt(nb_qty.getText());
+            int b = Integer.parseInt(jLabel131.getText());
+            int total;
+            
+            total = a - b;
+            
+            jLabel153.setText(Double.toString(total));
+                
                 if(jLabel138.getText().equals("")){
                     JOptionPane.showMessageDialog(null, "Please Input DR Number First");
                 }
                 else{
+                    if(jLabel131.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Please Input DR Number First");
+                }
+                    else {
                 try {
+                    
+          pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE requested_tbl SET Quantity=?"
+                    + " WHERE ID='" + nb_id.getText() + "'");
+
+            pst.setString(1, jLabel153.getText());
+
+            pst.execute();
+
                     String sql = "Insert into delivery_tbl (Delivery_No, Book_title, Author, Classification, "
                     + "Quantity, Price, Purchase_No, Purchase_Date, Delivery_Date) values (?,?,?,?,?,?,?,?,?)";
 
@@ -9415,6 +9456,7 @@ public class Main extends javax.swing.JFrame {
                 }
                 JOptionPane.showMessageDialog(null, "SAVE ENTRY");
                 ulog1();
+                }
             }
 
             else if(jLabel124.getText().equals("Cancel")){
@@ -9440,7 +9482,7 @@ public class Main extends javax.swing.JFrame {
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e);
                 }
-                purchase_del();
+               // purchase_del();
 
                 JOptionPane.showMessageDialog(null, "CANCEL ENTRY");
                 ulog2();
@@ -9470,6 +9512,7 @@ public class Main extends javax.swing.JFrame {
         }
         
         all_ref();
+        purchase_del();
     }//GEN-LAST:event_nb_update8ActionPerformed
 
     private void po_or2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_po_or2KeyReleased
@@ -12393,18 +12436,28 @@ public class Main extends javax.swing.JFrame {
     }
     
     public void purchase_del(){
-    try {
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM requested_tbl  WHERE ID = '" + nb_id.getText() + "'");
-            int del = pst.executeUpdate();
-            if (del > 0) {
-                JOptionPane.showMessageDialog(null, "Data Deleted!");
-                
-            }else{
-                JOptionPane.showMessageDialog(null, "Please Check Item!!");
-            }
+        try {
+            String sql = "SELECT * FROM requested_tbl WHERE Quantity NOT IN ('0','0.0')";
+            pst = (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+
+            rep_bo_table.setModel(DbUtils.resultSetToTableModel(rs));
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
-        } 
+        }
+//    try {
+//            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM requested_tbl  WHERE ID = '" + nb_id.getText() + "'");
+//            int del = pst.executeUpdate();
+//            if (del > 0) {
+//                JOptionPane.showMessageDialog(null, "Data Deleted!");
+//                
+//            }else{
+//                JOptionPane.showMessageDialog(null, "Please Check Item!!");
+//            }
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, ex);
+//        } 
     }
     
     public void cancel_del(){
@@ -13457,6 +13510,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel129;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel130;
+    private javax.swing.JLabel jLabel131;
     private javax.swing.JLabel jLabel132;
     private javax.swing.JLabel jLabel133;
     private javax.swing.JLabel jLabel134;
@@ -13480,6 +13534,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel150;
     private javax.swing.JLabel jLabel151;
     private javax.swing.JLabel jLabel152;
+    private javax.swing.JLabel jLabel153;
     private javax.swing.JLabel jLabel155;
     private javax.swing.JLabel jLabel156;
     private javax.swing.JLabel jLabel157;
