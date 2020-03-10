@@ -1059,7 +1059,6 @@ public class Main extends javax.swing.JFrame {
         brrd_bt.setSelectedIndex(0);
         brrd_bp.setText("");
         brrd_class.setText("");
-        brrd_fd.setText("");
         brrd_qty.setText("1");
         brrd_qty.setForeground(Color.BLACK);
         brrd_min.setEnabled(false);
@@ -1698,6 +1697,7 @@ public class Main extends javax.swing.JFrame {
         jLabel211 = new javax.swing.JLabel();
         jLabel212 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel36 = new javax.swing.JPanel();
         jScrollPane14 = new javax.swing.JScrollPane();
         borrowedlog_table = new javax.swing.JTable();
@@ -5565,7 +5565,6 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel34.add(jLabel192, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, 34));
 
-        jLabel211.setForeground(new java.awt.Color(255, 255, 255));
         jLabel211.setText("jLabel211");
         jPanel34.add(jLabel211, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, -1, -1));
 
@@ -5576,6 +5575,9 @@ public class Main extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("jLabel5");
         jPanel34.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
+
+        jButton1.setText("jButton1");
+        jPanel34.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 0, 160, 40));
 
         jTabbedPane2.addTab("ACTIVE BORROWER", jPanel34);
 
@@ -8549,6 +8551,7 @@ public class Main extends javax.swing.JFrame {
     private void brrd_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brrd_clearActionPerformed
         brrd_clr();
         all_ref();
+        brrd_fd.setText("");
         brrd_fn.setText("");
         brrd_libid1.setText("");
         brrd_stat.setText("");
@@ -8604,12 +8607,12 @@ public class Main extends javax.swing.JFrame {
             String secondDate = returndate.getText();
             LocalDate date1 = LocalDate.parse(firstDate,formatter);
             LocalDate date2 = LocalDate.parse(secondDate,formatter);
-            long daysBetween = ChronoUnit.DAYS.between(date1, date2);
+            long daysBetween = ChronoUnit.DAYS.between(date2, date1);
             if(daysBetween > 0){
                 jLabel211.setText(Long.toString(daysBetween));
             }
             else{
-                jLabel211.setText(Long.toString(daysBetween*-1));
+                jLabel211.setText("0");
             }
             
             int a = Integer.parseInt(jLabel211.getText());
@@ -8623,7 +8626,7 @@ public class Main extends javax.swing.JFrame {
                 
         try {
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE borrowed_tbl SET  "
-                    + " Remarks=?, Payable=? WHERE Trans_Code='" + brrd_id.getText() + "'");
+                    + " Remarks=?, Payable=? WHERE Trans_Code='" + brrd_id.getText() + "' and Book_title= '" + brrd_bt.getSelectedItem() + "' ");
             
             pst.setString(1, (String) brrd_remcb.getSelectedItem());
             pst.setString(2, jLabel211.getText());
@@ -8654,7 +8657,7 @@ public class Main extends javax.swing.JFrame {
             
         try {
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE borrowed_tbl SET  "
-                    + " Remarks=?, Payable=? WHERE Trans_Code='" + brrd_id.getText() + "'");
+                    + " Remarks=?, Payable=? WHERE Trans_Code='" + brrd_id.getText() + "' and Book_title= '" + brrd_bt.getSelectedItem() + "' ");
             
             pst.setString(1, (String) brrd_remcb.getSelectedItem());
             pst.setString(2, brrd_fd2.getText());
@@ -12575,7 +12578,8 @@ public class Main extends javax.swing.JFrame {
         
         try {
 
-            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM borrowed_tbl  WHERE Trans_Code = '" + brrd_id.getText() + "'");
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM borrowed_tbl  "
+                    + "WHERE Trans_Code = '" + brrd_id.getText() + "' and Book_title = '" + brrd_bt.getSelectedItem() + "'");
             int del = pst.executeUpdate();
             if (del > 0) {
                 JOptionPane.showMessageDialog(null, "Item Returned!");
@@ -13497,6 +13501,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel inv;
     private javax.swing.JPanel inventory;
     private javax.swing.JTextField invlog_search;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox jComboBox2;
