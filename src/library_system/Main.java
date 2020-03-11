@@ -6,15 +6,9 @@
 package library_system;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.print.PageFormat;
-import java.awt.print.Printable;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -28,10 +22,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.TimeZone;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -41,18 +32,7 @@ import javax.swing.Timer;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.design.JRDesignQuery;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperPrintManager;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.design.JRDesignQuery;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 //import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
@@ -73,6 +53,7 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         conn = (Connection) MySqlConnect.ConnectDB();
+        AutoCompleteDecorator.decorate(brrd_bt);
         start();
         CurrentDate();
         all_ref();
@@ -1485,7 +1466,7 @@ public class Main extends javax.swing.JFrame {
         nb_cn = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        nb_class = new javax.swing.JComboBox<String>();
+        nb_class = new javax.swing.JComboBox<>();
         nb_edi = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         nb_qty = new javax.swing.JTextField();
@@ -1496,13 +1477,13 @@ public class Main extends javax.swing.JFrame {
         nb_da = new com.toedter.calendar.JDateChooser();
         class_add = new javax.swing.JButton();
         jLabel119 = new javax.swing.JLabel();
-        nb_cpub = new javax.swing.JComboBox<String>();
+        nb_cpub = new javax.swing.JComboBox<>();
         class_add2 = new javax.swing.JButton();
         nb_cry = new com.toedter.calendar.JDateChooser();
         jLabel187 = new javax.swing.JLabel();
         jLabel188 = new javax.swing.JLabel();
         jLabel189 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         class_add4 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         nb_search = new javax.swing.JTextField();
@@ -1528,7 +1509,7 @@ public class Main extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         acc_fn = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        acc_lvl = new javax.swing.JComboBox<String>();
+        acc_lvl = new javax.swing.JComboBox<>();
         jLabel37 = new javax.swing.JLabel();
         acc_mn = new javax.swing.JTextField();
         acc_image = new javax.swing.JLabel();
@@ -1568,14 +1549,14 @@ public class Main extends javax.swing.JFrame {
         brr_idn = new javax.swing.JTextField();
         brr_image = new javax.swing.JLabel();
         brr_browse = new javax.swing.JButton();
-        brr_yr = new javax.swing.JComboBox<String>();
+        brr_yr = new javax.swing.JComboBox<>();
         brr_add = new javax.swing.JTextField();
         brr_mn = new javax.swing.JTextField();
         jLabel181 = new javax.swing.JLabel();
         jLabel182 = new javax.swing.JLabel();
-        brr_idt = new javax.swing.JComboBox<String>();
+        brr_idt = new javax.swing.JComboBox<>();
         jLabel183 = new javax.swing.JLabel();
-        brr_cr = new javax.swing.JComboBox<String>();
+        brr_cr = new javax.swing.JComboBox<>();
         brr_sn = new javax.swing.JTextField();
         jLabel184 = new javax.swing.JLabel();
         course_add = new javax.swing.JButton();
@@ -1658,7 +1639,7 @@ public class Main extends javax.swing.JFrame {
         jLabel74 = new javax.swing.JLabel();
         brrd_add = new javax.swing.JButton();
         brrd_min = new javax.swing.JButton();
-        brrd_remcb = new javax.swing.JComboBox<String>();
+        brrd_remcb = new javax.swing.JComboBox<>();
         brrd_fd = new javax.swing.JTextField();
         borroweddate = new javax.swing.JTextField();
         brrd_rem1 = new javax.swing.JLabel();
@@ -1666,7 +1647,7 @@ public class Main extends javax.swing.JFrame {
         brrd_libid1 = new javax.swing.JTextField();
         jLabel190 = new javax.swing.JLabel();
         jLabel191 = new javax.swing.JLabel();
-        brrd_bt = new javax.swing.JComboBox<String>();
+        brrd_bt = new javax.swing.JComboBox<>();
         brrd_stat = new javax.swing.JTextField();
         brrd_class = new javax.swing.JTextField();
         transcoded = new javax.swing.JTextField();
@@ -1701,14 +1682,17 @@ public class Main extends javax.swing.JFrame {
         jPanel36 = new javax.swing.JPanel();
         jScrollPane14 = new javax.swing.JScrollPane();
         borrowedlog_table = new javax.swing.JTable();
-        brrd_fn2 = new javax.swing.JComboBox<String>();
+        brrd_fn2 = new javax.swing.JComboBox<>();
         jLabel69 = new javax.swing.JLabel();
         brrd_fd3 = new javax.swing.JTextField();
+        nb_update15 = new javax.swing.JButton();
         jPanel46 = new javax.swing.JPanel();
         jScrollPane36 = new javax.swing.JScrollPane();
         jTable6 = new javax.swing.JTable();
         brrd_return1 = new javax.swing.JButton();
         jLabel63 = new javax.swing.JLabel();
+        nb_update14 = new javax.swing.JButton();
+        jLabel158 = new javax.swing.JLabel();
         jPanel35 = new javax.swing.JPanel();
         si_calc1 = new javax.swing.JButton();
         brrd_clear = new javax.swing.JButton();
@@ -1720,7 +1704,7 @@ public class Main extends javax.swing.JFrame {
         po_qt = new javax.swing.JTextField();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
-        po_sup = new javax.swing.JComboBox<String>();
+        po_sup = new javax.swing.JComboBox<>();
         po_date = new com.toedter.calendar.JDateChooser();
         po_or = new javax.swing.JTextField();
         jLabel105 = new javax.swing.JLabel();
@@ -1738,7 +1722,7 @@ public class Main extends javax.swing.JFrame {
         po_min = new javax.swing.JButton();
         nb_update2 = new javax.swing.JButton();
         nb_update4 = new javax.swing.JButton();
-        po_cl = new javax.swing.JComboBox<String>();
+        po_cl = new javax.swing.JComboBox<>();
         class_add1 = new javax.swing.JButton();
         nb_update5 = new javax.swing.JButton();
         jLabel110 = new javax.swing.JLabel();
@@ -1762,7 +1746,7 @@ public class Main extends javax.swing.JFrame {
         sum_table = new javax.swing.JTable();
         jPanel17 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        sum_class = new javax.swing.JComboBox<String>();
+        sum_class = new javax.swing.JComboBox<>();
         sum_bt = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
@@ -1786,10 +1770,11 @@ public class Main extends javax.swing.JFrame {
         so_add = new javax.swing.JButton();
         so_minus = new javax.swing.JButton();
         so_save = new javax.swing.JButton();
-        so_stat = new javax.swing.JComboBox<String>();
+        so_stat = new javax.swing.JComboBox<>();
         jLabel45 = new javax.swing.JLabel();
         jLabel166 = new javax.swing.JLabel();
-        so_stat1 = new javax.swing.JComboBox<String>();
+        so_stat1 = new javax.swing.JComboBox<>();
+        nb_update13 = new javax.swing.JButton();
         jPanel27 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         so_table = new javax.swing.JTable();
@@ -1964,7 +1949,7 @@ public class Main extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -3886,7 +3871,7 @@ public class Main extends javax.swing.JFrame {
         jLabel22.setText("Copy Right Year:");
         jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 130, 25));
 
-        nb_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--" }));
+        nb_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--" }));
         nb_class.setEnabled(false);
         jPanel4.add(nb_class, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 181, 34));
 
@@ -3941,7 +3926,7 @@ public class Main extends javax.swing.JFrame {
         jLabel119.setText("Publisher:");
         jPanel4.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 99, 24));
 
-        nb_cpub.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--" }));
+        nb_cpub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--" }));
         nb_cpub.setEnabled(false);
         jPanel4.add(nb_cpub, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 181, 34));
 
@@ -3970,7 +3955,7 @@ public class Main extends javax.swing.JFrame {
         jLabel189.setForeground(new java.awt.Color(51, 255, 0));
         jPanel4.add(jLabel189, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 220, 20));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--" }));
         jComboBox1.setEnabled(false);
         jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 181, 34));
 
@@ -4216,7 +4201,7 @@ public class Main extends javax.swing.JFrame {
         jLabel36.setText("Mobile Number:");
         jPanel10.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 99, 24));
 
-        acc_lvl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Please Select--", "Admin", "User", "Faculty", "Student" }));
+        acc_lvl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Please Select--", "Admin", "User", "Faculty", "Student" }));
         acc_lvl.setEnabled(false);
         jPanel10.add(acc_lvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 283, 34));
 
@@ -4483,7 +4468,7 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel8.add(brr_browse, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, -1, 44));
 
-        brr_yr.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Year Level--", "1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "7th Year and Up" }));
+        brr_yr.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Year Level--", "1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "7th Year and Up" }));
         brr_yr.setEnabled(false);
         jPanel8.add(brr_yr, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 200, 30));
 
@@ -4501,7 +4486,7 @@ public class Main extends javax.swing.JFrame {
         jLabel182.setText("Middle Name");
         jPanel8.add(jLabel182, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 86, 24));
 
-        brr_idt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Valid ID--", "Employee ID", "Student ID" }));
+        brr_idt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Valid ID--", "Employee ID", "Student ID" }));
         brr_idt.setEnabled(false);
         brr_idt.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -5323,7 +5308,7 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel30.add(brrd_min, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 30, 30));
 
-        brrd_remcb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Borrowed", "Loss", "Damage" }));
+        brrd_remcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Borrowed", "Loss", "Damage" }));
         jPanel30.add(brrd_remcb, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 500, 200, 34));
 
         brrd_fd.setEditable(false);
@@ -5597,7 +5582,7 @@ public class Main extends javax.swing.JFrame {
         borrowedlog_table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane14.setViewportView(borrowedlog_table);
 
-        brrd_fn2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Borrower--" }));
+        brrd_fn2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Borrower--" }));
         brrd_fn2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -5617,35 +5602,53 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        nb_update15.setBackground(new java.awt.Color(51, 153, 255));
+        nb_update15.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        nb_update15.setForeground(new java.awt.Color(255, 255, 255));
+        nb_update15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/printer.png"))); // NOI18N
+        nb_update15.setText("Print");
+        nb_update15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nb_update15ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
         jPanel36.setLayout(jPanel36Layout);
         jPanel36Layout.setHorizontalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
-                .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(brrd_fd3, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(brrd_fn2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel36Layout.createSequentialGroup()
+                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
+                        .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(brrd_fd3, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(brrd_fn2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(nb_update15, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel36Layout.createSequentialGroup()
                     .addGap(1, 1, 1)
                     .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(12, Short.MAX_VALUE)))
         );
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
+                .addComponent(nb_update15, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(brrd_fn2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(brrd_fd3))
-                .addGap(0, 516, Short.MAX_VALUE))
+                    .addComponent(brrd_fd3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(471, Short.MAX_VALUE))
             .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
-                    .addGap(0, 37, Short.MAX_VALUE)
-                    .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 88, Short.MAX_VALUE)
+                    .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jTabbedPane2.addTab("BORROWED LOG", jPanel36);
@@ -5688,7 +5691,23 @@ public class Main extends javax.swing.JFrame {
         jPanel46.add(brrd_return1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, 40));
 
         jLabel63.setText("Please Select from the table first.");
-        jPanel46.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 180, -1));
+        jPanel46.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 250, -1));
+
+        nb_update14.setBackground(new java.awt.Color(51, 153, 255));
+        nb_update14.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        nb_update14.setForeground(new java.awt.Color(255, 255, 255));
+        nb_update14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/printer.png"))); // NOI18N
+        nb_update14.setText("Print");
+        nb_update14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nb_update14ActionPerformed(evt);
+            }
+        });
+        jPanel46.add(nb_update14, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 25, 110, 40));
+
+        jLabel158.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel158.setText("Over Due borrower");
+        jPanel46.add(jLabel158, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 50, 180, -1));
 
         jTabbedPane2.addTab("RETURN BOOK", jPanel46);
 
@@ -6163,7 +6182,7 @@ public class Main extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel12.setText("Classification:");
 
-        sum_class.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Choose Book Classification--", "General", "Philippine Literature", "Fiction", "Non-Fiction", "Filipiniana", "Circulation", "Others", "" }));
+        sum_class.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Choose Book Classification--", "General", "Philippine Literature", "Fiction", "Non-Fiction", "Filipiniana", "Circulation", "Others", "" }));
         sum_class.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -6418,7 +6437,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        so_stat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Select Status--", "Damage", "Loss" }));
+        so_stat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select Status--", "Damage", "Loss" }));
         so_stat.setEnabled(false);
 
         jLabel45.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -6427,8 +6446,19 @@ public class Main extends javax.swing.JFrame {
         jLabel166.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel166.setText("Remarks:");
 
-        so_stat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Select Status--", "Damage", "Loss" }));
+        so_stat1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select Status--", "Damage", "Loss" }));
         so_stat1.setEnabled(false);
+
+        nb_update13.setBackground(new java.awt.Color(51, 153, 255));
+        nb_update13.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        nb_update13.setForeground(new java.awt.Color(255, 255, 255));
+        nb_update13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/printer.png"))); // NOI18N
+        nb_update13.setText("Print");
+        nb_update13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nb_update13ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
@@ -6446,9 +6476,6 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(so_isbn)
                             .addComponent(so_bt)))
                     .addGroup(jPanel26Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(so_save))
-                    .addGroup(jPanel26Layout.createSequentialGroup()
                         .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -6456,6 +6483,10 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jLabel166, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(60, 60, 60)
                         .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel26Layout.createSequentialGroup()
+                                .addComponent(nb_update13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(so_save))
                             .addGroup(jPanel26Layout.createSequentialGroup()
                                 .addComponent(so_qty, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -6503,7 +6534,9 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(so_minus, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(so_save, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(so_save, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nb_update13, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -8740,7 +8773,8 @@ public class Main extends javax.swing.JFrame {
             
         try {
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE borrowed_tbl SET  "
-                    + " Remarks=?, Payable=? WHERE Trans_Code='" + brrd_id.getText() + "'");
+                    + " Remarks=?, Payable=? WHERE Trans_Code='" + brrd_id.getText() + "' and "
+                            + "Book_title= '" + brrd_bt.getSelectedItem() + "' ");
             
             pst.setString(1, (String) brrd_remcb.getSelectedItem());
             pst.setString(2, brrd_fd2.getText());
@@ -12385,6 +12419,20 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_nb_update10ActionPerformed
 
+    private void nb_update13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_update13ActionPerformed
+        jLabel78.setText("stockout");
+        new purchase().setVisible(true);
+    }//GEN-LAST:event_nb_update13ActionPerformed
+
+    private void nb_update14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_update14ActionPerformed
+        jLabel78.setText("overdue");
+        new purchase().setVisible(true);
+    }//GEN-LAST:event_nb_update14ActionPerformed
+
+    private void nb_update15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_update15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nb_update15ActionPerformed
+
     public void sup(){
         sup_save3.setVisible(false);
         
@@ -13572,6 +13620,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel155;
     private javax.swing.JLabel jLabel156;
     private javax.swing.JLabel jLabel157;
+    private javax.swing.JLabel jLabel158;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel161;
     private javax.swing.JLabel jLabel162;
@@ -13905,6 +13954,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton nb_update10;
     private javax.swing.JButton nb_update11;
     private javax.swing.JButton nb_update12;
+    private javax.swing.JButton nb_update13;
+    private javax.swing.JButton nb_update14;
+    private javax.swing.JButton nb_update15;
     private javax.swing.JButton nb_update17;
     private javax.swing.JButton nb_update2;
     private javax.swing.JButton nb_update3;
