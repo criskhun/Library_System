@@ -1678,7 +1678,7 @@ public class Main extends javax.swing.JFrame {
         jLabel211 = new javax.swing.JLabel();
         jLabel212 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLabel160 = new javax.swing.JLabel();
         jPanel36 = new javax.swing.JPanel();
         jScrollPane14 = new javax.swing.JScrollPane();
         borrowedlog_table = new javax.swing.JTable();
@@ -1693,6 +1693,8 @@ public class Main extends javax.swing.JFrame {
         jLabel63 = new javax.swing.JLabel();
         nb_update14 = new javax.swing.JButton();
         jLabel158 = new javax.swing.JLabel();
+        nb_update16 = new javax.swing.JButton();
+        jLabel159 = new javax.swing.JLabel();
         jPanel35 = new javax.swing.JPanel();
         si_calc1 = new javax.swing.JButton();
         brrd_clear = new javax.swing.JButton();
@@ -1751,6 +1753,7 @@ public class Main extends javax.swing.JFrame {
         jLabel46 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
         nb_new1 = new javax.swing.JButton();
+        nb_new2 = new javax.swing.JButton();
         jPanel47 = new javax.swing.JPanel();
         jPanel48 = new javax.swing.JPanel();
         jScrollPane18 = new javax.swing.JScrollPane();
@@ -5561,8 +5564,8 @@ public class Main extends javax.swing.JFrame {
         jLabel5.setText("jLabel5");
         jPanel34.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
 
-        jButton1.setText("jButton1");
-        jPanel34.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 0, 160, 40));
+        jLabel160.setText("jLabel160");
+        jPanel34.add(jLabel160, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
 
         jTabbedPane2.addTab("ACTIVE BORROWER", jPanel34);
 
@@ -5675,7 +5678,7 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane36.setViewportView(jTable6);
 
-        jPanel46.add(jScrollPane36, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 123, -1, 420));
+        jPanel46.add(jScrollPane36, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 153, -1, 390));
 
         brrd_return1.setBackground(new java.awt.Color(51, 153, 255));
         brrd_return1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -5688,10 +5691,10 @@ public class Main extends javax.swing.JFrame {
                 brrd_return1ActionPerformed(evt);
             }
         });
-        jPanel46.add(brrd_return1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, 40));
+        jPanel46.add(brrd_return1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 150, 40));
 
         jLabel63.setText("Please Select from the table first.");
-        jPanel46.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 250, -1));
+        jPanel46.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 210, -1));
 
         nb_update14.setBackground(new java.awt.Color(51, 153, 255));
         nb_update14.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -5703,11 +5706,27 @@ public class Main extends javax.swing.JFrame {
                 nb_update14ActionPerformed(evt);
             }
         });
-        jPanel46.add(nb_update14, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 25, 110, 40));
+        jPanel46.add(nb_update14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 150, 40));
 
-        jLabel158.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel158.setText("Over Due borrower");
-        jPanel46.add(jLabel158, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 50, 180, -1));
+        jLabel158.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel158.setText("Filter Book Loan");
+        jPanel46.add(jLabel158, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 140, -1));
+
+        nb_update16.setBackground(new java.awt.Color(51, 153, 255));
+        nb_update16.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        nb_update16.setForeground(new java.awt.Color(255, 255, 255));
+        nb_update16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/browsing.png"))); // NOI18N
+        nb_update16.setText("Filter");
+        nb_update16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nb_update16ActionPerformed(evt);
+            }
+        });
+        jPanel46.add(nb_update16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 40));
+
+        jLabel159.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel159.setText("Over Due borrower");
+        jPanel46.add(jLabel159, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 140, -1));
 
         jTabbedPane2.addTab("RETURN BOOK", jPanel46);
 
@@ -6247,6 +6266,17 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        nb_new2.setBackground(new java.awt.Color(51, 153, 255));
+        nb_new2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        nb_new2.setForeground(new java.awt.Color(255, 255, 255));
+        nb_new2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/book.png"))); // NOI18N
+        nb_new2.setText("Filter Books");
+        nb_new2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nb_new2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -6254,13 +6284,17 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(nb_new1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nb_new2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(nb_new1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nb_new1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nb_new2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -8538,6 +8572,27 @@ public class Main extends javax.swing.JFrame {
 
     private void si_calc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_si_calc1ActionPerformed
         try{
+            String sql = "SELECT *"
+                    + " FROM borrowed_tbl WHERE "
+                    + "Full_Name like '"+brrd_fn.getText()+"' and"
+                    + " Book_title like '"+brrd_bt.getSelectedItem()+"'";
+
+            pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = (ResultSet) pst.executeQuery();
+            brrd_log_table.setModel(DbUtils.resultSetToTableModel(rs));
+            }
+            catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, ex);
+            }
+        int row = brrd_log_table.getRowCount();
+        jLabel160.setText(String.valueOf(row));
+        int a = Integer.parseInt(jLabel160.getText());
+        if(a>0){
+            JOptionPane.showMessageDialog(null, "Book already borrowed by the borrower!!!");
+        }
+        else{
+            //JOptionPane.showConfirmDialog(null, "you can sleep now!!!");
+        try{
             String sql = "SELECT Trans_Code, Quantity"
                     + " FROM borrowed_tbl WHERE "
                     + "Trans_Code like ?";
@@ -8574,11 +8629,11 @@ public class Main extends javax.swing.JFrame {
             bookloanproc();
             }
         }
-        
-        
+
         ulog24();
         all_ref();
         brrd_clr();
+        }
     }//GEN-LAST:event_si_calc1ActionPerformed
 
     private void brrd_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brrd_clearActionPerformed
@@ -12430,8 +12485,19 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_nb_update14ActionPerformed
 
     private void nb_update15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_update15ActionPerformed
-        // TODO add your handling code here:
+        jLabel78.setText("borrowed");
+        new purchase().setVisible(true);
     }//GEN-LAST:event_nb_update15ActionPerformed
+
+    private void nb_new2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_new2ActionPerformed
+        jLabel78.setText("boh"); 
+        new purchase().setVisible(true);
+    }//GEN-LAST:event_nb_new2ActionPerformed
+
+    private void nb_update16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nb_update16ActionPerformed
+        jLabel78.setText("bookloan");
+        new purchase().setVisible(true);
+    }//GEN-LAST:event_nb_update16ActionPerformed
 
     public void sup(){
         sup_save3.setVisible(false);
@@ -13549,7 +13615,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel inv;
     private javax.swing.JPanel inventory;
     private javax.swing.JTextField invlog_search;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox jComboBox2;
@@ -13621,7 +13686,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel156;
     private javax.swing.JLabel jLabel157;
     private javax.swing.JLabel jLabel158;
+    private javax.swing.JLabel jLabel159;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel160;
     private javax.swing.JLabel jLabel161;
     private javax.swing.JLabel jLabel162;
     private javax.swing.JLabel jLabel163;
@@ -13938,6 +14005,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField nb_is2;
     private javax.swing.JButton nb_new;
     private javax.swing.JButton nb_new1;
+    private javax.swing.JButton nb_new2;
     private javax.swing.JButton nb_new4;
     private javax.swing.JButton nb_new5;
     private javax.swing.JButton nb_new6;
@@ -13957,6 +14025,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton nb_update13;
     private javax.swing.JButton nb_update14;
     private javax.swing.JButton nb_update15;
+    private javax.swing.JButton nb_update16;
     private javax.swing.JButton nb_update17;
     private javax.swing.JButton nb_update2;
     private javax.swing.JButton nb_update3;
