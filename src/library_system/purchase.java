@@ -75,7 +75,6 @@ public class purchase extends javax.swing.JFrame {
         summary_ref();
         delsum();
         col_ref();
-        delcol();
         dam_ref();
         colcount();
         damcol();
@@ -87,6 +86,10 @@ public class purchase extends javax.swing.JFrame {
         bohcount();
         bloan_ref();
         bloancount();
+        overdcount();
+        delcol();
+        pay();
+        qty();
     }
     
     public void ifelse(){
@@ -539,6 +542,20 @@ public class purchase extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, e);
         }
     }
+    public void pay(){
+        int sum=0;
+        for (int i = 0; i < jTable13.getRowCount(); i++){
+            sum = (int) (sum + Double.parseDouble(jTable13.getValueAt(i, 12).toString()));
+        }
+        menu_title136.setText(Integer.toString(sum));
+    }
+    public void qty(){
+        int sum=0;
+        for (int i = 0; i < jTable13.getRowCount(); i++){
+            sum = sum + Integer.parseInt(jTable13.getValueAt(i, 8).toString());
+        }
+        menu_title92.setText(Integer.toString(sum));
+    }
     public void damcol(){
         try{
             
@@ -604,6 +621,10 @@ public class purchase extends javax.swing.JFrame {
     public void bloancount (){//code for cointing table account logs
     int row = jTable16.getRowCount();
         menu_title134.setText(String.valueOf(row));
+    }
+    public void overdcount (){//code for cointing table account logs
+    int row = jTable13.getRowCount();
+        menu_title94.setText(String.valueOf(row));
     }
     public void CurrentDate() {//date and time to toolbar running
         new Timer(0, new ActionListener() {
@@ -1050,6 +1071,8 @@ public class purchase extends javax.swing.JFrame {
         menu_title95 = new javax.swing.JLabel();
         menu_title96 = new javax.swing.JLabel();
         menu_title97 = new javax.swing.JLabel();
+        menu_title135 = new javax.swing.JLabel();
+        menu_title136 = new javax.swing.JLabel();
         print8 = new javax.swing.JPanel();
         menu_title98 = new javax.swing.JLabel();
         menu_title99 = new javax.swing.JLabel();
@@ -2273,6 +2296,16 @@ public class purchase extends javax.swing.JFrame {
         menu_title97.setForeground(new java.awt.Color(102, 102, 102));
         menu_title97.setText("Prepared by:");
 
+        menu_title135.setBackground(new java.awt.Color(96, 96, 96));
+        menu_title135.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        menu_title135.setForeground(new java.awt.Color(102, 102, 102));
+        menu_title135.setText("Total:");
+
+        menu_title136.setBackground(new java.awt.Color(96, 96, 96));
+        menu_title136.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        menu_title136.setForeground(new java.awt.Color(102, 102, 102));
+        menu_title136.setText("Total Item:");
+
         javax.swing.GroupLayout print7Layout = new javax.swing.GroupLayout(print7);
         print7.setLayout(print7Layout);
         print7Layout.setHorizontalGroup(
@@ -2303,15 +2336,21 @@ public class purchase extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(menu_title97))
                     .addGroup(print7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, print7Layout.createSequentialGroup()
-                            .addComponent(menu_title91)
+                        .addGroup(print7Layout.createSequentialGroup()
+                            .addGroup(print7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, print7Layout.createSequentialGroup()
+                                    .addComponent(menu_title91)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(menu_title92))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, print7Layout.createSequentialGroup()
+                                    .addComponent(menu_title93)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(menu_title94)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(menu_title92))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, print7Layout.createSequentialGroup()
-                            .addComponent(menu_title93)
-                            .addGap(18, 18, 18)
-                            .addComponent(menu_title94)))
-                    .addComponent(jScrollPane43, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(menu_title135)
+                            .addGap(33, 33, 33)
+                            .addComponent(menu_title136))
+                        .addComponent(jScrollPane43, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         print7Layout.setVerticalGroup(
@@ -2339,7 +2378,9 @@ public class purchase extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(print7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(menu_title94, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menu_title93, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(menu_title93, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menu_title136, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menu_title135, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(print7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(menu_title91, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3488,6 +3529,8 @@ public class purchase extends javax.swing.JFrame {
     private javax.swing.JLabel menu_title132;
     private javax.swing.JLabel menu_title133;
     private javax.swing.JLabel menu_title134;
+    private javax.swing.JLabel menu_title135;
+    private javax.swing.JLabel menu_title136;
     private javax.swing.JLabel menu_title138;
     private javax.swing.JLabel menu_title14;
     private javax.swing.JLabel menu_title140;
